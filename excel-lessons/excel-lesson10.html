@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 10: Data Validation | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#171717;color:#eee;line-height:1.7;padding:25px 16px}
+.container{max-width:1000px;margin:auto}
+.top-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:30px}
+.back-link{color:#e5bd55;text-decoration:none;font-weight:bold}
+.lesson-number{color:#e5bd55;font-size:14px;font-weight:bold;letter-spacing:2px}
+h1{color:#f0c75e;font-size:34px;margin:12px 0}
+h2{color:#f0c75e;margin-bottom:14px;font-size:23px}
+h3{color:#e5bd55;margin:18px 0 8px}
+p{color:#ccc;margin-bottom:12px}
+.intro{font-size:17px;color:#bdbdbd;margin-bottom:25px}
+.card{background:#222;border:1px solid #39342a;border-radius:14px;padding:25px;margin:22px 0}
+.example{background:#29261f;border-left:4px solid #e5bd55;padding:15px;border-radius:7px;margin:15px 0}
+.formula{display:block;background:#151515;border:1px solid #51452a;padding:13px;border-radius:7px;margin:10px 0;overflow-x:auto;white-space:nowrap;color:#f4d47b;font-family:Consolas,monospace}
+.tip{background:#302b1d;border:1px solid #68572c;padding:15px;border-radius:8px;color:#f0d58b;margin:15px 0}
+ul,ol{padding-left:22px;color:#ccc}
+li{margin:8px 0}
+.table-wrap{overflow-x:auto;margin:15px 0}
+table{width:100%;border-collapse:collapse;min-width:450px}
+th,td{border:1px solid #51472f;padding:11px;text-align:left}
+th{background:#39301c;color:#f0c75e}
+td{color:#ddd}
+.practice-list{list-style:none;padding:0}
+.practice-list li::before{content:"✓ ";color:#e5bd55;font-weight:bold}
+.quiz-question{background:#292929;border:1px solid #444039;padding:17px;border-radius:9px;margin:16px 0}
+.quiz-question p{color:#fff;font-weight:bold}
+.quiz-question label{display:block;color:#ccc;margin:9px 0;cursor:pointer}
+.quiz-question input{accent-color:#e5bd55;margin-right:8px}
+button{background:#e5bd55;color:#191919;border:0;border-radius:7px;padding:12px 21px;font-weight:bold;font-size:15px;cursor:pointer;margin:8px 5px 8px 0}
+button:hover{background:#f4d47b}
+#quizResult{margin-top:15px;font-weight:bold;font-size:17px}
+.navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:30px}
+.navigation a{text-decoration:none;background:#302b1d;color:#f0c75e;border:1px solid #68572c;border-radius:8px;padding:12px 17px;font-weight:bold}
+.navigation a:hover{background:#42371f}
+@media(max-width:600px){h1{font-size:27px}.card{padding:18px}.navigation{flex-direction:column}.navigation a{text-align:center}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="top-bar">
+<a href="../excel.html" class="back-link">← Back to Excel Course</a>
+<span class="lesson-number">LESSON 10 · INTERMEDIATE</span>
+</div>
+
+<h1>Data Validation and Drop-Down Lists</h1>
+<p class="intro">Control what users can enter into a worksheet and create useful drop-down menus for accurate data entry.</p>
+
+<section class="card">
+<h2>🎯 What You Will Learn</h2>
+<ul>
+<li>Understand Data Validation.</li>
+<li>Restrict entries to specific values or ranges.</li>
+<li>Create drop-down lists.</li>
+<li>Set number, date and text-length restrictions.</li>
+<li>Add input messages and error alerts.</li>
+<li>Create custom validation rules using formulas.</li>
+<li>Remove Data Validation when required.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>1. What Is Data Validation?</h2>
+<p>Data Validation is an Excel feature that controls what type of information users can enter into selected cells.</p>
+<p>It helps reduce mistakes and keeps data consistent.</p>
+<div class="example">
+<strong>Example:</strong> In a student registration form, you can allow only a specific list of courses to be entered instead of accepting any random text.
+</div>
+<h3>Why Use Data Validation?</h3>
+<ul>
+<li>Reduce incorrect entries.</li>
+<li>Maintain consistent records.</li>
+<li>Restrict numbers and dates.</li>
+<li>Create easy-to-use forms.</li>
+<li>Make data entry faster and more reliable.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>2. Where to Find Data Validation</h2>
+<ol>
+<li>Select the cell or range where you want to apply a rule.</li>
+<li>Open the Data tab.</li>
+<li>Find the Data Tools section.</li>
+<li>Click Data Validation.</li>
+<li>Choose the required settings.</li>
+</ol>
+<p>The Data Validation window generally contains Settings, Input Message and Error Alert tabs.</p>
+</section>
+
+<section class="card">
+<h2>3. Understanding Validation Criteria</h2>
+<p>The Allow dropdown provides different types of validation.</p>
+<ul>
+<li><strong>Any Value:</strong> Allows any entry.</li>
+<li><strong>Whole Number:</strong> Allows only whole numbers within a specified condition.</li>
+<li><strong>Decimal:</strong> Allows decimal numbers within a specified condition.</li>
+<li><strong>List:</strong> Allows users to select from a drop-down list.</li>
+<li><strong>Date:</strong> Restricts entries to valid dates within a condition.</li>
+<li><strong>Time:</strong> Restricts entries to specified time values.</li>
+<li><strong>Text Length:</strong> Controls the number of characters.</li>
+<li><strong>Custom:</strong> Uses a formula to determine whether an entry is allowed.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>4. Create a Drop-Down List</h2>
+<p>A drop-down list allows users to select an option from a predefined list.</p>
+<h3>Example: Department Selection</h3>
+<p>Suppose you want employees to select one department from HR, IT, Sales and Finance.</p>
+<h3>Steps</h3>
+<ol>
+<li>Select the cell where the drop-down should appear.</li>
+<li>Open Data → Data Validation.</li>
+<li>Under Allow, select List.</li>
+<li>In the Source box, type the options separated by commas.</li>
+<li>For example, enter HR,IT,Sales,Finance.</li>
+<li>Make sure In-cell dropdown is enabled.</li>
+<li>Click OK.</li>
+</ol>
+<div class="tip">💡 You can also use a cell range as the source of your list. For example, if A2:A5 contains department names, use =$A$2:$A$5 as the source.</div>
+</section>
+
+<section class="card">
+<h2>5. Whole Number and Decimal Validation</h2>
+<p>Use Whole Number validation when users should enter only integers.</p>
+<h3>Example: Student Age</h3>
+<ol>
+<li>Select the Age column.</li>
+<li>Open Data Validation.</li>
+<li>Choose Whole Number.</li>
+<li>Select Between.</li>
+<li>Enter minimum age as 5 and maximum age as 100.</li>
+<li>Click OK.</li>
+</ol>
+<p>Now entries outside the selected range will be restricted according to the error-alert settings.</p>
+
+<h3>Decimal Validation Example</h3>
+<p>Suppose an employee's attendance percentage must be between 0 and 100.</p>
+<p>Choose Decimal, select Between, and enter 0 and 100.</p>
+</section>
+
+<section class="card">
+<h2>6. Date and Time Validation</h2>
+<p>Date validation helps restrict entries to a specific date range.</p>
+<div class="example">
+<strong>Example:</strong> For a project registration sheet, allow dates between 1 January 2026 and 31 December 2026.
+</div>
+<h3>Steps</h3>
+<ol>
+<li>Select the date entry cells.</li>
+<li>Open Data Validation.</li>
+<li>Choose Date under Allow.</li>
+<li>Select Between.</li>
+<li>Enter the start and end dates.</li>
+<li>Click OK.</li>
+</ol>
+<p>Time validation works similarly and can restrict entries to a specified time range.</p>
+</section>
+
+<section class="card">
+<h2>7. Text Length Validation</h2>
+<p>Text Length validation controls how many characters a user can enter.</p>
+<div class="example">
+<strong>Example:</strong> You want a student ID to contain exactly 6 characters.
+</div>
+<ol>
+<li>Select the Student ID cells.</li>
+<li>Open Data Validation.</li>
+<li>Choose Text Length.</li>
+<li>Select Equal To.</li>
+<li>Enter 6.</li>
+<li>Click OK.</li>
+</ol>
+<div class="tip">Note: If an ID can contain leading zeros, such as 001234, consider storing it as text so Excel does not remove those zeros.</div>
+</section>
+
+<section class="card">
+<h2>8. Input Messages</h2>
+<p>An Input Message displays a helpful instruction when a user selects a validated cell.</p>
+<h3>Example</h3>
+<p>For an Age field, you can show:</p>
+<div class="example">
+<strong>Title:</strong> Enter Your Age<br>
+<strong>Input Message:</strong> Please enter a whole number between 5 and 100.
+</div>
+<h3>Steps</h3>
+<ol>
+<li>Open Data Validation.</li>
+<li>Select the Input Message tab.</li>
+<li>Enable Show input message when cell is selected.</li>
+<li>Enter a title and instruction.</li>
+<li>Click OK.</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>9. Error Alerts</h2>
+<p>Error Alerts help prevent invalid entries by showing a message when someone enters data that does not follow the validation rule.</p>
+<h3>Types of Error Alerts</h3>
+<ul>
+<li><strong>Stop:</strong> Prevents invalid entries from being accepted.</li>
+<li><strong>Warning:</strong> Shows a warning but allows the user to continue.</li>
+<li><strong>Information:</strong> Displays an informational message and allows the entry.</li>
+</ul>
+<h3>How to Set an Error Alert</h3>
+<ol>
+<li>Open Data Validation.</li>
+<li>Select the Error Alert tab.</li>
+<li>Enable Show error alert after invalid data is entered.</li>
+<li>Choose the alert style.</li>
+<li>Enter a title and error message.</li>
+<li>Click OK.</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>10. Custom Validation Using a Formula</h2>
+<p>Custom validation allows you to use a formula to decide which entries are accepted.</p>
+<h3>Example: Allow Only Unique Student IDs</h3>
+<p>Suppose student IDs are entered in cells A2 to A100. Select A2:A100 and use this formula in Custom validation:</p>
+<span class="formula">=COUNTIF($A$2:$A$100,A2)=1</span>
+<p>This checks that the entered ID appears only once in the specified range.</p>
+<div class="tip">Important: Apply the rule to the correct range and test it carefully. Data Validation can be bypassed by some actions such as pasting data into cells.</div>
+</section>
+
+<section class="card">
+<h2>11. Remove Data Validation</h2>
+<p>If you no longer need a validation rule:</p>
+<ol>
+<li>Select the validated cells.</li>
+<li>Go to Data → Data Validation.</li>
+<li>Click Clear All.</li>
+<li>Click OK.</li>
+</ol>
+<p>The validation rule will be removed from the selected cells. Existing cell values will not automatically be deleted.</p>
+</section>
+
+<section class="card">
+<h2>📝 Practical Exercise</h2>
+<h3>Project: Student Registration Form</h3>
+<p>Create a registration sheet with these columns:</p>
+<div class="table-wrap">
+<table>
+<tr><th>Field</th><th>Validation Rule</th></tr>
+<tr><td>Student Name</td><td>Text entry</td></tr>
+<tr><td>Student ID</td><td>Exactly 6 characters</td></tr>
+<tr><td>Age</td><td>Whole number between 5 and 100</td></tr>
+<tr><td>Course</td><td>Drop-down: Excel, HTML, CSS, Python</td></tr>
+<tr><td>Registration Date</td><td>Date within your chosen range</td></tr>
+</table>
+</div>
+<h3>Your Tasks</h3>
+<ul class="practice-list">
+<li>Create the registration form headings.</li>
+<li>Apply Text Length validation to Student ID.</li>
+<li>Apply Whole Number validation to Age.</li>
+<li>Create a Course drop-down list.</li>
+<li>Apply Date validation to Registration Date.</li>
+<li>Add an input message for the Age field.</li>
+<li>Set a Stop error alert for invalid Age entries.</li>
+<li>Test your validation rules with valid and invalid entries.</li>
+<li>Save as Student_Registration_Form.xlsx.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>🧠 Test Your Knowledge</h2>
+<p>Answer all five questions.</p>
+<form id="quizForm">
+
+<div class="quiz-question">
+<p>1. What is the main purpose of Data Validation?</p>
+<label><input type="radio" name="q1" value="a"> To control the type of data entered</label>
+<label><input type="radio" name="q1" value="b"> To insert charts</label>
+<label><input type="radio" name="q1" value="c"> To change worksheet colours</label>
+</div>
+
+<div class="quiz-question">
+<p>2. Which Allow option is used to create a drop-down list?</p>
+<label><input type="radio" name="q2" value="a"> Decimal</label>
+<label><input type="radio" name="q2" value="b"> List</label>
+<label><input type="radio" name="q2" value="c"> Time</label>
+</div>
+
+<div class="quiz-question">
+<p>3. Which validation type restricts the number of characters?</p>
+<label><input type="radio" name="q3" value="a"> Date</label>
+<label><input type="radio" name="q3" value="b"> Whole Number</label>
+<label><input type="radio" name="q3" value="c"> Text Length</label>
+</div>
+
+<div class="quiz-question">
+<p>4. Which error alert prevents invalid entries from being accepted?</p>
+<label><input type="radio" name="q4" value="a"> Stop</label>
+<label><input type="radio" name="q4" value="b"> Warning</label>
+<label><input type="radio" name="q4" value="c"> Information</label>
+</div>
+
+<div class="quiz-question">
+<p>5. Where can you add instructions that appear when a cell is selected?</p>
+<label><input type="radio" name="q5" value="a"> Error Alert</label>
+<label><input type="radio" name="q5" value="b"> Input Message</label>
+<label><input type="radio" name="q5" value="c"> Page Layout</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Answers</button>
+<button type="button" onclick="retryQuiz()">Try Again</button>
+<div id="quizResult" aria-live="polite"></div>
+</form>
+</section>
+
+<div class="navigation">
+<a href="excel-lesson9.html">← Previous Lesson</a>
+<a href="excel-lesson11.html">Next Lesson →</a>
+</div>
+
+</div>
+
+<script>
+function checkQuiz(){
+const answers={q1:"a",q2:"b",q3:"c",q4:"a",q5:"b"};
+let score=0,attempted=0;
+
+for(let question in answers){
+const selected=document.querySelector('input[name="'+question+'"]:checked');
+if(selected){
+attempted++;
+if(selected.value===answers[question])score++;
+}
+}
+
+const result=document.getElementById("quizResult");
+
+if(attempted<5){
+result.style.color="#f0c75e";
+result.textContent="Please answer all 5 questions before submitting.";
+return;
+}
+
+if(score>=4){
+result.style.color="#f0c75e";
+result.textContent="Excellent! You scored "+score+"/5. Great work! 🎉";
+}else{
+result.style.color="#ffad75";
+result.textContent="You scored "+score+"/5. Revise the lesson and try again. 💪";
+}
+}
+
+function retryQuiz(){
+document.getElementById("quizForm").reset();
+document.getElementById("quizResult").textContent="";
+}
+</script>
+</body>
+</html>

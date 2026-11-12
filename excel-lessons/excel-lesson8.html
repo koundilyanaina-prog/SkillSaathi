@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 8: Conditional Formatting | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#171717;color:#eee;line-height:1.7;padding:25px 16px}
+.container{max-width:1000px;margin:auto}
+.top-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:30px}
+.back-link{color:#e5bd55;text-decoration:none;font-weight:bold}
+.lesson-number{color:#e5bd55;font-size:14px;font-weight:bold;letter-spacing:2px}
+h1{color:#f0c75e;font-size:34px;margin:12px 0}
+h2{color:#f0c75e;margin-bottom:14px;font-size:23px}
+h3{color:#e5bd55;margin:18px 0 8px}
+p{color:#ccc;margin-bottom:12px}
+.intro{font-size:17px;color:#bdbdbd;margin-bottom:25px}
+.card{background:#222;border:1px solid #39342a;border-radius:14px;padding:25px;margin:22px 0}
+.example{background:#29261f;border-left:4px solid #e5bd55;padding:15px;border-radius:7px;margin:15px 0}
+.formula{display:block;background:#151515;border:1px solid #51452a;padding:13px;border-radius:7px;margin:10px 0;overflow-x:auto;white-space:nowrap;color:#f4d47b;font-family:Consolas,monospace}
+.tip{background:#302b1d;border:1px solid #68572c;padding:15px;border-radius:8px;color:#f0d58b;margin:15px 0}
+ul,ol{padding-left:22px;color:#ccc}
+li{margin:8px 0}
+.table-wrap{overflow-x:auto;margin:15px 0}
+table{width:100%;border-collapse:collapse;min-width:450px}
+th,td{border:1px solid #51472f;padding:11px;text-align:left}
+th{background:#39301c;color:#f0c75e}
+td{color:#ddd}
+.practice-list{list-style:none;padding:0}
+.practice-list li::before{content:"✓ ";color:#e5bd55;font-weight:bold}
+.quiz-question{background:#292929;border:1px solid #444039;padding:17px;border-radius:9px;margin:16px 0}
+.quiz-question p{color:#fff;font-weight:bold}
+.quiz-question label{display:block;color:#ccc;margin:9px 0;cursor:pointer}
+.quiz-question input{accent-color:#e5bd55;margin-right:8px}
+button{background:#e5bd55;color:#191919;border:0;border-radius:7px;padding:12px 21px;font-weight:bold;font-size:15px;cursor:pointer;margin:8px 5px 8px 0}
+button:hover{background:#f4d47b}
+#quizResult{margin-top:15px;font-weight:bold;font-size:17px}
+.navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:30px}
+.navigation a{text-decoration:none;background:#302b1d;color:#f0c75e;border:1px solid #68572c;border-radius:8px;padding:12px 17px;font-weight:bold}
+.navigation a:hover{background:#42371f}
+@media(max-width:600px){h1{font-size:27px}.card{padding:18px}.navigation{flex-direction:column}.navigation a{text-align:center}}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="top-bar">
+<a href="../excel.html" class="back-link">← Back to Excel Course</a>
+<span class="lesson-number">LESSON 08 · BEGINNER</span>
+</div>
+
+<h1>Conditional Formatting in Excel</h1>
+<p class="intro">Make important data stand out automatically using colours, bars, scales and visual indicators.</p>
+
+<section class="card">
+<h2>🎯 What You Will Learn</h2>
+<ul>
+<li>Understand Conditional Formatting.</li>
+<li>Highlight cells based on conditions.</li>
+<li>Use Highlight Cells Rules.</li>
+<li>Apply Top and Bottom Rules.</li>
+<li>Use Data Bars and Color Scales.</li>
+<li>Understand Icon Sets.</li>
+<li>Find duplicate and unique values.</li>
+<li>Create custom conditional formatting rules.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>1. What Is Conditional Formatting?</h2>
+<p>Conditional Formatting is an Excel feature that automatically changes the appearance of cells based on specified conditions.</p>
+<p>It helps users identify important information, unusual values and performance trends quickly.</p>
+
+<h3>Example</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Student</th><th>Marks</th><th>Visual Result</th></tr>
+<tr><td>Riya</td><td>90</td><td>High Score</td></tr>
+<tr><td>Aman</td><td>35</td><td>Low Score</td></tr>
+<tr><td>Neha</td><td>75</td><td>Good Score</td></tr>
+</table>
+</div>
+<p>You can automatically highlight marks below 40 in red and marks above 80 in another colour.</p>
+</section>
+
+<section class="card">
+<h2>2. How to Apply Conditional Formatting</h2>
+<ol>
+<li>Select the cells you want to format.</li>
+<li>Open the Home tab.</li>
+<li>Click Conditional Formatting.</li>
+<li>Choose a formatting rule.</li>
+<li>Set the required condition.</li>
+<li>Select a formatting style.</li>
+<li>Click OK.</li>
+</ol>
+
+<div class="tip">💡 Conditional Formatting is available under the Home tab in Excel.</div>
+</section>
+
+<section class="card">
+<h2>3. Highlight Cells Rules</h2>
+<p>Highlight Cells Rules allow you to highlight cells based on specific conditions.</p>
+
+<h3>Available Rules</h3>
+<ul>
+<li>Greater Than</li>
+<li>Less Than</li>
+<li>Between</li>
+<li>Equal To</li>
+<li>Text That Contains</li>
+<li>A Date Occurring</li>
+<li>Duplicate Values</li>
+</ul>
+
+<h3>Example: Highlight Low Marks</h3>
+<ol>
+<li>Select the Marks column.</li>
+<li>Go to Home → Conditional Formatting.</li>
+<li>Choose Highlight Cells Rules → Less Than.</li>
+<li>Enter 40.</li>
+<li>Choose a formatting style.</li>
+<li>Click OK.</li>
+</ol>
+
+<div class="example">Now all marks below 40 will automatically receive the selected formatting.</div>
+</section>
+
+<section class="card">
+<h2>4. Top and Bottom Rules</h2>
+<p>These rules help identify the highest and lowest values in a dataset.</p>
+
+<ul>
+<li><strong>Top 10 Items:</strong> Highlights the highest 10 values.</li>
+<li><strong>Top 10%:</strong> Highlights the top 10 percent of values.</li>
+<li><strong>Bottom 10 Items:</strong> Highlights the lowest 10 values.</li>
+<li><strong>Above Average:</strong> Highlights values above the average.</li>
+<li><strong>Below Average:</strong> Highlights values below the average.</li>
+</ul>
+
+<h3>Example</h3>
+<p>Use Top 10 Items to identify the ten highest sales amounts in a sales report.</p>
+</section>
+
+<section class="card">
+<h2>5. Data Bars</h2>
+<p>Data Bars display horizontal bars inside cells according to their numerical values.</p>
+<p>Longer bars represent higher values, while shorter bars represent lower values.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Student</th><th>Marks</th><th>Illustration</th></tr>
+<tr><td>Riya</td><td>90</td><td>█████████</td></tr>
+<tr><td>Aman</td><td>40</td><td>████</td></tr>
+<tr><td>Neha</td><td>70</td><td>███████</td></tr>
+</table>
+</div>
+
+<h3>How to Apply</h3>
+<ol>
+<li>Select the numerical data.</li>
+<li>Open Conditional Formatting.</li>
+<li>Choose Data Bars.</li>
+<li>Select a bar style.</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>6. Color Scales</h2>
+<p>Color Scales apply different colours to cells based on their values.</p>
+<ul>
+<li>Two-Color Scale uses two colours to show lower and higher values.</li>
+<li>Three-Color Scale uses three colours to show low, middle and high values.</li>
+</ul>
+
+<div class="example">
+<strong>Example:</strong> In a student marksheet, lower marks can appear in one colour, medium marks in another and higher marks in a third colour.
+</div>
+
+<p>To apply it, select your data and choose Conditional Formatting → Color Scales.</p>
+</section>
+
+<section class="card">
+<h2>7. Icon Sets</h2>
+<p>Icon Sets display visual symbols based on cell values.</p>
+<p>Common examples include:</p>
+<ul>
+<li>Traffic lights</li>
+<li>Arrows pointing up, sideways or down</li>
+<li>Check marks and warning symbols</li>
+<li>Stars and rating indicators</li>
+</ul>
+
+<div class="example">
+<strong>Example:</strong> In a sales report, green upward arrows can indicate strong performance and downward arrows can indicate low performance.
+</div>
+
+<p>To apply them, select your data and choose Conditional Formatting → Icon Sets.</p>
+</section>
+
+<section class="card">
+<h2>8. Highlight Duplicate Values</h2>
+<p>Duplicate Values rules help identify repeated information in a selected range.</p>
+
+<h3>Steps</h3>
+<ol>
+<li>Select the data range.</li>
+<li>Open Conditional Formatting.</li>
+<li>Choose Highlight Cells Rules → Duplicate Values.</li>
+<li>Select a formatting style.</li>
+<li>Click OK.</li>
+</ol>
+
+<p>You can also select Unique to highlight values that appear only once in the selected range.</p>
+</section>
+
+<section class="card">
+<h2>9. Manage Conditional Formatting Rules</h2>
+<p>Excel allows you to edit, delete and manage existing formatting rules.</p>
+
+<ol>
+<li>Go to Home → Conditional Formatting.</li>
+<li>Select Manage Rules.</li>
+<li>Choose the rule you want to edit.</li>
+<li>Click Edit Rule to change its condition.</li>
+<li>Use Delete Rule to remove it.</li>
+<li>Click Apply or OK.</li>
+</ol>
+
+<div class="tip">Remember: You can create more than one conditional formatting rule for the same range. Check the rule order if different rules affect the same cells.</div>
+</section>
+
+<section class="card">
+<h2>10. Create a Custom Rule with a Formula</h2>
+<p>Excel also allows you to create conditional formatting rules using formulas.</p>
+
+<h3>Example: Highlight Complete Rows for Low Marks</h3>
+<p>Suppose student names are in column A and marks are in column B, starting from row 2.</p>
+
+<span class="formula">=$B2&lt;40</span>
+
+<ol>
+<li>Select the complete range A2:B10.</li>
+<li>Open Conditional Formatting → New Rule.</li>
+<li>Choose Use a formula to determine which cells to format.</li>
+<li>Enter the formula shown above.</li>
+<li>Choose a format and click OK.</li>
+</ol>
+
+<p>Excel will highlight the complete row whenever the marks in column B are below 40.</p>
+</section>
+
+<section class="card">
+<h2>📝 Practical Exercise</h2>
+<h3>Project: Student Performance Report</h3>
+<p>Create the following marksheet.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Student</th><th>Maths</th><th>English</th><th>Science</th></tr>
+<tr><td>Riya</td><td>90</td><td>85</td><td>92</td></tr>
+<tr><td>Aman</td><td>35</td><td>45</td><td>38</td></tr>
+<tr><td>Neha</td><td>75</td><td>80</td><td>70</td></tr>
+<tr><td>Rahul</td><td>55</td><td>62</td><td>58</td></tr>
+<tr><td>Priya</td><td>95</td><td>92</td><td>88</td></tr>
+</table>
+</div>
+
+<h3>Your Tasks</h3>
+<ul class="practice-list">
+<li>Create the student marksheet.</li>
+<li>Highlight marks below 40.</li>
+<li>Highlight marks above 80.</li>
+<li>Apply Data Bars to the marks columns.</li>
+<li>Apply a Three-Color Scale.</li>
+<li>Use Top 10% to identify high-performing values.</li>
+<li>Try Icon Sets on one marks column.</li>
+<li>Save your file as Student_Performance.xlsx.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>🧠 Test Your Knowledge</h2>
+<p>Answer all five questions.</p>
+
+<form id="quizForm">
+<div class="quiz-question">
+<p>1. What is the purpose of Conditional Formatting?</p>
+<label><input type="radio" name="q1" value="a"> To automatically format cells based on conditions</label>
+<label><input type="radio" name="q1" value="b"> To delete worksheets</label>
+<label><input type="radio" name="q1" value="c"> To create charts only</label>
+</div>
+
+<div class="quiz-question">
+<p>2. Which rule highlights values below 40?</p>
+<label><input type="radio" name="q2" value="a"> Greater Than</label>
+<label><input type="radio" name="q2" value="b"> Less Than</label>
+<label><input type="radio" name="q2" value="c"> Top 10</label>
+</div>
+
+<div class="quiz-question">
+<p>3. Which feature displays bars inside cells?</p>
+<label><input type="radio" name="q3" value="a"> Color Scales</label>
+<label><input type="radio" name="q3" value="b"> Icon Sets</label>
+<label><input type="radio" name="q3" value="c"> Data Bars</label>
+</div>
+
+<div class="quiz-question">
+<p>4. Which rule helps identify repeated values?</p>
+<label><input type="radio" name="q4" value="a"> Duplicate Values</label>
+<label><input type="radio" name="q4" value="b"> Above Average</label>
+<label><input type="radio" name="q4" value="c"> Between</label>
+</div>
+
+<div class="quiz-question">
+<p>5. Where can you edit or delete existing formatting rules?</p>
+<label><input type="radio" name="q5" value="a"> Page Layout</label>
+<label><input type="radio" name="q5" value="b"> Manage Rules</label>
+<label><input type="radio" name="q5" value="c"> Insert</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Answers</button>
+<button type="button" onclick="retryQuiz()">Try Again</button>
+<div id="quizResult" aria-live="polite"></div>
+</form>
+</section>
+
+<div class="navigation">
+<a href="excel-lesson7.html">← Previous Lesson</a>
+<a href="excel-lesson9.html">Next Lesson →</a>
+</div>
+
+</div>
+
+<script>
+function checkQuiz(){
+const answers={q1:"a",q2:"b",q3:"c",q4:"a",q5:"b"};
+let score=0,attempted=0;
+
+for(let question in answers){
+const selected=document.querySelector('input[name="'+question+'"]:checked');
+if(selected){
+attempted++;
+if(selected.value===answers[question]) score++;
+}
+}
+
+const result=document.getElementById("quizResult");
+
+if(attempted<5){
+result.style.color="#f0c75e";
+result.textContent="Please answer all 5 questions before submitting.";
+return;
+}
+
+if(score>=4){
+result.style.color="#f0c75e";
+result.textContent="Excellent! You scored "+score+"/5. Great work! 🎉";
+}else{
+result.style.color="#ffad75";
+result.textContent="You scored "+score+"/5. Revise the lesson and try again. 💪";
+}
+}
+
+function retryQuiz(){
+document.getElementById("quizForm").reset();
+document.getElementById("quizResult").textContent="";
+}
+</script>
+
+</body>
+</html>

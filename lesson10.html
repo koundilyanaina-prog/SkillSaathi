@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 10: Advanced HTML Forms | SkillSaathi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson10.js" defer></script>
+  <style>
+.lesson-page {
+  max-width: 1000px;
+  margin: 35px auto;
+  padding: 20px;
+  color: #e3dcff;
+}
+
+.lesson-page h1 {
+  color: #c4b5fd;
+}
+
+.lesson-page > p {
+  color: #b5bad4;
+  line-height: 1.8;
+}
+
+.lesson-card {
+  background: linear-gradient(145deg, #171b33, #111427);
+  border: 1px solid #39335d;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 24px 0;
+  color: #c0c5dc;
+  line-height: 1.8;
+}
+
+.lesson-card h2 {
+  color: #c4b5fd;
+  margin-top: 0;
+}
+
+.lesson-card strong {
+  color: #e3dcff;
+}
+
+.lesson-card pre {
+  background: #090b18;
+  color: #c4b5fd;
+  padding: 18px;
+  border-radius: 10px;
+  overflow-x: auto;
+  border: 1px solid #39335d;
+}
+
+.lesson-card code {
+  font-family: monospace;
+}
+.lesson-editor {
+  width: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: #090b18;
+  color: #c4b5fd;
+  font: 15px/1.6 monospace;
+  resize: vertical;
+}
+
+.lesson-btn {
+  margin: 12px 8px 12px 0;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #a78bfa;
+  color: #100c24;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lesson-btn:hover {
+  background: #c4b5fd;
+}
+
+.lesson-output {
+  width: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: white;
+}
+
+#lessonHint {
+  color: #e3dcff;
+  background: #211c40;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+#lessonFeedback {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+#lessonFeedback.success {
+  color: #86efac;
+}
+
+#lessonFeedback.error {
+  color: #fca5a5;
+}
+.lesson-navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+}
+
+.next-lesson {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #a78bfa;
+  color: #100c24;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 9px;
+  transition: 0.3s;
+}
+
+.next-lesson:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+@media (max-width: 600px) {
+  .lesson-page {
+    padding: 14px;
+  }
+
+  .lesson-card {
+    padding: 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      Skill<span>Saathi</span>
+    </a>
+    <a href="lesson9.html">← Lesson 9</a>
+  </header>
+
+  <main class="lesson-page">
+
+    <p class="eyebrow">LESSON 10 · HTML BASICS</p>
+
+    <h1>Let's Learn Advanced HTML Forms! 📝</h1>
+
+    <p>
+      Learn input types, validation and how to create
+      professional HTML forms.
+    </p>
+
+   <section class="lesson-card">
+  <h2>🎯 What You Will Learn</h2>
+  <ul>
+    <li>Different HTML input types</li>
+    <li>Required fields and validation</li>
+    <li>Minimum and maximum length</li>
+    <li>Radio buttons and checkboxes</li>
+    <li>Submit and reset buttons</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>📖 1. Different Input Types</h2>
+  <p>HTML supports different types of form inputs.</p>
+  <pre><code>&lt;input type="text"&gt;
+&lt;input type="email"&gt;
+&lt;input type="password"&gt;
+&lt;input type="number"&gt;
+&lt;input type="date"&gt;
+&lt;input type="tel"&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🔒 2. Required Fields</h2>
+  <p>The required attribute makes a field compulsory.</p>
+  <pre><code>&lt;input type="email" required&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>📏 3. Minlength and Maxlength</h2>
+  <p>These attributes control the minimum and maximum number of characters.</p>
+  <pre><code>&lt;input type="text"
+  minlength="3"
+  maxlength="20"&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🔘 4. Radio Buttons</h2>
+  <p>Radio buttons allow users to select one option from a group.</p>
+  <pre><code>&lt;input type="radio" name="gender" value="male"&gt;
+Male
+
+&lt;input type="radio" name="gender" value="female"&gt;
+Female</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>☑️ 5. Checkboxes</h2>
+  <p>Checkboxes allow users to select multiple options.</p>
+  <pre><code>&lt;input type="checkbox" name="skill" value="html"&gt;
+HTML
+
+&lt;input type="checkbox" name="skill" value="css"&gt;
+CSS</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🚀 6. Submit and Reset Buttons</h2>
+  <pre><code>&lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;button type="reset"&gt;Reset&lt;/button&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>📌 7. Important Form Attributes</h2>
+  <ul>
+    <li><strong>required:</strong> Makes a field compulsory.</li>
+    <li><strong>minlength:</strong> Sets minimum characters.</li>
+    <li><strong>maxlength:</strong> Sets maximum characters.</li>
+    <li><strong>min and max:</strong> Set numeric limits.</li>
+    <li><strong>placeholder:</strong> Displays a helpful hint.</li>
+    <li><strong>pattern:</strong> Defines an input format.</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>📝 Quick Practice</h2>
+  <ol>
+    <li>Which input type is used for email?</li>
+    <li>Which attribute makes a field compulsory?</li>
+    <li>Which input allows multiple selections?</li>
+    <li>What is the purpose of the reset button?</li>
+  </ol>
+</section>
+<!-- Code Playground -->
+<h2>💻 Your Code Playground</h2>
+<p>
+  Practice creating an advanced HTML form.
+  Edit the code and click Run Code to see your result.
+</p>
+<section class="lesson-card">
+<textarea id="lessonEditor" class="lesson-editor" spellcheck="false"><h1>Student Registration Form</h1>
+
+<form id="studentForm">
+  <label>Full Name:</label>
+  <input type="text" placeholder="Enter your name"
+  minlength="3" maxlength="20" required>
+
+  <br><br>
+
+  <label>Email:</label>
+  <input type="email" placeholder="Enter your email" required>
+
+  <br><br>
+
+  <label>Age:</label>
+  <input type="number" min="10" max="100">
+
+  <br><br>
+
+  <p>Choose your gender:</p>
+  <label><input type="radio" name="gender" value="male"> Male</label>
+  <label><input type="radio" name="gender" value="female"> Female</label>
+
+  <br><br>
+
+  <p>Select your skills:</p>
+  <label><input type="checkbox" value="html"> HTML</label>
+  <label><input type="checkbox" value="css"> CSS</label>
+  <label><input type="checkbox" value="javascript"> JavaScript</label>
+
+  <br><br>
+
+  <button type="button" onclick="registerStudent()">Register</button>
+  <button type="reset">Reset</button>
+
+  <p id="registerMessage"></p>
+</form>
+
+<script>
+function registerStudent() {
+  const form = document.getElementById("studentForm");
+  const message = document.getElementById("registerMessage");
+
+  if (form.checkValidity()) {
+    message.textContent = "Registration Successful! Welcome to SkillSaathi. 🎉";
+    message.style.color = "green";
+  } else {
+    form.reportValidity();
+  }
+}
+</script></textarea>
+
+  <div>
+    <button id="lessonRunBtn" class="lesson-btn" type="button">▶ Run Code</button>
+    <button id="lessonHintBtn" class="lesson-btn" type="button">Show Hint</button>
+    <button id="lessonCheckBtn" class="lesson-btn" type="button">Check My Answer</button>
+  </div>
+
+  <p id="lessonHint" hidden>
+    Hint: Try using email, number, radio, checkbox, required, minlength and maxlength.
+  </p>
+
+  <p id="lessonFeedback" aria-live="polite"></p>
+
+  <h2>👀 Your Output</h2>
+
+  <iframe
+    id="lessonPreview"
+    class="lesson-output"
+    title="Lesson 10 HTML output"
+    sandbox="allow-scripts allow-forms"
+    hidden>
+  </iframe>
+
+</section>
+  </main>
+  <div class="lesson-navigation">
+  <a href="lesson11.html" class="next-lesson">
+    Next Lesson →
+  </a>
+</div>
+
+</body>
+</html>

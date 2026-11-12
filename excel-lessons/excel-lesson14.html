@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 14 | Conditional Functions - SkillSaathi</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#171717;color:#eee;line-height:1.7;padding:20px}
+.container{max-width:950px;margin:auto}
+header,.card{background:#222;border:1px solid #39342a;border-radius:12px;padding:22px;margin-bottom:18px}
+.brand{color:#f0c75e;font-weight:bold;margin-bottom:12px}
+.tag{display:inline-block;background:#39301c;color:#f0c75e;padding:5px 12px;border-radius:20px;font-size:12px;margin-bottom:12px}
+h1,h2,h3{color:#f0c75e;margin-bottom:12px}
+h1{font-size:30px}h2{font-size:22px}h3{margin-top:15px}
+p{color:#ccc;margin-bottom:12px}
+ul,ol{padding-left:23px;color:#ccc;margin:10px 0}
+li{margin-bottom:7px}
+.example{background:#29261f;border-left:4px solid #e5bd55;padding:15px;border-radius:7px;margin:14px 0}
+.formula{background:#151515;border:1px solid #51452a;color:#f4d47b;padding:13px;border-radius:7px;overflow-x:auto;margin:12px 0;font-family:Consolas,monospace}
+.tip{background:#302b1d;border:1px solid #68572c;color:#f0d58b;padding:13px;border-radius:8px;margin:14px 0}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:450px;margin:14px 0}
+th,td{border:1px solid #51452a;padding:10px;text-align:left}
+th{background:#39301c;color:#f0c75e}
+tr:nth-child(even){background:#292929}
+.quiz{background:#292929;border:1px solid #444039;padding:16px;border-radius:9px;margin:14px 0}
+.quiz label{display:block;color:#ddd;margin:8px 0;cursor:pointer}
+.quiz input{margin-right:8px;accent-color:#e5bd55}
+.feedback{margin-top:8px;font-weight:bold}
+button,.nav a{background:#e5bd55;color:#191919;border:0;padding:11px 17px;border-radius:7px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block;margin:5px 4px 5px 0}
+button:hover,.nav a:hover{background:#f0d58b}
+.nav{background:#302b1d;border:1px solid #68572c;border-radius:10px;padding:15px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.nav a{background:#302b1d;color:#f0c75e;border:1px solid #68572c}
+footer{text-align:center;color:#999;margin:25px 0 10px;font-size:13px}
+@media(max-width:600px){body{padding:12px}h1{font-size:24px}.card{padding:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<div class="brand">✦ SkillSaathi | Learn · Practice · Grow</div>
+<span class="tag">EXCEL & OFFICE · LESSON 14</span>
+<h1>Conditional Functions in Excel</h1>
+<p>Learn to calculate totals, count records and handle errors using conditions. These functions are essential for reports, office records and MIS work.</p>
+<p>⏱ 35–45 Minutes | Intermediate Level | 5 Questions Quiz</p>
+</header>
+
+<section class="card">
+<h2>1. What are Conditional Functions?</h2>
+<p>Conditional functions perform calculations only when specific conditions are satisfied.</p>
+<p>For example, an office may want to calculate only HR department expenses or count employees whose salary is above ₹30,000.</p>
+<div class="example">
+<strong>Common office uses:</strong>
+<ul>
+<li>Calculate sales for a particular city.</li>
+<li>Count employees in a department.</li>
+<li>Calculate expenses above a specific amount.</li>
+<li>Prepare monthly performance reports.</li>
+</ul>
+</div>
+</section>
+
+<section class="card">
+<h2>2. SUMIF – Sum with One Condition</h2>
+<p>SUMIF adds numbers when one specified condition is satisfied.</p>
+<div class="formula">=SUMIF(range, criteria, [sum_range])</div>
+<ul>
+<li><strong>range:</strong> Cells where Excel checks the condition.</li>
+<li><strong>criteria:</strong> The condition to match.</li>
+<li><strong>sum_range:</strong> Cells containing the numbers to add.</li>
+</ul>
+<h3>Example: Department-wise expenses</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Department</th><th>Expense</th></tr>
+<tr><td>HR</td><td>5000</td></tr>
+<tr><td>Sales</td><td>8000</td></tr>
+<tr><td>HR</td><td>3000</td></tr>
+<tr><td>IT</td><td>7000</td></tr>
+</table>
+</div>
+<div class="formula">=SUMIF(A2:A5,"HR",B2:B5)</div>
+<p><strong>Result:</strong> 8000</p>
+<p>Excel adds only the expenses belonging to HR.</p>
+</section>
+
+<section class="card">
+<h2>3. SUMIFS – Sum with Multiple Conditions</h2>
+<p>SUMIFS adds values only when multiple conditions are satisfied.</p>
+<div class="formula">=SUMIFS(sum_range, criteria_range1, criteria1, criteria_range2, criteria2)</div>
+<h3>Example</h3>
+<p>Suppose you have sales records with City, Product and Amount columns. You want total sales of Laptop in Patna.</p>
+<div class="formula">=SUMIFS(C2:C10,A2:A10,"Patna",B2:B10,"Laptop")</div>
+<p>Excel adds the amounts where both conditions match: City is Patna AND Product is Laptop.</p>
+<div class="tip">Remember: SUMIF has one condition; SUMIFS can handle multiple conditions. In SUMIFS, the sum range comes first.</div>
+</section>
+
+<section class="card">
+<h2>4. COUNTIF – Count with One Condition</h2>
+<p>COUNTIF counts the number of cells that satisfy one condition.</p>
+<div class="formula">=COUNTIF(range, criteria)</div>
+<h3>Example</h3>
+<p>Count how many employees belong to the HR department:</p>
+<div class="formula">=COUNTIF(B2:B20,"HR")</div>
+<p>Count how many students scored 60 or more:</p>
+<div class="formula">=COUNTIF(C2:C30,">=60")</div>
+<p>Count how many employees have salary greater than ₹30,000:</p>
+<div class="formula">=COUNTIF(D2:D20,">30000")</div>
+</section>
+
+<section class="card">
+<h2>5. COUNTIFS – Count with Multiple Conditions</h2>
+<p>COUNTIFS counts records that satisfy all specified conditions.</p>
+<div class="formula">=COUNTIFS(criteria_range1,criteria1,criteria_range2,criteria2)</div>
+<h3>Example</h3>
+<p>Count employees who belong to HR and earn more than ₹25,000:</p>
+<div class="formula">=COUNTIFS(B2:B20,"HR",C2:C20,">25000")</div>
+<p>Both conditions must be true for a record to be counted.</p>
+</section>
+
+<section class="card">
+<h2>6. Using Cell References as Conditions</h2>
+<p>Instead of typing conditions directly inside formulas, you can refer to cells.</p>
+<p>Suppose E2 contains the department name HR.</p>
+<div class="formula">=SUMIF(A2:A20,E2,B2:B20)</div>
+<p>Suppose F2 contains a salary limit of 30000.</p>
+<div class="formula">=COUNTIF(C2:C20,">"&F2)</div>
+<div class="tip">Use quotation marks around comparison operators when joining them with a cell reference, such as "&gt;"&amp;F2.</div>
+</section>
+
+<section class="card">
+<h2>7. IFERROR – Handle Formula Errors</h2>
+<p>IFERROR displays a helpful result when a formula returns an error.</p>
+<div class="formula">=IFERROR(value, value_if_error)</div>
+<h3>Example</h3>
+<p>Suppose A2 contains 100 and B2 contains 0. Dividing by zero creates a #DIV/0! error.</p>
+<div class="formula">=IFERROR(A2/B2,"Cannot Divide")</div>
+<p><strong>Result:</strong> Cannot Divide</p>
+<p>Another example using VLOOKUP:</p>
+<div class="formula">=IFERROR(VLOOKUP(F2,A2:D10,2,FALSE),"Not Found")</div>
+<div class="tip">IFERROR can handle errors such as #N/A, #DIV/0!, #VALUE! and #REF!. It does not correct the underlying problem; it changes what is displayed.</div>
+</section>
+
+<section class="card">
+<h2>8. Quick Comparison</h2>
+<div class="table-wrap">
+<table>
+<tr><th>Function</th><th>Purpose</th></tr>
+<tr><td>SUMIF</td><td>Add values using one condition</td></tr>
+<tr><td>SUMIFS</td><td>Add values using multiple conditions</td></tr>
+<tr><td>COUNTIF</td><td>Count cells using one condition</td></tr>
+<tr><td>COUNTIFS</td><td>Count records using multiple conditions</td></tr>
+<tr><td>IFERROR</td><td>Display an alternative result when an error occurs</td></tr>
+</table>
+</div>
+</section>
+
+<section class="card">
+<h2>9. Practical Activity – Sales Report</h2>
+<p>Create a dataset with the following records:</p>
+<div class="table-wrap">
+<table>
+<tr><th>Employee</th><th>City</th><th>Product</th><th>Sales</th></tr>
+<tr><td>Aman</td><td>Patna</td><td>Laptop</td><td>40000</td></tr>
+<tr><td>Riya</td><td>Ranchi</td><td>Mobile</td><td>20000</td></tr>
+<tr><td>Neha</td><td>Patna</td><td>Laptop</td><td>35000</td></tr>
+<tr><td>Rahul</td><td>Delhi</td><td>Mobile</td><td>18000</td></tr>
+<tr><td>Priya</td><td>Patna</td><td>Mobile</td><td>25000</td></tr>
+</table>
+</div>
+<h3>Your tasks</h3>
+<ol>
+<li>Calculate total sales using SUM.</li>
+<li>Calculate Patna sales using SUMIF.</li>
+<li>Calculate Patna Laptop sales using SUMIFS.</li>
+<li>Count the number of Patna records using COUNTIF.</li>
+<li>Count Patna Laptop records using COUNTIFS.</li>
+<li>Use IFERROR to handle an incorrect lookup.</li>
+</ol>
+<div class="tip">Practice these formulas with different cities and products. This is the kind of conditional reporting used in office and MIS work.</div>
+</section>
+
+<section class="card">
+<h2>10. Knowledge Check – Quiz</h2>
+<p>Answer all five questions and submit your quiz.</p>
+
+<div class="quiz" data-answer="b">
+<p><strong>1. Which function adds values using one condition?</strong></p>
+<label><input type="radio" name="q1" value="a"> COUNTIF</label>
+<label><input type="radio" name="q1" value="b"> SUMIF</label>
+<label><input type="radio" name="q1" value="c"> IFERROR</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="c">
+<p><strong>2. Which function counts records using multiple conditions?</strong></p>
+<label><input type="radio" name="q2" value="a"> SUM</label>
+<label><input type="radio" name="q2" value="b"> COUNTIF</label>
+<label><input type="radio" name="q2" value="c"> COUNTIFS</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="a">
+<p><strong>3. Which function adds values using multiple conditions?</strong></p>
+<label><input type="radio" name="q3" value="a"> SUMIFS</label>
+<label><input type="radio" name="q3" value="b"> COUNTIFS</label>
+<label><input type="radio" name="q3" value="c"> MAX</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="b">
+<p><strong>4. What is the purpose of IFERROR?</strong></p>
+<label><input type="radio" name="q4" value="a"> Sorts data</label>
+<label><input type="radio" name="q4" value="b"> Displays an alternative result when a formula returns an error</label>
+<label><input type="radio" name="q4" value="c"> Creates a chart</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="c">
+<p><strong>5. Which formula counts salaries greater than 30000 in C2:C20?</strong></p>
+<label><input type="radio" name="q5" value="a"> =SUM(C2:C20)</label>
+<label><input type="radio" name="q5" value="b"> =COUNT(C2:C20)</label>
+<label><input type="radio" name="q5" value="c"> =COUNTIF(C2:C20,">30000")</label>
+<p class="feedback"></p>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+<p id="quiz-result" class="feedback" aria-live="polite"></p>
+</section>
+
+<div class="nav">
+<a href="../excel.html">← Back to Course</a>
+<a href="excel-lesson13.html">← Previous Lesson</a>
+<a href="excel-lesson15.html">Next Lesson →</a>
+</div>
+
+<footer>© SkillSaathi | Learn · Practice · Grow</footer>
+</div>
+
+<script>
+function checkQuiz(){
+const questions=document.querySelectorAll(".quiz");
+let score=0,unanswered=0;
+questions.forEach(question=>{
+const selected=question.querySelector("input:checked");
+const feedback=question.querySelector(".feedback");
+if(!selected){
+unanswered++;
+feedback.textContent="Please select an answer.";
+feedback.style.color="#f0c75e";
+}else if(selected.value===question.dataset.answer){
+score++;
+feedback.textContent="Correct!";
+feedback.style.color="#8bd49c";
+}else{
+feedback.textContent="Incorrect. Review the topic and try again.";
+feedback.style.color="#f08b8b";
+}
+});
+const result=document.getElementById("quiz-result");
+if(unanswered>0){
+result.textContent="Please answer all five questions.";
+result.style.color="#f0c75e";
+}else if(score>=4){
+result.textContent="Excellent! You scored "+score+"/5. Quiz passed!";
+result.style.color="#8bd49c";
+}else{
+result.textContent="You scored "+score+"/5. Review the lesson and try again.";
+result.style.color="#f0c75e";
+}
+}
+function resetQuiz(){
+document.querySelectorAll(".quiz input").forEach(input=>input.checked=false);
+document.querySelectorAll(".quiz .feedback").forEach(p=>p.textContent="");
+document.getElementById("quiz-result").textContent="";
+}
+</script>
+</body>
+</html>

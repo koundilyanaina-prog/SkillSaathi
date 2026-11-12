@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Final Project - Personal Portfolio | SkillSaathi</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #11111b;
+  color: #eee;
+  line-height: 1.7;
+}
+
+header {
+  background: #1b1b2b;
+  padding: 25px 8%;
+  border-bottom: 1px solid #39304f;
+}
+
+header h1 {
+  color: #c4b5fd;
+}
+
+header p {
+  color: #bbb;
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 30px auto;
+}
+
+.card {
+  background: #1d1d2c;
+  border: 1px solid #39304f;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 22px;
+}
+
+h2 {
+  color: #c4b5fd;
+  margin-bottom: 15px;
+}
+
+h3 {
+  color: #ddd0ff;
+  margin: 15px 0 8px;
+}
+
+ul, ol {
+  padding-left: 25px;
+}
+
+li {
+  margin: 6px 0;
+}
+
+.highlight {
+  background: #29243a;
+  border-left: 4px solid #a78bfa;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+th, td {
+  border: 1px solid #51466b;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background: #302744;
+  color: #c4b5fd;
+}
+
+a {
+  color: #c4b5fd;
+}
+
+.task {
+  background: #24243a;
+  border: 1px solid #51466b;
+  padding: 12px;
+  border-radius: 7px;
+  margin: 10px 0;
+}
+
+.checklist label {
+  display: block;
+  margin: 10px 0;
+}
+
+.checklist input {
+  margin-right: 8px;
+  accent-color: #a78bfa;
+}
+
+textarea, input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  background: #151522;
+  color: white;
+  border: 1px solid #51466b;
+  border-radius: 6px;
+}
+
+button, .nav-link {
+  display: inline-block;
+  background: #a78bfa;
+  color: #171322;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 7px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 8px 5px 0 0;
+}
+
+button:hover, .nav-link:hover {
+  background: #c4b5fd;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #aaa;
+  border-top: 1px solid #39304f;
+  margin-top: 30px;
+}
+
+#success-message {
+  color: #a7e6b5;
+  margin-top: 12px;
+}
+
+@media(max-width:600px) {
+  .card { padding: 18px; }
+  table { font-size: 13px; }
+}
+
+/* HTML Certificate */
+.certificate-form input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background: #151522;
+  color: white;
+  border: 1px solid #51466b;
+  border-radius: 6px;
+}
+
+.certificate-form button {
+  background: #a78bfa;
+  color: #171322;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#html-certificate {
+  display: none;
+  background: #fffdf7;
+  color: #29233b;
+  border: 10px double #a78bfa;
+  padding: 45px 25px;
+  text-align: center;
+  margin: 25px 0;
+  border-radius: 5px;
+}
+
+#html-certificate h2 {
+  color: #6d50a8;
+  font-size: 30px;
+}
+
+#html-certificate h3 {
+  color: #29233b;
+  font-size: 26px;
+}
+
+#html-cert-name {
+  font-size: 30px;
+  font-weight: bold;
+  color: #6d50a8;
+  border-bottom: 1px solid #a78bfa;
+  display: inline-block;
+  padding: 5px 25px;
+  margin: 15px 0;
+}
+
+#html-certificate p {
+  color: #393344;
+}
+
+#html-certificate .cert-id {
+  font-size: 12px;
+  margin-top: 25px;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #html-certificate,
+  #html-certificate * {
+    visibility: visible;
+  }
+
+  #html-certificate {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 90vh;
+    margin: 0;
+    border: 10px double #a78bfa;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #html-certificate button {
+    display: none;
+  }
+
+  @page {
+    size: landscape;
+    margin: 10mm;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>SkillSaathi | HTML Final Project</h1>
+  <p>Build Your Own Personal Portfolio Website</p>
+</header>
+
+<main class="container">
+
+<section class="card">
+  <h2>Project Overview</h2>
+  <p>
+    In this final project, you will create a personal portfolio website
+    using HTML concepts learned in this course. Your website will introduce you,
+    showcase your skills, display your projects and provide contact information.
+  </p>
+
+  <div class="highlight">
+    <strong>Project Level:</strong> Beginner to Intermediate<br>
+    <strong>Project Type:</strong> Practical Website Development<br>
+    <strong>Estimated Time:</strong> 2–3 Hours<br>
+    <strong>Tools:</strong> VS Code and Web Browser
+  </div>
+</section>
+
+<section class="card">
+  <h2>Learning Objectives</h2>
+  <ul>
+    <li>Create a complete HTML document.</li>
+    <li>Use headings, paragraphs and text formatting.</li>
+    <li>Add images, hyperlinks and navigation.</li>
+    <li>Create lists and tables.</li>
+    <li>Build a contact form.</li>
+    <li>Use semantic HTML elements.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Website Requirements</h2>
+
+  <h3>1. Header and Navigation</h3>
+  <p>Create a header with your name or portfolio title. Add navigation links for Home, About, Skills, Projects and Contact.</p>
+
+  <h3>2. About Me Section</h3>
+  <p>Write a short introduction about yourself, your education and your career goals.</p>
+
+  <h3>3. Profile Image</h3>
+  <p>Add a suitable profile image using the HTML image tag. Include alternative text.</p>
+
+  <h3>4. Skills Section</h3>
+  <p>Display at least five technical or personal skills using an unordered list.</p>
+
+  <h3>5. Education Section</h3>
+  <p>Create a table showing your qualification, institution and passing year.</p>
+
+  <h3>6. Projects Section</h3>
+  <p>Showcase at least two projects with their titles and short descriptions.</p>
+
+  <h3>7. Contact Section</h3>
+  <p>Create a form with Name, Email and Message fields and a Submit button.</p>
+
+  <h3>8. Footer</h3>
+  <p>Add your copyright text and at least one useful external link.</p>
+</section>
+
+<section class="card">
+  <h2>Suggested Website Structure</h2>
+
+  <div class="highlight">
+    <p><strong>My Portfolio</strong></p>
+    <p>Home | About | Skills | Education | Projects | Contact</p>
+    <hr>
+    <h3>Hello, I'm Your Name!</h3>
+    <p>Welcome to my personal portfolio website.</p>
+    <h3>About Me</h3>
+    <p>A short introduction about yourself.</p>
+    <h3>My Skills</h3>
+    <p>HTML | Computer Fundamentals | MS Office | Communication</p>| 
+    <h3>My Projects</h3>
+    <p>Project One | Project Two</p>
+    <h3>Contact Me</h3>
+    <p>Email: example@email.com</p>
+    <p>© 2026 My Portfolio</p>
+  </div>
+  <p><em>This is only a layout reference. Design your own website creatively.</em></p>
+</section>
+
+<section class="card">
+  <h2>Required HTML Elements</h2>
+
+  <table>
+    <tr>
+      <th>HTML Element</th>
+      <th>Purpose</th>
+    </tr>
+    <tr><td>header</td><td>Website header</td></tr>
+    <tr><td>nav</td><td>Navigation links</td></tr>
+    <tr><td>main</td><td>Main page content</td></tr>
+    <tr><td>section</td><td>Content sections</td></tr>
+    <tr><td>article</td><td>Independent content</td></tr>
+    <tr><td>footer</td><td>Footer information</td></tr>
+    <tr><td>img</td><td>Display an image</td></tr>
+    <tr><td>a</td><td>Create hyperlinks</td></tr>
+    <tr><td>table</td><td>Display tabular data</td></tr>
+    <tr><td>form</td><td>Collect user information</td></tr>
+  </table>
+</section>
+
+<section class="card">
+  <h2>Practical Tasks</h2>
+  <div class="task">Task 1: Create an HTML file named index.html.</div>
+  <div class="task">Task 2: Add all required portfolio sections.</div>
+  <div class="task">Task 3: Create navigation links that work correctly.</div>
+  <div class="task">Task 4: Add a profile image and meaningful alternative text.</div>
+  <div class="task">Task 5: Add your education table and skills list.</div>
+  <div class="task">Task 6: Create a contact form with appropriate input types.</div>
+<div class="task">Task 7: Use semantic HTML elements wherever appropriate.</div>
+<div class="task">Task 8: Test all links, forms and sections in your browser.</div>
+</section>
+
+<section class="card">
+  <h2>Final Submission Checklist</h2>
+  <div class="checklist">
+    <label><input type="checkbox"> HTML document is properly structured.</label>
+    <label><input type="checkbox"> Navigation links work.</label>
+    <label><input type="checkbox"> About and profile sections are complete.</label>
+    <label><input type="checkbox"> Skills and education are displayed.</label>
+    <label><input type="checkbox"> At least two projects are included.</label>
+    <label><input type="checkbox"> Contact form is created.</label>
+   <label><input type="checkbox"> Semantic HTML elements are used correctly.</label>
+<label><input type="checkbox"> All HTML elements and links are tested.</label>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Project Reflection</h2>
+  <p>Write a few lines about what you learned while creating this project.</p>
+  <textarea rows="5" placeholder="Write your learning experience here..."></textarea>
+  <p style="color:#aaa;font-size:13px;">
+    Note: Your reflection is not saved automatically.
+  </p>
+</section>
+
+<section class="card">
+  <h2>Project Completion</h2>
+  <p>
+    Congratulations on reaching the final practical project!
+    Complete your portfolio, test it and save your project files.
+  </p>
+
+  <div class="highlight">
+    <strong>Important:</strong> The contact form in this project is a front-end
+    design exercise. It will not send messages without a backend or form service.
+  </div>
+
+  <p id="success-message"></p>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    Back to Top
+  </button>
+</section>
+
+<section class="card certificate-form">
+  <h2>🎓 Get Your Free HTML Certificate</h2>
+
+  <p>Congratulations on reaching the final stage of the SkillSaathi HTML course!</p>
+
+  <p>Please confirm before generating your certificate:</p>
+
+  <label>
+    <input type="checkbox" id="html-project-confirm">
+    I have completed all HTML lessons and the final practical project.
+  </label>
+
+  <p><strong>Enter your full name:</strong></p>
+
+  <input type="text" id="html-student-name"
+         placeholder="Enter your full name" maxlength="60">
+
+  <button type="button" onclick="generateHTMLCertificate()">
+    Generate Certificate
+  </button>
+
+  <p id="html-certificate-error" style="color:#ff8585;"></p>
+</section>
+
+<section id="html-certificate">
+
+  <p style="letter-spacing:4px;font-weight:bold;">
+    SKILLSAATHI · FREE LEARNING
+  </p>
+
+  <h2>CERTIFICATE OF COMPLETION</h2>
+
+  <p>This certificate is proudly presented to</p>
+
+  <div id="html-cert-name"></div>
+
+  <p>For completing the learning and practical project work in</p>
+
+  <h3>HTML – HyperText Markup Language</h3>
+
+  <p>Beginner to Advanced</p>
+
+  <p>
+    Including HTML fundamentals, elements, links, images,
+    tables, forms, semantic HTML and practical website development.
+  </p>
+
+  <p>
+    <strong>Completion Date:</strong>
+    <span id="html-cert-date"></span>
+  </p>
+
+  <p class="cert-id">
+    Certificate ID: <span id="html-cert-id"></span>
+  </p>
+
+  <p style="margin-top:35px;font-weight:bold;color:#6d50a8;">
+    Keep Learning. Keep Growing.
+  </p>
+
+  <button type="button" onclick="window.print()">
+    Print / Save as PDF
+  </button>
+
+</section>
+
+<nav>
+  <a href="../index.html" class="nav-link">← SkillSaathi Home</a>
+  <a href="../index.html" class="nav-link">HTML Course Home</a>
+</nav>
+
+</main>
+
+<footer>
+  <p>© 2026 SkillSaathi | Learn. Build. Grow.</p>
+</footer>
+
+<script>
+function generateHTMLCertificate() {
+
+  const name = document.getElementById("html-student-name").value.trim();
+
+  const confirmed = document.getElementById("html-project-confirm").checked;
+
+  const error = document.getElementById("html-certificate-error");
+
+  error.textContent = "";
+
+  if (!name) {
+    error.textContent = "Please enter your full name.";
+    return;
+  }
+
+  if (!confirmed) {
+    error.textContent = "Please confirm that you have completed the HTML course and project.";
+    return;
+  }
+
+  const today = new Date();
+
+  const date = today.toLocaleDateString("en-IN", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric"
+  });
+
+  const randomNumber = Math.floor(100000 + Math.random() * 900000);
+
+  const certificateID =
+    "SS-HTML-" + today.getFullYear() + "-" + randomNumber;
+
+  document.getElementById("html-cert-name").textContent = name;
+
+  document.getElementById("html-cert-date").textContent = date;
+
+  document.getElementById("html-cert-id").textContent = certificateID;
+
+  document.getElementById("html-certificate").style.display = "block";
+
+  document.getElementById("html-certificate").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+</script>
+
+</body>
+</html>

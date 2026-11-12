@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 15: Responsive Images and Figure Elements | SkillSaathi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson15.js" defer></script>
+
+  <style>
+    .lesson-page {
+      max-width: 1000px;
+      margin: 35px auto;
+      padding: 0 18px 40px;
+      color: #e0def5;
+    }
+    .lesson-header {
+      padding: 26px;
+      margin-bottom: 22px;
+      background: linear-gradient(145deg, #171b33, #111427);
+      border: 1px solid #39335d;
+      border-radius: 16px;
+    }
+    .lesson-header h1 { color: #c4b5fd; margin: 0 0 10px; }
+    .lesson-header p { color: #c0c5dc; line-height: 1.7; margin: 0; }
+    .lesson-card {
+      padding: 24px;
+      margin: 20px 0;
+      background: linear-gradient(145deg, #171b33, #111427);
+      border: 1px solid #39335d;
+      border-radius: 14px;
+    }
+    .lesson-card h2, .lesson-card h3 { color: #c4b5fd; }
+    .lesson-card p, .lesson-card li { color: #d2d3e8; line-height: 1.75; }
+    .lesson-card code {
+      color: #ddd6fe; background: #090b18;
+      padding: 2px 6px; border-radius: 5px;
+    }
+    .lesson-card pre {
+      overflow-x: auto; padding: 16px; border-radius: 9px;
+      background: #090b18; border: 1px solid #39335d;
+      color: #e0def5; line-height: 1.6;
+    }
+    .lesson-card a { color: #c4b5fd; }
+    .lesson-navigation {
+      display: flex; justify-content: space-between; gap: 12px;
+      margin: 28px 0; flex-wrap: wrap;
+    }
+    .lesson-navigation a, .playground-actions button {
+      display: inline-block; padding: 11px 18px;
+      background: #a78bfa; color: #100c24;
+      text-decoration: none; font-weight: bold;
+      border: 0; border-radius: 8px; cursor: pointer;
+    }
+    .lesson-navigation a:hover, .playground-actions button:hover {
+      background: #c4b5fd; transform: translateY(-1px);
+    }
+    #lessonEditor {
+      display: block; width: 100%; min-height: 300px;
+      box-sizing: border-box; padding: 16px; margin: 15px 0;
+      background: #090b18; color: #e0def5;
+      border: 1px solid #55458a; border-radius: 10px;
+      font: 14px/1.65 Consolas, monospace; resize: vertical;
+    }
+    .playground-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .playground-actions button { transition: .2s; }
+    .playground-note, .lesson-hint {
+      padding: 13px 16px; background: #211c40;
+      border-left: 3px solid #a78bfa; border-radius: 8px;
+    }
+    .lesson-feedback { min-height: 24px; font-weight: bold; }
+    .lesson-output { width: 100%; margin-top: 14px; }
+    .lesson-output iframe {
+      width: 100%; min-height: 260px; background: #fff;
+      border: 0; border-radius: 9px;
+    }
+    .lesson-output[hidden] { display: none !important; }
+    .lesson-quiz-question {
+      padding: 14px; margin: 12px 0;
+      background: #101329; border: 1px solid #39335d; border-radius: 9px;
+    }
+    .lesson-quiz-question label { display: block; margin: 8px 0; color: #d2d3e8; }
+    .lesson-quiz-question input { margin-right: 8px; accent-color: #a78bfa; }
+    .quiz-actions { margin-top: 16px; }
+    .quiz-actions button {
+      padding: 10px 17px; border: 0; border-radius: 8px;
+      background: #a78bfa; color: #100c24; font-weight: bold; cursor: pointer;
+    }
+    @media (max-width: 650px) {
+      .lesson-card, .lesson-header { padding: 17px; }
+      .lesson-navigation { flex-direction: column; }
+      .lesson-navigation a { text-align: center; }
+    }
+  </style>
+
+</head>
+<body>
+  <main class="lesson-page">
+    <header class="lesson-header">
+      <h1>Lesson 15: Responsive Images and Figure Elements</h1>
+      <p>Learn how to create flexible images, choose image sources for different screens, add captions and improve image loading.</p>
+    </header>
+
+
+    <section class="lesson-card">
+      <h2>🎯 What You Will Learn</h2>
+      <ul>
+        <li>Why responsive images matter.</li>
+        <li>How to use <code>srcset</code> and <code>sizes</code>.</li>
+        <li>How the <code>&lt;picture&gt;</code> element offers different image formats or sources.</li>
+        <li>How to add captions with <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>.</li>
+        <li>How <code>loading="lazy"</code> can defer off-screen images.</li>
+      </ul>
+    </section>
+
+    <section class="lesson-card">
+      <h2>1. Responsive Images</h2>
+      <p>A responsive image adapts to the screen or layout where it is displayed. The CSS rule below lets an image shrink inside its container without becoming wider than that container.</p>
+      <pre><code>img {
+  max-width: 100%;
+  height: auto;
+}</code></pre>
+      <p>Use <code>width</code> and <code>height</code> attributes when the image dimensions are known. They help the browser reserve space before the image loads.</p>
+    </section>
+
+    <section class="lesson-card">
+      <h2>2. The srcset and sizes Attributes</h2>
+      <p><code>srcset</code> lists image-file choices with their intrinsic widths. <code>sizes</code> tells the browser how wide the image is expected to appear at different viewport sizes.</p>
+      <pre><code>&lt;img
+  src="small-photo.jpg"
+  srcset="small-photo.jpg 480w,
+          medium-photo.jpg 800w,
+          large-photo.jpg 1200w"
+  sizes="(max-width: 600px) 100vw,
+         (max-width: 1000px) 80vw,
+         700px"
+  alt="A mountain landscape"&gt;</code></pre>
+      <p>Use real files that exist in your project. The browser chooses a suitable candidate based on the available information and display conditions.</p>
+    </section>
+
+    <section class="lesson-card">
+      <h2>3. The picture Element</h2>
+      <p><code>&lt;picture&gt;</code> lets you provide alternate image sources. The browser checks the <code>&lt;source&gt;</code> elements in order and uses the first supported matching source. Keep an <code>&lt;img&gt;</code> element as the fallback.</p>
+      <pre><code>&lt;picture&gt;
+  &lt;source media="(max-width: 600px)"
+          srcset="mobile-banner.jpg"&gt;
+  &lt;source type="image/webp"
+          srcset="banner.webp"&gt;
+  &lt;img src="banner.jpg"
+       alt="SkillSaathi learning banner"&gt;
+&lt;/picture&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>4. Figure and Figcaption</h2>
+      <p>Use <code>&lt;figure&gt;</code> for self-contained content such as an image, diagram, or code example. Use <code>&lt;figcaption&gt;</code> to provide its caption.</p>
+      <pre><code>&lt;figure&gt;
+  &lt;img src="classroom.jpg"
+       alt="Students learning together"
+       width="600" height="400"&gt;
+  &lt;figcaption&gt;
+    Learning together at SkillSaathi
+  &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>5. Lazy Loading</h2>
+      <p><code>loading="lazy"</code> asks the browser to defer loading an image until it is near the visible area. It is often useful for images lower down a long page. Do not lazy-load the main hero image if it is immediately visible.</p>
+      <pre><code>&lt;img src="gallery-photo.jpg"
+     alt="A student working on a laptop"
+     loading="lazy"
+     width="600" height="400"&gt;</code></pre>
+      <p class="playground-note"><strong>Remember:</strong> Every meaningful image needs useful alternative text. Use an empty <code>alt=""</code> only for purely decorative images.</p>
+    </section>
+
+    <section class="lesson-card">
+      <h2>✍️ Quick Practice</h2>
+      <ol>
+        <li>What does responsive image mean?</li>
+        <li>What information does <code>srcset</code> provide?</li>
+        <li>What is the purpose of <code>sizes</code>?</li>
+        <li>Why should a picture element contain an img fallback?</li>
+        <li>What are figure and figcaption used for?</li>
+        <li>When is loading="lazy" useful?</li>
+      </ol>
+      <p class="playground-note"><strong>Learning Tip:</strong> Try the same page on a narrow and a wide browser window.</p>
+    </section>
+
+    <section class="lesson-card" aria-labelledby="playground-title">
+      <h2 id="playground-title">💻 Code Playground</h2>
+      <p>Practice responsive images, alternate sources, captions and lazy loading.</p>
+      <label for="lessonEditor"><strong>Write or edit your HTML code:</strong></label>
+      <textarea id="lessonEditor" spellcheck="false" aria-label="HTML code editor"><h1>My Photo Gallery</h1>
+
+<figure>
+  <picture>
+    <source media="(max-width: 600px)" srcset="https://picsum.photos/id/1015/500/300">
+    <img src="https://picsum.photos/id/1015/800/450"
+         alt="Mountain landscape"
+         width="800"
+         height="450"
+         loading="lazy">
+  </picture>
+  <figcaption>A beautiful mountain view</figcaption>
+</figure></textarea>
+      <div class="playground-actions">
+        <button type="button" id="lessonRunBtn">Run Code</button>
+        <button type="button" id="lessonClearBtn">Clear</button>
+        <button type="button" id="lessonHintBtn" aria-expanded="false">Show Hint</button>
+        <button type="button" id="lessonCheckBtn">Check My Answer</button>
+      </div>
+      <p id="lessonHint" class="lesson-hint" hidden>Include a picture element, a source with media and srcset, an img with descriptive alt text, width, height and loading="lazy", plus figure and figcaption.</p>
+      <p id="lessonFeedback" class="lesson-feedback" role="status" aria-live="polite"></p>
+      <h3>Output:</h3>
+      <div class="lesson-output" id="lessonOutput" hidden>
+        <iframe id="lessonPreview" title="Your HTML output" sandbox="allow-forms"></iframe>
+      </div>
+    </section>
+
+    <section class="lesson-card">
+      <h2>✅ Lesson Summary</h2>
+      <p>You can now choose image sources for different screens, provide captions, and improve loading behavior. Always check that image paths are correct and alternative text is meaningful.</p>
+    </section>
+
+
+    <nav class="lesson-navigation" aria-label="Lesson navigation">
+      <a href="lesson14.html">← Previous Lesson</a>
+      <a href="lesson16.html">Next Lesson →</a>
+    </nav>
+  </main>
+</body>
+</html>

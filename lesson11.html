@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="lesson11.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 11: HTML Accessibility | SkillSaathi</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .lesson-page {
+      max-width: 1000px;
+      margin: 35px auto;
+      padding: 20px;
+      color: #e3dcff;
+    }
+
+    .lesson-page h1 {
+      color: #c4b5fd;
+    }
+
+    .lesson-page > p {
+      color: #b5bad4;
+      line-height: 1.8;
+    }
+
+    .lesson-card {
+      background: linear-gradient(145deg, #171b33, #111427);
+      border: 1px solid #39335d;
+      border-radius: 14px;
+      padding: 24px;
+      margin: 24px 0;
+      color: #c0c5dc;
+      line-height: 1.8;
+    }
+
+    .lesson-card h2 {
+      color: #c4b5fd;
+      margin-top: 0;
+    }
+
+    .lesson-card pre {
+      background: #090b18;
+      color: #c4b5fd;
+      padding: 18px;
+      border-radius: 10px;
+      overflow-x: auto;
+      border: 1px solid #39335d;
+    }
+
+    .lesson-card code {
+      font-family: monospace;
+    }
+.lesson-editor {
+  width: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: #090b18;
+  color: #c4b5fd;
+  font: 15px/1.6 monospace;
+  resize: vertical;
+}
+
+.lesson-btn {
+  margin: 12px 8px 12px 0;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #a78bfa;
+  color: #100c24;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lesson-btn:hover {
+  background: #c4b5fd;
+}
+
+.lesson-output {
+  width: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: white;
+}
+
+#lessonHint {
+  color: #e3dcff;
+  background: #211c40;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+#lessonFeedback {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+#lessonFeedback.success {
+  color: #86efac;
+}
+
+#lessonFeedback.error {
+  color: #fca5a5;
+}
+.lesson-navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+}
+
+.next-lesson {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #a78bfa;
+  color: #100c24;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 9px;
+  transition: 0.3s;
+}
+
+.next-lesson:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+    @media (max-width: 600px) {
+      .lesson-page {
+        padding: 14px;
+      }
+
+      .lesson-card {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      Skill<span>Saathi</span>
+    </a>
+    <a href="lesson10.html">← Lesson 10</a>
+  </header>
+
+  <main class="lesson-page">
+
+    <p class="eyebrow">LESSON 11 · HTML BASICS</p>
+
+    <h1>Let's Learn HTML Accessibility! ♿</h1>
+
+    <p>
+      Learn how to make websites accessible, user-friendly
+      and professional for everyone.
+    </p>
+<section class="lesson-card">
+  <h2>🎯 What You Will Learn</h2>
+  <ul>
+    <li>What is HTML Accessibility?</li>
+    <li>How to use image alt text</li>
+    <li>Proper heading structure</li>
+    <li>Accessible forms and labels</li>
+    <li>Semantic HTML elements</li>
+    <li>Keyboard accessibility</li>
+    <li>HTML coding best practices</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>📖 1. What is HTML Accessibility?</h2>
+  <p>
+    HTML Accessibility means creating websites that everyone can use,
+    including people with disabilities.
+  </p>
+  <p>
+    Accessible websites are easier to understand, navigate and use.
+  </p>
+</section>
+
+<section class="lesson-card">
+  <h2>🖼️ 2. Use Alt Text for Images</h2>
+  <p>
+    The alt attribute describes an image. Screen readers can read
+    this description to users who cannot see the image.
+  </p>
+  <pre><code>&lt;img src="flower.jpg"
+     alt="A beautiful pink flower"&gt;</code></pre>
+  <p><strong>Tip:</strong> Write meaningful descriptions for informative images.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>📝 3. Use Proper Heading Structure</h2>
+  <p>
+    Use headings from h1 to h6 in a logical order.
+    A page should normally have one main h1 heading.
+  </p>
+  <pre><code>&lt;h1&gt;My Website&lt;/h1&gt;
+&lt;h2&gt;About Us&lt;/h2&gt;
+&lt;h3&gt;Our Team&lt;/h3&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🏷️ 4. Accessible Forms and Labels</h2>
+  <p>
+    Every form input should have a clear label.
+    The for attribute connects a label to its input.
+  </p>
+  <pre><code>&lt;label for="email"&gt;Email Address:&lt;/label&gt;
+&lt;input type="email" id="email"&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🧩 5. Use Semantic HTML</h2>
+  <p>
+    Semantic elements explain the purpose of different parts
+    of a webpage.
+  </p>
+  <pre><code>&lt;header&gt;Website Header&lt;/header&gt;
+&lt;nav&gt;Navigation Links&lt;/nav&gt;
+&lt;main&gt;Main Content&lt;/main&gt;
+&lt;footer&gt;Website Footer&lt;/footer&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>⌨️ 6. Keyboard Accessibility</h2>
+  <p>
+    Users should be able to navigate interactive website elements
+    using a keyboard.
+  </p>
+  <ul>
+    <li>Use the Tab key to move between interactive elements.</li>
+    <li>Use Enter or Space to activate appropriate controls.</li>
+    <li>Keep buttons and links keyboard accessible.</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>⭐ 7. HTML Best Practices</h2>
+  <ul>
+    <li>Always write clean and readable code.</li>
+    <li>Use meaningful element names and attributes.</li>
+    <li>Close HTML tags properly.</li>
+    <li>Use descriptive link text.</li>
+    <li>Keep your website responsive.</li>
+    <li>Test your website with a keyboard.</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>📝 Quick Practice</h2>
+  <ol>
+    <li>What is the purpose of the alt attribute?</li>
+    <li>Which heading is normally used as the main page heading?</li>
+    <li>Which attribute connects a label to an input?</li>
+    <li>What is semantic HTML?</li>
+    <li>Which keyboard key helps users navigate between links and buttons?</li>
+  </ol>
+</section>
+<!-- Code Playground -->
+<h2>💻 Your Code Playground</h2>
+
+<p>
+  Practice writing accessible HTML code.
+  Edit the code and click Run Code to see your result.
+</p>
+<section class="lesson-card">
+<textarea id="lessonEditor" class="lesson-editor" spellcheck="false"><h1>Welcome to My Website</h1>
+
+<img
+  src="https://placehold.co/300x180"
+  alt="A beautiful landscape">
+
+<h2>Contact Us</h2>
+
+<form id="contactForm">
+  <label for="studentName">Your Name:</label>
+  <input type="text" id="studentName" placeholder="Enter your name">
+
+  <br><br>
+
+  <button type="button" id="submitBtn">Submit</button>
+  <button type="reset">Reset</button>
+
+  <p id="submitMessage"></p>
+</form>
+
+<main>
+  <p>This is an accessible website example.</p>
+</main></textarea>
+
+  <div>
+    <button id="lessonRunBtn" class="lesson-btn" type="button">▶ Run Code</button>
+    <button id="lessonHintBtn" class="lesson-btn" type="button">Show Hint</button>
+    <button id="lessonCheckBtn" class="lesson-btn" type="button">Check My Answer</button>
+  </div>
+
+  <p id="lessonHint" hidden>
+    Hint: Try using alt, label, for, id, h1 and main elements.
+  </p>
+
+  <p id="lessonFeedback" aria-live="polite"></p>
+
+  <h2>👀 Your Output</h2>
+
+  <iframe
+    id="lessonPreview"
+    class="lesson-output"
+    title="Lesson 11 HTML output"
+    sandbox="allow-same-origin"
+    hidden>
+  </iframe>
+</section>
+<div class="lesson-navigation">
+  <a href="lesson12.html" class="next-lesson">
+    Next Lesson →
+  </a>
+</div>
+  </main>
+
+</body>
+</html>

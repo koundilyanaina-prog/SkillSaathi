@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 12: HTML SEO & Meta Tags | SkillSaathi</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .lesson-page {
+      max-width: 1000px;
+      margin: 35px auto;
+      padding: 20px;
+      color: #e3dcff;
+    }
+
+    .lesson-page h1 {
+      color: #c4b5fd;
+    }
+
+    .lesson-page > p {
+      color: #b5bad4;
+      line-height: 1.8;
+    }
+
+    .lesson-card {
+      background: linear-gradient(145deg, #171b33, #111427);
+      border: 1px solid #39335d;
+      border-radius: 14px;
+      padding: 24px;
+      margin: 24px 0;
+      color: #c0c5dc;
+      line-height: 1.8;
+    }
+
+    .lesson-card h2 {
+      color: #c4b5fd;
+      margin-top: 0;
+    }
+
+    .lesson-card pre {
+      background: #090b18;
+      color: #c4b5fd;
+      padding: 18px;
+      border-radius: 10px;
+      overflow-x: auto;
+      border: 1px solid #39335d;
+    }
+
+    .lesson-card code {
+      font-family: monospace;
+    }
+.lesson-editor {
+  width: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: #090b18;
+  color: #c4b5fd;
+  font: 15px/1.6 monospace;
+  resize: vertical;
+}
+
+.lesson-btn {
+  margin: 12px 8px 12px 0;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #a78bfa;
+  color: #100c24;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lesson-btn:hover {
+  background: #c4b5fd;
+}
+
+.lesson-output {
+  display: block;
+  width: 100%;
+  min-height: 300px;
+  box-sizing: border-box;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: white;
+}
+
+#lessonHint {
+  color: #e3dcff;
+  background: #211c40;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+#lessonFeedback {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+#lessonFeedback.success {
+  color: #86efac;
+}
+
+#lessonFeedback.error {
+  color: #fca5a5;
+}
+    @media (max-width: 600px) {
+      .lesson-page {
+        padding: 14px;
+      }
+
+      .lesson-card {
+        padding: 16px;
+      }
+    }
+    .lesson-navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+}
+
+.next-lesson {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #a78bfa;
+  color: #100c24;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 9px;
+  transition: 0.3s;
+}
+
+.next-lesson:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+.lesson-output[hidden] {
+  display: none !important;
+}
+  </style>
+  <script src="lesson12.js" defer></script>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      Skill<span>Saathi</span>
+    </a>
+    <a href="lesson11.html">← Lesson 11</a>
+  </header>
+
+  <main class="lesson-page">
+
+    <p class="eyebrow">LESSON 12 · HTML BASICS</p>
+
+    <h1>Let's Learn HTML SEO & Meta Tags! 🔍</h1>
+
+    <p>
+      Learn how to make webpages search-engine friendly
+      using HTML title tags, meta descriptions and other important tags.
+    </p>
+<section class="lesson-card">
+  <h2>🎯 What You Will Learn</h2>
+  <ul>
+    <li>What is SEO?</li>
+    <li>HTML Title Tag</li>
+    <li>Meta Description</li>
+    <li>Meta Keywords</li>
+    <li>Viewport Meta Tag</li>
+    <li>Open Graph Meta Tags</li>
+    <li>HTML SEO Best Practices</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>🔍 1. What is SEO?</h2>
+  <p>
+    SEO stands for Search Engine Optimization. It helps search engines
+    understand webpage content and can improve how pages appear in search results.
+  </p>
+  <p>
+    Good SEO also makes website content clear and useful for visitors.
+  </p>
+</section>
+
+<section class="lesson-card">
+  <h2>🏷️ 2. HTML Title Tag</h2>
+  <p>
+    The title tag defines the title of a webpage.
+    It usually appears in the browser tab and may appear as the clickable
+    heading in search results.
+  </p>
+  <pre><code>&lt;title&gt;Learn HTML - SkillSaathi&lt;/title&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>📝 3. Meta Description</h2>
+  <p>
+    A meta description provides a short summary of a webpage.
+    Search engines may use it as a snippet in search results.
+  </p>
+  <pre><code>&lt;meta name="description"
+content="Learn HTML, CSS and JavaScript for free with SkillSaathi."&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🔑 4. Meta Keywords</h2>
+  <p>
+    Meta keywords were once used to describe webpage topics.
+    Major search engines like Google do not use this tag for ranking.
+  </p>
+  <pre><code>&lt;meta name="keywords"
+content="HTML, CSS, Web Development"&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>📱 5. Viewport Meta Tag</h2>
+  <p>
+    The viewport tag helps webpages display properly on mobile devices
+    and different screen sizes.
+  </p>
+  <pre><code>&lt;meta name="viewport"
+content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🌐 6. Open Graph Meta Tags</h2>
+  <p>
+    Open Graph tags control how a webpage preview appears when someone
+    shares its link on supported social platforms.
+  </p>
+  <pre><code>&lt;meta property="og:title"
+content="Learn HTML - SkillSaathi"&gt;
+
+&lt;meta property="og:description"
+content="Explore free web development lessons."&gt;
+
+&lt;meta property="og:image"
+content="https://example.com/course-image.jpg"&gt;
+
+&lt;meta property="og:type" content="website"&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>⭐ 7. HTML SEO Best Practices</h2>
+  <ul>
+    <li>Write a unique and meaningful title for every page.</li>
+    <li>Add a useful meta description.</li>
+    <li>Use clear and descriptive headings.</li>
+    <li>Add meaningful alt text to informative images.</li>
+    <li>Create descriptive links.</li>
+    <li>Make webpages mobile-friendly.</li>
+    <li>Write original and helpful content.</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>📝 Quick Practice</h2>
+  <ol>
+    <li>What is the full form of SEO?</li>
+    <li>Which HTML tag defines a webpage title?</li>
+    <li>Which meta tag provides a page summary?</li>
+    <li>Why is the viewport tag important?</li>
+    <li>What is the purpose of Open Graph tags?</li>
+  </ol>
+</section><!-- Code Playground -->
+<h2>💻 Your Code Playground</h2>
+
+<p>
+  Practice writing SEO-friendly HTML code.
+  Edit the code and click Run Code to see your result.
+</p>
+
+<section class="lesson-card">
+
+<textarea id="lessonEditor" class="lesson-editor" spellcheck="false"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My First Website - SkillSaathi</title>
+
+  <meta name="description"
+  content="Welcome to my first website.">
+
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title"
+  content="My First Website">
+
+  <meta property="og:description"
+  content="Learning HTML with SkillSaathi.">
+</head>
+
+<body>
+
+  <h1>Welcome to My Website!</h1>
+
+  <p>This is my first SEO-friendly webpage.</p>
+
+</body>
+</html></textarea>
+
+  <div>
+    <button id="lessonRunBtn" class="lesson-btn" type="button">▶ Run Code</button>
+    <button id="lessonHintBtn" class="lesson-btn" type="button">Show Hint</button>
+    <button id="lessonCheckBtn" class="lesson-btn" type="button">Check My Answer</button>
+  </div>
+
+  <p id="lessonHint" hidden>
+    Hint: Try using title, description, viewport, og:title and og:description.
+  </p>
+
+  <p id="lessonFeedback" aria-live="polite"></p>
+
+  <h2>👀 Your Output</h2>
+
+<iframe
+  id="lessonPreview"
+  class="lesson-output"
+  title="Lesson 12 HTML output"
+  sandbox=""
+  hidden
+></iframe>
+
+</section>
+<div class="lesson-navigation">
+  <a href="lesson13.html" class="next-lesson">
+    Next Lesson →
+  </a>
+</div>
+  </main>
+</body>
+</html>

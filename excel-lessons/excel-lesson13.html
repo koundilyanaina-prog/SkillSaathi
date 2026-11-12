@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 13 | Lookup Functions - SkillSaathi</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#171717;color:#eee;line-height:1.7;padding:20px}
+.container{max-width:950px;margin:auto}
+header,.card{background:#222;border:1px solid #39342a;border-radius:12px;padding:22px;margin-bottom:18px}
+.brand{color:#f0c75e;font-weight:bold;margin-bottom:12px}
+.tag{display:inline-block;background:#39301c;color:#f0c75e;padding:5px 12px;border-radius:20px;font-size:12px;margin-bottom:12px}
+h1,h2,h3{color:#f0c75e;margin-bottom:12px}
+h1{font-size:30px}
+h2{font-size:22px}
+h3{margin-top:15px}
+p{color:#ccc;margin-bottom:12px}
+ul,ol{padding-left:23px;color:#ccc;margin:10px 0}
+li{margin-bottom:7px}
+.example{background:#29261f;border-left:4px solid #e5bd55;padding:15px;border-radius:7px;margin:14px 0}
+.formula{background:#151515;border:1px solid #51452a;color:#f4d47b;padding:13px;border-radius:7px;overflow-x:auto;margin:12px 0;font-family:Consolas,monospace}
+.tip{background:#302b1d;border:1px solid #68572c;color:#f0d58b;padding:13px;border-radius:8px;margin:14px 0}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:450px;margin:14px 0}
+th,td{border:1px solid #51452a;padding:10px;text-align:left}
+th{background:#39301c;color:#f0c75e}
+tr:nth-child(even){background:#292929}
+.quiz{background:#292929;border:1px solid #444039;padding:16px;border-radius:9px;margin:14px 0}
+.quiz label{display:block;color:#ddd;margin:8px 0;cursor:pointer}
+.quiz input{margin-right:8px;accent-color:#e5bd55}
+.feedback{margin-top:8px;font-weight:bold}
+button,.nav a{background:#e5bd55;color:#191919;border:0;padding:11px 17px;border-radius:7px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block;margin:5px 4px 5px 0}
+button:hover,.nav a:hover{background:#f0d58b}
+.nav{background:#302b1d;border:1px solid #68572c;border-radius:10px;padding:15px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.nav a{background:#302b1d;color:#f0c75e;border:1px solid #68572c}
+footer{text-align:center;color:#999;margin:25px 0 10px;font-size:13px}
+@media(max-width:600px){body{padding:12px}h1{font-size:24px}.card{padding:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<div class="brand">✦ SkillSaathi | Learn · Practice · Grow</div>
+<span class="tag">EXCEL & OFFICE · LESSON 13</span>
+<h1>VLOOKUP, XLOOKUP & Lookup Functions</h1>
+<p>Learn how to search for information in large Excel datasets and automatically retrieve matching results.</p>
+<p>⏱ 35–45 Minutes | Intermediate Level | 5 Questions Quiz</p>
+</header>
+
+<section class="card">
+<h2>1. What are Lookup Functions?</h2>
+<p>Lookup functions help you find a particular value in a table and return related information from another column or row.</p>
+<p>For example, an office has an employee database. If you enter an Employee ID, Excel can automatically display that employee's name, department or salary.</p>
+<div class="example">
+<strong>Real-world uses:</strong>
+<ul>
+<li>Finding employee details using Employee ID.</li>
+<li>Searching product prices using Product Codes.</li>
+<li>Finding student marks using Roll Numbers.</li>
+<li>Retrieving customer information from a database.</li>
+</ul>
+</div>
+</section>
+
+<section class="card">
+<h2>2. Understanding VLOOKUP</h2>
+<p>VLOOKUP stands for Vertical Lookup. It searches for a value in the first column of a selected table and returns information from another column in the same row.</p>
+<div class="formula">=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])</div>
+<h3>Meaning of each argument</h3>
+<ul>
+<li><strong>lookup_value:</strong> The value you want to search.</li>
+<li><strong>table_array:</strong> The range containing your data.</li>
+<li><strong>col_index_num:</strong> The column number from which you want the result.</li>
+<li><strong>range_lookup:</strong> FALSE for exact match, TRUE for approximate match.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>3. VLOOKUP Practical Example</h2>
+<p>Consider this employee database:</p>
+<div class="table-wrap">
+<table>
+<tr><th>Employee ID</th><th>Name</th><th>Department</th><th>Salary</th></tr>
+<tr><td>101</td><td>Aman</td><td>Sales</td><td>22000</td></tr>
+<tr><td>102</td><td>Riya</td><td>HR</td><td>28000</td></tr>
+<tr><td>103</td><td>Neha</td><td>IT</td><td>35000</td></tr>
+<tr><td>104</td><td>Rahul</td><td>Finance</td><td>30000</td></tr>
+</table>
+</div>
+<p>Suppose you enter Employee ID 103 in cell F2 and want to find the employee's name.</p>
+<div class="formula">=VLOOKUP(F2,A2:D5,2,FALSE)</div>
+<p><strong>Result:</strong> Neha</p>
+<p>To find the salary instead:</p>
+<div class="formula">=VLOOKUP(F2,A2:D5,4,FALSE)</div>
+<p><strong>Result:</strong> 35000</p>
+<div class="tip">Remember: VLOOKUP searches only in the first column of the selected table range and returns a result from a column to its right.</div>
+</section>
+
+<section class="card">
+<h2>4. Exact Match vs Approximate Match</h2>
+<div class="table-wrap">
+<table>
+<tr><th>Option</th><th>Meaning</th><th>Use</th></tr>
+<tr><td>FALSE or 0</td><td>Exact match</td><td>Employee ID, Roll Number, Product Code</td></tr>
+<tr><td>TRUE or 1</td><td>Approximate match</td><td>Grade slabs, commission ranges, tax bands</td></tr>
+</table>
+</div>
+<div class="tip">For approximate VLOOKUP, the first column should generally be sorted in ascending order. For IDs and codes, use FALSE to avoid incorrect matches.</div>
+</section>
+
+<section class="card">
+<h2>5. Understanding XLOOKUP</h2>
+<p>XLOOKUP is a modern lookup function available in Microsoft 365 and newer Excel versions. It can search in one column and return a result from another column, including columns on either side.</p>
+<div class="formula">=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found])</div>
+<h3>Example</h3>
+<p>Search Employee ID in A2:A5 and return the employee's name from B2:B5.</p>
+<div class="formula">=XLOOKUP(F2,A2:A5,B2:B5,"Not Found")</div>
+<p>If F2 contains 103, the result is <strong>Neha</strong>.</p>
+<h3>Advantages of XLOOKUP</h3>
+<ul>
+<li>Can search both left and right.</li>
+<li>Uses exact match by default.</li>
+<li>Can display a custom message if no match is found.</li>
+<li>Does not require a column index number.</li>
+</ul>
+<div class="tip">XLOOKUP is not available in some older Excel versions, such as Excel 2016 and Excel 2019. In those versions, VLOOKUP or INDEX and MATCH can be used.</div>
+</section>
+
+<section class="card">
+<h2>6. Understanding HLOOKUP</h2>
+<p>HLOOKUP stands for Horizontal Lookup. It searches for a value in the first row of a table and returns information from another row.</p>
+<div class="formula">=HLOOKUP(lookup_value, table_array, row_index_num, [range_lookup])</div>
+<p>For example, if months are arranged horizontally in the first row and sales figures in the second row, HLOOKUP can find the sales for a selected month.</p>
+<div class="tip">VLOOKUP searches vertically through columns. HLOOKUP searches horizontally through rows.</div>
+</section>
+
+<section class="card">
+<h2>7. Handling Lookup Errors</h2>
+<p>Sometimes a lookup formula returns an error because the searched value does not exist or the formula is incorrect.</p>
+<h3>Common errors</h3>
+<ul>
+<li><strong>#N/A:</strong> The searched value was not found.</li>
+<li><strong>#REF!:</strong> An invalid column or row reference was used.</li>
+<li><strong>#VALUE!:</strong> An argument has an incorrect value or type.</li>
+</ul>
+<h3>Using IFERROR</h3>
+<div class="formula">=IFERROR(VLOOKUP(F2,A2:D5,2,FALSE),"Not Found")</div>
+<p>This formula displays "Not Found" instead of an error if the lookup fails.</p>
+</section>
+
+<section class="card">
+<h2>8. Practical Activity – Employee Search Sheet</h2>
+<p>Create the following employee database in Excel:</p>
+<div class="table-wrap">
+<table>
+<tr><th>ID</th><th>Name</th><th>Department</th><th>Salary</th></tr>
+<tr><td>201</td><td>Rohan</td><td>IT</td><td>32000</td></tr>
+<tr><td>202</td><td>Priya</td><td>HR</td><td>28000</td></tr>
+<tr><td>203</td><td>Arjun</td><td>Sales</td><td>25000</td></tr>
+<tr><td>204</td><td>Meera</td><td>Finance</td><td>35000</td></tr>
+<tr><td>205</td><td>Karan</td><td>IT</td><td>40000</td></tr>
+</table>
+</div>
+<h3>Your tasks</h3>
+<ol>
+<li>Enter an Employee ID in a separate cell.</li>
+<li>Use VLOOKUP to display the employee's name.</li>
+<li>Use VLOOKUP to display the department.</li>
+<li>Use XLOOKUP to display the salary if your Excel version supports it.</li>
+<li>Use IFERROR to show "Employee Not Found" for an invalid ID.</li>
+</ol>
+<p><strong>Learning goal:</strong> Build a simple employee search system that can retrieve information automatically.</p>
+</section>
+
+<section class="card">
+<h2>9. Knowledge Check – Quiz</h2>
+<p>Answer all five questions and submit your quiz.</p>
+
+<div class="quiz" data-answer="b">
+<p><strong>1. What does VLOOKUP stand for?</strong></p>
+<label><input type="radio" name="q1" value="a"> Variable Lookup</label>
+<label><input type="radio" name="q1" value="b"> Vertical Lookup</label>
+<label><input type="radio" name="q1" value="c"> Value Lookup</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="c">
+<p><strong>2. Which argument specifies the result column in VLOOKUP?</strong></p>
+<label><input type="radio" name="q2" value="a"> lookup_value</label>
+<label><input type="radio" name="q2" value="b"> table_array</label>
+<label><input type="radio" name="q2" value="c"> col_index_num</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="a">
+<p><strong>3. Which option is used for an exact match in VLOOKUP?</strong></p>
+<label><input type="radio" name="q3" value="a"> FALSE</label>
+<label><input type="radio" name="q3" value="b"> TRUE</label>
+<label><input type="radio" name="q3" value="c"> SUM</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="b">
+<p><strong>4. What is an advantage of XLOOKUP?</strong></p>
+<label><input type="radio" name="q4" value="a"> It only adds numbers</label>
+<label><input type="radio" name="q4" value="b"> It can return results from columns on either side</label>
+<label><input type="radio" name="q4" value="c"> It creates charts automatically</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="c">
+<p><strong>5. Which function can display a custom message instead of an error?</strong></p>
+<label><input type="radio" name="q5" value="a"> COUNT</label>
+<label><input type="radio" name="q5" value="b"> ROUND</label>
+<label><input type="radio" name="q5" value="c"> IFERROR</label>
+<p class="feedback"></p>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+<p id="quiz-result" class="feedback" aria-live="polite"></p>
+</section>
+
+<div class="nav">
+<a href="../excel.html">← Back to Course</a>
+<a href="excel-lesson12.html">← Previous Lesson</a>
+<a href="excel-lesson14.html">Next Lesson →</a>
+</div>
+
+<footer>© SkillSaathi | Learn · Practice · Grow</footer>
+</div>
+
+<script>
+function checkQuiz(){
+const questions=document.querySelectorAll(".quiz");
+let score=0,unanswered=0;
+
+questions.forEach(question=>{
+const selected=question.querySelector("input:checked");
+const feedback=question.querySelector(".feedback");
+
+if(!selected){
+unanswered++;
+feedback.textContent="Please select an answer.";
+feedback.style.color="#f0c75e";
+}else if(selected.value===question.dataset.answer){
+score++;
+feedback.textContent="Correct!";
+feedback.style.color="#8bd49c";
+}else{
+feedback.textContent="Incorrect. Review the topic and try again.";
+feedback.style.color="#f08b8b";
+}
+});
+
+const result=document.getElementById("quiz-result");
+if(unanswered>0){
+result.textContent="Please answer all five questions.";
+result.style.color="#f0c75e";
+}else if(score>=4){
+result.textContent="Excellent! You scored "+score+"/5. Quiz passed!";
+result.style.color="#8bd49c";
+}else{
+result.textContent="You scored "+score+"/5. Review the lesson and try again.";
+result.style.color="#f0c75e";
+}
+}
+
+function resetQuiz(){
+document.querySelectorAll(".quiz input").forEach(input=>input.checked=false);
+document.querySelectorAll(".quiz .feedback").forEach(p=>p.textContent="");
+document.getElementById("quiz-result").textContent="";
+}
+</script>
+</body>
+</html>

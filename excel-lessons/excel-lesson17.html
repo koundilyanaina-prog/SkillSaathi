@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 17 - Excel Dashboard & MIS Reporting | SkillSaathi</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#171717;color:#eee;font-family:Arial,sans-serif;line-height:1.7}
+header{background:#201e19;padding:28px 7%;border-bottom:1px solid #51452a}
+header h1{color:#f0c75e;margin:0}
+header p{color:#c8c1b2;margin:5px 0}
+.container{max-width:950px;margin:30px auto;padding:0 18px}
+.card{background:#222;border:1px solid #39342a;border-radius:12px;padding:22px;margin-bottom:20px}
+h2,h3{color:#f0c75e}
+.example{background:#29261f;border-left:4px solid #e5bd55;padding:14px;margin:14px 0;border-radius:6px}
+.formula{background:#151515;border:1px solid #51452a;color:#f4d47b;padding:12px;border-radius:6px;overflow-x:auto}
+.tip{background:#302b1d;border:1px solid #68572c;color:#f0d58b;padding:14px;border-radius:7px}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{border:1px solid #51452a;padding:10px;text-align:left}
+th{background:#39301c;color:#f0c75e}
+.quiz-question{background:#292929;border:1px solid #444039;border-radius:8px;padding:15px;margin:14px 0}
+label{display:block;margin:7px 0;cursor:pointer}
+button{background:#e5bd55;color:#191919;border:0;border-radius:6px;padding:11px 18px;font-weight:bold;cursor:pointer;margin:8px 5px 8px 0}
+.result{font-weight:bold;margin-top:15px}
+.navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#302b1d;border:1px solid #68572c;padding:16px;border-radius:8px}
+.navigation a{color:#f0c75e;text-decoration:none;font-weight:bold}
+small{color:#c6bfae}
+@media(max-width:600px){.card{padding:16px}table{font-size:13px}}
+</style>
+</head>
+<body>
+<header>
+<h1>Lesson 17: Excel Dashboard & MIS Reporting</h1>
+<p>SkillSaathi · Excel & Office · Practical Office Skills</p>
+</header>
+
+<main class="container">
+
+<section class="card">
+<h2>1. What is MIS Reporting?</h2>
+<p>MIS stands for <strong>Management Information System</strong>. MIS reports organise business data into useful information so managers and teams can monitor performance and make decisions.</p>
+<p>Common MIS reports include:</p>
+<ul>
+<li>Daily sales report</li>
+<li>Monthly performance report</li>
+<li>Employee attendance report</li>
+<li>Inventory or stock report</li>
+<li>Expense and budget report</li>
+<li>Customer or order report</li>
+</ul>
+<div class="tip"><strong>Example:</strong> A sales manager may use a monthly MIS report to compare sales across departments and identify which team achieved its target.</div>
+</section>
+
+<section class="card">
+<h2>2. What is an Excel Dashboard?</h2>
+<p>A dashboard is a visual summary of important information. It uses numbers, charts and tables to show the overall performance of a business or activity.</p>
+<p>A useful dashboard should be:</p>
+<ul>
+<li>Simple and easy to understand</li>
+<li>Accurate and updated</li>
+<li>Focused on important information</li>
+<li>Consistent in formatting</li>
+<li>Easy to read without unnecessary decoration</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>3. Prepare Your Data</h2>
+<p>Before creating a dashboard, organise your source data in a clean table. Use one header row, consistent formats and no unnecessary blank rows.</p>
+<table>
+<tr><th>Date</th><th>Department</th><th>Sales</th><th>Target</th></tr>
+<tr><td>01-Nov</td><td>North</td><td>12000</td><td>15000</td></tr>
+<tr><td>02-Nov</td><td>South</td><td>18000</td><td>16000</td></tr>
+<tr><td>03-Nov</td><td>East</td><td>14000</td><td>15000</td></tr>
+<tr><td>04-Nov</td><td>West</td><td>22000</td><td>20000</td></tr>
+<tr><td>05-Nov</td><td>North</td><td>16000</td><td>15000</td></tr>
+</table>
+<p>Convert the dataset into an Excel Table using <strong>Ctrl + T</strong>. This makes filtering and expanding your data easier.</p>
+</section>
+
+<section class="card">
+<h2>4. Create Key Performance Indicators (KPIs)</h2>
+<p>KPIs are important numbers that help measure performance. Common sales dashboard KPIs include:</p>
+<ul>
+<li>Total Sales</li>
+<li>Total Target</li>
+<li>Number of Orders</li>
+<li>Average Sales</li>
+<li>Target Achievement Percentage</li>
+</ul>
+<div class="example">
+<strong>Example formulas:</strong>
+<div class="formula">Total Sales: =SUM(C2:C6)</div>
+<div class="formula">Total Target: =SUM(D2:D6)</div>
+<div class="formula">Average Sales: =AVERAGE(C2:C6)</div>
+<div class="formula">Number of Records: =COUNTA(A2:A6)</div>
+<div class="formula">Target Achievement: =IFERROR(SUM(C2:C6)/SUM(D2:D6),0)</div>
+</div>
+<p>Format the target achievement result as Percentage.</p>
+</section>
+
+<section class="card">
+<h2>5. Department-wise Summary with SUMIF</h2>
+<p>SUMIF calculates the total sales for a particular department.</p>
+<div class="formula">=SUMIF(B2:B6,"North",C2:C6)</div>
+<p>This formula adds sales values from column C wherever the department in column B is North.</p>
+<p>Create a small summary table:</p>
+<table>
+<tr><th>Department</th><th>Total Sales</th></tr>
+<tr><td>North</td><td>Use SUMIF</td></tr>
+<tr><td>South</td><td>Use SUMIF</td></tr>
+<tr><td>East</td><td>Use SUMIF</td></tr>
+<tr><td>West</td><td>Use SUMIF</td></tr>
+</table>
+</section>
+
+<section class="card">
+<h2>6. Create Charts</h2>
+<p>Charts make comparisons and trends easier to understand.</p>
+<ul>
+<li><strong>Column Chart:</strong> Compare sales across departments.</li>
+<li><strong>Bar Chart:</strong> Compare categories or teams.</li>
+<li><strong>Line Chart:</strong> Show changes over time.</li>
+<li><strong>Pie Chart:</strong> Show parts of a whole, when there are only a few categories.</li>
+</ul>
+<p><strong>Steps to insert a chart:</strong></p>
+<ol>
+<li>Select your summary table.</li>
+<li>Open the Insert tab.</li>
+<li>Choose a suitable chart type.</li>
+<li>Add a clear chart title.</li>
+<li>Adjust labels and formatting.</li>
+</ol>
+<div class="tip">Choose a chart based on the question you want to answer. Do not use too many charts on one dashboard.</div>
+</section>
+
+<section class="card">
+<h2>7. PivotTables for Reporting</h2>
+<p>A PivotTable summarises large datasets without writing many formulas.</p>
+<ol>
+<li>Click any cell inside your data table.</li>
+<li>Go to Insert → PivotTable.</li>
+<li>Choose where to place the PivotTable.</li>
+<li>Drag Department to Rows.</li>
+<li>Drag Sales to Values.</li>
+<li>Check that the calculation is Sum of Sales.</li>
+</ol>
+<p>You can also add Date, Category or Employee fields to analyse the data in different ways.</p>
+</section>
+
+<section class="card">
+<h2>8. Add Slicers and Make Reports Interactive</h2>
+<p>Slicers are clickable filters that make PivotTable reports easier to use.</p>
+<ol>
+<li>Select a PivotTable.</li>
+<li>Open PivotTable Analyze → Insert Slicer.</li>
+<li>Select a field such as Department.</li>
+<li>Click a slicer button to filter the report.</li>
+</ol>
+<p>For date-based reports, use a Timeline if your PivotTable supports it.</p>
+<div class="tip">After adding new data to the source table, refresh the PivotTable so the report includes the latest records.</div>
+</section>
+
+<section class="card">
+<h2>9. Build a Simple Dashboard Layout</h2>
+<p>Arrange your dashboard in a clear order:</p>
+<ol>
+<li><strong>Top:</strong> Dashboard title and reporting period.</li>
+<li><strong>First row:</strong> KPI cards for Total Sales, Target and Achievement.</li>
+<li><strong>Middle:</strong> Department-wise chart and sales trend chart.</li>
+<li><strong>Bottom:</strong> Summary table and useful notes.</li>
+<li><strong>Side or top:</strong> Slicers for interactive filtering.</li>
+</ol>
+<div class="example">
+<strong>Sample dashboard heading:</strong> Monthly Sales Performance Report<br>
+<strong>Reporting period:</strong> November 2026<br>
+<strong>KPIs:</strong> Total Sales | Total Target | Achievement %
+</div>
+</section>
+
+<section class="card">
+<h2>10. Practical Project: Monthly Sales MIS Dashboard</h2>
+<p>Create a new Excel workbook and complete this project.</p>
+<p><strong>Sheet 1 — Raw Data</strong></p>
+<ul>
+<li>Enter at least 20 sales records.</li>
+<li>Include Date, Employee, Department, Sales and Target.</li>
+<li>Convert the data into an Excel Table.</li>
+</ul>
+<p><strong>Sheet 2 — Summary</strong></p>
+<ul>
+<li>Calculate Total Sales and Total Target.</li>
+<li>Calculate average sales.</li>
+<li>Prepare department-wise sales using SUMIF or a PivotTable.</li>
+</ul>
+<p><strong>Sheet 3 — Dashboard</strong></p>
+<ul>
+<li>Add KPI values.</li>
+<li>Add a department comparison chart.</li>
+<li>Add a sales trend chart.</li>
+<li>Add a PivotTable slicer if available.</li>
+<li>Use clear titles and consistent formatting.</li>
+</ul>
+<div class="tip">Before sharing the report, verify totals, check the reporting dates, refresh PivotTables and review chart labels.</div>
+</section>
+
+<section class="card">
+<h2>11. Common Dashboard Mistakes</h2>
+<ul>
+<li>Using incorrect or unclean source data.</li>
+<li>Showing too many charts and colours.</li>
+<li>Forgetting to refresh PivotTables.</li>
+<li>Using unclear titles or missing date ranges.</li>
+<li>Showing percentages without checking the calculation.</li>
+<li>Sharing confidential employee or customer information without permission.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>12. Lesson 17 Quiz</h2>
+<p>Choose the correct answer for each question.</p>
+<form id="quizForm">
+<div class="quiz-question">
+<p><strong>1. What does MIS stand for?</strong></p>
+<label><input type="radio" name="q1" value="a"> Management Information System</label>
+<label><input type="radio" name="q1" value="b"> Microsoft Internet Software</label>
+<label><input type="radio" name="q1" value="c"> Monthly Input Sheet</label>
+</div>
+<div class="quiz-question">
+<p><strong>2. What is the main purpose of a dashboard?</strong></p>
+<label><input type="radio" name="q2" value="a"> To store images</label>
+<label><input type="radio" name="q2" value="b"> To show important information visually</label>
+<label><input type="radio" name="q2" value="c"> To delete data</label>
+</div>
+<div class="quiz-question">
+<p><strong>3. Which Excel feature summarises large datasets?</strong></p>
+<label><input type="radio" name="q3" value="a"> WordArt</label>
+<label><input type="radio" name="q3" value="b"> Page Layout</label>
+<label><input type="radio" name="q3" value="c"> PivotTable</label>
+</div>
+<div class="quiz-question">
+<p><strong>4. Which chart is useful for showing trends over time?</strong></p>
+<label><input type="radio" name="q4" value="a"> Line Chart</label>
+<label><input type="radio" name="q4" value="b"> Pie Chart</label>
+<label><input type="radio" name="q4" value="c"> Doughnut Chart</label>
+</div>
+<div class="quiz-question">
+<p><strong>5. What should you do after adding new source data to a PivotTable report?</strong></p>
+<label><input type="radio" name="q5" value="a"> Delete the report</label>
+<label><input type="radio" name="q5" value="b"> Refresh the PivotTable</label>
+<label><input type="radio" name="q5" value="c"> Change the font only</label>
+</div>
+<button type="button" onclick="checkQuiz()">Submit Answers</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+<p id="quizResult" class="result" aria-live="polite"></p>
+</form>
+</section>
+
+<nav class="navigation">
+<a href="excel-lesson16.html">← Previous Lesson</a>
+<a href="../excel.html">Back to Course</a>
+<a href="excel-lesson18.html">Next Lesson →</a>
+</nav>
+<p><small>SkillSaathi · Learn practical skills step by step.</small></p>
+</main>
+
+<script>
+function checkQuiz(){
+const answers={q1:"a",q2:"b",q3:"c",q4:"a",q5:"b"};
+let score=0;
+for(const q in answers){
+const selected=document.querySelector('input[name="'+q+'"]:checked');
+if(selected && selected.value===answers[q]) score++;
+}
+const result=document.getElementById("quizResult");
+if(score>=4){
+result.textContent="Excellent! You scored "+score+"/5. Lesson 17 quiz passed.";
+result.style.color="#8bd49c";
+}else{
+result.textContent="You scored "+score+"/5. Review the lesson and try again. You need 4 correct answers to pass.";
+result.style.color="#f0c75e";
+}
+}
+function resetQuiz(){
+document.getElementById("quizForm").reset();
+document.getElementById("quizResult").textContent="";
+}
+</script>
+</body>
+</html>

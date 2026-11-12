@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 18 - Final Excel Skills | SkillSaathi</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#171717;color:#eee;font-family:Arial,sans-serif;line-height:1.7}
+header{background:#201e19;padding:28px 7%;border-bottom:1px solid #51452a}
+header h1{color:#f0c75e;margin:0}
+header p{color:#c8c1b2;margin:5px 0}
+.container{max-width:950px;margin:30px auto;padding:0 18px}
+.card{background:#222;border:1px solid #39342a;border-radius:12px;padding:22px;margin-bottom:20px}
+h2,h3{color:#f0c75e}
+.example{background:#29261f;border-left:4px solid #e5bd55;padding:14px;margin:14px 0;border-radius:6px}
+.formula{background:#151515;border:1px solid #51452a;color:#f4d47b;padding:12px;border-radius:6px;overflow-x:auto}
+.tip{background:#302b1d;border:1px solid #68572c;color:#f0d58b;padding:14px;border-radius:7px}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{border:1px solid #51452a;padding:10px;text-align:left}
+th{background:#39301c;color:#f0c75e}
+.quiz-question{background:#292929;border:1px solid #444039;border-radius:8px;padding:15px;margin:14px 0}
+label{display:block;margin:7px 0;cursor:pointer}
+button{background:#e5bd55;color:#191919;border:0;border-radius:6px;padding:11px 18px;font-weight:bold;cursor:pointer;margin:8px 5px 8px 0}
+.result{font-weight:bold;margin-top:15px}
+.navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#302b1d;border:1px solid #68572c;padding:16px;border-radius:8px}
+.navigation a{color:#f0c75e;text-decoration:none;font-weight:bold}
+small{color:#c6bfae}
+@media(max-width:600px){.card{padding:16px}table{font-size:13px}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Lesson 18: Printing, Protection & Final Excel Revision</h1>
+<p>SkillSaathi · Excel & Office · Final Lesson</p>
+</header>
+
+<main class="container">
+
+<section class="card">
+<h2>1. Page Setup in Excel</h2>
+<p>Page Setup helps you prepare a worksheet for printing or sharing as a PDF.</p>
+<p>Important settings:</p>
+<ul>
+<li><strong>Orientation:</strong> Portrait or Landscape.</li>
+<li><strong>Paper Size:</strong> A4, Letter and other supported sizes.</li>
+<li><strong>Margins:</strong> Normal, Narrow or Custom.</li>
+<li><strong>Scaling:</strong> Fit the sheet to a selected number of pages.</li>
+<li><strong>Print Titles:</strong> Repeat selected rows or columns on printed pages.</li>
+</ul>
+<div class="tip">For a wide sales report, Landscape orientation may make the data easier to read.</div>
+</section>
+
+<section class="card">
+<h2>2. Set Print Area</h2>
+<p>Print Area allows you to print only a selected part of a worksheet.</p>
+<ol>
+<li>Select the cells you want to print.</li>
+<li>Open the Page Layout tab.</li>
+<li>Click Print Area.</li>
+<li>Select Set Print Area.</li>
+<li>Open Print Preview to check the result.</li>
+</ol>
+<p>To remove it, use Page Layout → Print Area → Clear Print Area.</p>
+<div class="example">
+<strong>Example:</strong> If your worksheet contains raw data and a separate summary, select only the summary before setting the Print Area.
+</div>
+</section>
+
+<section class="card">
+<h2>3. Page Breaks</h2>
+<p>Page Breaks control where one printed page ends and the next begins.</p>
+<ul>
+<li>Open View → Page Break Preview.</li>
+<li>Review the page boundaries.</li>
+<li>Adjust the page breaks where required.</li>
+<li>Use Page Layout → Breaks to insert or reset breaks.</li>
+</ul>
+<p>This is especially useful for long reports that need to be printed neatly.</p>
+</section>
+
+<section class="card">
+<h2>4. Print Preview and PDF Export</h2>
+<p>Always check your report before printing or sharing.</p>
+<ol>
+<li>Press <strong>Ctrl + P</strong> to open Print settings.</li>
+<li>Check the selected printer and page range.</li>
+<li>Review margins, orientation and scaling.</li>
+<li>Check that important columns are not cut off.</li>
+<li>To create a PDF, choose Microsoft Print to PDF where available, or use File → Export / Save As → PDF.</li>
+</ol>
+<div class="tip">PDF is useful when you want to share a report while keeping its page layout consistent.</div>
+</section>
+
+<section class="card">
+<h2>5. Protect a Worksheet</h2>
+<p>Worksheet protection helps prevent accidental changes to selected cells or formulas.</p>
+<ol>
+<li>Select cells that users should be allowed to edit.</li>
+<li>Press Ctrl + 1 and open the Protection tab.</li>
+<li>Untick Locked for those editable cells.</li>
+<li>Go to Review → Protect Sheet.</li>
+<li>Choose the allowed actions and optionally set a password.</li>
+</ol>
+<div class="tip">By default, cells are marked as Locked, but this setting takes effect only after sheet protection is enabled.</div>
+</section>
+
+<section class="card">
+<h2>6. Protect Workbook Structure</h2>
+<p>Workbook protection can help prevent users from adding, deleting, moving, hiding or renaming worksheets.</p>
+<ol>
+<li>Open the Review tab.</li>
+<li>Select Protect Workbook.</li>
+<li>Enable protection for the workbook structure.</li>
+<li>Set a password if required and confirm it.</li>
+</ol>
+<p><strong>Important:</strong> Worksheet protection and workbook structure protection are different features.</p>
+</section>
+
+<section class="card">
+<h2>7. Lock Formula Cells</h2>
+<p>In reports, you may want users to enter data but not overwrite formulas.</p>
+<ol>
+<li>Select the cells where users will enter information.</li>
+<li>Open Format Cells → Protection.</li>
+<li>Untick Locked for the input cells.</li>
+<li>Keep formula cells locked.</li>
+<li>Protect the worksheet from the Review tab.</li>
+</ol>
+<div class="example">
+<strong>Example:</strong> In a marksheet, students' marks may be entered in unlocked cells while Total and Percentage formula cells remain protected.
+</div>
+</section>
+
+<section class="card">
+<h2>8. Important Excel Keyboard Shortcuts</h2>
+<table>
+<tr><th>Shortcut</th><th>Action</th></tr>
+<tr><td>Ctrl + C</td><td>Copy</td></tr>
+<tr><td>Ctrl + V</td><td>Paste</td></tr>
+<tr><td>Ctrl + X</td><td>Cut</td></tr>
+<tr><td>Ctrl + Z</td><td>Undo</td></tr>
+<tr><td>Ctrl + Y</td><td>Redo</td></tr>
+<tr><td>Ctrl + S</td><td>Save</td></tr>
+<tr><td>Ctrl + P</td><td>Print</td></tr>
+<tr><td>Ctrl + F</td><td>Find</td></tr>
+<tr><td>Ctrl + H</td><td>Find and Replace</td></tr>
+<tr><td>Ctrl + T</td><td>Create Table</td></tr>
+<tr><td>Ctrl + E</td><td>Flash Fill</td></tr>
+<tr><td>Alt + =</td><td>AutoSum</td></tr>
+<tr><td>F2</td><td>Edit active cell</td></tr>
+<tr><td>F4</td><td>Repeat action / change reference in formula editing</td></tr>
+<tr><td>Ctrl + 1</td><td>Format Cells</td></tr>
+<tr><td>Ctrl + Shift + L</td><td>Toggle Filters</td></tr>
+<tr><td>Ctrl + ;</td><td>Insert current date</td></tr>
+<tr><td>Ctrl + Shift + ;</td><td>Insert current time</td></tr>
+<tr><td>Ctrl + Space</td><td>Select entire column</td></tr>
+<tr><td>Shift + Space</td><td>Select entire row</td></tr>
+</table>
+</section>
+
+<section class="card">
+<h2>9. Final Excel Revision Checklist</h2>
+<p>Before completing the course, make sure you understand these topics:</p>
+<ul>
+<li>Workbook, worksheets, rows, columns and cells</li>
+<li>Data entry, formatting and number formats</li>
+<li>Basic formulas and cell references</li>
+<li>SUM, AVERAGE, MIN, MAX and COUNT</li>
+<li>IF, AND, OR and conditional formatting</li>
+<li>Sorting, filtering and Excel Tables</li>
+<li>VLOOKUP, XLOOKUP and lookup functions</li>
+<li>SUMIF, SUMIFS, COUNTIF and COUNTIFS</li>
+<li>Text and Date functions</li>
+<li>Data cleaning and validation</li>
+<li>Charts, PivotTables and dashboards</li>
+<li>Printing, PDF export and worksheet protection</li>
+</ul>
+<div class="tip">If any topic feels difficult, revisit its lesson and practise it in Excel before moving to the projects.</div>
+</section>
+
+<section class="card">
+<h2>10. Final Practical Assignment</h2>
+<p>Complete these three projects to apply what you have learned.</p>
+
+<h3>Project 1: Monthly Expense Tracker</h3>
+<ul>
+<li>Create Date, Category, Description and Amount columns.</li>
+<li>Calculate total monthly expenses.</li>
+<li>Use SUMIF to calculate category-wise spending.</li>
+<li>Add a chart to show expense distribution.</li>
+</ul>
+
+<h3>Project 2: Student Marksheet</h3>
+<ul>
+<li>Create student names and subject-wise marks.</li>
+<li>Calculate Total and Percentage.</li>
+<li>Use IF to assign Pass or Fail.</li>
+<li>Use conditional formatting to highlight results.</li>
+<li>Protect formula cells.</li>
+</ul>
+
+<h3>Project 3: Monthly MIS Dashboard</h3>
+<ul>
+<li>Prepare a clean sales dataset.</li>
+<li>Calculate total sales and target achievement.</li>
+<li>Create a department-wise summary.</li>
+<li>Use PivotTables and charts.</li>
+<li>Arrange the results into a professional dashboard.</li>
+<li>Check and export the final report as PDF.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>11. Final Course Quiz</h2>
+<p>Test your understanding of the Excel course.</p>
+<form id="quizForm">
+
+<div class="quiz-question">
+<p><strong>1. Which shortcut opens Print settings?</strong></p>
+<label><input type="radio" name="q1" value="a"> Ctrl + P</label>
+<label><input type="radio" name="q1" value="b"> Ctrl + S</label>
+<label><input type="radio" name="q1" value="c"> Ctrl + T</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2. Which feature helps prevent accidental changes to worksheet cells?</strong></p>
+<label><input type="radio" name="q2" value="a"> Sort</label>
+<label><input type="radio" name="q2" value="b"> Protect Sheet</label>
+<label><input type="radio" name="q2" value="c"> Flash Fill</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3. Which function adds values based on a condition?</strong></p>
+<label><input type="radio" name="q3" value="a"> LEFT</label>
+<label><input type="radio" name="q3" value="b"> TODAY</label>
+<label><input type="radio" name="q3" value="c"> SUMIF</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4. Which feature is used to summarise large datasets?</strong></p>
+<label><input type="radio" name="q4" value="a"> PivotTable</label>
+<label><input type="radio" name="q4" value="b"> WordArt</label>
+<label><input type="radio" name="q4" value="c"> Page Break</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5. Which shortcut creates an Excel Table?</strong></p>
+<label><input type="radio" name="q5" value="a"> Ctrl + H</label>
+<label><input type="radio" name="q5" value="b"> Ctrl + T</label>
+<label><input type="radio" name="q5" value="c"> Ctrl + E</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>6. Which chart is suitable for showing trends over time?</strong></p>
+<label><input type="radio" name="q6" value="a"> Pie Chart</label>
+<label><input type="radio" name="q6" value="b"> Line Chart</label>
+<label><input type="radio" name="q6" value="c"> Doughnut Chart</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>7. Which function removes unnecessary spaces?</strong></p>
+<label><input type="radio" name="q7" value="a"> TRIM</label>
+<label><input type="radio" name="q7" value="b"> COUNT</label>
+<label><input type="radio" name="q7" value="c"> MAX</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>8. What should you do before sharing a report?</strong></p>
+<label><input type="radio" name="q8" value="a"> Ignore errors</label>
+<label><input type="radio" name="q8" value="b"> Delete source data</label>
+<label><input type="radio" name="q8" value="c"> Check calculations and formatting</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Final Quiz</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+<p id="quizResult" class="result" aria-live="polite"></p>
+</form>
+</section>
+
+<nav class="navigation">
+<a href="excel-lesson17.html">← Previous Lesson</a>
+<a href="../excel.html">Back to Course</a>
+<a href="../excel.html">Course Home →</a>
+</nav>
+
+<p><small>SkillSaathi · Keep learning. Keep growing.</small></p>
+</main>
+
+<script>
+function checkQuiz(){
+const answers={
+q1:"a",q2:"b",q3:"c",q4:"a",
+q5:"b",q6:"b",q7:"a",q8:"c"
+};
+let score=0;
+for(const q in answers){
+const selected=document.querySelector('input[name="'+q+'"]:checked');
+if(selected && selected.value===answers[q]) score++;
+}
+const result=document.getElementById("quizResult");
+if(score>=6){
+result.textContent="Congratulations! You scored "+score+"/8. Final quiz passed successfully!";
+result.style.color="#8bd49c";
+}else{
+result.textContent="You scored "+score+"/8. Revise the topics and try again. You need 6 correct answers to pass.";
+result.style.color="#f0c75e";
+}
+}
+function resetQuiz(){
+document.getElementById("quizForm").reset();
+document.getElementById("quizResult").textContent="";
+}
+</script>
+</body>
+</html>

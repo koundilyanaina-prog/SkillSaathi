@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 4: Basic Excel Functions | SkillSaathi</title>
+
+  <style>
+    :root {
+      --gold: #d6ad45;
+      --gold-light: #f0d58a;
+      --bg: #111315;
+      --card: #1b1e20;
+      --text: #f4f1e8;
+      --muted: #b9b6aa;
+      --border: #393a35;
+      --success: #8fc99a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      background: #17191a;
+      border-bottom: 1px solid var(--border);
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: var(--gold-light);
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .back-link {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      color: var(--gold-light);
+    }
+
+    .hero {
+      padding: 65px 7% 45px;
+      background: linear-gradient(135deg, #24231d, #111315 70%);
+    }
+
+    .lesson-label {
+      color: var(--gold-light);
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .lesson-info {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      color: var(--gold-light);
+      font-size: 14px;
+    }
+
+    .container {
+      width: 86%;
+      max-width: 1050px;
+      margin: 45px auto;
+    }
+
+    .section {
+      margin-bottom: 42px;
+    }
+
+    h2 {
+      color: var(--gold-light);
+      font-size: 25px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin-bottom: 13px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 23px;
+      margin: 18px 0;
+    }
+
+    .highlight {
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    ul, ol {
+      padding-left: 22px;
+      color: var(--muted);
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .code-example {
+      background: #202426;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 16px;
+      margin: 14px 0;
+      overflow-x: auto;
+    }
+
+    .code-example code {
+      color: var(--gold-light);
+      font-size: 15px;
+    }
+
+    .spreadsheet {
+      overflow-x: auto;
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 480px;
+      background: #202426;
+    }
+
+    th, td {
+      border: 1px solid #55564c;
+      padding: 13px;
+      text-align: center;
+    }
+
+    th {
+      background: #b58b30;
+      color: #171717;
+    }
+
+    td {
+      color: var(--text);
+    }
+
+    .practice-box {
+      background: #22231e;
+      border: 1px solid #75602d;
+      border-radius: 13px;
+      padding: 25px;
+    }
+
+    .task-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .task-list li {
+      margin: 13px 0;
+    }
+
+    .task-list input {
+      accent-color: var(--gold);
+      margin-right: 9px;
+    }
+
+    .quiz-question {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 17px 0;
+    }
+
+    .quiz-question p {
+      color: var(--text);
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .quiz-question label {
+      display: block;
+      color: var(--muted);
+      margin: 9px 0;
+      cursor: pointer;
+    }
+
+    .quiz-question input {
+      accent-color: var(--gold);
+      margin-right: 8px;
+    }
+
+    .main-btn {
+      background: var(--gold);
+      color: #171717;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 7px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .main-btn:hover {
+      background: var(--gold-light);
+    }
+
+    #quizResult {
+      margin-top: 18px;
+      font-weight: bold;
+      color: var(--success);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 25px;
+      margin-top: 50px;
+    }
+
+    .nav-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 7px;
+      color: var(--gold-light);
+    }
+
+    .nav-btn:hover {
+      background: var(--gold);
+      color: #171717;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media(max-width: 600px) {
+      .container {
+        width: 90%;
+      }
+
+      .hero {
+        padding: 45px 6%;
+      }
+
+      .topbar {
+        padding: 16px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a href="../excel.html" class="logo">SkillSaathi.</a>
+    <a href="../excel.html" class="back-link">← Back to Excel Course</a>
+  </header>
+
+  <section class="hero">
+    <div class="lesson-label">EXCEL BASICS · LESSON 04</div>
+
+    <h1>Basic Excel Functions</h1>
+
+    <p>
+      Learn how to calculate averages, count values and find the
+      highest and lowest numbers using essential Excel functions.
+    </p>
+
+    <div class="lesson-info">
+      <span>◷ 30–35 Minutes</span>
+      <span>Beginner Level</span>
+      <span>5 Questions Quiz</span>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section class="section">
+      <h2>🎯 What You Will Learn</h2>
+
+      <div class="info-card">
+        <ul>
+          <li>What Excel functions are.</li>
+          <li>How to use the AVERAGE function.</li>
+          <li>How COUNT and COUNTA work.</li>
+          <li>How to find the highest value using MAX.</li>
+          <li>How to find the lowest value using MIN.</li>
+          <li>How to use cell ranges in functions.</li>
+          <li>How to apply functions in a student marksheet.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>1. What is an Excel Function?</h2>
+
+      <p>
+        An Excel function is a predefined formula that performs
+        a specific calculation or task.
+      </p>
+
+      <p>
+        Functions make calculations faster and reduce the need
+        to write long formulas manually.
+      </p>
+
+      <div class="info-card">
+        <h3>Basic Structure of a Function</h3>
+
+        <div class="code-example">
+          <code>=FUNCTION_NAME(argument)</code>
+        </div>
+
+        <p>
+          The equals sign tells Excel that you are entering a formula.
+          The function name identifies the operation, and the argument
+          provides the data to work with.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. AVERAGE Function</h2>
+
+      <p>
+        The AVERAGE function calculates the arithmetic mean
+        of a group of numbers.
+      </p>
+
+      <div class="info-card">
+        <h3>Syntax</h3>
+
+        <div class="code-example">
+          <code>=AVERAGE(number1, [number2], ...)</code>
+        </div>
+
+        <h3>Example</h3>
+
+        <p>Suppose the marks of a student are:</p>
+
+        <div class="code-example">
+          <code>80, 90, 70, 100</code>
+        </div>
+
+        <p>Enter this formula:</p>
+
+        <div class="code-example">
+          <code>=AVERAGE(80,90,70,100)</code>
+        </div>
+
+        <p>
+          Result: <span class="highlight">85</span>
+        </p>
+
+        <p>
+          You can also use a cell range:
+        </p>
+
+        <div class="code-example">
+          <code>=AVERAGE(B2:B5)</code>
+        </div>
+      </div>
+
+      <p>
+        AVERAGE ignores blank cells and text entries in referenced
+        cells, but includes numeric zero values.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>3. COUNT Function</h2>
+
+      <p>
+        COUNT is used to count how many cells in a range contain
+        numeric values.
+      </p>
+
+      <div class="info-card">
+        <h3>Syntax</h3>
+
+        <div class="code-example">
+          <code>=COUNT(value1, [value2], ...)</code>
+        </div>
+
+        <h3>Example</h3>
+
+        <p>Suppose cells A1 to A5 contain:</p>
+
+        <div class="code-example">
+          <code>10, 20, Apple, 30, 40</code>
+        </div>
+
+        <p>Formula:</p>
+
+        <div class="code-example">
+          <code>=COUNT(A1:A5)</code>
+        </div>
+
+        <p>
+          Result: <span class="highlight">4</span>
+        </p>
+
+        <p>
+          COUNT counts the four numeric entries and ignores
+          the text value Apple.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>4. COUNTA Function</h2>
+
+      <p>
+        COUNTA counts cells that are not empty. It can count
+        numbers, text, dates and other non-empty values.
+      </p>
+
+      <div class="info-card">
+        <h3>Syntax</h3>
+
+        <div class="code-example">
+          <code>=COUNTA(value1, [value2], ...)</code>
+        </div>
+
+        <h3>Example</h3>
+
+        <p>Suppose A1 to A5 contain:</p>
+
+        <div class="code-example">
+          <code>10, Apple, 30, [Blank], 40</code>
+        </div>
+
+        <p>Formula:</p>
+
+        <div class="code-example">
+          <code>=COUNTA(A1:A5)</code>
+        </div>
+
+        <p>
+          Result: <span class="highlight">4</span>
+        </p>
+
+        <p>
+          COUNTA counts all four non-empty cells, including
+          the text entry Apple.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>5. MAX Function</h2>
+
+      <p>
+        MAX returns the largest numerical value in a group of numbers.
+      </p>
+
+      <div class="info-card">
+        <h3>Syntax</h3>
+
+        <div class="code-example">
+          <code>=MAX(number1, [number2], ...)</code>
+        </div>
+
+        <h3>Example</h3>
+
+        <p>Marks: 65, 89, 92, 78, 85</p>
+
+        <div class="code-example">
+          <code>=MAX(65,89,92,78,85)</code>
+        </div>
+
+        <p>
+          Result: <span class="highlight">92</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6. MIN Function</h2>
+
+      <p>
+        MIN returns the smallest numerical value in a group of numbers.
+      </p>
+
+      <div class="info-card">
+        <h3>Syntax</h3>
+
+        <div class="code-example">
+          <code>=MIN(number1, [number2], ...)</code>
+        </div>
+
+        <h3>Example</h3>
+
+        <p>Marks: 65, 89, 92, 78, 85</p>
+
+        <div class="code-example">
+          <code>=MIN(65,89,92,78,85)</code>
+        </div>
+
+        <p>
+          Result: <span class="highlight">65</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>7. Understanding All Five Functions Together</h2>
+
+      <p>
+        Consider the following student marks:
+      </p>
+
+      <div class="spreadsheet">
+        <table>
+          <tr>
+            <th>Student</th>
+            <th>Marks</th>
+          </tr>
+          <tr>
+            <td>Asha</td>
+            <td>85</td>
+          </tr>
+          <tr>
+            <td>Ravi</td>
+            <td>92</td>
+          </tr>
+          <tr>
+            <td>Meena</td>
+            <td>78</td>
+          </tr>
+          <tr>
+            <td>Arjun</td>
+            <td>65</td>
+          </tr>
+          <tr>
+            <td>Priya</td>
+            <td>90</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <h3>Try These Formulas</h3>
+
+        <div class="code-example">
+          <code>=AVERAGE(B2:B6)</code>
+        </div>
+        <p>Average marks = 82</p>
+
+        <div class="code-example">
+          <code>=COUNT(B2:B6)</code>
+        </div>
+        <p>Number of numeric entries = 5</p>
+
+        <div class="code-example">
+          <code>=COUNTA(A2:A6)</code>
+        </div>
+        <p>Number of non-empty student names = 5</p>
+
+        <div class="code-example">
+          <code>=MAX(B2:B6)</code>
+        </div>
+        <p>Highest marks = 92</p>
+
+        <div class="code-example">
+          <code>=MIN(B2:B6)</code>
+        </div>
+        <p>Lowest marks = 65</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>8. Difference Between COUNT and COUNTA</h2>
+
+      <p>
+        This is an important difference to remember.
+      </p>
+
+      <div class="spreadsheet">
+        <table>
+          <tr>
+            <th>Function</th>
+            <th>What It Counts</th>
+          </tr>
+          <tr>
+            <td>COUNT</td>
+            <td>Cells containing numbers</td>
+          </tr>
+          <tr>
+            <td>COUNTA</td>
+            <td>All non-empty cells</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <p>
+          Example: If a range contains 10, Apple, 20 and one blank cell:
+        </p>
+
+        <p>
+          <span class="highlight">COUNT = 2</span>
+        </p>
+
+        <p>
+          <span class="highlight">COUNTA = 3</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>📝 Your Practice Task</h2>
+
+      <div class="practice-box">
+        <h3>Create a Student Performance Report</h3>
+
+        <p>Enter the following information in Excel:</p>
+
+        <div class="spreadsheet">
+          <table>
+            <tr>
+              <th>Student</th>
+              <th>Marks</th>
+            </tr>
+            <tr>
+              <td>Asha</td>
+              <td>85</td>
+            </tr>
+            <tr>
+              <td>Ravi</td>
+              <td>92</td>
+            </tr>
+            <tr>
+              <td>Meena</td>
+              <td>78</td>
+            </tr>
+            <tr>
+              <td>Arjun</td>
+              <td>65</td>
+            </tr>
+            <tr>
+              <td>Priya</td>
+              <td>90</td>
+            </tr>
+          </table>
+        </div>
+
+        <h3 style="margin-top:22px;">Practice Checklist</h3>
+
+        <ul class="task-list">
+          <li><label><input type="checkbox"> Enter all five student names.</label></li>
+          <li><label><input type="checkbox"> Enter their marks.</label></li>
+          <li><label><input type="checkbox"> Calculate average marks using AVERAGE.</label></li>
+          <li><label><input type="checkbox"> Count numeric marks using COUNT.</label></li>
+          <li><label><input type="checkbox"> Count student names using COUNTA.</label></li>
+          <li><label><input type="checkbox"> Find the highest marks using MAX.</label></li>
+          <li><label><input type="checkbox"> Find the lowest marks using MIN.</label></li>
+          <li><label><input type="checkbox"> Save your file as Student Performance Report.xlsx.</label></li>
+        </ul>
+
+        <p style="margin-top:15px;">
+          <span class="highlight">Challenge:</span>
+          Add another student and check how all five formulas
+          respond to the updated data.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Test Your Knowledge</h2>
+
+      <p>Answer all five questions.</p>
+
+      <form id="excelQuiz">
+
+        <div class="quiz-question">
+          <p>1. Which function calculates the average of numbers?</p>
+          <label><input type="radio" name="q1" value="a"> COUNT</label>
+          <label><input type="radio" name="q1" value="b"> AVERAGE</label>
+          <label><input type="radio" name="q1" value="c"> MAX</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>2. Which function counts cells containing numeric values?</p>
+          <label><input type="radio" name="q2" value="a"> COUNTA</label>
+          <label><input type="radio" name="q2" value="b"> MIN</label>
+          <label><input type="radio" name="q2" value="c"> COUNT</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>3. What does COUNTA count?</p>
+          <label><input type="radio" name="q3" value="a"> Only numbers</label>
+          <label><input type="radio" name="q3" value="b"> Non-empty cells</label>
+          <label><input type="radio" name="q3" value="c"> Only blank cells</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>4. Which function finds the largest number?</p>
+          <label><input type="radio" name="q4" value="a"> MAX</label>
+          <label><input type="radio" name="q4" value="b"> MIN</label>
+          <label><input type="radio" name="q4" value="c"> AVERAGE</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>5. What is the result of =MIN(12,8,20,5)?</p>
+          <label><input type="radio" name="q5" value="a"> 20</label>
+          <label><input type="radio" name="q5" value="b"> 12</label>
+          <label><input type="radio" name="q5" value="c"> 5</label>
+        </div>
+
+        <button type="submit" class="main-btn">Submit Answers</button>
+        <button type="button" class="main-btn" id="retryBtn">Try Again</button>
+
+        <div id="quizResult" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <div class="navigation">
+      <a href="excel-lesson3.html" class="nav-btn">← Previous Lesson</a>
+      <a href="excel-lesson5.html" class="nav-btn">Next Lesson →</a>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 SkillSaathi | Learn. Practice. Grow.
+  </footer>
+
+  <script>
+    const quiz = document.getElementById("excelQuiz");
+    const result = document.getElementById("quizResult");
+    const retryBtn = document.getElementById("retryBtn");
+
+    const answers = {
+      q1: "b",
+      q2: "c",
+      q3: "b",
+      q4: "a",
+      q5: "c"
+    };
+
+    quiz.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let score = 0;
+      let attempted = 0;
+
+      for (let question in answers) {
+        const selected = quiz.querySelector(
+          `input[name="${question}"]:checked`
+        );
+
+        if (selected) {
+          attempted++;
+
+          if (selected.value === answers[question]) {
+            score++;
+          }
+        }
+      }
+
+      if (attempted < 5) {
+        result.textContent =
+          "Please answer all 5 questions before submitting.";
+        return;
+      }
+
+      result.textContent =
+        `You scored ${score} out of 5! ` +
+        (score >= 4
+          ? "Excellent work! You are ready for the next lesson."
+          : "Good effort! Review the lesson and try again.");
+    });
+
+    retryBtn.addEventListener("click", function() {
+      quiz.reset();
+      result.textContent = "";
+    });
+  </script>
+
+</body>
+</html>

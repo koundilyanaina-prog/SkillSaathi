@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 11 - Pivot Tables and Pivot Charts | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#171717;color:#eee;line-height:1.7;padding:25px 16px}
+.container{max-width:1000px;margin:auto}
+.top-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:30px}
+.back-link{color:#e5bd55;text-decoration:none;font-weight:bold}
+.lesson-number{color:#e5bd55;font-size:14px;font-weight:bold;letter-spacing:2px}
+h1{color:#f0c75e;font-size:34px;margin:12px 0}
+h2{color:#f0c75e;margin-bottom:14px;font-size:23px}
+h3{color:#e5bd55;margin:18px 0 8px}
+p{color:#ccc;margin-bottom:12px}
+.intro{font-size:17px;color:#bdbdbd;margin-bottom:25px}
+.card{background:#222;border:1px solid #39342a;border-radius:14px;padding:25px;margin:22px 0}
+.example{background:#29261f;border-left:4px solid #e5bd55;padding:15px;border-radius:7px;margin:15px 0}
+.formula{display:block;background:#151515;border:1px solid #51452a;padding:13px;border-radius:7px;margin:10px 0;overflow-x:auto;white-space:nowrap;color:#f4d47b;font-family:Consolas,monospace}
+.tip{background:#302b1d;border:1px solid #68572c;padding:15px;border-radius:8px;color:#f0d58b;margin:15px 0}
+ul,ol{padding-left:22px;color:#ccc}
+li{margin:8px 0}
+.table-wrap{overflow-x:auto;margin:15px 0}
+table{width:100%;border-collapse:collapse;min-width:450px;background:transparent}
+th,td{border:1px solid #51472f;padding:11px;text-align:left}
+th{background:#39301c;color:#f0c75e}
+td{color:#ddd}
+.practice-list{list-style:none;padding:0}
+.practice-list li::before{content:"✓ ";color:#e5bd55;font-weight:bold}
+.quiz-question,.question{background:#292929;border:1px solid #444039;padding:17px;border-radius:9px;margin:16px 0}
+.quiz-question p,.question p{color:#fff;font-weight:bold}
+.quiz-question label,.question label{display:block;color:#ccc;margin:9px 0;cursor:pointer}
+.quiz-question input,.question input{accent-color:#e5bd55;margin-right:8px}
+button{background:#e5bd55;color:#191919;border:0;border-radius:7px;padding:12px 21px;font-weight:bold;font-size:15px;cursor:pointer;margin:8px 5px 8px 0}
+button:hover{background:#f4d47b}
+#quizResult,#result{margin-top:15px;font-weight:bold;font-size:17px}
+.navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:30px}
+.navigation a{text-decoration:none;background:#302b1d;color:#f0c75e;border:1px solid #68572c;border-radius:8px;padding:12px 17px;font-weight:bold}
+.navigation a:hover{background:#42371f}
+@media(max-width:600px){h1{font-size:27px}.card{padding:18px}.navigation{flex-direction:column}.navigation a{text-align:center}}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+<a href="../excel.html" class="back-link">← Back to Excel Course</a>
+<span class="lesson-number">LESSON 11 · DATA ANALYSIS</span>
+</div>
+
+<main class="container">
+
+<h1>Pivot Tables and Pivot Charts</h1>
+<p class="intro">Learn how to summarize large amounts of data, create reports and discover useful insights with Pivot Tables.</p>
+
+<section class="card">
+  <h2>🎯 What You Will Learn</h2>
+  <ul>
+    <li>What is a Pivot Table?</li>
+    <li>Why do we use Pivot Tables?</li>
+    <li>How to create a Pivot Table.</li>
+    <li>Understanding Rows, Columns, Values and Filters.</li>
+    <li>How to summarize and analyze data.</li>
+    <li>How to create a Pivot Chart.</li>
+    <li>How to refresh Pivot Table data.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>1. What is a Pivot Table?</h2>
+  <p>A Pivot Table is an Excel tool used to summarize, organize and analyze large datasets quickly.</p>
+  <p>Instead of manually calculating totals or preparing separate reports, a Pivot Table can summarize information automatically.</p>
+
+  <div class="example">
+    <strong>Example:</strong>
+    <p>Imagine a company has 500 sales records. It wants to know:</p>
+    <ul>
+      <li>Total sales by each employee.</li>
+      <li>Total sales by each city.</li>
+      <li>Which product generated the highest sales?</li>
+      <li>How much sales happened in each month?</li>
+    </ul>
+    A Pivot Table can help answer these questions quickly.
+  </div>
+</section>
+
+<section class="card">
+  <h2>2. Why Use Pivot Tables?</h2>
+  <ul>
+    <li><strong>Save time:</strong> Summarize large datasets quickly.</li>
+    <li><strong>Easy analysis:</strong> Compare different categories.</li>
+    <li><strong>Flexible reports:</strong> Rearrange data without changing the original dataset.</li>
+    <li><strong>Automatic calculations:</strong> Calculate Sum, Count, Average and more.</li>
+    <li><strong>Better decisions:</strong> Identify patterns and trends.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>3. Understand the Source Data</h2>
+  <p>Before creating a Pivot Table, your data should have clear column headings and organized records.</p>
+
+  <table>
+    <tr>
+      <th>Employee</th>
+      <th>City</th>
+      <th>Product</th>
+      <th>Sales</th>
+    </tr>
+    <tr><td>Aman</td><td>Delhi</td><td>Laptop</td><td>50000</td></tr>
+    <tr><td>Riya</td><td>Mumbai</td><td>Phone</td><td>20000</td></tr>
+    <tr><td>Aman</td><td>Delhi</td><td>Phone</td><td>15000</td></tr>
+    <tr><td>Neha</td><td>Patna</td><td>Laptop</td><td>45000</td></tr>
+    <tr><td>Riya</td><td>Mumbai</td><td>Laptop</td><td>40000</td></tr>
+  </table>
+
+  <div class="tip">
+    💡 <strong>Important:</strong> Keep one heading in each column. Avoid blank rows and blank columns inside your dataset.
+  </div>
+</section>
+
+<section class="card">
+  <h2>4. How to Create a Pivot Table</h2>
+  <p>Follow these steps in Microsoft Excel:</p>
+  <ol>
+    <li>Open your Excel workbook.</li>
+    <li>Select any cell inside your dataset.</li>
+    <li>Go to the <strong>Insert</strong> tab.</li>
+    <li>Click <strong>PivotTable</strong>.</li>
+    <li>Check the selected table or data range.</li>
+    <li>Choose New Worksheet or Existing Worksheet.</li>
+    <li>Click OK.</li>
+    <li>A blank Pivot Table and PivotTable Fields panel will appear.</li>
+  </ol>
+  <div class="example">
+    <strong>Remember:</strong> You can also convert your source data into an Excel Table using Ctrl + T before creating a Pivot Table.
+  </div>
+</section>
+
+<section class="card">
+  <h2>5. Understanding Pivot Table Fields</h2>
+  <p>Pivot Tables have four important areas:</p>
+
+  <h3>Rows</h3>
+  <p>Displays categories vertically, such as Employee names or City names.</p>
+
+  <h3>Columns</h3>
+  <p>Displays categories horizontally to help compare information.</p>
+
+  <h3>Values</h3>
+  <p>Contains numerical calculations such as Sum, Count and Average.</p>
+
+  <h3>Filters</h3>
+  <p>Allows you to display data for selected categories only.</p>
+
+  <div class="example">
+    <strong>Example: Total Sales by Employee</strong>
+    <ul>
+      <li>Rows → Employee</li>
+      <li>Values → Sales</li>
+      <li>Columns → Leave empty</li>
+      <li>Filters → City (optional)</li>
+    </ul>
+  </div>
+</section>
+
+<section class="card">
+  <h2>6. Summarize Data with Pivot Tables</h2>
+  <p>When you drag the Sales field into Values, Excel usually calculates the Sum of Sales.</p>
+
+  <table>
+    <tr>
+      <th>Employee</th>
+      <th>Total Sales</th>
+    </tr>
+    <tr><td>Aman</td><td>65,000</td></tr>
+    <tr><td>Riya</td><td>60,000</td></tr>
+    <tr><td>Neha</td><td>45,000</td></tr>
+    <tr><th>Grand Total</th><th>1,70,000</th></tr>
+  </table>
+
+  <p>You can change the calculation by opening Value Field Settings and choosing:</p>
+  <ul>
+    <li>Sum</li>
+    <li>Count</li>
+    <li>Average</li>
+    <li>Maximum</li>
+    <li>Minimum</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>7. What is a Pivot Chart?</h2>
+  <p>A Pivot Chart is a chart connected to a Pivot Table. It helps present summarized information visually.</p>
+
+  <p>You can create different types of charts, such as:</p>
+  <ul>
+    <li>Column Chart – Compare sales between employees.</li>
+    <li>Bar Chart – Compare different categories.</li>
+    <li>Line Chart – Show changes over time.</li>
+    <li>Pie Chart – Show proportions of a total.</li>
+  </ul>
+
+  <h3>Steps to Create a Pivot Chart</h3>
+  <ol>
+    <li>Click anywhere inside your Pivot Table.</li>
+    <li>Go to Insert or PivotTable Analyze tab.</li>
+    <li>Select PivotChart.</li>
+    <li>Choose a chart type.</li>
+    <li>Click OK.</li>
+    <li>Customize the chart title, colours and labels.</li>
+  </ol>
+</section>
+
+<section class="card">
+  <h2>8. Refresh a Pivot Table</h2>
+  <p>If you add or change information in the source data, your Pivot Table may need to be refreshed.</p>
+
+  <ol>
+    <li>Click anywhere inside the Pivot Table.</li>
+    <li>Right-click and select Refresh.</li>
+    <li>Alternatively, use PivotTable Analyze → Refresh.</li>
+  </ol>
+
+  <div class="tip">
+    💡 <strong>Tip:</strong> Refresh updates the Pivot Table using its current source range. If new records are outside that range, you may need to change the data source or use an Excel Table that expands automatically.
+  </div>
+</section>
+
+<section class="card">
+  <h2>📝 Practical Activity</h2>
+  <p><strong>Project: Create an Employee Sales Report</strong></p>
+
+  <div class="practice-list">
+    <p>Use the sample sales data from this lesson and complete these tasks:</p>
+    <ol>
+      <li>Create a Pivot Table.</li>
+      <li>Show total sales by employee.</li>
+      <li>Show total sales by city.</li>
+      <li>Calculate average sales.</li>
+      <li>Create a Pivot Chart for employee sales.</li>
+      <li>Refresh the Pivot Table after adding a new record.</li>
+    </ol>
+  </div>
+
+  <div class="tip">
+    🌱 <strong>Challenge:</strong> Create a report that compares sales by employee and product.
+  </div>
+</section>
+
+<section class="card">
+  <h2>🧠 Lesson 11 Quiz</h2>
+  <p>Answer all 5 questions and test what you have learned.</p>
+
+  <form id="quizForm">
+
+    <div class="question">
+      <p>1. What is the main purpose of a Pivot Table?</p>
+      <label><input type="radio" name="q1" value="a"> To draw pictures</label>
+      <label><input type="radio" name="q1" value="b"> To summarize and analyze data</label>
+      <label><input type="radio" name="q1" value="c"> To write paragraphs</label>
+      <label><input type="radio" name="q1" value="d"> To change computer settings</label>
+    </div>
+
+    <div class="question">
+      <p>2. Which Pivot Table area displays categories vertically?</p>
+      <label><input type="radio" name="q2" value="a"> Values</label>
+      <label><input type="radio" name="q2" value="b"> Filters</label>
+      <label><input type="radio" name="q2" value="c"> Rows</label>
+      <label><input type="radio" name="q2" value="d"> Columns</label>
+    </div>
+
+    <div class="question">
+      <p>3. Where do you place the Sales field to calculate total sales?</p>
+      <label><input type="radio" name="q3" value="a"> Values</label>
+      <label><input type="radio" name="q3" value="b"> Rows</label>
+      <label><input type="radio" name="q3" value="c"> Filters</label>
+      <label><input type="radio" name="q3" value="d"> Columns</label>
+    </div>
+
+    <div class="question">
+      <p>4. What is a Pivot Chart used for?</p>
+      <label><input type="radio" name="q4" value="a"> Typing formulas</label>
+      <label><input type="radio" name="q4" value="b"> Deleting records</label>
+      <label><input type="radio" name="q4" value="c"> Creating passwords</label>
+      <label><input type="radio" name="q4" value="d"> Visualizing summarized data</label>
+    </div>
+
+    <div class="question">
+      <p>5. Which option updates a Pivot Table after source data changes?</p>
+      <label><input type="radio" name="q5" value="a"> Delete</label>
+      <label><input type="radio" name="q5" value="b"> Refresh</label>
+      <label><input type="radio" name="q5" value="c"> Rename</label>
+      <label><input type="radio" name="q5" value="d"> Print</label>
+    </div>
+
+    <button type="submit">Submit Answers</button>
+    <button type="button" class="secondary" onclick="resetQuiz()">Try Again</button>
+  </form>
+
+  <div id="result"></div>
+</section>
+
+<nav class="navigation">
+  <a href="excel-lesson10.html">← Previous Lesson</a>
+  <a href="excel-lesson12.html">Next Lesson →</a>
+</nav>
+
+</main>
+
+
+
+<script>
+const correctAnswers = {
+  q1: "b",
+  q2: "c",
+  q3: "a",
+  q4: "d",
+  q5: "b"
+};
+
+document.getElementById("quizForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let score = 0;
+  let unanswered = [];
+
+  for (let question in correctAnswers) {
+    const selected = document.querySelector(
+      'input[name="' + question + '"]:checked'
+    );
+
+    if (!selected) {
+      unanswered.push(question);
+    } else if (selected.value === correctAnswers[question]) {
+      score++;
+    }
+  }
+
+  const result = document.getElementById("result");
+  result.style.display = "block";
+
+  if (unanswered.length > 0) {
+    result.style.background = "#292929";
+    result.style.color = "#f0c75e";
+    result.textContent = "Please answer all 5 questions before submitting.";
+    return;
+  }
+
+  if (score >= 4) {
+    result.style.background = "#302b1d";
+    result.style.color = "#f0c75e";
+    result.innerHTML =
+      "🎉 Excellent work! You scored " + score +
+      "/5. You have understood Pivot Tables and Pivot Charts!";
+  } else {
+    result.style.background = "#292929";
+    result.style.color = "#eee";
+    result.innerHTML =
+      "You scored " + score +
+      "/5. Keep learning and try again. You can do it! 🌱";
+  }
+});
+
+function resetQuiz() {
+  document.getElementById("quizForm").reset();
+  const result = document.getElementById("result");
+  result.style.display = "none";
+  result.textContent = "";
+}
+</script>
+
+</body>
+</html>

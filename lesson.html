@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Playground | SkillSaathi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson.js" defer></script>
+  <style>
+    
+.playground {
+  max-width: 1000px;
+  margin: 45px auto;
+  padding: 28px;
+}
+
+.playground h1,
+.playground h2 {
+  margin-bottom: 14px;
+  color: #f5f3ff;
+}
+
+.playground h1 {
+  font-size: clamp(30px, 5vw, 46px);
+  letter-spacing: -1px;
+}
+
+.playground p {
+  margin-bottom: 16px;
+  color: #a5acc8;
+}
+
+.editor {
+  display: block;
+  width: 100%;
+  min-height: 220px;
+  padding: 18px;
+  border: 1px solid #39335d;
+  border-radius: 14px;
+  background: #0b0d1b;
+  color: #c4b5fd;
+  font: 15px/1.7 Consolas, monospace;
+  resize: vertical;
+}
+
+.editor:focus {
+  outline: 2px solid #8b78ef;
+  outline-offset: 2px;
+}
+
+.run-btn {
+  margin: 14px 10px 24px 0;
+  padding: 12px 20px;
+  background: #a78bfa;
+  color: #100c24;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.run-btn:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+
+.output {
+  display: block;
+  width: 100%;
+  min-height: 180px;
+  padding: 20px;
+  background: #ffffff;
+  color: #202020;
+  border: 1px solid #39335d;
+  border-radius: 14px;
+  overflow-wrap: anywhere;
+}
+
+.practice-box {
+  margin-top: 30px;
+  padding: 26px;
+  border: 1px solid #39335d;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #171b33, #111427);
+  color: #f5f3ff;
+}
+
+.practice-box h2 {
+  color: #c4b5fd;
+}
+
+.practice-box p {
+  color: #b5bad4;
+}
+
+#feedback {
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+#feedback.success {
+  color: #86efac;
+}
+
+#feedback.error {
+  color: #fca5a5;
+}
+
+@media (max-width: 700px) {
+  .playground {
+    margin: 24px auto;
+    padding: 18px;
+  }
+
+  .practice-box {
+    padding: 20px;
+  }
+
+  .run-btn {
+    margin-bottom: 16px;
+  }
+}
+
+     </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">Skill<span>Saathi</span></a>
+    <a href="index.html">← Back to Home</a>
+  </header>
+
+  <main class="playground">
+    <p class="eyebrow">LESSON 01 · HTML BASICS</p>
+    <h1>Welcome to HTML Playground!</h1>
+    <p>Write HTML, run your code and see what happens.</p>
+
+    <h2>Your code</h2>
+
+    <textarea id="codeEditor" class="editor" spellcheck="false"><h1>Hello, Learner!</h1>
+<p>I am learning HTML on SkillSaathi.</p>
+<button>Keep Learning</button></textarea>
+
+    <button id="runBtn" class="run-btn">▶ Run Code</button>
+    <button id="clearBtn" type="button" class="run-btn">✖ Clear Output</button>
+    <button id="resetBtn" type="button" class="run-btn">↺ Reset Code</button>
+    <h2>Output</h2>
+ <iframe
+  id="preview"
+  class="output"
+  title="HTML code output"
+  sandbox=""
+  style="width:100%; display:none;"
+></iframe>
+    <section class="practice-box">
+  <h2>🎯 Practice Challenge</h2>
+ 
+<p>
+  Apna naam dikhane wali ek heading banao.
+  Example: <strong>My name is YourName!</strong>
+</p>
+
+<button id="hintBtn" class="run-btn" type="button">
+  Show Hint
+</button>
+
+<p id="hintText" hidden>
+  Hint: &lt;h1&gt;My name is YourName!&lt;/h1&gt;
+</p>
+
+<button id="checkBtn" class="run-btn" type="button">
+  Check My Answer
+</button>
+
+<p id="feedback" aria-live="polite"></p>
+</section>
+  </main>
+</body>
+</html>

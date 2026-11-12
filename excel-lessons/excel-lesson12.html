@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 12 | Sorting, Filtering & Data Management - SkillSaathi</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#171717;
+  color:#eee;
+  line-height:1.7;
+  padding:20px;
+}
+.container{max-width:950px;margin:auto}
+header{
+  background:#222;
+  border:1px solid #39342a;
+  border-radius:14px;
+  padding:25px;
+  margin-bottom:22px;
+}
+.brand{color:#f0c75e;font-weight:bold;margin-bottom:12px}
+.tag{
+  display:inline-block;
+  background:#39301c;
+  color:#f0c75e;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:12px;
+  margin-bottom:12px;
+}
+h1{color:#f0c75e;font-size:30px;margin-bottom:10px}
+h2{color:#f0c75e;font-size:22px;margin-bottom:12px}
+h3{color:#f0c75e;margin:14px 0 8px}
+p{color:#ccc;margin-bottom:12px}
+.card{
+  background:#222;
+  border:1px solid #39342a;
+  border-radius:12px;
+  padding:22px;
+  margin-bottom:18px;
+}
+.example{
+  background:#29261f;
+  border-left:4px solid #e5bd55;
+  padding:15px;
+  border-radius:7px;
+  margin:14px 0;
+}
+.formula{
+  background:#151515;
+  border:1px solid #51452a;
+  color:#f4d47b;
+  padding:12px;
+  border-radius:7px;
+  overflow-x:auto;
+  margin:10px 0;
+  font-family:Consolas,monospace;
+}
+.tip{
+  background:#302b1d;
+  border:1px solid #68572c;
+  color:#f0d58b;
+  padding:13px;
+  border-radius:8px;
+  margin:14px 0;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0;
+  min-width:480px;
+}
+.table-wrap{overflow-x:auto}
+th,td{
+  border:1px solid #51452a;
+  padding:10px;
+  text-align:left;
+}
+th{background:#39301c;color:#f0c75e}
+tr:nth-child(even){background:#292929}
+ul,ol{padding-left:23px;color:#ccc;margin:10px 0}
+li{margin-bottom:7px}
+button,.nav a{
+  background:#e5bd55;
+  color:#191919;
+  border:none;
+  padding:11px 17px;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+  margin:5px 4px 5px 0;
+}
+button:hover,.nav a:hover{background:#f0d58b}
+.quiz{
+  background:#292929;
+  border:1px solid #444039;
+  padding:16px;
+  border-radius:9px;
+  margin:14px 0;
+}
+.quiz label{
+  display:block;
+  color:#ddd;
+  margin:8px 0;
+  cursor:pointer;
+}
+.quiz input{margin-right:8px;accent-color:#e5bd55}
+.feedback{margin-top:8px;font-weight:bold}
+.nav{
+  background:#302b1d;
+  border:1px solid #68572c;
+  border-radius:10px;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.nav a{background:#302b1d;color:#f0c75e;border:1px solid #68572c}
+.nav a:hover{background:#51452a}
+footer{text-align:center;color:#999;margin:25px 0 10px;font-size:13px}
+@media(max-width:600px){
+  body{padding:12px}
+  h1{font-size:24px}
+  .card{padding:16px}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div class="brand">✦ SkillSaathi | Learn · Practice · Grow</div>
+  <span class="tag">EXCEL & OFFICE · LESSON 12</span>
+  <h1>Sorting, Filtering & Data Management</h1>
+  <p>Learn how to organize large datasets, find information quickly, remove duplicates and manage records professionally in Excel.</p>
+  <p>⏱ 30–40 Minutes &nbsp; | &nbsp; Intermediate Level &nbsp; | &nbsp; 5 Questions Quiz</p>
+</header>
+
+<section class="card">
+<h2>1. What is Data Management?</h2>
+<p>Data management means organizing, arranging, checking and maintaining information so that it becomes easy to understand and use.</p>
+<p>For example, an office may have hundreds of employee records. Excel helps arrange these records by name, department, salary or joining date.</p>
+<div class="example">
+<strong>Common uses:</strong>
+<ul>
+<li>Organizing student marksheets.</li>
+<li>Managing employee records.</li>
+<li>Preparing sales reports.</li>
+<li>Finding pending payments.</li>
+<li>Maintaining customer lists.</li>
+</ul>
+</div>
+</section>
+
+<section class="card">
+<h2>2. Sorting Data</h2>
+<p>Sorting means arranging data in a particular order.</p>
+<h3>Two common sorting orders</h3>
+<ul>
+<li><strong>Ascending:</strong> A to Z, smallest to largest, oldest to newest.</li>
+<li><strong>Descending:</strong> Z to A, largest to smallest, newest to oldest.</li>
+</ul>
+
+<div class="table-wrap">
+<table>
+<tr><th>Student</th><th>Marks</th><th>City</th></tr>
+<tr><td>Riya</td><td>85</td><td>Ranchi</td></tr>
+<tr><td>Aman</td><td>65</td><td>Patna</td></tr>
+<tr><td>Neha</td><td>92</td><td>Delhi</td></tr>
+<tr><td>Rahul</td><td>74</td><td>Ranchi</td></tr>
+</table>
+</div>
+
+<h3>How to sort marks from highest to lowest</h3>
+<ol>
+<li>Select any cell inside your dataset.</li>
+<li>Open the Data tab.</li>
+<li>Click Sort.</li>
+<li>Select the Marks column.</li>
+<li>Choose Largest to Smallest.</li>
+<li>Click OK.</li>
+</ol>
+<div class="tip">Important: Select the complete dataset or use Excel's Sort feature carefully. Sorting only one column can mix up student names and their marks.</div>
+</section>
+
+<section class="card">
+<h2>3. Filtering Data</h2>
+<p>Filtering displays only the records that match your selected conditions. Other records are temporarily hidden, not deleted.</p>
+<h3>Example</h3>
+<p>Suppose you want to see only students from Ranchi.</p>
+<ol>
+<li>Select your data including the headings.</li>
+<li>Go to the Data tab.</li>
+<li>Click Filter.</li>
+<li>Click the dropdown arrow in the City heading.</li>
+<li>Uncheck Select All and select Ranchi.</li>
+<li>Click OK.</li>
+</ol>
+<div class="example">
+<strong>Result:</strong> Only Riya and Rahul will be displayed because their city is Ranchi.
+</div>
+<div class="tip">To show all records again, open the filter dropdown and choose Clear Filter, or turn Filter off.</div>
+</section>
+
+<section class="card">
+<h2>4. Sort vs Filter</h2>
+<div class="table-wrap">
+<table>
+<tr><th>Sorting</th><th>Filtering</th></tr>
+<tr><td>Changes the order of records.</td><td>Shows selected records only.</td></tr>
+<tr><td>Records remain visible.</td><td>Other records are temporarily hidden.</td></tr>
+<tr><td>Useful for ranking and arranging.</td><td>Useful for finding specific information.</td></tr>
+<tr><td>Example: Highest salary first.</td><td>Example: Only HR department.</td></tr>
+</table>
+</div>
+</section>
+
+<section class="card">
+<h2>5. Remove Duplicate Records</h2>
+<p>Duplicate records are repeated entries in a dataset. Excel can identify and remove them.</p>
+<h3>Steps</h3>
+<ol>
+<li>Select the complete dataset.</li>
+<li>Open the Data tab.</li>
+<li>Click Remove Duplicates.</li>
+<li>Select the columns you want Excel to check.</li>
+<li>Click OK.</li>
+<li>Excel will display how many duplicate values were removed.</li>
+</ol>
+<div class="tip">Always keep a backup before removing duplicates. If you select multiple columns, Excel checks the combination of those selected columns.</div>
+</section>
+
+<section class="card">
+<h2>6. Freeze Panes</h2>
+<p>Freeze Panes keeps selected rows or columns visible while you scroll through a large worksheet.</p>
+<h3>Useful options</h3>
+<ul>
+<li><strong>Freeze Top Row:</strong> Keeps the first row visible.</li>
+<li><strong>Freeze First Column:</strong> Keeps the first column visible.</li>
+<li><strong>Freeze Panes:</strong> Keeps rows above and columns to the left of the selected cell visible.</li>
+</ul>
+<h3>Example</h3>
+<p>If you want to keep the first row and first column visible, select cell B2 and go to View → Freeze Panes → Freeze Panes.</p>
+</section>
+
+<section class="card">
+<h2>7. Excel Tables for Better Data Management</h2>
+<p>Converting a normal dataset into an Excel Table makes sorting, filtering and formatting easier.</p>
+<h3>Steps to create a table</h3>
+<ol>
+<li>Select your complete dataset.</li>
+<li>Press <strong>Ctrl + T</strong>.</li>
+<li>Check My table has headers.</li>
+<li>Click OK.</li>
+</ol>
+<p>Excel Tables automatically provide filter buttons and can expand when you add new records below the table.</p>
+<div class="formula">Shortcut: Ctrl + T</div>
+</section>
+
+<section class="card">
+<h2>8. Useful Data Management Shortcuts</h2>
+<div class="table-wrap">
+<table>
+<tr><th>Shortcut</th><th>Purpose</th></tr>
+<tr><td>Ctrl + Shift + L</td><td>Turn Filter on or off</td></tr>
+<tr><td>Ctrl + T</td><td>Create an Excel Table</td></tr>
+<tr><td>Ctrl + Z</td><td>Undo an action</td></tr>
+<tr><td>Ctrl + F</td><td>Find data</td></tr>
+<tr><td>Ctrl + H</td><td>Find and Replace</td></tr>
+<tr><td>Ctrl + Home</td><td>Go to the beginning of the worksheet</td></tr>
+</table>
+</div>
+</section>
+
+<section class="card">
+<h2>9. Practical Activity</h2>
+<p>Create a small employee dataset in Excel using these headings:</p>
+<div class="table-wrap">
+<table>
+<tr><th>Employee ID</th><th>Name</th><th>Department</th><th>Salary</th><th>City</th></tr>
+<tr><td>101</td><td>Aman</td><td>Sales</td><td>22000</td><td>Patna</td></tr>
+<tr><td>102</td><td>Riya</td><td>HR</td><td>28000</td><td>Ranchi</td></tr>
+<tr><td>103</td><td>Neha</td><td>IT</td><td>35000</td><td>Delhi</td></tr>
+<tr><td>104</td><td>Rahul</td><td>Sales</td><td>25000</td><td>Patna</td></tr>
+<tr><td>105</td><td>Priya</td><td>HR</td><td>30000</td><td>Ranchi</td></tr>
+</table>
+</div>
+<h3>Your tasks</h3>
+<ul>
+<li>Sort employees by salary from highest to lowest.</li>
+<li>Filter employees from the HR department.</li>
+<li>Filter employees from Patna.</li>
+<li>Convert the dataset into an Excel Table.</li>
+<li>Freeze the top row.</li>
+</ul>
+<p><strong>Learning goal:</strong> You should be able to organize and find information in an office dataset independently.</p>
+</section>
+
+<section class="card">
+<h2>10. Knowledge Check – Quiz</h2>
+<p>Choose the correct answer for all five questions and submit your quiz.</p>
+
+<div class="quiz" data-answer="b">
+<p><strong>1. What does sorting do?</strong></p>
+<label><input type="radio" name="q1" value="a"> Deletes unwanted records</label>
+<label><input type="radio" name="q1" value="b"> Arranges data in a particular order</label>
+<label><input type="radio" name="q1" value="c"> Adds a new worksheet</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="c">
+<p><strong>2. Which feature displays only selected records?</strong></p>
+<label><input type="radio" name="q2" value="a"> Freeze Panes</label>
+<label><input type="radio" name="q2" value="b"> Remove Duplicates</label>
+<label><input type="radio" name="q2" value="c"> Filter</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="a">
+<p><strong>3. Which shortcut creates an Excel Table?</strong></p>
+<label><input type="radio" name="q3" value="a"> Ctrl + T</label>
+<label><input type="radio" name="q3" value="b"> Ctrl + P</label>
+<label><input type="radio" name="q3" value="c"> Ctrl + S</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="b">
+<p><strong>4. What does Freeze Top Row do?</strong></p>
+<label><input type="radio" name="q4" value="a"> Deletes the first row</label>
+<label><input type="radio" name="q4" value="b"> Keeps the first row visible while scrolling</label>
+<label><input type="radio" name="q4" value="c"> Sorts the first row</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="c">
+<p><strong>5. What should you do before removing duplicates?</strong></p>
+<label><input type="radio" name="q5" value="a"> Delete all headings</label>
+<label><input type="radio" name="q5" value="b"> Hide all columns</label>
+<label><input type="radio" name="q5" value="c"> Keep a backup of your data</label>
+<p class="feedback"></p>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+<p id="quiz-result" class="feedback" aria-live="polite"></p>
+</section>
+
+<div class="nav">
+<a href="../excel.html">← Back to Course</a>
+<a href="excel-lesson11.html">← Previous Lesson</a>
+<a href="excel-lesson13.html">Next Lesson →</a>
+</div>
+
+<footer>© SkillSaathi | Learn · Practice · Grow</footer>
+</div>
+
+<script>
+function checkQuiz(){
+  const questions=document.querySelectorAll(".quiz");
+  let score=0;
+  let unanswered=0;
+
+  questions.forEach((question,index)=>{
+    const selected=question.querySelector("input:checked");
+    const feedback=question.querySelector(".feedback");
+
+    if(!selected){
+      unanswered++;
+      feedback.textContent="Please select an answer.";
+      feedback.style.color="#f0c75e";
+    }else if(selected.value===question.dataset.answer){
+      score++;
+      feedback.textContent="Correct!";
+      feedback.style.color="#8bd49c";
+    }else{
+      feedback.textContent="Incorrect. Review this topic and try again.";
+      feedback.style.color="#f08b8b";
+    }
+  });
+
+  const result=document.getElementById("quiz-result");
+
+  if(unanswered>0){
+    result.textContent="Please answer all five questions.";
+    result.style.color="#f0c75e";
+  }else if(score>=4){
+    result.textContent="Excellent! You scored "+score+"/5. Quiz passed!";
+    result.style.color="#8bd49c";
+  }else{
+    result.textContent="You scored "+score+"/5. Review the lesson and try again.";
+    result.style.color="#f0c75e";
+  }
+}
+
+function resetQuiz(){
+  document.querySelectorAll(".quiz input").forEach(input=>input.checked=false);
+  document.querySelectorAll(".quiz .feedback").forEach(p=>p.textContent="");
+  document.getElementById("quiz-result").textContent="";
+}
+</script>
+
+</body>
+</html>

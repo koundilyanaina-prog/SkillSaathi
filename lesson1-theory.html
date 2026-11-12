@@ -1,0 +1,996 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Foundations | SkillSaathi</title>
+  <meta name="description" content="Learn HTML fundamentals, tags, elements, attributes, text, lists and document structure for free.">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .theory-page {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 24px;
+    }
+
+    .lesson-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .back-link {
+      color: #c4b5fd;
+      text-decoration: none;
+    }
+
+    .theory-page > h1 {
+      font-size: clamp(34px, 5vw, 52px);
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+
+    .theory-page > p {
+      color: #b5bad4;
+      line-height: 1.8;
+    }
+
+    .course-progress {
+      margin: 22px 0;
+      padding: 16px 20px;
+      border: 1px solid #39335d;
+      border-radius: 14px;
+      background: #12162a;
+      color: #c4b5fd;
+    }
+
+    .topic-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0;
+    }
+
+    .topic-nav a {
+      display: inline-block;
+      padding: 9px 13px;
+      border: 1px solid #39335d;
+      border-radius: 9px;
+      color: #d5ccff;
+      text-decoration: none;
+      background: #12162a;
+      font-size: 14px;
+    }
+
+    .topic-nav a:hover {
+      border-color: #a78bfa;
+    }
+
+    .theory-card {
+      margin: 22px 0;
+      padding: 26px;
+      border: 1px solid #39335d;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #171b33, #111427);
+      scroll-margin-top: 90px;
+    }
+
+    .theory-card h2 {
+      color: #c4b5fd;
+      margin-bottom: 15px;
+    }
+
+    .theory-card h3 {
+      color: #e3dcff;
+      margin: 22px 0 10px;
+    }
+
+    .theory-card p,
+    .theory-card li {
+      color: #c0c5dc;
+      line-height: 1.85;
+    }
+
+    .theory-card p {
+      margin: 12px 0;
+    }
+
+    .theory-card li {
+      margin: 8px 0;
+    }
+
+    .code-example {
+      margin: 16px 0;
+      padding: 18px;
+      border: 1px solid #39335d;
+      border-radius: 12px;
+      background: #090b18;
+      color: #c4b5fd;
+      font: 14px/1.9 Consolas, monospace;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      overflow-x: auto;
+    }
+
+    .note {
+      padding: 15px;
+      margin: 16px 0;
+      border-left: 3px solid #a78bfa;
+      border-radius: 7px;
+      background: #211c40;
+      color: #e1d8ff;
+      line-height: 1.8;
+    }
+
+    .practice-link {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 14px 22px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #a78bfa, #7c65ed);
+      color: #100c24;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .practice-link:hover {
+      background: #c4b5fd;
+    }
+
+    .quiz-question {
+      margin: 24px 0;
+      padding-top: 16px;
+      border-top: 1px solid #39335d;
+    }
+
+    .quiz-option {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 13px;
+      text-align: left;
+      border: 1px solid #39335d;
+      border-radius: 10px;
+      background: #0b0d1b;
+      color: #f5f3ff;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .quiz-option:hover,
+    .quiz-option:focus-visible {
+      border-color: #a78bfa;
+      outline: 2px solid #a78bfa;
+      outline-offset: 2px;
+    }
+
+    .quiz-option:disabled {
+      cursor: default;
+      opacity: 0.8;
+    }
+
+    .quiz-feedback {
+      min-height: 24px;
+      font-weight: 700;
+    }
+
+    .tag-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    .tag-table th,
+    .tag-table td {
+      padding: 12px;
+      border: 1px solid #39335d;
+      text-align: left;
+      color: #c0c5dc;
+      line-height: 1.7;
+      vertical-align: top;
+    }
+
+    .tag-table th {
+      color: #e1d8ff;
+      background: #211c40;
+    }
+
+    .tag-table code {
+      color: #c4b5fd;
+    }
+
+    @media (max-width: 600px) {
+      .theory-page {
+        margin: 20px auto;
+        padding: 16px;
+      }
+
+      .theory-card {
+        padding: 19px;
+      }
+
+      .tag-table th,
+      .tag-table td {
+        padding: 8px;
+        font-size: 13px;
+      }
+    }
+    .lesson-navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+}
+
+.next-lesson {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #a78bfa;
+  color: #100c24;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 9px;
+  transition: 0.3s;
+}
+
+.next-lesson:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">Skill<span>Saathi</span></a>
+
+    <nav>
+      <a href="index.html#courses"
+         data-en="All courses"
+         data-hi="सभी कोर्स">All courses</a>
+    </nav>
+
+    <button id="languageBtn" class="language-btn" type="button">हिंदी</button>
+  </header>
+
+  <main class="theory-page">
+    <div class="lesson-top">
+      <p class="eyebrow"
+         data-en="HTML FOUNDATIONS · PART 1"
+         data-hi="HTML की बुनियाद · भाग 1">HTML FOUNDATIONS · PART 1</p>
+
+      <a href="index.html#courses" class="back-link"
+         data-en="← Back to courses"
+         data-hi="← कोर्स पर वापस जाएँ">← Back to courses</a>
+    </div>
+
+    <h1 data-en="Learn HTML from the beginning"
+        data-hi="HTML बिल्कुल शुरुआत से सीखें">Learn HTML from the beginning</h1>
+
+    <p data-en="Understand what each tag does, when to use it, and how to write your first well-structured web page."
+       data-hi="समझें कि हर tag क्या करता है, उसका उपयोग कब होता है और अपना पहला सही HTML पेज कैसे बनाते हैं।">
+      Understand what each tag does, when to use it, and how to write your first well-structured web page.
+    </p>
+
+    <div class="course-progress"
+         data-en="Your goal: understand the concepts, read the examples, answer the quiz and then practise."
+         data-hi="तुम्हारा लक्ष्य: concepts समझो, examples पढ़ो, quiz हल करो और फिर practice करो।">
+      Your goal: understand the concepts, read the examples, answer the quiz and then practise.
+    </div>
+
+    <nav class="topic-nav" aria-label="Lesson topics">
+      <a href="#html-intro" data-en="HTML basics" data-hi="HTML की बुनियाद">HTML basics</a>
+      <a href="#document" data-en="Page structure" data-hi="पेज का ढाँचा">Page structure</a>
+      <a href="#tags-elements" data-en="Tags & elements" data-hi="Tags और elements">Tags & elements</a>
+      <a href="#text-tags" data-en="Text tags" data-hi="Text tags">Text tags</a>
+      <a href="#lists" data-en="Lists" data-hi="Lists">Lists</a>
+      <a href="#attributes" data-en="Attributes" data-hi="Attributes">Attributes</a>
+      <a href="#void-nesting" data-en="Nesting & elements" data-hi="Nesting और elements">Nesting & elements</a><a href="#quiz" data-en="Quiz" data-hi="Quiz">Quiz</a>
+    </nav>
+
+    <section class="theory-card" id="html-intro">
+      <h2 data-en="1. What is HTML?"
+          data-hi="1. HTML क्या है?">1. What is HTML?</h2>
+
+      <p data-en="HTML stands for HyperText Markup Language. It is the standard markup language used to structure content on web pages."
+         data-hi="HTML का पूरा नाम HyperText Markup Language है। यह वेब पेज की सामग्री को structure देने वाली standard markup language है।">
+        HTML stands for HyperText Markup Language. It is the standard markup language used to structure content on web pages.
+      </p>
+
+      <h3 data-en="What does HTML do?"
+          data-hi="HTML क्या करता है?">What does HTML do?</h3>
+
+      <ul>
+        <li data-en="It gives text a structure, such as headings and paragraphs."
+            data-hi="यह text को structure देता है, जैसे headings और paragraphs।">It gives text a structure, such as headings and paragraphs.</li>
+        <li data-en="It connects pages through links."
+            data-hi="यह links के माध्यम से अलग-अलग pages को जोड़ता है।">It connects pages through links.</li>
+        <li data-en="It places images, tables, forms and other content on a page."
+            data-hi="यह पेज पर images, tables, forms और दूसरी सामग्री जोड़ता है।">It places images, tables, forms and other content on a page.</li>
+      </ul>
+
+      <h3 data-en="HTML, CSS and JavaScript"
+          data-hi="HTML, CSS और JavaScript">HTML, CSS and JavaScript</h3>
+
+      <ul>
+        <li data-en="HTML: structures the content."
+            data-hi="HTML: सामग्री का ढाँचा बनाता है।">HTML: structures the content.</li>
+        <li data-en="CSS: controls appearance, colours, spacing and layout."
+            data-hi="CSS: appearance, colours, spacing और layout नियंत्रित करता है।">CSS: controls appearance, colours, spacing and layout.</li>
+        <li data-en="JavaScript: adds behaviour and interaction."
+            data-hi="JavaScript: behaviour और interaction जोड़ता है।">JavaScript: adds behaviour and interaction.</li>
+      </ul>
+
+      <div class="note"
+           data-en="Think of a house: HTML is its structure, CSS is its decoration, and JavaScript makes its interactive features work."
+           data-hi="घर की तरह सोचो: HTML उसका ढाँचा है, CSS उसकी सजावट है और JavaScript उसके interactive features को काम करवाता है।">
+        Think of a house: HTML is its structure, CSS is its decoration, and JavaScript makes its interactive features work.
+      </div>
+    </section>
+    
+<section class="theory-section" id="void-nesting">
+  <h2 data-en="Void Elements, Nesting & Element Types"
+      data-hi="Void Elements, Nesting और Elements के प्रकार">
+    Void Elements, Nesting & Element Types
+  </h2>
+
+  <h3 data-en="1. Void Elements"
+      data-hi="1. Void Elements क्या हैं?">
+    1. Void Elements
+  </h3>
+
+  <p data-en="Void elements do not have closing tags and cannot contain child elements. Examples: br, hr, img, input and meta."
+     data-hi="Void elements के closing tags नहीं होते और इनके अंदर दूसरे elements नहीं रखे जाते। Examples: br, hr, img, input और meta।">
+    Void elements do not have closing tags and cannot contain child elements.
+    Examples: br, hr, img, input and meta.
+  </p>
+
+  <pre><code>&lt;p&gt;First line&lt;br&gt;Second line&lt;/p&gt;
+&lt;hr&gt;
+&lt;img src="flower.jpg" alt="A flower"&gt;</code></pre>
+
+  <h3 data-en="2. Nesting Elements"
+      data-hi="2. Nesting Elements">
+    2. Nesting Elements
+  </h3>
+
+  <p data-en="Nesting means placing one element inside another. Close the inner element before closing its parent."
+     data-hi="एक element के अंदर दूसरा element रखने को nesting कहते हैं। Parent element को बंद करने से पहले inner element को बंद करो।">
+    Nesting means placing one element inside another.
+    Close the inner element before closing its parent.
+  </p>
+
+  <pre><code>&lt;p&gt;Learn &lt;strong&gt;HTML&lt;/strong&gt; today.&lt;/p&gt;</code></pre>
+
+  <h3 data-en="3. Block and Inline Elements"
+      data-hi="3. Block और Inline Elements">
+    3. Block and Inline Elements
+  </h3>
+
+  <p data-en="Block elements normally start on a new line. Examples: p, div and headings."
+     data-hi="Block elements आम तौर पर नई line से शुरू होते हैं। Examples: p, div और headings।">
+    Block elements normally start on a new line. Examples: p, div and headings.
+  </p>
+
+  <p data-en="Inline elements normally flow within text. Examples: strong, em and a."
+     data-hi="Inline elements आम तौर पर text के साथ ही रहते हैं। Examples: strong, em और a।">
+    Inline elements normally flow within text. Examples: strong, em and a.
+  </p>
+
+  <h3 data-en="Common HTML Mistakes"
+      data-hi="HTML की आम गलतियाँ">
+    Common HTML Mistakes
+  </h3>
+
+  <ul>
+    <li data-en="Forgetting a closing tag where one is required."
+        data-hi="जहाँ closing tag ज़रूरी है, उसे भूल जाना।">
+      Forgetting a closing tag where one is required.
+    </li>
+    <li data-en="Writing an image without meaningful alt text."
+        data-hi="Image में सही alt text न लिखना।">
+      Writing an image without meaningful alt text.
+    </li>
+    <li data-en="Closing nested elements in the wrong order."
+        data-hi="Nested elements को गलत क्रम में बंद करना।">
+      Closing nested elements in the wrong order.
+    </li>
+  </ul>
+</section>
+
+    <section class="theory-card" id="document">
+      <h2 data-en="2. The structure of an HTML page"
+          data-hi="2. HTML पेज का structure">2. The structure of an HTML page</h2>
+
+      <p data-en="A standard HTML document has a document declaration, an html element, a head section and a body section."
+         data-hi="एक standard HTML document में document declaration, html element, head section और body section होते हैं।">
+        A standard HTML document has a document declaration, an html element, a head section and a body section.
+      </p>
+
+      <div class="code-example">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, Learner!&lt;/h1&gt;
+    &lt;p&gt;I am learning HTML.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</div>
+
+      <table class="tag-table">
+        <thead>
+          <tr>
+            <th data-en="Code" data-hi="Code">Code</th>
+            <th data-en="Purpose" data-hi="काम">Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;!DOCTYPE html&gt;</code></td>
+            <td data-en="Tells the browser to use modern HTML standards mode. It is a declaration, not an HTML tag."
+                data-hi="Browser को modern HTML standards mode इस्तेमाल करने के लिए बताता है। यह declaration है, HTML tag नहीं।">Tells the browser to use modern HTML standards mode. It is a declaration, not an HTML tag.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;html&gt;</code></td>
+            <td data-en="The root element that contains the page."
+                data-hi="Root element जिसमें पूरा page होता है।">The root element that contains the page.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;head&gt;</code></td>
+            <td data-en="Contains metadata, the title and links to resources."
+                data-hi="इसमें metadata, title और resources के links होते हैं।">Contains metadata, the title and links to resources.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;title&gt;</code></td>
+            <td data-en="Sets the page title shown in the browser tab."
+                data-hi="Browser tab में दिखने वाला page title सेट करता है।">Sets the page title shown in the browser tab.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;body&gt;</code></td>
+            <td data-en="Contains the main content displayed on the page."
+                data-hi="इसमें page पर दिखने वाली मुख्य सामग्री होती है।">Contains the main content displayed on the page.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 data-en="Why is the title tag important?"
+          data-hi="Title tag क्यों ज़रूरी है?">Why is the title tag important?</h3>
+
+      <p data-en="The title is not the same as the visible h1 heading. It names the document in the browser tab, helps identify pages in bookmarks and may be used as a search-result title."
+         data-hi="Title और page पर दिखने वाली h1 heading एक चीज़ नहीं हैं। Title browser tab में document का नाम दिखाता है, bookmarks में page पहचानने में मदद करता है और search results में title के रूप में इस्तेमाल हो सकता है।">
+        The title is not the same as the visible h1 heading. It names the document in the browser tab, helps identify pages in bookmarks and may be used as a search-result title.
+      </p>
+
+      <div class="code-example">&lt;head&gt;
+  &lt;title&gt;My Cooking Blog&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Welcome to my blog&lt;/h1&gt;
+&lt;/body&gt;</div>
+
+      <div class="note"
+           data-en="Remember: put the title inside head. Put visible headings, paragraphs, images and buttons inside body."
+           data-hi="याद रखो: title को head के अंदर रखो। दिखाई देने वाली headings, paragraphs, images और buttons को body के अंदर रखो।">
+        Remember: put the title inside head. Put visible headings, paragraphs, images and buttons inside body.
+      </div>
+    </section>
+
+    <section class="theory-card" id="tags-elements">
+      <h2 data-en="3. Tags, elements and attributes"
+          data-hi="3. Tags, elements और attributes">3. Tags, elements and attributes</h2>
+
+      <h3 data-en="What is a tag?"
+          data-hi="Tag क्या होता है?">What is a tag?</h3>
+
+      <p data-en="A tag is markup written inside angle brackets. For example, &lt;p&gt; is an opening tag and &lt;/p&gt; is a closing tag."
+         data-hi="Tag angle brackets के अंदर लिखा markup है। उदाहरण के लिए, &lt;p&gt; opening tag है और &lt;/p&gt; closing tag है।">
+        A tag is markup written inside angle brackets. For example, &lt;p&gt; is an opening tag and &lt;/p&gt; is a closing tag.
+      </p>
+
+      <h3 data-en="What is an element?"
+          data-hi="Element क्या होता है?">What is an element?</h3>
+
+      <div class="code-example">&lt;p&gt;Welcome to SkillSaathi!&lt;/p&gt;</div>
+
+      <p data-en="In this example, the opening tag, the text and the closing tag together form a paragraph element."
+         data-hi="इस उदाहरण में opening tag, text और closing tag मिलकर एक paragraph element बनाते हैं।">
+        In this example, the opening tag, the text and the closing tag together form a paragraph element.
+      </p>
+
+      <h3 data-en="What is an attribute?"
+          data-hi="Attribute क्या होता है?">What is an attribute?</h3>
+
+      <p data-en="An attribute provides extra information or settings for an element. It is usually written in the opening tag as a name and value."
+         data-hi="Attribute किसी element के बारे में अतिरिक्त जानकारी या setting देता है। इसे आम तौर पर opening tag में name और value के रूप में लिखा जाता है।">
+        An attribute provides extra information or settings for an element. It is usually written in the opening tag as a name and value.
+      </p>
+
+      <div class="code-example">&lt;a href="https://example.com"&gt;Visit website&lt;/a&gt;</div>
+
+      <p data-en="Here, href is the attribute name and the web address is its value. The link text is what the visitor sees."
+         data-hi="यहाँ href attribute का नाम है और web address उसकी value है। Link text वह शब्द है जो visitor को दिखाई देता है।">
+        Here, href is the attribute name and the web address is its value. The link text is what the visitor sees.
+      </p>
+
+      <h3 data-en="Do all tags need a closing tag?"
+          data-hi="क्या हर tag का closing tag होता है?">Do all tags need a closing tag?</h3>
+
+      <p data-en="No. Elements such as br, hr and img are void elements. They do not have closing tags. Most text elements, such as p and h1, do have closing tags."
+         data-hi="नहीं। br, hr और img जैसे elements void elements हैं। इनके closing tags नहीं होते। p और h1 जैसे अधिकतर text elements के closing tags होते हैं।">
+        No. Elements such as br, hr and img are void elements. They do not have closing tags. Most text elements, such as p and h1, do have closing tags.
+      </p>
+    </section>
+
+    <section class="theory-card" id="text-tags">
+      <h2 data-en="4. Headings and text tags"
+          data-hi="4. Headings और text tags">4. Headings and text tags</h2>
+
+      <h3 data-en="Headings: h1 to h6"
+          data-hi="Headings: h1 से h6">Headings: h1 to h6</h3>
+
+      <p data-en="HTML provides six heading levels. h1 is the highest-level heading; h6 is the lowest. Use headings to organise content, not just to make text large."
+         data-hi="HTML में headings के छह levels होते हैं। h1 सबसे ऊँचे level की heading है और h6 सबसे निचले level की। Headings का उपयोग content व्यवस्थित करने के लिए करो, केवल text बड़ा करने के लिए नहीं।">
+        HTML provides six heading levels. h1 is the highest-level heading; h6 is the lowest. Use headings to organise content, not just to make text large.
+      </p>
+
+      <div class="code-example">&lt;h1&gt;My Website&lt;/h1&gt;
+&lt;h2&gt;About Me&lt;/h2&gt;
+&lt;h3&gt;My Hobbies&lt;/h3&gt;
+&lt;h4&gt;Reading&lt;/h4&gt;
+&lt;h5&gt;My Favourite Books&lt;/h5&gt;
+&lt;h6&gt;Book Notes&lt;/h6&gt;</div>
+
+      <h3 data-en="Paragraph: p"
+          data-hi="Paragraph: p">Paragraph: p</h3>
+
+      <p data-en="Use p for a paragraph of text. Separate paragraphs with separate p elements."
+         data-hi="Text के paragraph के लिए p इस्तेमाल करो। अलग paragraphs के लिए अलग p elements बनाओ।">
+        Use p for a paragraph of text. Separate paragraphs with separate p elements.
+      </p>
+
+      <div class="code-example">&lt;p&gt;I am learning web development.&lt;/p&gt;
+&lt;p&gt;I will practise every day.&lt;/p&gt;</div>
+
+      <h3 data-en="New line: br"
+          data-hi="नई line: br">New line: br</h3>
+
+      <p data-en="br inserts a line break within text. It has no closing tag. Use it when a line break is meaningful, such as in an address or poem."
+         data-hi="br text के बीच नई line शुरू करता है। इसका closing tag नहीं होता। इसका उपयोग वहाँ करो जहाँ line break का अर्थ हो, जैसे address या कविता में।">
+        br inserts a line break within text. It has no closing tag. Use it when a line break is meaningful, such as in an address or poem.
+      </p>
+
+      <div class="code-example">&lt;p&gt;First line&lt;br&gt;Second line&lt;/p&gt;</div>
+
+      <div class="note"
+           data-en="Do not use many br tags just to create space between sections. Use CSS margin and padding for spacing."
+           data-hi="Sections के बीच खाली जगह बनाने के लिए बहुत सारे br tags मत लगाओ। Spacing के लिए CSS margin और padding इस्तेमाल करो।">
+        Do not use many br tags just to create space between sections. Use CSS margin and padding for spacing.
+      </div>
+
+      <h3 data-en="Horizontal divider: hr"
+          data-hi="Horizontal divider: hr">Horizontal divider: hr</h3>
+
+      <p data-en="hr represents a thematic break between sections of content. Browsers usually display it as a horizontal line."
+         data-hi="hr content के दो sections के बीच thematic break दिखाता है। Browser आम तौर पर इसे horizontal line की तरह दिखाता है।">
+        hr represents a thematic break between sections of content. Browsers usually display it as a horizontal line.
+      </p>
+
+      <div class="code-example">&lt;p&gt;Chapter One&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Chapter Two&lt;/p&gt;</div>
+
+      <h3 data-en="Text emphasis and meaning"
+          data-hi="Text emphasis और meaning">Text emphasis and meaning</h3>
+
+      <table class="tag-table">
+        <thead>
+          <tr>
+            <th data-en="Tag" data-hi="Tag">Tag</th>
+            <th data-en="Use" data-hi="उपयोग">Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>&lt;strong&gt;</code></td><td data-en="Marks important text; browsers usually show it in bold." data-hi="महत्वपूर्ण text दर्शाता है; browser आम तौर पर इसे bold दिखाता है।">Marks important text; browsers usually show it in bold.</td></tr>
+          <tr><td><code>&lt;em&gt;</code></td><td data-en="Adds emphasis; browsers usually show it in italics." data-hi="Text पर emphasis देता है; browser आम तौर पर इसे italics में दिखाता है।">Adds emphasis; browsers usually show it in italics.</td></tr>
+          <tr><td><code>&lt;b&gt;</code></td><td data-en="Draws attention without adding strong importance." data-hi="बिना strong importance बताए ध्यान आकर्षित करता है।">Draws attention without adding strong importance.</td></tr>
+          <tr><td><code>&lt;i&gt;</code></td><td data-en="Marks text in an alternate voice or mood, such as a technical term." data-hi="अलग voice या mood वाला text दिखाता है, जैसे technical term।">Marks text in an alternate voice or mood, such as a technical term.</td></tr>
+          <tr><td><code>&lt;mark&gt;</code></td><td data-en="Highlights text as relevant." data-hi="ज़रूरी text को highlight करता है।">Highlights text as relevant.</td></tr>
+          <tr><td><code>&lt;small&gt;</code></td><td data-en="Represents side comments or small print." data-hi="छोटी अतिरिक्त जानकारी या fine print दिखाता है।">Represents side comments or small print.</td></tr>
+          <tr><td><code>&lt;sub&gt;</code></td><td data-en="Displays subscript, such as the 2 in H₂O." data-hi="Subscript दिखाता है, जैसे H₂O में 2।">Displays subscript, such as the 2 in H₂O.</td></tr>
+          <tr><td><code>&lt;sup&gt;</code></td><td data-en="Displays superscript, such as the 2 in x²." data-hi="Superscript दिखाता है, जैसे x² में 2।">Displays superscript, such as the 2 in x².</td></tr>
+        </tbody>
+      </table>
+
+      <div class="code-example">&lt;p&gt;HTML is &lt;strong&gt;important&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;This word is &lt;em&gt;emphasised&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Water is H&lt;sub&gt;2&lt;/sub&gt;O.&lt;/p&gt;
+&lt;p&gt;Two squared is 2&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</div>
+    </section>
+
+    <section class="theory-card" id="lists">
+      <h2 data-en="5. Creating lists"
+          data-hi="5. Lists बनाना">5. Creating lists</h2>
+
+      <h3 data-en="Unordered list: ul"
+          data-hi="Unordered list: ul">Unordered list: ul</h3>
+
+      <p data-en="Use ul when the order of the items does not matter. Each list item goes inside an li element."
+         data-hi="जब items का order महत्वपूर्ण न हो, तब ul इस्तेमाल करो। हर item को li element के अंदर लिखते हैं।">
+        Use ul when the order of the items does not matter. Each list item goes inside an li element.
+      </p>
+
+      <div class="code-example">&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</div>
+
+      <h3 data-en="Ordered list: ol"
+          data-hi="Ordered list: ol">Ordered list: ol</h3>
+
+      <p data-en="Use ol when the order matters, such as steps in a process."
+         data-hi="जब items का क्रम महत्वपूर्ण हो, जैसे किसी काम के steps, तब ol इस्तेमाल करो।">
+        Use ol when the order matters, such as steps in a process.
+      </p>
+
+      <div class="code-example">&lt;ol&gt;
+  &lt;li&gt;Open VS Code&lt;/li&gt;
+  &lt;li&gt;Write HTML&lt;/li&gt;
+  &lt;li&gt;Save the file&lt;/li&gt;
+&lt;/ol&gt;</div>
+
+      <h3 data-en="Description list: dl, dt and dd"
+          data-hi="Description list: dl, dt और dd">Description list: dl, dt and dd</h3>
+
+      <p data-en="Use dl for a list of terms and descriptions. dt is the term and dd is its description."
+         data-hi="Terms और उनकी descriptions की list के लिए dl इस्तेमाल करो। dt term है और dd उसकी description है।">
+        Use dl for a list of terms and descriptions. dt is the term and dd is its description.
+      </p>
+
+      <div class="code-example">&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;Structures web page content.&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Styles the page.&lt;/dd&gt;
+&lt;/dl&gt;</div>
+
+      <div class="note"
+           data-en="Remember: ul and ol contain li elements. Do not use list tags just to create visual spacing."
+           data-hi="याद रखो: ul और ol के अंदर li elements होते हैं। केवल visual spacing बनाने के लिए list tags का उपयोग मत करो।">
+        Remember: ul and ol contain li elements. Do not use list tags just to create visual spacing.
+      </div>
+    </section>
+
+    <section class="theory-card" id="attributes">
+      <h2 data-en="6. Common attributes and HTML comments"
+          data-hi="6. Common attributes और HTML comments">6. Common attributes and HTML comments</h2>
+
+      <p data-en="Attributes add information to elements. Common examples include id, class, title, href, src, alt and lang."
+         data-hi="Attributes elements को अतिरिक्त जानकारी देते हैं। Common examples हैं id, class, title, href, src, alt और lang।">
+        Attributes add information to elements. Common examples include id, class, title, href, src, alt and lang.
+      </p>
+
+      <table class="tag-table">
+        <thead>
+          <tr>
+            <th data-en="Attribute" data-hi="Attribute">Attribute</th>
+            <th data-en="Purpose" data-hi="काम">Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>id</code></td><td data-en="Identifies a particular element on a page." data-hi="Page पर किसी खास element की पहचान करता है।">Identifies a particular element on a page.</td></tr>
+          <tr><td><code>class</code></td><td data-en="Groups elements for styling or scripting." data-hi="Styling या scripting के लिए elements को group करता है।">Groups elements for styling or scripting.</td></tr>
+          <tr><td><code>href</code></td><td data-en="Specifies the destination of a link." data-hi="Link की destination बताता है।">Specifies the destination of a link.</td></tr>
+          <tr><td><code>src</code></td><td data-en="Specifies the source of an image or other embedded resource." data-hi="Image या दूसरे embedded resource का source बताता है।">Specifies the source of an image or other embedded resource.</td></tr>
+          <tr><td><code>alt</code></td><td data-en="Provides alternative text for an image." data-hi="Image के लिए alternative text देता है।">Provides alternative text for an image.</td></tr>
+          <tr><td><code>lang</code></td><td data-en="Identifies the language of the document or an element." data-hi="Document या element की language बताता है।">Identifies the language of the document or an element.</td></tr>
+          <tr><td><code>title</code></td><td data-en="Can provide advisory information about an element. It is different from the title element in head." data-hi="किसी element के बारे में अतिरिक्त जानकारी दे सकता है। यह head वाले title element से अलग है।">Can provide advisory information about an element. It is different from the title element in head.</td></tr>
+        </tbody>
+      </table>
+
+      <h3 data-en="HTML comments"
+          data-hi="HTML comments">HTML comments</h3>
+
+      <p data-en="Comments are notes in the source code. They are not displayed as page content by the browser."
+         data-hi="Comments source code में लिखे notes हैं। Browser इन्हें page content की तरह नहीं दिखाता।">
+        Comments are notes in the source code. They are not displayed as page content by the browser.
+      </p>
+
+      <div class="code-example">&lt;!-- This is a comment --&gt;
+&lt;h1&gt;My Website&lt;/h1&gt;</div>
+
+      <div class="note"
+           data-en="Do not put passwords or private information in comments. Comments are still visible to anyone who can inspect the source."
+           data-hi="Comments में passwords या private information मत लिखो। Source inspect करने वाला व्यक्ति comments पढ़ सकता है।">
+        Do not put passwords or private information in comments. Comments are still visible to anyone who can inspect the source.
+      </div>
+    </section>
+
+    <section class="theory-card" id="quiz">
+      <h2 data-en="7. Check your understanding"
+          data-hi="7. अपनी समझ जाँचो">7. Check your understanding</h2>
+
+      <p data-en="Choose an answer for each question. You can try again if you make a mistake."
+         data-hi="हर सवाल का जवाब चुनो। गलती होने पर फिर कोशिश कर सकते हो।">
+        Choose an answer for each question. You can try again if you make a mistake.
+      </p>
+      
+<div class="quiz-progress">
+  <p id="quiz-progress-text"
+     data-en="Questions attempted: 0/8"
+     data-hi="हल किए गए सवाल: 0/8">
+    Questions attempted: 0/8
+  </p>
+
+  <p id="quiz-score-text"
+     data-en="Correct answers: 0/8"
+     data-hi="सही जवाब: 0/8">
+    Correct answers: 0/8
+  </p>
+
+  <div
+    style="background:#334155; border-radius:10px; height:8px; overflow:hidden;">
+    <div id="quiz-progress-bar"
+         style="background:#a78bfa; width:0%; height:100%; transition:width 0.3s;">
+    </div>
+  </div>
+
+  <p id="quiz-final-result" aria-live="polite"></p>
+
+  <button type="button" id="quiz-retry"
+          data-en="Try Again"
+          data-hi="फिर से कोशिश करें"
+          style="display:none;">
+    Try Again
+  </button>
+</div>
+
+    <div class="quiz-question">
+        <p data-en="Question 1: Which element sets the browser tab's page title?"
+           data-hi="सवाल 1: Browser tab का page title कौन-सा element सेट करता है?">
+          Question 1: Which element sets the browser tab's page title?
+        </p>
+        <button type="button" class="quiz-option" data-answer="wrong">
+          &lt;h1&gt;
+        </button>
+        <button type="button" class="quiz-option" data-answer="correct">
+          &lt;title&gt;
+        </button>
+        <button type="button" class="quiz-option" data-answer="wrong">
+          &lt;body&gt;
+        </button>
+        <p class="quiz-feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz-question">
+        <p data-en="Question 2: Which tag starts a new line within a paragraph?"
+           data-hi="सवाल 2: Paragraph के अंदर नई line शुरू करने के लिए कौन-सा tag है?">
+          Question 2: Which tag starts a new line within a paragraph?
+        </p>
+        <button type="button" class="quiz-option" data-answer="correct">
+          &lt;br&gt;
+        </button>
+        <button type="button" class="quiz-option" data-answer="wrong">
+          &lt;hr&gt;
+        </button>
+        <button type="button" class="quiz-option" data-answer="wrong">
+          &lt;head&gt;
+        </button>
+        <p class="quiz-feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz-question">
+        <p data-en="Question 3: Which tag creates a numbered list?"
+           data-hi="सवाल 3: Numbered list बनाने के लिए कौन-सा tag है?">
+          Question 3: Which tag creates a numbered list?
+        </p>
+        <button type="button" class="quiz-option" data-answer="wrong">
+          &lt;ul&gt;
+        </button>
+        <button type="button" class="quiz-option" data-answer="correct">
+          &lt;ol&gt;
+        </button>
+        <button type="button" class="quiz-option" data-answer="wrong">
+          &lt;li&gt;
+        </button>
+        <p class="quiz-feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz-question">
+        <p data-en="Question 4: Which attribute gives an image alternative text?"
+           data-hi="सवाल 4: Image को alternative text देने के लिए कौन-सा attribute है?">
+          Question 4: Which attribute gives an image alternative text?
+        </p>
+        <button type="button" class="quiz-option" data-answer="wrong">
+          href
+        </button>
+        <button type="button" class="quiz-option" data-answer="wrong">
+          src
+        </button>
+        <button type="button" class="quiz-option" data-answer="correct">
+          alt
+        </button>
+        <p class="quiz-feedback" aria-live="polite"></p>
+      </div>
+      
+      <div class="quiz-question">
+        <p data-en="Question 5: Which tag creates a paragraph?"
+           data-hi="सवाल 5: Paragraph बनाने के लिए कौन-सा tag है?">
+          Question 5: Which tag creates a paragraph?
+        </p>
+        <button type="button" class="quiz-option" data-answer="wrong">&lt;h1&gt;</button>
+        <button type="button" class="quiz-option" data-answer="correct">&lt;p&gt;</button>
+        <button type="button" class="quiz-option" data-answer="wrong">&lt;img&gt;</button>
+        <p class="quiz-feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz-question">
+        <p data-en="Question 6: Which tag creates an unordered list?"
+           data-hi="सवाल 6: Unordered list बनाने के लिए कौन-सा tag है?">
+          Question 6: Which tag creates an unordered list?
+        </p>
+        <button type="button" class="quiz-option" data-answer="correct">&lt;ul&gt;</button>
+        <button type="button" class="quiz-option" data-answer="wrong">&lt;ol&gt;</button>
+        <button type="button" class="quiz-option" data-answer="wrong">&lt;li&gt;</button>
+        <p class="quiz-feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz-question">
+        <p data-en="Question 7: Which attribute specifies a link destination?"
+           data-hi="सवाल 7: Link की destination कौन-सा attribute बताता है?">
+          Question 7: Which attribute specifies a link destination?
+        </p>
+        <button type="button" class="quiz-option" data-answer="wrong">src</button>
+        <button type="button" class="quiz-option" data-answer="correct">href</button>
+        <button type="button" class="quiz-option" data-answer="wrong">alt</button>
+        <p class="quiz-feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz-question">
+        <p data-en="Question 8: Which tag marks important text?"
+           data-hi="सवाल 8: Important text दिखाने के लिए कौन-सा tag है?">
+          Question 8: Which tag marks important text?
+        </p>
+        <button type="button" class="quiz-option" data-answer="wrong">&lt;em&gt;</button>
+        <button type="button" class="quiz-option" data-answer="wrong">&lt;small&gt;</button>
+        <button type="button" class="quiz-option" data-answer="correct">&lt;strong&gt;</button>
+        <p class="quiz-feedback" aria-live="polite"></p>
+      </div>
+
+    </section>
+
+    <section class="theory-card">
+      <h2 data-en="8. Ready for hands-on practice?"
+          data-hi="8. अब practical practice करें?">8. Ready for hands-on practice?</h2>
+
+      <p data-en="Now use the SkillSaathi playground to write HTML, run your code, see the output and solve the challenge."
+         data-hi="अब SkillSaathi playground में HTML लिखो, code run करो, output देखो और challenge हल करो।">
+        Now use the SkillSaathi playground to write HTML, run your code, see the output and solve the challenge.
+      </p>
+
+      <a href="lesson.html" class="practice-link"
+         data-en="Start Practice →"
+         data-hi="अभ्यास शुरू करो →">Start Practice →</a>
+    </section>
+
+    <section class="theory-card">
+      <h2 data-en="What comes next?"
+          data-hi="अगला topic क्या होगा?">What comes next?</h2>
+
+      <p data-en="Next, we will learn links, images, file paths, tables, buttons, forms and semantic HTML, with examples and projects."
+         data-hi="अगले topics में हम links, images, file paths, tables, buttons, forms और semantic HTML को examples और projects के साथ सीखेंगे।">
+        Next, we will learn links, images, file paths, tables, buttons, forms and semantic HTML, with examples and projects.
+      </p>
+    </section>
+    <div class="lesson-navigation">
+  <a href="lesson2.html" class="next-lesson">
+    Next Lesson →
+  </a>
+</div>
+  </main>
+
+  <script>
+    
+const languageBtn = document.querySelector("#languageBtn");
+let currentLanguage = "en";
+
+languageBtn.addEventListener("click", () => {
+  currentLanguage = currentLanguage === "en" ? "hi" : "en";
+
+  document.querySelectorAll("[data-en][data-hi]").forEach((element) => {
+    element.textContent = element.dataset[currentLanguage];
+  });
+
+  languageBtn.textContent = currentLanguage === "en" ? "हिंदी" : "English";
+  document.documentElement.lang = currentLanguage;
+});
+
+const quizQuestions = document.querySelectorAll(".quiz-question");
+const progressText = document.querySelector("#quiz-progress-text");
+const scoreText = document.querySelector("#quiz-score-text");
+const progressBar = document.querySelector("#quiz-progress-bar");
+const finalResult = document.querySelector("#quiz-final-result");
+const retryButton = document.querySelector("#quiz-retry");
+
+let answers = new Array(quizQuestions.length).fill(null);
+
+function updateQuizProgress() {
+  const attempted = answers.filter(answer => answer !== null).length;
+  const correct = answers.filter(answer => answer === true).length;
+  const total = quizQuestions.length;
+
+  progressText.textContent = currentLanguage === "en"
+    ? `Questions attempted: ${attempted}/${total}`
+    : `हल किए गए सवाल: ${attempted}/${total}`;
+
+  scoreText.textContent = currentLanguage === "en"
+    ? `Correct answers: ${correct}/${total}`
+    : `सही जवाब: ${correct}/${total}`;
+
+  progressBar.style.width = `${(attempted / total) * 100}%`;
+
+  if (attempted === total) {
+    const percentage = Math.round((correct / total) * 100);
+    finalResult.textContent = currentLanguage === "en"
+      ? `Quiz complete! Your score: ${correct}/${total} (${percentage}%).`
+      : `क्विज़ पूरा! आपका स्कोर: ${correct}/${total} (${percentage}%)।`;
+
+    retryButton.style.display = "inline-block";
+  } else {
+    finalResult.textContent = "";
+    retryButton.style.display = "none";
+  }
+}
+
+quizQuestions.forEach((question, index) => {
+  const buttons = question.querySelectorAll(".quiz-option");
+  const feedback = question.querySelector(".quiz-feedback");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      if (answers[index] !== null) return;
+
+      const isCorrect = button.dataset.answer === "correct";
+      answers[index] = isCorrect;
+
+      feedback.textContent = isCorrect
+        ? (currentLanguage === "en" ? "Correct! Well done." : "सही जवाब! बहुत अच्छा।")
+        : (currentLanguage === "en" ? "Not quite. Try again after resetting the quiz." : "सही नहीं। क्विज़ रीसेट करके फिर कोशिश करो।");
+
+      buttons.forEach(option => {
+        option.disabled = true;
+      });
+
+      updateQuizProgress();
+    });
+  });
+});
+
+retryButton.addEventListener("click", () => {
+  answers.fill(null);
+
+  quizQuestions.forEach(question => {
+    question.querySelector(".quiz-feedback").textContent = "";
+    question.querySelectorAll(".quiz-option").forEach(button => {
+      button.disabled = false;
+    });
+  });
+
+  finalResult.textContent = "";
+  retryButton.style.display = "none";
+  updateQuizProgress();
+});
+
+updateQuizProgress();
+</script>
+
+
+</body>
+</html>

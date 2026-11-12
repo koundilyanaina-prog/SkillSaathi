@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 2 - Student Marksheet | SkillSaathi</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#171717;color:#eee;font-family:Arial,sans-serif;line-height:1.7}
+header{background:#201e19;padding:28px 7%;border-bottom:1px solid #51452a}
+header h1{color:#f0c75e;margin:0}
+header p{color:#c8c1b2}
+.container{max-width:950px;margin:30px auto;padding:0 18px}
+.card{background:#222;border:1px solid #39342a;border-radius:12px;padding:22px;margin-bottom:20px}
+h2,h3{color:#f0c75e}
+.example{background:#29261f;border-left:4px solid #e5bd55;padding:14px;margin:14px 0;border-radius:6px}
+.formula{background:#151515;border:1px solid #51452a;color:#f4d47b;padding:12px;border-radius:6px;overflow-x:auto}
+.tip{background:#302b1d;border:1px solid #68572c;color:#f0d58b;padding:14px;border-radius:7px}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{border:1px solid #51452a;padding:10px;text-align:left}
+th{background:#39301c;color:#f0c75e}
+li{margin:7px 0}
+.navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#302b1d;border:1px solid #68572c;padding:16px;border-radius:8px}
+.navigation a{color:#f0c75e;text-decoration:none;font-weight:bold}
+small{color:#c6bfae}
+@media(max-width:600px){.card{padding:16px}table{font-size:13px}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Project 2: Student Marksheet</h1>
+<p>SkillSaathi · Excel & Office · Practical Project</p>
+</header>
+
+<main class="container">
+
+<section class="card">
+<h2>Project Overview</h2>
+<p>In this project, you will create a Student Marksheet using Microsoft Excel.</p>
+<p>The marksheet will automatically calculate total marks, percentage, grades and pass/fail results.</p>
+<p><strong>Skills used:</strong></p>
+<ul>
+<li>Data Entry and Formatting</li>
+<li>SUM and AVERAGE</li>
+<li>IF, AND and COUNTIF</li>
+<li>MAX and MIN</li>
+<li>Conditional Formatting</li>
+<li>Sorting and Filtering</li>
+<li>Charts and Data Analysis</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Step 1: Create Your Workbook</h2>
+<ol>
+<li>Open Microsoft Excel.</li>
+<li>Create a Blank Workbook.</li>
+<li>Rename Sheet1 as <strong>Student Marks</strong>.</li>
+<li>Save it as <strong>Student_Marksheet.xlsx</strong>.</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>Step 2: Create the Marksheet Table</h2>
+<p>Enter these headings in Row 1:</p>
+<table>
+<tr><th>Roll No.</th><th>Student Name</th><th>English</th><th>Maths</th><th>Science</th><th>Computer</th><th>Hindi</th></tr>
+<tr><td>101</td><td>Aarav</td><td>78</td><td>85</td><td>72</td><td>90</td><td>81</td></tr>
+<tr><td>102</td><td>Meera</td><td>88</td><td>92</td><td>86</td><td>95</td><td>89</td></tr>
+<tr><td>103</td><td>Rohan</td><td>45</td><td>38</td><td>52</td><td>61</td><td>49</td></tr>
+<tr><td>104</td><td>Anaya</td><td>95</td><td>96</td><td>91</td><td>98</td><td>94</td></tr>
+<tr><td>105</td><td>Kabir</td><td>32</td><td>28</td><td>41</td><td>55</td><td>36</td></tr>
+<tr><td>106</td><td>Diya</td><td>67</td><td>74</td><td>70</td><td>82</td><td>76</td></tr>
+<tr><td>107</td><td>Arjun</td><td>81</td><td>79</td><td>88</td><td>85</td><td>90</td></tr>
+<tr><td>108</td><td>Siya</td><td>54</td><td>63</td><td>58</td><td>72</td><td>66</td></tr>
+</table>
+<p>Enter the headings in A1:G1 and the student records in A2:G9.</p>
+<div class="tip">For this practice project, each subject has a maximum of 100 marks and the minimum passing mark is 35 in each subject.</div>
+</section>
+
+<section class="card">
+<h2>Step 3: Add Calculation Columns</h2>
+<p>Add these headings after Hindi:</p>
+<table>
+<tr><th>Column</th><th>Heading</th></tr>
+<tr><td>H</td><td>Total</td></tr>
+<tr><td>I</td><td>Percentage</td></tr>
+<tr><td>J</td><td>Grade</td></tr>
+<tr><td>K</td><td>Result</td></tr>
+</table>
+</section>
+
+<section class="card">
+<h2>Step 4: Calculate Total Marks</h2>
+<p>In cell H2, enter:</p>
+<div class="formula">=SUM(C2:G2)</div>
+<p>Press Enter and drag the formula down to H9.</p>
+<p>This calculates the total marks obtained by each student out of 500.</p>
+</section>
+
+<section class="card">
+<h2>Step 5: Calculate Percentage</h2>
+<p>In cell I2, enter:</p>
+<div class="formula">=H2/500*100</div>
+<p>Drag the formula down to I9.</p>
+<p>Format the percentage column with two decimal places.</p>
+<div class="example">
+<strong>Example:</strong> If a student scores 400 out of 500, their percentage is 80%.
+</div>
+</section>
+
+<section class="card">
+<h2>Step 6: Assign Grades Automatically</h2>
+<p>Use the following grading system:</p>
+<table>
+<tr><th>Percentage</th><th>Grade</th></tr>
+<tr><td>90 and above</td><td>A+</td></tr>
+<tr><td>80 to below 90</td><td>A</td></tr>
+<tr><td>70 to below 80</td><td>B</td></tr>
+<tr><td>60 to below 70</td><td>C</td></tr>
+<tr><td>50 to below 60</td><td>D</td></tr>
+<tr><td>Below 50</td><td>E</td></tr>
+</table>
+<p>In J2, enter:</p>
+<div class="formula">=IF(I2>=90,"A+",IF(I2>=80,"A",IF(I2>=70,"B",IF(I2>=60,"C",IF(I2>=50,"D","E")))))</div>
+<p>Drag down to J9.</p>
+</section>
+
+<section class="card">
+<h2>Step 7: Calculate Pass or Fail</h2>
+<p>A student must score at least 35 marks in every subject to pass.</p>
+<p>In K2, enter:</p>
+<div class="formula">=IF(MIN(C2:G2)>=35,"PASS","FAIL")</div>
+<p>Drag the formula down to K9.</p>
+<div class="tip">This is more accurate than checking only the total marks. A student can have a high total but still fail one subject.</div>
+</section>
+
+<section class="card">
+<h2>Step 8: Create a Result Summary</h2>
+<p>Below the main table, create a small summary:</p>
+<table>
+<tr><th>Metric</th><th>Formula</th></tr>
+<tr><td>Total Students</td><td>=COUNTA(B2:B9)</td></tr>
+<tr><td>Passed Students</td><td>=COUNTIF(K2:K9,"PASS")</td></tr>
+<tr><td>Failed Students</td><td>=COUNTIF(K2:K9,"FAIL")</td></tr>
+<tr><td>Class Average</td><td>=AVERAGE(I2:I9)</td></tr>
+<tr><td>Highest Percentage</td><td>=MAX(I2:I9)</td></tr>
+<tr><td>Lowest Percentage</td><td>=MIN(I2:I9)</td></tr>
+</table>
+</section>
+
+<section class="card">
+<h2>Step 9: Apply Conditional Formatting</h2>
+<p>Make your marksheet easier to read.</p>
+<ol>
+<li>Select the Result column.</li>
+<li>Open Home → Conditional Formatting.</li>
+<li>Highlight cells containing PASS in green.</li>
+<li>Highlight cells containing FAIL in red.</li>
+<li>You can also apply Colour Scales to the Percentage column.</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>Step 10: Sort and Filter Results</h2>
+<ol>
+<li>Select your complete marksheet.</li>
+<li>Press Ctrl + T and confirm My Table Has Headers.</li>
+<li>Use the filter in the Percentage column to sort from Largest to Smallest.</li>
+<li>Filter the Result column to view only PASS or FAIL students.</li>
+<li>Check which student has the highest percentage.</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>Step 11: Create a Class Performance Chart</h2>
+<ol>
+<li>Select Student Name and Percentage columns.</li>
+<li>Go to Insert → Column Chart.</li>
+<li>Add the chart title: Student Performance.</li>
+<li>Show data labels if useful.</li>
+<li>Place the chart below or beside your marksheet.</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>Step 12: Final Project Checklist</h2>
+<ul>
+<li>Student Marks sheet created.</li>
+<li>At least 8 student records entered.</li>
+<li>Total marks calculated.</li>
+<li>Percentage calculated.</li>
+<li>Automatic grades assigned.</li>
+<li>Pass/Fail calculated subject-wise.</li>
+<li>Result summary created.</li>
+<li>Conditional formatting applied.</li>
+<li>Sorting and filtering tested.</li>
+<li>Performance chart created.</li>
+<li>Workbook saved correctly.</li>
+</ul>
+<div class="tip">Always verify the maximum marks, passing criteria and grading rules before using a marksheet for actual school results.</div>
+</section>
+
+<section class="card">
+<h2>What You Have Learned</h2>
+<p>After completing this project, you should be able to:</p>
+<ul>
+<li>Create an automated student marksheet.</li>
+<li>Calculate totals and percentages.</li>
+<li>Assign grades using nested IF.</li>
+<li>Check results using MIN and IF.</li>
+<li>Prepare class performance summaries.</li>
+<li>Present student data using charts.</li>
+</ul>
+<p><strong>Next Project:</strong> Monthly MIS Dashboard — prepare a professional business report using PivotTables, KPIs and charts.</p>
+</section>
+
+<nav class="navigation">
+<a href="excel-project1.html">← Previous Project</a>
+<a href="../excel.html">Back to Course</a>
+<a href="excel-project3.html">Next Project →</a>
+</nav>
+
+<p><small>SkillSaathi · Learn practical skills step by step.</small></p>
+</main>
+</body>
+</html>

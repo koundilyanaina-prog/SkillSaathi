@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 7: HTML Media Elements | SkillSaathi</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson7.js" defer></script>
+  <style>
+.lesson-page {
+  max-width: 1000px;
+  margin: 35px auto;
+  padding: 20px;
+  color: #f1efff;
+}
+
+.lesson-page h1 {
+  color: #c4b5fd;
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.lesson-page > p {
+  color: #b5bad4;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.eyebrow {
+  color: #a78bfa !important;
+  font-size: 13px !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.lesson-card {
+  background: linear-gradient(145deg, #171b33, #111427);
+  border: 1px solid #39335d;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+  color: #c0c5dc;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.lesson-card h2 {
+  color: #c4b5fd;
+  margin-top: 0;
+}
+
+.lesson-card h3 {
+  color: #e3dcff;
+}
+
+.lesson-card li {
+  margin-bottom: 8px;
+}
+
+.lesson-card strong {
+  color: #e3dcff;
+}
+
+.lesson-card code {
+  color: #c4b5fd;
+}
+
+.lesson-card pre {
+  background: #090b18;
+  border: 1px solid #39335d;
+  border-radius: 10px;
+  padding: 16px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.lesson-card pre code {
+  color: #c4b5fd;
+  font-size: 14px;
+}
+.lesson-editor {
+  width: 100%;
+  min-height: 300px;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: #090b18;
+  color: #c4b5fd;
+  font: 15px/1.6 monospace;
+  resize: vertical;
+}
+
+.lesson-btn {
+  margin: 12px 8px 12px 0;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #a78bfa;
+  color: #100c24;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lesson-btn:hover {
+  background: #c4b5fd;
+}
+
+.lesson-output {
+  width: 100%;
+  min-height: 320px;
+  box-sizing: border-box;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: white;
+}
+
+#lessonHint {
+  color: #e3dcff;
+  background: #211c40;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+#lessonFeedback {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+#lessonFeedback.success {
+  color: #86efac;
+}
+
+#lessonFeedback.error {
+  color: #fca5a5;
+}
+
+@media (max-width: 600px) {
+  .lesson-page {
+    padding: 14px;
+  }
+
+  .lesson-page h1 {
+    font-size: 27px;
+  }
+
+  .lesson-card {
+    padding: 17px;
+  }
+}
+.lesson-navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+}
+
+.next-lesson {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #a78bfa;
+  color: #100c24;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 9px;
+  transition: 0.3s;
+}
+
+.next-lesson:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      Skill<span>Saathi</span>
+    </a>
+    <a href="lesson6.html">← Lesson 6</a>
+  </header>
+
+  <main class="lesson-page">
+
+    <p class="eyebrow">LESSON 07 · HTML BASICS</p>
+
+    <h1>Let's Learn HTML Media Elements! 🎬</h1>
+
+    <p>
+      Learn how to add images, audio and videos to your webpages.
+    </p>
+<!-- What You Will Learn -->
+<section class="lesson-card">
+  <h2>🎯 What You Will Learn</h2>
+  <ul>
+    <li>How to add images to a webpage.</li>
+    <li>How to add audio files.</li>
+    <li>How to embed videos.</li>
+    <li>How to use media attributes.</li>
+    <li>How to create a simple media webpage.</li>
+  </ul>
+</section>
+
+<!-- Introduction -->
+<section class="lesson-card">
+  <h2>📖 1. What are HTML Media Elements?</h2>
+  <p>
+    HTML media elements allow us to display images, play audio
+    and show videos directly on a webpage.
+  </p>
+  <p>
+    The most commonly used media elements are:
+  </p>
+  <ul>
+    <li><code>&lt;img&gt;</code> – Displays an image.</li>
+    <li><code>&lt;audio&gt;</code> – Plays an audio file.</li>
+    <li><code>&lt;video&gt;</code> – Plays a video file.</li>
+  </ul>
+</section>
+
+<!-- Images -->
+<section class="lesson-card">
+  <h2>🖼️ 2. Adding Images</h2>
+  <p>
+    The <code>&lt;img&gt;</code> element is used to display images.
+    It uses two important attributes:
+  </p>
+  <ul>
+    <li><strong>src:</strong> Specifies the image location.</li>
+    <li><strong>alt:</strong> Provides alternative text if the image cannot load.</li>
+  </ul>
+
+  <h3>Example:</h3>
+  <pre><code>&lt;img src="flower.jpg" alt="A beautiful flower" width="300"&gt;</code></pre>
+
+  <p>
+    Remember: The <code>&lt;img&gt;</code> element does not need a closing tag.
+  </p>
+</section>
+
+<!-- Audio -->
+<section class="lesson-card">
+  <h2>🎵 3. Adding Audio</h2>
+  <p>
+    The <code>&lt;audio&gt;</code> element allows users to play sound
+    files on a webpage.
+  </p>
+
+  <h3>Example:</h3>
+  <pre><code>&lt;audio controls&gt;
+  &lt;source src="music.mp3" type="audio/mpeg"&gt;
+  Your browser does not support audio.
+&lt;/audio&gt;</code></pre>
+
+  <p>
+    The <code>controls</code> attribute displays play, pause and volume controls.
+  </p>
+</section>
+<!-- Audio Demonstration -->
+<section class="lesson-card">
+  <h2>🎧 Listen to Sample Audio</h2>
+  <p>Here is a sample audio player. Click Play to listen.</p>
+
+  <audio controls preload="metadata" style="width: 100%;">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <p><strong>Try it:</strong> Play, pause and adjust the volume.</p>
+</section>
+
+<!-- Video -->
+ <!-- Video Demonstration -->
+<section class="lesson-card">
+  <h2>🎬 Watch a Sample Video</h2>
+  <p>Here is a sample video. Click Play to watch it.</p>
+
+  <video
+    width="100%"
+    style="max-width: 620px; display: block; margin: 18px auto; border-radius: 12px;"
+    controls
+    preload="metadata">
+    <source
+      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      type="video/mp4">
+    Your browser does not support video.
+  </video>
+
+  <p><strong>Try it:</strong> Play, pause and adjust the volume.</p>
+</section>
+<section class="lesson-card">
+  <h2>🎥 4. Adding Videos</h2>
+  <p>
+    The <code>&lt;video&gt;</code> element is used to display videos
+    on a webpage.
+  </p>
+
+  <h3>Example:</h3>
+  <pre><code>&lt;video width="400" controls&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  Your browser does not support video.
+&lt;/video&gt;</code></pre>
+
+  <p>
+    The <code>controls</code> attribute provides video playback controls.
+  </p>
+</section>
+
+<!-- Useful Attributes -->
+<section class="lesson-card">
+  <h2>⚙️ 5. Important Media Attributes</h2>
+
+  <ul>
+    <li><strong>controls:</strong> Shows media controls.</li>
+    <li><strong>autoplay:</strong> Attempts to play media automatically.</li>
+    <li><strong>loop:</strong> Repeats the media.</li>
+    <li><strong>muted:</strong> Starts media without sound.</li>
+    <li><strong>width:</strong> Sets the width of media.</li>
+    <li><strong>height:</strong> Sets the height of media.</li>
+  </ul>
+
+  <p>
+    Note: Browsers often block autoplay with sound. Autoplay may work
+    when the media is muted.
+  </p>
+</section>
+
+<!-- Complete Example -->
+<section class="lesson-card">
+  <h2>🌐 6. Complete Media Webpage Example</h2>
+
+  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Media Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Welcome to My Media Page&lt;/h1&gt;
+
+  &lt;h2&gt;My Image&lt;/h2&gt;
+  &lt;img src="flower.jpg" alt="Flower" width="300"&gt;
+
+  &lt;h2&gt;My Audio&lt;/h2&gt;
+  &lt;audio controls&gt;
+    &lt;source src="music.mp3" type="audio/mpeg"&gt;
+  &lt;/audio&gt;
+
+  &lt;h2&gt;My Video&lt;/h2&gt;
+  &lt;video width="400" controls&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;/video&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</section>
+
+<!-- Quick Practice -->
+<section class="lesson-card">
+  <h2>📝 7. Quick Practice</h2>
+
+  <ol>
+    <li>Which HTML element displays an image?</li>
+    <li>Which attribute provides alternative text for an image?</li>
+    <li>Which element is used to play audio?</li>
+    <li>Which element is used to display videos?</li>
+    <li>What is the purpose of the controls attribute?</li>
+  </ol>
+</section>
+<!-- Code Playground -->
+<h2>💻 Your Code Playground</h2>
+<p>
+  Practice adding images, audio and videos using HTML.
+  Edit the code and click Run Code to see your result.
+</p>
+
+<section class="lesson-card">
+
+  <textarea id="lessonEditor" class="lesson-editor" spellcheck="false"><h1>My Media Page</h1>
+
+<h1>My Media Page</h1>
+
+<h2>My Image</h2>
+<img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800"
+     alt="Beautiful flowers" width="300">
+
+<h2>My Audio</h2>
+<audio controls>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<h2>My Video</h2>
+<video width="400" controls>
+  <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+</video></textarea>
+
+  <div>
+    <button id="lessonRunBtn" class="lesson-btn" type="button">▶ Run Code</button>
+    <button id="lessonHintBtn" class="lesson-btn" type="button">Show Hint</button>
+    <button id="lessonCheckBtn" class="lesson-btn" type="button">Check My Answer</button>
+  </div>
+
+  <p id="lessonHint" hidden>
+    Hint: Try using img, audio, video and source elements.
+  </p>
+
+  <p id="lessonFeedback" aria-live="polite"></p>
+
+  <h2>👀 Your Output</h2>
+
+  <iframe
+    id="lessonPreview"
+    class="lesson-output"
+    title="Lesson 7 HTML output"
+    sandbox=""
+    hidden>
+  </iframe>
+
+</section>
+<div class="lesson-navigation">
+  <a href="lesson8.html" class="next-lesson">
+    Next Lesson →
+  </a>
+</div>
+  </main>
+
+</body>
+</html>

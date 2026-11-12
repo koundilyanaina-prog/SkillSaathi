@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: Links and Images | SkillSaathi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson2.js" defer></script>
+
+  <style>
+   
+.lesson-page {
+  max-width: 1000px;
+  margin: 35px auto;
+  padding: 20px;
+}
+
+.lesson-page > h1 {
+  color: #ffffff;
+  font-size: clamp(32px, 5vw, 46px);
+  letter-spacing: -1px;
+}
+
+.lesson-page > p {
+  color: #b5bad4;
+  line-height: 1.8;
+}
+
+.lesson-card {
+  padding: 26px;
+  margin: 22px 0;
+  border: 1px solid #39335d;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #171b33, #111427);
+  color: #c0c5dc;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.lesson-card p,
+.lesson-card li {
+  color: #c0c5dc;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.lesson-card h2 {
+  color: #c4b5fd;
+  line-height: 1.5;
+}
+
+.lesson-card h3 {
+  color: #e3dcff;
+  line-height: 1.5;
+  margin-top: 24px;
+}
+
+.lesson-card code {
+  color: #c4b5fd;
+  font-size: 15px;
+}
+
+.lesson-card pre {
+  background: #090b18;
+  color: #c4b5fd;
+  padding: 18px;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+}
+
+.lesson-card pre code {
+  color: #c4b5fd;
+  font-size: 15px;
+}
+
+.lesson-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.lesson-editor {
+  width: 100%;
+  min-height: 220px;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: #090b18;
+  color: #c4b5fd;
+  font: 15px/1.6 monospace;
+  resize: vertical;
+}
+
+.lesson-btn {
+  margin: 12px 8px 12px 0;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #a78bfa;
+  color: #100c24;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lesson-btn:hover {
+  background: #c4b5fd;
+}
+
+.lesson-output {
+  width: 100%;
+  min-height: 220px;
+  box-sizing: border-box;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: white;
+}
+
+#lessonHint {
+  color: #e3dcff;
+  background: #211c40;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+#lessonFeedback {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+#lessonFeedback.success {
+  color: #86efac;
+}
+
+#lessonFeedback.error {
+  color: #fca5a5;
+}
+
+@media (max-width: 600px) {
+  .lesson-page {
+    margin: 20px auto;
+    padding: 16px;
+  }
+
+  .lesson-card {
+    padding: 19px;
+  }
+}
+.lesson-navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+}
+
+.next-lesson {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #a78bfa;
+  color: #100c24;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 9px;
+  transition: 0.3s;
+}
+
+.next-lesson:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.navbar .logo {
+  margin-right: auto;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      Skill<span>Saathi</span>
+    </a>
+    <a href="lesson.html">← Lesson 1</a>
+  </header>
+
+  <main class="lesson-page">
+    
+<p class="eyebrow"
+   data-en="LESSON 02 · HTML BASICS">
+  LESSON 02 · HTML BASICS
+</p>
+
+<h1
+  data-en="Let's Learn Links and Images! 🌱">
+  Let's Learn Links and Images! 🌱
+</h1>
+
+<p
+  data-en="Learn by doing. Write code, run it and see the result.">
+  Learn by doing. Write code, run it and see the result.
+</p>
+
+<section class="lesson-card">
+  <h2
+    data-en="🎯 What You Will Learn">
+    🎯 What You Will Learn
+  </h2>
+
+  <p
+    data-en="By the end of this lesson, you will be able to:">
+    By the end of this lesson, you will be able to:
+  </p>
+
+  <ul>
+    <li data-en="Create clickable links using the anchor tag.">
+      Create clickable links using the anchor tag.
+    </li>
+
+    <li data-en="Use the href attribute to set a link destination.">
+      Use the href attribute to set a link destination.
+    </li>
+
+    <li data-en="Add images using the img tag.">
+      Add images using the img tag.
+    </li>
+
+    <li data-en="Understand the src and alt attributes.">
+      Understand the src and alt attributes.
+    </li>
+
+    <li data-en="Build a simple webpage using links and images.">
+      Build a simple webpage using links and images.
+    </li>
+  </ul>
+</section>    
+<section class="lesson-card">
+  <h2>📘 Part 1: HTML Links</h2>
+
+  <p>
+    An HTML link allows users to move from one webpage to another
+    or open another online resource. Links make websites connected
+    and easy to navigate.
+  </p>
+
+  <h3>1. Understanding the &lt;a&gt; Tag</h3>
+
+  <p>
+    The anchor tag, written as &lt;a&gt;, creates a clickable link.
+    It usually contains an href attribute and link text.
+  </p>
+
+  <pre><code>&lt;a href="https://example.com"&gt;Visit Example&lt;/a&gt;</code></pre>
+
+  <ul>
+    <li><strong>&lt;a&gt;</strong> creates the link.</li>
+    <li><strong>href</strong> specifies the link destination.</li>
+    <li><strong>Visit Example</strong> is the clickable text.</li>
+    <li><strong>&lt;/a&gt;</strong> closes the anchor element.</li>
+  </ul>
+
+  <h3>2. External and Internal Links</h3>
+
+  <p><strong>External link:</strong> Opens a page on another website.</p>
+
+  <pre><code>&lt;a href="https://www.wikipedia.org"&gt;Visit Wikipedia&lt;/a&gt;</code></pre>
+
+  <p><strong>Internal link:</strong> Opens another page in your own website.</p>
+
+  <pre><code>&lt;a href="lesson.html"&gt;Go to Lesson 1&lt;/a&gt;</code></pre>
+
+  <p>
+    The file lesson.html must exist at the specified location
+    for the internal link to work.
+  </p>
+
+  <h3>3. Opening a Link in a New Tab</h3>
+
+  <pre><code>&lt;a href="https://example.com"
+   target="_blank"
+   rel="noopener noreferrer"&gt;
+  Visit Example
+&lt;/a&gt;</code></pre>
+
+  <p>
+    <strong>target="_blank"</strong> requests that the link open
+    in a new browsing context, usually a new tab.
+    <strong>rel="noopener noreferrer"</strong> adds privacy and
+    security protection for that new context.
+  </p>
+
+  <h3>4. Common Mistakes</h3>
+
+  <ul>
+    <li>Forgetting the href attribute.</li>
+    <li>Misspelling the destination URL.</li>
+    <li>Forgetting the closing &lt;/a&gt; tag.</li>
+    <li>Using a filename that does not exist.</li>
+  </ul>
+
+  <h3>✍️ Quick Practice</h3>
+
+  <p>Before moving ahead, try answering these questions:</p>
+
+  <ol>
+    <li>Which attribute specifies where a link goes?</li>
+    <li>Which tag creates a clickable link?</li>
+    <li>What should you check if an internal link does not work?</li>
+  </ol>
+
+  <p>
+    <strong>Learning tip:</strong> Change the link text in the example
+    and run your code to see what happens. Then try changing its
+    destination.
+  </p>
+</section>
+
+
+    
+<section class="lesson-card">
+  <h2>🖼️ Part 2: HTML Images</h2>
+
+  <p>
+    Images make a webpage more attractive and help explain ideas visually.
+    In HTML, the <code>&lt;img&gt;</code> tag is used to display an image.
+  </p>
+
+  <h3>1. Your First Image</h3>
+
+  <pre><code>&lt;img
+  src="https://placehold.co/500x250/172554/ffffff?text=Welcome+to+SkillSaathi"
+  alt="Welcome to SkillSaathi"
+  width="500"
+&gt;</code></pre>
+
+  <p><strong>src:</strong> Specifies the image location.</p>
+  <p><strong>alt:</strong> Describes the image for accessibility and when the image cannot load.</p>
+  <p><strong>width:</strong> Sets the displayed image width in pixels when given a number.</p>
+
+  <h3>2. See an Image Example</h3>
+
+  <p>Here is a sample learning image. Your own code can display a different image.</p>
+
+  <img
+    src="https://placehold.co/500x250/172554/ffffff?text=Learn+HTML+with+SkillSaathi"
+    alt="Learn HTML with SkillSaathi sample banner"
+    width="500"
+    style="max-width: 100%; height: auto; border-radius: 12px;"
+  >
+
+  <h3>3. How to Use Your Own Image</h3>
+
+  <p>
+    Download an image you are allowed to use and place it inside an
+    <code>images</code> folder in your project.
+  </p>
+
+  <pre><code>&lt;img src="images/my-photo.jpg" alt="A beautiful landscape"&gt;</code></pre>
+
+  <p>
+    The folder name, filename and file extension must match the actual file.
+    For example, <code>.jpg</code> and <code>.png</code> are different extensions.
+  </p>
+
+  <h3>4. Common Mistakes</h3>
+
+  <ul>
+    <li>Using the wrong image path or filename.</li>
+    <li>Forgetting the <code>src</code> attribute.</li>
+    <li>Leaving out meaningful <code>alt</code> text.</li>
+    <li>Using a very large image without controlling its display size.</li>
+  </ul>
+
+  <h3>✍️ Quick Practice</h3>
+
+  <ol>
+    <li>Change the image's <code>alt</code> text.</li>
+    <li>Try changing the width from 500 to 300.</li>
+    <li>Run your code and observe what changes.</li>
+  </ol>
+
+  <p>
+    <strong>Learning tip:</strong> The image URL must point to an image.
+    If the URL is unavailable or the internet is disconnected, the image
+    may not appear.
+  </p>
+</section>
+
+
+    <h2>💻 Your Code Playground</h2>
+    <p>Try changing the code below and click Run Code.</p>
+
+    <textarea
+      id="lessonEditor"
+      class="lesson-editor"
+      spellcheck="false"
+    ><h2>Welcome to SkillSaathi!</h2>
+<a href="https://example.com">Visit Example</a>
+<br><br>
+<img src="https://placehold.co/300x150?text=Sample+Image" alt="Sample image">
+</textarea>
+
+    <div>
+      <button id="lessonRunBtn" class="lesson-btn" type="button">
+        ▶ Run Code
+      </button>
+
+      <button id="lessonHintBtn" class="lesson-btn" type="button">
+        Show Hint
+      </button>
+
+      <button id="lessonCheckBtn" class="lesson-btn" type="button">
+        Check My Answer
+      </button>
+    </div>
+
+    <p id="lessonHint" hidden>
+      Hint: Apne code mein ek &lt;a&gt; tag aur ek &lt;img&gt; tag add karo.
+      Link ka text "Visit Example" aur image ka alt "Sample image" rakho.
+    </p>
+
+    <p id="lessonFeedback" aria-live="polite"></p>
+
+    <h2>👀 Your Output</h2>
+    <iframe
+      id="lessonPreview"
+      class="lesson-output"
+      title="Lesson 2 HTML output"
+      sandbox=""
+      hidden
+    ></iframe>
+    <div class="lesson-navigation">
+  <a href="lesson3.html" class="next-lesson">
+    Next Lesson →
+  </a>
+</div>
+  </main>
+</body>
+</html>

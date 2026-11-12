@@ -1,0 +1,785 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3: Basic Formulas & Operators | SkillSaathi</title>
+
+  <style>
+    :root {
+      --gold: #d6ad45;
+      --gold-light: #f0d58a;
+      --bg: #111315;
+      --card: #1b1e20;
+      --text: #f4f1e8;
+      --muted: #b9b6aa;
+      --border: #393a35;
+      --success: #8fc99a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      background: #17191a;
+      border-bottom: 1px solid var(--border);
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: var(--gold-light);
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .back-link {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      color: var(--gold-light);
+    }
+
+    .hero {
+      padding: 65px 7% 45px;
+      background: linear-gradient(135deg, #24231d, #111315 70%);
+    }
+
+    .lesson-label {
+      color: var(--gold-light);
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .lesson-info {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      color: var(--gold-light);
+      font-size: 14px;
+    }
+
+    .container {
+      width: 86%;
+      max-width: 1050px;
+      margin: 45px auto;
+    }
+
+    .section {
+      margin-bottom: 42px;
+    }
+
+    h2 {
+      color: var(--gold-light);
+      font-size: 25px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin-bottom: 13px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 23px;
+      margin: 18px 0;
+    }
+
+    .highlight {
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    ul, ol {
+      padding-left: 22px;
+      color: var(--muted);
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .code-example {
+      background: #202426;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 16px;
+      margin: 14px 0;
+      overflow-x: auto;
+    }
+
+    .code-example code {
+      color: var(--gold-light);
+      font-size: 15px;
+    }
+
+    .spreadsheet {
+      overflow-x: auto;
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 480px;
+      background: #202426;
+    }
+
+    th, td {
+      border: 1px solid #55564c;
+      padding: 13px;
+      text-align: center;
+    }
+
+    th {
+      background: #b58b30;
+      color: #171717;
+    }
+
+    td {
+      color: var(--text);
+    }
+
+    .practice-box {
+      background: #22231e;
+      border: 1px solid #75602d;
+      border-radius: 13px;
+      padding: 25px;
+    }
+
+    .task-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .task-list li {
+      margin: 13px 0;
+    }
+
+    .task-list input {
+      accent-color: var(--gold);
+      margin-right: 9px;
+    }
+
+    .quiz-question {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 17px 0;
+    }
+
+    .quiz-question p {
+      color: var(--text);
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .quiz-question label {
+      display: block;
+      color: var(--muted);
+      margin: 9px 0;
+      cursor: pointer;
+    }
+
+    .quiz-question input {
+      accent-color: var(--gold);
+      margin-right: 8px;
+    }
+
+    .main-btn {
+      background: var(--gold);
+      color: #171717;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 7px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .main-btn:hover {
+      background: var(--gold-light);
+    }
+
+    #quizResult {
+      margin-top: 18px;
+      font-weight: bold;
+      color: var(--success);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 25px;
+      margin-top: 50px;
+    }
+
+    .nav-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 7px;
+      color: var(--gold-light);
+    }
+
+    .nav-btn:hover {
+      background: var(--gold);
+      color: #171717;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media(max-width: 600px) {
+      .container {
+        width: 90%;
+      }
+
+      .hero {
+        padding: 45px 6%;
+      }
+
+      .topbar {
+        padding: 16px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a href="../excel.html" class="logo">SkillSaathi.</a>
+    <a href="../excel.html" class="back-link">← Back to Excel Course</a>
+  </header>
+
+  <section class="hero">
+    <div class="lesson-label">EXCEL BASICS · LESSON 03</div>
+
+    <h1>Basic Formulas & Operators</h1>
+
+    <p>
+      Learn how to perform calculations in Excel using formulas,
+      cell references and mathematical operators.
+    </p>
+
+    <div class="lesson-info">
+      <span>◷ 30–35 Minutes</span>
+      <span>Beginner Level</span>
+      <span>5 Questions Quiz</span>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section class="section">
+      <h2>🎯 What You Will Learn</h2>
+
+      <div class="info-card">
+        <ul>
+          <li>What formulas are in Excel.</li>
+          <li>Why formulas begin with an equals sign.</li>
+          <li>How to use cell references.</li>
+          <li>Addition, subtraction, multiplication and division.</li>
+          <li>How to use brackets in calculations.</li>
+          <li>How to copy formulas into other cells.</li>
+          <li>How to use the SUM function.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>1. What is a Formula?</h2>
+
+      <p>
+        A formula is an expression used to perform calculations
+        in Excel. It can contain numbers, mathematical operators,
+        cell references and functions.
+      </p>
+
+      <div class="info-card">
+        <h3>Important Rule</h3>
+        <p>
+          Every Excel formula must begin with an
+          <span class="highlight">equals sign (=)</span>.
+        </p>
+
+        <div class="code-example">
+          <code>=10+20</code>
+        </div>
+
+        <p>
+          When you enter this formula into a cell and press Enter,
+          Excel displays the result 30.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. Understanding Cell References</h2>
+
+      <p>
+        Instead of typing numbers directly into formulas,
+        you can use cell addresses.
+      </p>
+
+      <div class="spreadsheet">
+        <table>
+          <tr>
+            <th>Cell</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td>A1</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>A2</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>A3</td>
+            <td>=A1+A2</td>
+          </tr>
+        </table>
+      </div>
+
+      <p style="margin-top:12px;">
+        The formula in cell A3 uses the values from A1 and A2.
+        Its result will be 150.
+      </p>
+
+      <div class="info-card">
+        <h3>Why use cell references?</h3>
+        <ul>
+          <li>Formulas can update automatically when input values change.</li>
+          <li>You can reuse the same formula with different data.</li>
+          <li>It makes calculations easier to manage.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>3. Mathematical Operators in Excel</h2>
+
+      <p>
+        Excel uses mathematical operators to perform different
+        calculations.
+      </p>
+
+      <div class="spreadsheet">
+        <table>
+          <tr>
+            <th>Operation</th>
+            <th>Operator</th>
+            <th>Example</th>
+            <th>Result</th>
+          </tr>
+          <tr>
+            <td>Addition</td>
+            <td>+</td>
+            <td>=10+5</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>Subtraction</td>
+            <td>-</td>
+            <td>=10-5</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>Multiplication</td>
+            <td>*</td>
+            <td>=10*5</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Division</td>
+            <td>/</td>
+            <td>=10/5</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Power</td>
+            <td>^</td>
+            <td>=2^3</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td>Percentage</td>
+            <td>%</td>
+            <td>=50%</td>
+            <td>0.5</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>4. Creating Formulas with Cell References</h2>
+
+      <p>
+        Suppose you have the following monthly expense records:
+      </p>
+
+      <div class="spreadsheet">
+        <table>
+          <tr>
+            <th>Cell</th>
+            <th>Expense</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+            <td>A1 / B1</td>
+            <td>Rent</td>
+            <td>5000</td>
+          </tr>
+          <tr>
+            <td>A2 / B2</td>
+            <td>Food</td>
+            <td>3000</td>
+          </tr>
+          <tr>
+            <td>A3 / B3</td>
+            <td>Travel</td>
+            <td>1000</td>
+          </tr>
+        </table>
+      </div>
+
+      <p style="margin-top:15px;">
+        You can calculate the total in cell B4 using:
+      </p>
+
+      <div class="code-example">
+        <code>=B1+B2+B3</code>
+      </div>
+
+      <p>
+        Result: <span class="highlight">9000</span>
+      </p>
+
+      <p>
+        If any expense changes, Excel recalculates the result
+        automatically.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>5. Understanding Brackets in Formulas</h2>
+
+      <p>
+        Brackets help control the order in which calculations
+        are performed.
+      </p>
+
+      <div class="info-card">
+        <h3>Example 1</h3>
+
+        <div class="code-example">
+          <code>=10+5*2</code>
+        </div>
+
+        <p>Result: 20, because multiplication is performed first.</p>
+
+        <h3>Example 2</h3>
+
+        <div class="code-example">
+          <code>=(10+5)*2</code>
+        </div>
+
+        <p>Result: 30, because the calculation inside brackets happens first.</p>
+      </div>
+
+      <p>
+        Remember: Excel follows mathematical order of operations.
+        Brackets are evaluated before multiplication and division,
+        which are evaluated before addition and subtraction.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>6. Introduction to the SUM Function</h2>
+
+      <p>
+        SUM is an Excel function used to add numbers together.
+        It is especially useful when working with large lists of values.
+      </p>
+
+      <div class="info-card">
+        <h3>Formula</h3>
+
+        <div class="code-example">
+          <code>=SUM(B1:B5)</code>
+        </div>
+
+        <p>
+          This adds all the values from cell B1 to cell B5.
+        </p>
+
+        <h3>Another Example</h3>
+
+        <div class="code-example">
+          <code>=SUM(10,20,30)</code>
+        </div>
+
+        <p>Result: 60</p>
+      </div>
+
+      <p>
+        The colon (:) represents a range of cells.
+        For example, B1:B5 means all cells from B1 through B5.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>7. Copying Formulas</h2>
+
+      <p>
+        You do not need to write the same formula again and again.
+        Excel allows you to copy formulas using the Fill Handle.
+      </p>
+
+      <div class="info-card">
+        <ol>
+          <li>Enter a formula in a cell.</li>
+          <li>Select that cell.</li>
+          <li>Move to the small square at its bottom-right corner.</li>
+          <li>Drag it down or across to copy the formula.</li>
+        </ol>
+
+        <p>
+          Excel normally adjusts relative cell references
+          automatically when a formula is copied.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>📝 Your Practice Task</h2>
+
+      <div class="practice-box">
+        <h3>Create a Monthly Expense Calculator</h3>
+
+        <p>Enter the following data into Excel:</p>
+
+        <div class="spreadsheet">
+          <table>
+            <tr>
+              <th>Expense</th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td>Rent</td>
+              <td>5000</td>
+            </tr>
+            <tr>
+              <td>Food</td>
+              <td>3000</td>
+            </tr>
+            <tr>
+              <td>Travel</td>
+              <td>1000</td>
+            </tr>
+            <tr>
+              <td>Shopping</td>
+              <td>2000</td>
+            </tr>
+            <tr>
+              <td>Other</td>
+              <td>1000</td>
+            </tr>
+          </table>
+        </div>
+
+        <h3 style="margin-top:22px;">Practice Checklist</h3>
+
+        <ul class="task-list">
+          <li><label><input type="checkbox"> Enter all expense names and amounts.</label></li>
+          <li><label><input type="checkbox"> Add two cells using the + operator.</label></li>
+          <li><label><input type="checkbox"> Subtract one amount from another.</label></li>
+          <li><label><input type="checkbox"> Multiply an amount by 2.</label></li>
+          <li><label><input type="checkbox"> Divide an amount by 2.</label></li>
+          <li><label><input type="checkbox"> Calculate the total using =SUM(B2:B6).</label></li>
+          <li><label><input type="checkbox"> Change one amount and check the updated total.</label></li>
+          <li><label><input type="checkbox"> Save the file as Monthly Expense Calculator.xlsx.</label></li>
+        </ul>
+
+        <p style="margin-top:15px;">
+          <span class="highlight">Challenge:</span>
+          Add a column for Savings and calculate how much money
+          remains from a monthly budget of ₹20,000.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Test Your Knowledge</h2>
+
+      <p>Answer all five questions.</p>
+
+      <form id="excelQuiz">
+
+        <div class="quiz-question">
+          <p>1. Which symbol must every Excel formula begin with?</p>
+          <label><input type="radio" name="q1" value="a"> +</label>
+          <label><input type="radio" name="q1" value="b"> =</label>
+          <label><input type="radio" name="q1" value="c"> *</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>2. Which operator is used for multiplication?</p>
+          <label><input type="radio" name="q2" value="a"> /</label>
+          <label><input type="radio" name="q2" value="b"> -</label>
+          <label><input type="radio" name="q2" value="c"> *</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>3. What is the result of =10+5*2?</p>
+          <label><input type="radio" name="q3" value="a"> 30</label>
+          <label><input type="radio" name="q3" value="b"> 20</label>
+          <label><input type="radio" name="q3" value="c"> 25</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>4. Which function is used to add a range of cells?</p>
+          <label><input type="radio" name="q4" value="a"> SUM</label>
+          <label><input type="radio" name="q4" value="b"> COUNT</label>
+          <label><input type="radio" name="q4" value="c"> MAX</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>5. What does B1:B5 represent?</p>
+          <label><input type="radio" name="q5" value="a"> Only cell B1</label>
+          <label><input type="radio" name="q5" value="b"> Cells B1 through B5</label>
+          <label><input type="radio" name="q5" value="c"> Cells B1 and C5 only</label>
+        </div>
+
+        <button type="submit" class="main-btn">Submit Answers</button>
+        <button type="button" class="main-btn" id="retryBtn">Try Again</button>
+
+        <div id="quizResult" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <div class="navigation">
+      <a href="excel-lesson2.html" class="nav-btn">← Previous Lesson</a>
+      <a href="excel-lesson4.html" class="nav-btn">Next Lesson →</a>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 SkillSaathi | Learn. Practice. Grow.
+  </footer>
+
+  <script>
+    const quiz = document.getElementById("excelQuiz");
+    const result = document.getElementById("quizResult");
+    const retryBtn = document.getElementById("retryBtn");
+
+    const answers = {
+      q1: "b",
+      q2: "c",
+      q3: "b",
+      q4: "a",
+      q5: "b"
+    };
+
+    quiz.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let score = 0;
+      let attempted = 0;
+
+      for (let question in answers) {
+        const selected = quiz.querySelector(
+          `input[name="${question}"]:checked`
+        );
+
+        if (selected) {
+          attempted++;
+
+          if (selected.value === answers[question]) {
+            score++;
+          }
+        }
+      }
+
+      if (attempted < 5) {
+        result.textContent =
+          "Please answer all 5 questions before submitting.";
+        return;
+      }
+
+      result.textContent =
+        `You scored ${score} out of 5! ` +
+        (score >= 4
+          ? "Excellent work! You are ready for the next lesson."
+          : "Good effort! Review the lesson and try again.");
+    });
+
+    retryBtn.addEventListener("click", function() {
+      quiz.reset();
+      result.textContent = "";
+    });
+  </script>
+
+</body>
+</html>

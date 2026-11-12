@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: Formatting Cells | SkillSaathi</title>
+
+  <style>
+    :root {
+      --gold: #d6ad45;
+      --gold-light: #f0d58a;
+      --bg: #111315;
+      --card: #1b1e20;
+      --text: #f4f1e8;
+      --muted: #b9b6aa;
+      --border: #393a35;
+      --success: #8fc99a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      background: #17191a;
+      border-bottom: 1px solid var(--border);
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: var(--gold-light);
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .back-link {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      color: var(--gold-light);
+    }
+
+    .hero {
+      padding: 65px 7% 45px;
+      background: linear-gradient(135deg, #24231d, #111315 70%);
+    }
+
+    .lesson-label {
+      color: var(--gold-light);
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .lesson-info {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      color: var(--gold-light);
+      font-size: 14px;
+    }
+
+    .container {
+      width: 86%;
+      max-width: 1050px;
+      margin: 45px auto;
+    }
+
+    .section {
+      margin-bottom: 42px;
+    }
+
+    h2 {
+      color: var(--gold-light);
+      font-size: 25px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin-bottom: 13px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 23px;
+      margin: 18px 0;
+    }
+
+    .info-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    ul, ol {
+      padding-left: 22px;
+      color: var(--muted);
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .spreadsheet {
+      overflow-x: auto;
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 480px;
+      background: #202426;
+    }
+
+    th, td {
+      border: 1px solid #55564c;
+      padding: 13px;
+      text-align: center;
+    }
+
+    th {
+      background: #b58b30;
+      color: #171717;
+    }
+
+    td {
+      color: var(--text);
+    }
+
+    .example-bold {
+      font-weight: bold;
+    }
+
+    .example-italic {
+      font-style: italic;
+    }
+
+    .example-underline {
+      text-decoration: underline;
+    }
+
+    .example-center {
+      text-align: center;
+    }
+
+    .example-currency {
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    .shortcut {
+      display: inline-block;
+      background: #34352e;
+      border: 1px solid #75602d;
+      padding: 4px 10px;
+      border-radius: 5px;
+      color: var(--gold-light);
+      font-weight: bold;
+      margin: 3px;
+    }
+
+    .practice-box {
+      background: #22231e;
+      border: 1px solid #75602d;
+      border-radius: 13px;
+      padding: 25px;
+    }
+
+    .task-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .task-list li {
+      margin: 13px 0;
+    }
+
+    .task-list input {
+      accent-color: var(--gold);
+      margin-right: 9px;
+    }
+
+    .quiz-question {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 17px 0;
+    }
+
+    .quiz-question p {
+      color: var(--text);
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .quiz-question label {
+      display: block;
+      color: var(--muted);
+      margin: 9px 0;
+      cursor: pointer;
+    }
+
+    .quiz-question input {
+      accent-color: var(--gold);
+      margin-right: 8px;
+    }
+
+    .main-btn {
+      background: var(--gold);
+      color: #171717;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 7px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .main-btn:hover {
+      background: var(--gold-light);
+    }
+
+    #quizResult {
+      margin-top: 18px;
+      font-weight: bold;
+      color: var(--success);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 25px;
+      margin-top: 50px;
+    }
+
+    .nav-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 7px;
+      color: var(--gold-light);
+    }
+
+    .nav-btn:hover {
+      background: var(--gold);
+      color: #171717;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media(max-width: 600px) {
+      .container {
+        width: 90%;
+      }
+
+      .hero {
+        padding: 45px 6%;
+      }
+
+      .topbar {
+        padding: 16px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a href="../excel.html" class="logo">SkillSaathi.</a>
+    <a href="../excel.html" class="back-link">← Back to Excel Course</a>
+  </header>
+
+  <section class="hero">
+    <div class="lesson-label">EXCEL BASICS · LESSON 02</div>
+
+    <h1>Formatting Cells in Excel</h1>
+
+    <p>
+      Learn how to make your spreadsheets clean, readable and
+      professional using fonts, colours, borders, alignment and
+      number formats.
+    </p>
+
+    <div class="lesson-info">
+      <span>◷ 25–30 Minutes</span>
+      <span>Beginner Level</span>
+      <span>5 Questions Quiz</span>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section class="section">
+      <h2>🎯 What You Will Learn</h2>
+
+      <div class="info-card">
+        <ul>
+          <li>Change font style and font size.</li>
+          <li>Use Bold, Italic and Underline.</li>
+          <li>Apply font colour and cell fill colour.</li>
+          <li>Add borders to cells.</li>
+          <li>Align text inside cells.</li>
+          <li>Use basic number formats.</li>
+          <li>Adjust column width and row height.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>1. What is Cell Formatting?</h2>
+
+      <p>
+        Cell formatting means changing the appearance of data
+        in an Excel worksheet without changing the actual data.
+      </p>
+
+      <p>
+        Formatting helps make information easier to read,
+        understand and present.
+      </p>
+
+      <div class="info-card">
+        <h3>Why is formatting important?</h3>
+        <ul>
+          <li>Makes headings easy to identify.</li>
+          <li>Highlights important information.</li>
+          <li>Improves readability.</li>
+          <li>Makes reports look professional.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. Font Style and Font Size</h2>
+
+      <p>
+        You can change the font style and size of text in a cell.
+        First select the cell or range of cells you want to format.
+      </p>
+
+      <div class="info-card">
+        <h3>Common Font Options</h3>
+
+        <p class="example-bold">Bold: Makes text darker and thicker.</p>
+        <p class="example-italic">Italic: Makes text slanted.</p>
+        <p class="example-underline">Underline: Adds a line below text.</p>
+
+        <p>
+          You can also choose a font family such as Arial or Calibri
+          and adjust its size.
+        </p>
+      </div>
+
+      <h3>Useful Keyboard Shortcuts</h3>
+
+      <p>
+        <span class="shortcut">Ctrl + B</span> Bold
+        <span class="shortcut">Ctrl + I</span> Italic
+        <span class="shortcut">Ctrl + U</span> Underline
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>3. Font Colour and Fill Colour</h2>
+
+      <p>
+        Excel allows you to change the colour of text and the
+        background of a cell.
+      </p>
+
+      <div class="info-card">
+        <h3>Font Colour</h3>
+        <p>
+          Changes the colour of the text inside a cell.
+        </p>
+
+        <h3>Fill Colour</h3>
+        <p>
+          Changes the background colour of a selected cell.
+        </p>
+
+        <p>
+          For example, you can use a dark fill colour with light text
+          to highlight your table headings.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>4. Adding Borders</h2>
+
+      <p>
+        Borders are lines around cells. They help separate
+        information and organize tables.
+      </p>
+
+      <div class="spreadsheet">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+          </tr>
+          <tr>
+            <td>Asha</td>
+            <td>HR</td>
+            <td>25000</td>
+          </tr>
+          <tr>
+            <td>Ravi</td>
+            <td>Accounts</td>
+            <td>30000</td>
+          </tr>
+          <tr>
+            <td>Meena</td>
+            <td>Sales</td>
+            <td>28000</td>
+          </tr>
+        </table>
+      </div>
+
+      <p style="margin-top:12px;">
+        You can apply outside borders, all borders, top borders
+        and bottom borders from the Borders option.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>5. Text Alignment</h2>
+
+      <p>
+        Alignment controls the position of text inside a cell.
+      </p>
+
+      <div class="info-card">
+        <ul>
+          <li><span class="highlight">Left Align:</span> Places text towards the left.</li>
+          <li><span class="highlight">Center:</span> Places text in the middle.</li>
+          <li><span class="highlight">Right Align:</span> Places text towards the right.</li>
+          <li><span class="highlight">Top Align:</span> Places content at the top.</li>
+          <li><span class="highlight">Middle Align:</span> Places content vertically in the middle.</li>
+          <li><span class="highlight">Bottom Align:</span> Places content at the bottom.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6. Number Formats</h2>
+
+      <p>
+        Number formatting changes how numerical values are displayed.
+        It does not necessarily change the stored value.
+      </p>
+
+      <div class="info-card">
+        <h3>Common Number Formats</h3>
+        <ul>
+          <li><span class="highlight">General:</span> Default format in Excel.</li>
+          <li><span class="highlight">Number:</span> Displays numerical values.</li>
+          <li><span class="highlight">Currency:</span> Displays a currency symbol.</li>
+          <li><span class="highlight">Percentage:</span> Displays values with a % sign.</li>
+          <li><span class="highlight">Date:</span> Displays dates in a selected format.</li>
+          <li><span class="highlight">Accounting:</span> Aligns currency symbols and values neatly.</li>
+        </ul>
+      </div>
+
+      <div class="spreadsheet">
+        <table>
+          <tr>
+            <th>Format</th>
+            <th>Example Display</th>
+          </tr>
+          <tr>
+            <td>Number</td>
+            <td>1500</td>
+          </tr>
+          <tr>
+            <td>Currency</td>
+            <td class="example-currency">₹1,500.00</td>
+          </tr>
+          <tr>
+            <td>Percentage</td>
+            <td>75%</td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td>07-Nov-2026</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>7. Adjusting Row Height and Column Width</h2>
+
+      <p>
+        Sometimes text does not fit properly inside a cell.
+        You can increase the row height or column width.
+      </p>
+
+      <div class="info-card">
+        <ul>
+          <li>Drag the boundary between column letters to change column width.</li>
+          <li>Drag the boundary between row numbers to change row height.</li>
+          <li>Double-click a boundary to use AutoFit for the content.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>8. Your Practice Task</h2>
+
+      <div class="practice-box">
+        <h3>Create a Professional Salary Table</h3>
+
+        <p>Enter the following data into Excel:</p>
+
+        <div class="spreadsheet">
+          <table>
+            <tr>
+              <th>Employee</th>
+              <th>Department</th>
+              <th>Salary</th>
+            </tr>
+            <tr>
+              <td>Asha</td>
+              <td>HR</td>
+              <td>25000</td>
+            </tr>
+            <tr>
+              <td>Ravi</td>
+              <td>Accounts</td>
+              <td>30000</td>
+            </tr>
+            <tr>
+              <td>Meena</td>
+              <td>Sales</td>
+              <td>28000</td>
+            </tr>
+          </table>
+        </div>
+
+        <h3 style="margin-top:22px;">Formatting Checklist</h3>
+
+        <ul class="task-list">
+          <li><label><input type="checkbox"> Make the headings Bold.</label></li>
+          <li><label><input type="checkbox"> Increase the heading font size.</label></li>
+          <li><label><input type="checkbox"> Apply a fill colour to the heading row.</label></li>
+          <li><label><input type="checkbox"> Change the heading font colour.</label></li>
+          <li><label><input type="checkbox"> Apply All Borders to the table.</label></li>
+          <li><label><input type="checkbox"> Center-align the headings.</label></li>
+          <li><label><input type="checkbox"> Format the salary column as Currency.</label></li>
+          <li><label><input type="checkbox"> Adjust column widths using AutoFit.</label></li>
+        </ul>
+
+        <p style="margin-top:15px;">
+          <span class="highlight">Challenge:</span>
+          Give your salary table a professional title and format it
+          using your own colour combination.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Test Your Knowledge</h2>
+
+      <p>Choose the correct answer for each question.</p>
+
+      <form id="excelQuiz">
+
+        <div class="quiz-question">
+          <p>1. What does Ctrl + B do?</p>
+          <label><input type="radio" name="q1" value="a"> Underline text</label>
+          <label><input type="radio" name="q1" value="b"> Make text Bold</label>
+          <label><input type="radio" name="q1" value="c"> Change font colour</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>2. Which option changes the background colour of a cell?</p>
+          <label><input type="radio" name="q2" value="a"> Fill Colour</label>
+          <label><input type="radio" name="q2" value="b"> Font Size</label>
+          <label><input type="radio" name="q2" value="c"> Alignment</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>3. Which format displays a value with a percentage sign?</p>
+          <label><input type="radio" name="q3" value="a"> Currency</label>
+          <label><input type="radio" name="q3" value="b"> Date</label>
+          <label><input type="radio" name="q3" value="c"> Percentage</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>4. What is the purpose of cell borders?</p>
+          <label><input type="radio" name="q4" value="a"> To delete data</label>
+          <label><input type="radio" name="q4" value="b"> To separate and organize cells</label>
+          <label><input type="radio" name="q4" value="c"> To calculate totals</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>5. What does AutoFit help you do?</p>
+          <label><input type="radio" name="q5" value="a"> Adjust row height or column width to fit content</label>
+          <label><input type="radio" name="q5" value="b"> Delete a worksheet</label>
+          <label><input type="radio" name="q5" value="c"> Save a workbook</label>
+        </div>
+
+        <button type="submit" class="main-btn">Submit Answers</button>
+        <button type="button" class="main-btn" id="retryBtn">Try Again</button>
+
+        <div id="quizResult" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <div class="navigation">
+      <a href="excel-lesson1.html" class="nav-btn">← Previous Lesson</a>
+      <a href="excel-lesson3.html" class="nav-btn">Next Lesson →</a>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 SkillSaathi | Learn. Practice. Grow.
+  </footer>
+
+  <script>
+    const quiz = document.getElementById("excelQuiz");
+    const result = document.getElementById("quizResult");
+    const retryBtn = document.getElementById("retryBtn");
+
+    const answers = {
+      q1: "b",
+      q2: "a",
+      q3: "c",
+      q4: "b",
+      q5: "a"
+    };
+
+    quiz.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let score = 0;
+      let attempted = 0;
+
+      for (let question in answers) {
+        const selected = quiz.querySelector(
+          `input[name="${question}"]:checked`
+        );
+
+        if (selected) {
+          attempted++;
+
+          if (selected.value === answers[question]) {
+            score++;
+          }
+        }
+      }
+
+      if (attempted < 5) {
+        result.textContent =
+          "Please answer all 5 questions before submitting.";
+        return;
+      }
+
+      result.textContent =
+        `You scored ${score} out of 5! ` +
+        (score >= 4
+          ? "Excellent work! You are ready for the next lesson."
+          : "Good effort! Review the lesson and try again.");
+    });
+
+    retryBtn.addEventListener("click", function() {
+      quiz.reset();
+      result.textContent = "";
+    });
+  </script>
+
+</body>
+</html>

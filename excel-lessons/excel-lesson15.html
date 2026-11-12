@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 15 | Text & Date Functions - SkillSaathi</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#171717;color:#eee;line-height:1.7;padding:20px}
+.container{max-width:950px;margin:auto}
+header,.card{background:#222;border:1px solid #39342a;border-radius:12px;padding:22px;margin-bottom:18px}
+.brand{color:#f0c75e;font-weight:bold;margin-bottom:12px}
+.tag{display:inline-block;background:#39301c;color:#f0c75e;padding:5px 12px;border-radius:20px;font-size:12px;margin-bottom:12px}
+h1,h2,h3{color:#f0c75e;margin-bottom:12px}
+h1{font-size:30px}h2{font-size:22px}h3{margin-top:15px}
+p{color:#ccc;margin-bottom:12px}
+ul,ol{padding-left:23px;color:#ccc;margin:10px 0}
+li{margin-bottom:7px}
+.example{background:#29261f;border-left:4px solid #e5bd55;padding:15px;border-radius:7px;margin:14px 0}
+.formula{background:#151515;border:1px solid #51452a;color:#f4d47b;padding:13px;border-radius:7px;overflow-x:auto;margin:12px 0;font-family:Consolas,monospace}
+.tip{background:#302b1d;border:1px solid #68572c;color:#f0d58b;padding:13px;border-radius:8px;margin:14px 0}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:450px;margin:14px 0}
+th,td{border:1px solid #51452a;padding:10px;text-align:left}
+th{background:#39301c;color:#f0c75e}
+tr:nth-child(even){background:#292929}
+.quiz{background:#292929;border:1px solid #444039;padding:16px;border-radius:9px;margin:14px 0}
+.quiz label{display:block;color:#ddd;margin:8px 0;cursor:pointer}
+.quiz input{margin-right:8px;accent-color:#e5bd55}
+.feedback{margin-top:8px;font-weight:bold}
+button,.nav a{background:#e5bd55;color:#191919;border:0;padding:11px 17px;border-radius:7px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block;margin:5px 4px 5px 0}
+button:hover,.nav a:hover{background:#f0d58b}
+.nav{background:#302b1d;border:1px solid #68572c;border-radius:10px;padding:15px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.nav a{background:#302b1d;color:#f0c75e;border:1px solid #68572c}
+footer{text-align:center;color:#999;margin:25px 0 10px;font-size:13px}
+@media(max-width:600px){body{padding:12px}h1{font-size:24px}.card{padding:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<div class="brand">✦ SkillSaathi | Learn · Practice · Grow</div>
+<span class="tag">EXCEL & OFFICE · LESSON 15</span>
+<h1>Text & Date Functions</h1>
+<p>Learn to clean text, extract information, combine names and work with dates. These functions are useful for employee records, customer lists and office reports.</p>
+<p>⏱ 35–45 Minutes | Intermediate Level | 5 Questions Quiz</p>
+</header>
+
+<section class="card">
+<h2>1. What are Text Functions?</h2>
+<p>Text functions help you modify, clean, extract and combine text stored in Excel cells.</p>
+<p>For example, an employee database may contain full names, email addresses, codes and department names. Text functions help organize this information.</p>
+<div class="example">
+<strong>Common uses:</strong>
+<ul>
+<li>Extract first names or last names.</li>
+<li>Remove unwanted spaces.</li>
+<li>Convert text into uppercase or lowercase.</li>
+<li>Combine first name and last name.</li>
+<li>Clean imported customer records.</li>
+</ul>
+</div>
+</section>
+
+<section class="card">
+<h2>2. LEFT – Extract Characters from the Beginning</h2>
+<p>LEFT returns a specified number of characters from the left side of a text string.</p>
+<div class="formula">=LEFT(text, [num_chars])</div>
+<h3>Example</h3>
+<p>If A2 contains SKILLSAATHI:</p>
+<div class="formula">=LEFT(A2,5)</div>
+<p><strong>Result:</strong> SKILL</p>
+<p>Useful for extracting prefixes from employee IDs and product codes.</p>
+</section>
+
+<section class="card">
+<h2>3. RIGHT – Extract Characters from the End</h2>
+<p>RIGHT returns characters from the right side of a text string.</p>
+<div class="formula">=RIGHT(text, [num_chars])</div>
+<h3>Example</h3>
+<p>If A2 contains EMP2026105:</p>
+<div class="formula">=RIGHT(A2,3)</div>
+<p><strong>Result:</strong> 105</p>
+</section>
+
+<section class="card">
+<h2>4. MID – Extract Characters from the Middle</h2>
+<p>MID extracts characters from a specified starting position.</p>
+<div class="formula">=MID(text, start_num, num_chars)</div>
+<h3>Example</h3>
+<p>If A2 contains EMP2026105:</p>
+<div class="formula">=MID(A2,4,4)</div>
+<p><strong>Result:</strong> 2026</p>
+<p>Here, Excel starts at the fourth character and extracts four characters.</p>
+</section>
+
+<section class="card">
+<h2>5. LEN – Count Characters</h2>
+<p>LEN returns the total number of characters in a text string, including spaces.</p>
+<div class="formula">=LEN(A2)</div>
+<p>If A2 contains Nainsi, the result is 6.</p>
+<div class="tip">LEN is useful for checking whether IDs, phone-number entries or codes have the expected number of characters.</div>
+</section>
+
+<section class="card">
+<h2>6. TRIM – Remove Extra Spaces</h2>
+<p>TRIM removes unnecessary spaces from text, leaving single spaces between words.</p>
+<div class="formula">=TRIM(A2)</div>
+<p>Example: If a cell contains "  Nainsi   Kumari  ", TRIM returns "Nainsi Kumari".</p>
+<div class="tip">TRIM is especially useful when cleaning data copied from websites, forms or external systems. It does not remove every possible non-breaking space.</div>
+</section>
+
+<section class="card">
+<h2>7. UPPER, LOWER and PROPER</h2>
+<p>These functions change the capitalization of text.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Function</th><th>Example Input</th><th>Result</th></tr>
+<tr><td>UPPER</td><td>Nainsi Kumari</td><td>NAINSI KUMARI</td></tr>
+<tr><td>LOWER</td><td>NAINSI@MAIL.COM</td><td>nainsi@mail.com</td></tr>
+<tr><td>PROPER</td><td>nainsi kumari</td><td>Nainsi Kumari</td></tr>
+</table>
+</div>
+<div class="formula">=UPPER(A2)</div>
+<div class="formula">=LOWER(A2)</div>
+<div class="formula">=PROPER(A2)</div>
+</section>
+
+<section class="card">
+<h2>8. CONCAT and TEXTJOIN – Combine Text</h2>
+<p>CONCAT combines text from multiple cells.</p>
+<div class="formula">=CONCAT(A2," ",B2)</div>
+<p>If A2 contains Nainsi and B2 contains Kumari, the result is Nainsi Kumari.</p>
+<h3>TEXTJOIN</h3>
+<p>TEXTJOIN combines multiple text values using a separator. It can also ignore empty cells.</p>
+<div class="formula">=TEXTJOIN(" ",TRUE,A2:C2)</div>
+<p>This combines values from A2 to C2 with spaces between them and ignores blank cells.</p>
+<div class="tip">CONCAT and TEXTJOIN are available in modern Excel versions. Older versions may use CONCATENATE.</div>
+</section>
+
+<section class="card">
+<h2>9. Introduction to Date Functions</h2>
+<p>Date functions help calculate, extract and manage dates in Excel.</p>
+<h3>TODAY</h3>
+<p>Returns the current date.</p>
+<div class="formula">=TODAY()</div>
+<h3>NOW</h3>
+<p>Returns the current date and time.</p>
+<div class="formula">=NOW()</div>
+<h3>DATE</h3>
+<p>Creates a date from year, month and day values.</p>
+<div class="formula">=DATE(2026,11,12)</div>
+<p><strong>Result:</strong> 12-Nov-2026, depending on cell formatting.</p>
+</section>
+
+<section class="card">
+<h2>10. DAY, MONTH and YEAR</h2>
+<p>These functions extract individual parts of a valid Excel date.</p>
+<p>Suppose A2 contains 12-Nov-2026.</p>
+<div class="formula">=DAY(A2)</div>
+<p>Result: 12</p>
+<div class="formula">=MONTH(A2)</div>
+<p>Result: 11</p>
+<div class="formula">=YEAR(A2)</div>
+<p>Result: 2026</p>
+</section>
+
+<section class="card">
+<h2>11. EOMONTH and NETWORKDAYS</h2>
+<h3>EOMONTH</h3>
+<p>Returns the last day of a month, a specified number of months before or after a date.</p>
+<div class="formula">=EOMONTH(A2,0)</div>
+<p>Returns the last day of the same month as A2.</p>
+<div class="formula">=EOMONTH(A2,1)</div>
+<p>Returns the last day of the following month.</p>
+<h3>NETWORKDAYS</h3>
+<p>Counts working days between two dates, excluding Saturdays and Sundays by default. You can also provide a holiday list.</p>
+<div class="formula">=NETWORKDAYS(A2,B2)</div>
+<div class="formula">=NETWORKDAYS(A2,B2,D2:D10)</div>
+<p>The second formula also excludes holidays listed in D2:D10.</p>
+<div class="tip">NETWORKDAYS assumes Saturday and Sunday are weekends. For different weekend days, Excel provides NETWORKDAYS.INTL.</div>
+</section>
+
+<section class="card">
+<h2>12. DATEDIF – Calculate Date Difference</h2>
+<p>DATEDIF calculates the difference between two dates in years, months or days.</p>
+<div class="formula">=DATEDIF(A2,B2,"Y")</div>
+<p>Returns the number of complete years between the dates.</p>
+<div class="formula">=DATEDIF(A2,B2,"M")</div>
+<p>Returns the number of complete months.</p>
+<div class="formula">=DATEDIF(A2,B2,"D")</div>
+<p>Returns the total number of days.</p>
+<div class="tip">The start date must be earlier than or equal to the end date. DATEDIF is an older compatibility function and may not appear in Excel's formula suggestions.</div>
+</section>
+
+<section class="card">
+<h2>13. Practical Activity – Employee Data Cleaning</h2>
+<p>Create this employee dataset:</p>
+<div class="table-wrap">
+<table>
+<tr><th>Full Name</th><th>Employee Code</th><th>Joining Date</th></tr>
+<tr><td>  aman kumar </td><td>EMP2026101</td><td>01-Jan-2025</td></tr>
+<tr><td>RIYA SHARMA</td><td>EMP2026102</td><td>15-Mar-2024</td></tr>
+<tr><td>neha singh</td><td>EMP2026103</td><td>10-Jun-2023</td></tr>
+<tr><td>RAHUL VERMA</td><td>EMP2026104</td><td>20-Aug-2025</td></tr>
+</table>
+</div>
+<h3>Your tasks</h3>
+<ol>
+<li>Use TRIM to remove extra spaces from names.</li>
+<li>Use PROPER to format names correctly.</li>
+<li>Use LEFT to extract the EMP prefix.</li>
+<li>Use RIGHT to extract the employee number.</li>
+<li>Use MID to extract the year from the employee code.</li>
+<li>Use DAY, MONTH and YEAR to extract joining-date details.</li>
+<li>Use NETWORKDAYS to calculate working days between two dates.</li>
+</ol>
+<p><strong>Learning goal:</strong> Clean employee records and prepare organized data for office reports.</p>
+</section>
+
+<section class="card">
+<h2>14. Knowledge Check – Quiz</h2>
+<p>Answer all five questions and submit your quiz.</p>
+
+<div class="quiz" data-answer="a">
+<p><strong>1. Which function extracts characters from the left side?</strong></p>
+<label><input type="radio" name="q1" value="a"> LEFT</label>
+<label><input type="radio" name="q1" value="b"> RIGHT</label>
+<label><input type="radio" name="q1" value="c"> MID</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="c">
+<p><strong>2. Which function removes extra spaces between words?</strong></p>
+<label><input type="radio" name="q2" value="a"> LEN</label>
+<label><input type="radio" name="q2" value="b"> UPPER</label>
+<label><input type="radio" name="q2" value="c"> TRIM</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="b">
+<p><strong>3. Which function returns the current date?</strong></p>
+<label><input type="radio" name="q3" value="a"> NOW</label>
+<label><input type="radio" name="q3" value="b"> TODAY</label>
+<label><input type="radio" name="q3" value="c"> DATE</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="a">
+<p><strong>4. Which function extracts the year from a date?</strong></p>
+<label><input type="radio" name="q4" value="a"> YEAR</label>
+<label><input type="radio" name="q4" value="b"> DAY</label>
+<label><input type="radio" name="q4" value="c"> MONTH</label>
+<p class="feedback"></p>
+</div>
+
+<div class="quiz" data-answer="c">
+<p><strong>5. Which function counts working days excluding weekends?</strong></p>
+<label><input type="radio" name="q5" value="a"> EOMONTH</label>
+<label><input type="radio" name="q5" value="b"> DATEDIF</label>
+<label><input type="radio" name="q5" value="c"> NETWORKDAYS</label>
+<p class="feedback"></p>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+<p id="quiz-result" class="feedback" aria-live="polite"></p>
+</section>
+
+<div class="nav">
+<a href="../excel.html">← Back to Course</a>
+<a href="excel-lesson14.html">← Previous Lesson</a>
+<a href="excel-lesson16.html">Next Lesson →</a>
+</div>
+
+<footer>© SkillSaathi | Learn · Practice · Grow</footer>
+</div>
+
+<script>
+function checkQuiz(){
+const questions=document.querySelectorAll(".quiz");
+let score=0,unanswered=0;
+questions.forEach(question=>{
+const selected=question.querySelector("input:checked");
+const feedback=question.querySelector(".feedback");
+if(!selected){
+unanswered++;
+feedback.textContent="Please select an answer.";
+feedback.style.color="#f0c75e";
+}else if(selected.value===question.dataset.answer){
+score++;
+feedback.textContent="Correct!";
+feedback.style.color="#8bd49c";
+}else{
+feedback.textContent="Incorrect. Review the topic and try again.";
+feedback.style.color="#f08b8b";
+}
+});
+const result=document.getElementById("quiz-result");
+if(unanswered>0){
+result.textContent="Please answer all five questions.";
+result.style.color="#f0c75e";
+}else if(score>=4){
+result.textContent="Excellent! You scored "+score+"/5. Quiz passed!";
+result.style.color="#8bd49c";
+}else{
+result.textContent="You scored "+score+"/5. Review the lesson and try again.";
+result.style.color="#f0c75e";
+}
+}
+function resetQuiz(){
+document.querySelectorAll(".quiz input").forEach(input=>input.checked=false);
+document.querySelectorAll(".quiz .feedback").forEach(p=>p.textContent="");
+document.getElementById("quiz-result").textContent="";
+}
+</script>
+</body>
+</html>

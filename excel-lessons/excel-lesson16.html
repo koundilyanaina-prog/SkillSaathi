@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 16 - Data Cleaning | SkillSaathi</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#171717;color:#eee;font-family:Arial,sans-serif;line-height:1.7}
+header{background:#201e19;padding:28px 7%;border-bottom:1px solid #51452a}
+header h1{color:#f0c75e;margin:0}
+header p{color:#c8c1b2;margin:5px 0}
+.container{max-width:950px;margin:30px auto;padding:0 18px}
+.card{background:#222;border:1px solid #39342a;border-radius:12px;padding:22px;margin-bottom:20px}
+h2,h3{color:#f0c75e}
+.example{background:#29261f;border-left:4px solid #e5bd55;padding:14px;margin:14px 0;border-radius:6px}
+.formula{background:#151515;border:1px solid #51452a;color:#f4d47b;padding:12px;border-radius:6px;overflow-x:auto}
+.tip{background:#302b1d;border:1px solid #68572c;color:#f0d58b;padding:14px;border-radius:7px}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{border:1px solid #51452a;padding:10px;text-align:left}
+th{background:#39301c;color:#f0c75e}
+.quiz-question{background:#292929;border:1px solid #444039;border-radius:8px;padding:15px;margin:14px 0}
+label{display:block;margin:7px 0;cursor:pointer}
+button{background:#e5bd55;color:#191919;border:0;border-radius:6px;padding:11px 18px;font-weight:bold;cursor:pointer;margin:8px 5px 8px 0}
+.result{font-weight:bold;margin-top:15px}
+.navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#302b1d;border:1px solid #68572c;padding:16px;border-radius:8px}
+.navigation a{color:#f0c75e;text-decoration:none;font-weight:bold}
+small{color:#c6bfae}
+@media(max-width:600px){.card{padding:16px}table{font-size:13px}}
+</style>
+</head>
+<body>
+<header>
+<h1>Lesson 16: Data Cleaning & Advanced Data Management</h1>
+<p>SkillSaathi · Excel & Office · Intermediate Level</p>
+</header>
+
+<main class="container">
+
+<section class="card">
+<h2>1. What is Data Cleaning?</h2>
+<p>Data cleaning means finding and correcting errors in a dataset so that information becomes accurate, consistent and useful.</p>
+<p>Common data problems include:</p>
+<ul>
+<li>Duplicate records</li>
+<li>Blank or missing values</li>
+<li>Extra spaces in names or text</li>
+<li>Different spellings or formats</li>
+<li>Incorrect dates and numbers</li>
+<li>Inconsistent entries such as Delhi, delhi and DELHI</li>
+</ul>
+<div class="tip"><strong>Why it matters:</strong> Incorrect data can produce incorrect reports, calculations and business decisions.</div>
+</section>
+
+<section class="card">
+<h2>2. Remove Duplicate Records</h2>
+<p>Duplicate records are repeated rows or entries. Excel can identify and remove them.</p>
+<ol>
+<li>Select your dataset.</li>
+<li>Open the <strong>Data</strong> tab.</li>
+<li>Click <strong>Remove Duplicates</strong>.</li>
+<li>Select the columns to check.</li>
+<li>Click OK and review the result.</li>
+</ol>
+<div class="tip">Always keep a backup before removing duplicates. Check whether the entire row or only selected columns should be treated as duplicate.</div>
+</section>
+
+<section class="card">
+<h2>3. Find & Replace</h2>
+<p>Find & Replace helps locate specific text or values and replace them quickly.</p>
+<ul>
+<li><strong>Ctrl + F:</strong> Find data.</li>
+<li><strong>Ctrl + H:</strong> Replace data.</li>
+</ul>
+<div class="example">
+Example: Replace the department name "HR Dept" with "Human Resources". Press Ctrl + H, enter both values and choose Replace All only after checking the matches.
+</div>
+</section>
+
+<section class="card">
+<h2>4. Handle Blank Cells</h2>
+<p>Blank cells may affect totals, averages and reports. First understand why the value is missing.</p>
+<ul>
+<li>Use filters to locate blank cells.</li>
+<li>Fill missing values only when the correct value is known.</li>
+<li>Use a clear label such as "Not Provided" when appropriate.</li>
+<li>Do not replace every blank with zero automatically. Zero and missing data are different.</li>
+</ul>
+<div class="example">
+<strong>Example:</strong> If an employee's phone number is missing, do not enter 0 as a phone number. Keep it blank or use an agreed label.
+</div>
+</section>
+
+<section class="card">
+<h2>5. TRIM and CLEAN Functions</h2>
+<p>TRIM removes unnecessary spaces from text. CLEAN removes many non-printable characters.</p>
+<div class="formula">=TRIM(A2)</div>
+<p>Removes extra spaces from the text in A2.</p>
+<div class="formula">=CLEAN(A2)</div>
+<p>Removes non-printable characters.</p>
+<div class="formula">=TRIM(CLEAN(A2))</div>
+<p>Combines both cleaning operations.</p>
+</section>
+
+<section class="card">
+<h2>6. Text to Columns</h2>
+<p>Text to Columns splits information stored in one column into multiple columns.</p>
+<div class="example">
+<strong>Before:</strong> Nainsi,Kumari,Ranchi<br>
+<strong>After:</strong> Nainsi | Kumari | Ranchi
+</div>
+<ol>
+<li>Select the column containing combined text.</li>
+<li>Go to Data → Text to Columns.</li>
+<li>Choose Delimited or Fixed Width.</li>
+<li>Select the delimiter, such as comma or space.</li>
+<li>Preview the result and click Finish.</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>7. Data Validation</h2>
+<p>Data Validation controls what users can enter in a cell. It helps prevent incorrect entries.</p>
+<ol>
+<li>Select the required cells.</li>
+<li>Open Data → Data Validation.</li>
+<li>Choose a rule such as Whole Number, Date or List.</li>
+<li>Set the allowed values and save.</li>
+</ol>
+<div class="example">
+<strong>Dropdown example:</strong> Create a list of departments: HR, Sales, Accounts and IT. Users can select a department instead of typing it manually.
+</div>
+</section>
+
+<section class="card">
+<h2>8. Flash Fill</h2>
+<p>Flash Fill recognises a pattern and fills the remaining values automatically.</p>
+<p>Shortcut: <strong>Ctrl + E</strong></p>
+<div class="example">
+If column A contains full names, type the first name in column B for the first row. Press Ctrl + E to fill the pattern for the remaining rows.
+</div>
+</section>
+
+<section class="card">
+<h2>9. Practical Activity: Clean an Employee Dataset</h2>
+<p>Imagine you receive this employee data:</p>
+<table>
+<tr><th>Employee</th><th>Department</th><th>City</th></tr>
+<tr><td> Riya Sharma </td><td>HR Dept</td><td>Delhi</td></tr>
+<tr><td>Riya Sharma</td><td>HR Dept</td><td>Delhi</td></tr>
+<tr><td>Aman Verma</td><td>Sales</td><td>delhi</td></tr>
+<tr><td>Neha Singh</td><td>Accounts</td><td></td></tr>
+</table>
+<p><strong>Your tasks:</strong></p>
+<ol>
+<li>Identify and remove the duplicate row after checking all columns.</li>
+<li>Use TRIM to remove extra spaces.</li>
+<li>Standardise city names consistently.</li>
+<li>Review the blank city value instead of guessing it.</li>
+<li>Create a department dropdown using Data Validation.</li>
+</ol>
+<div class="tip">A good data-cleaning process protects the original data, checks each issue and records important changes.</div>
+</section>
+
+<section class="card">
+<h2>10. Lesson 16 Quiz</h2>
+<p>Choose the correct answer for each question.</p>
+<form id="quizForm">
+<div class="quiz-question">
+<p><strong>1. Which tool removes repeated records?</strong></p>
+<label><input type="radio" name="q1" value="a"> Sort</label>
+<label><input type="radio" name="q1" value="b"> Remove Duplicates</label>
+<label><input type="radio" name="q1" value="c"> Freeze Panes</label>
+</div>
+<div class="quiz-question">
+<p><strong>2. Which shortcut opens Find & Replace?</strong></p>
+<label><input type="radio" name="q2" value="a"> Ctrl + H</label>
+<label><input type="radio" name="q2" value="b"> Ctrl + P</label>
+<label><input type="radio" name="q2" value="c"> Ctrl + E</label>
+</div>
+<div class="quiz-question">
+<p><strong>3. Which function removes extra spaces?</strong></p>
+<label><input type="radio" name="q3" value="a"> COUNT</label>
+<label><input type="radio" name="q3" value="b"> TRIM</label>
+<label><input type="radio" name="q3" value="c"> TODAY</label>
+</div>
+<div class="quiz-question">
+<p><strong>4. What is the purpose of Data Validation?</strong></p>
+<label><input type="radio" name="q4" value="a"> To control allowed cell entries</label>
+<label><input type="radio" name="q4" value="b"> To create charts only</label>
+<label><input type="radio" name="q4" value="c"> To delete worksheets</label>
+</div>
+<div class="quiz-question">
+<p><strong>5. What does Ctrl + E commonly activate in Excel?</strong></p>
+<label><input type="radio" name="q5" value="a"> Flash Fill</label>
+<label><input type="radio" name="q5" value="b"> Print</label>
+<label><input type="radio" name="q5" value="c"> Save As</label>
+</div>
+<button type="button" onclick="checkQuiz()">Submit Answers</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+<p id="quizResult" class="result" aria-live="polite"></p>
+</form>
+</section>
+
+<nav class="navigation">
+<a href="excel-lesson15.html">← Previous Lesson</a>
+<a href="../excel.html">Back to Course</a>
+<a href="excel-lesson17.html">Next Lesson →</a>
+</nav>
+<p><small>SkillSaathi · Learn practical skills step by step.</small></p>
+</main>
+
+<script>
+function checkQuiz(){
+const answers={q1:"b",q2:"a",q3:"b",q4:"a",q5:"a"};
+let score=0;
+for(const q in answers){
+const selected=document.querySelector('input[name="'+q+'"]:checked');
+if(selected && selected.value===answers[q]) score++;
+}
+const result=document.getElementById("quizResult");
+if(score>=4){
+result.textContent="Excellent! You scored "+score+"/5. Lesson 16 quiz passed.";
+result.style.color="#8bd49c";
+}else{
+result.textContent="You scored "+score+"/5. Review the lesson and try again. You need 4 correct answers to pass.";
+result.style.color="#f0c75e";
+}
+}
+function resetQuiz(){
+document.getElementById("quizForm").reset();
+document.getElementById("quizResult").textContent="";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 17: HTML Validation and Professional Coding | SkillSaathi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson17.js" defer></script>
+
+  <style>
+    .lesson-page {
+      max-width: 1000px;
+      margin: 35px auto;
+      padding: 0 18px 40px;
+      color: #e0def5;
+    }
+    .lesson-header {
+      padding: 26px;
+      margin-bottom: 22px;
+      background: linear-gradient(145deg, #171b33, #111427);
+      border: 1px solid #39335d;
+      border-radius: 16px;
+    }
+    .lesson-header h1 { color: #c4b5fd; margin: 0 0 10px; }
+    .lesson-header p { color: #c0c5dc; line-height: 1.7; margin: 0; }
+    .lesson-card {
+      padding: 24px;
+      margin: 20px 0;
+      background: linear-gradient(145deg, #171b33, #111427);
+      border: 1px solid #39335d;
+      border-radius: 14px;
+    }
+    .lesson-card h2, .lesson-card h3 { color: #c4b5fd; }
+    .lesson-card p, .lesson-card li { color: #d2d3e8; line-height: 1.75; }
+    .lesson-card code {
+      color: #ddd6fe; background: #090b18;
+      padding: 2px 6px; border-radius: 5px;
+    }
+    .lesson-card pre {
+      overflow-x: auto; padding: 16px; border-radius: 9px;
+      background: #090b18; border: 1px solid #39335d;
+      color: #e0def5; line-height: 1.6;
+    }
+    .lesson-card a { color: #c4b5fd; }
+    .lesson-navigation {
+      display: flex; justify-content: space-between; gap: 12px;
+      margin: 28px 0; flex-wrap: wrap;
+    }
+    .lesson-navigation a, .playground-actions button {
+      display: inline-block; padding: 11px 18px;
+      background: #a78bfa; color: #100c24;
+      text-decoration: none; font-weight: bold;
+      border: 0; border-radius: 8px; cursor: pointer;
+    }
+    .lesson-navigation a:hover, .playground-actions button:hover {
+      background: #c4b5fd; transform: translateY(-1px);
+    }
+    #lessonEditor {
+      display: block; width: 100%; min-height: 300px;
+      box-sizing: border-box; padding: 16px; margin: 15px 0;
+      background: #090b18; color: #e0def5;
+      border: 1px solid #55458a; border-radius: 10px;
+      font: 14px/1.65 Consolas, monospace; resize: vertical;
+    }
+    .playground-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .playground-actions button { transition: .2s; }
+    .playground-note, .lesson-hint {
+      padding: 13px 16px; background: #211c40;
+      border-left: 3px solid #a78bfa; border-radius: 8px;
+    }
+    .lesson-feedback { min-height: 24px; font-weight: bold; }
+    .lesson-output { width: 100%; margin-top: 14px; }
+    .lesson-output iframe {
+      width: 100%; min-height: 260px; background: #fff;
+      border: 0; border-radius: 9px;
+    }
+    .lesson-output[hidden] { display: none !important; }
+    .lesson-quiz-question {
+      padding: 14px; margin: 12px 0;
+      background: #101329; border: 1px solid #39335d; border-radius: 9px;
+    }
+    .lesson-quiz-question label { display: block; margin: 8px 0; color: #d2d3e8; }
+    .lesson-quiz-question input { margin-right: 8px; accent-color: #a78bfa; }
+    .quiz-actions { margin-top: 16px; }
+    .quiz-actions button {
+      padding: 10px 17px; border: 0; border-radius: 8px;
+      background: #a78bfa; color: #100c24; font-weight: bold; cursor: pointer;
+    }
+    @media (max-width: 650px) {
+      .lesson-card, .lesson-header { padding: 17px; }
+      .lesson-navigation { flex-direction: column; }
+      .lesson-navigation a { text-align: center; }
+    }
+  </style>
+
+</head>
+<body>
+  <main class="lesson-page">
+    <header class="lesson-header">
+      <h1>Lesson 17: HTML Validation and Professional Coding</h1>
+      <p>Learn to write clean, accessible HTML, validate your markup and review a professional pre-publishing checklist.</p>
+    </header>
+
+
+    <section class="lesson-card">
+      <h2>🎯 What You Will Learn</h2>
+      <ul>
+        <li>How to check the basic structure of an HTML document.</li>
+        <li>How to write clean, readable and consistently indented code.</li>
+        <li>Why semantic elements, labels and alternative text matter.</li>
+        <li>How browser developer tools and HTML validators help find issues.</li>
+        <li>A final checklist before publishing a web page.</li>
+      </ul>
+    </section>
+
+    <section class="lesson-card">
+      <h2>1. Start with a Valid HTML Document</h2>
+      <p>A standard HTML document includes a doctype, an html element, a head section and a body section. Set the document language and include character encoding and viewport metadata.</p>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport"
+        content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;My Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Welcome&lt;/h1&gt;
+  &lt;p&gt;My first page.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>2. Write Clean and Readable Code</h2>
+      <ul>
+        <li>Indent nested elements consistently.</li>
+        <li>Use lowercase element and attribute names.</li>
+        <li>Quote attribute values.</li>
+        <li>Use meaningful names for id and class values.</li>
+        <li>Close elements where required and avoid accidental nesting errors.</li>
+        <li>Keep CSS and JavaScript in separate files for larger projects.</li>
+        <li>Write comments that explain why something is done, not every obvious line.</li>
+      </ul>
+      <pre><code>&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;About Us&lt;/h2&gt;
+    &lt;p&gt;We help learners grow.&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>3. Accessibility and Forms Checklist</h2>
+      <ul>
+        <li>Give meaningful images useful <code>alt</code> text.</li>
+        <li>Connect each form label to its input using matching <code>for</code> and <code>id</code>.</li>
+        <li>Use suitable input types such as email, password and date.</li>
+        <li>Use headings in a logical order.</li>
+        <li>Use buttons for actions and links for navigation.</li>
+        <li>Make sure controls can be understood and used with a keyboard.</li>
+      </ul>
+      <pre><code>&lt;form&gt;
+  &lt;label for="email"&gt;Email address&lt;/label&gt;
+  &lt;input id="email" name="email"
+         type="email" required&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>4. Validate and Test Your HTML</h2>
+      <p>Run your page in more than one browser size. Test links, forms, images and buttons. Check the browser console for errors. You can also use the official Nu HTML Checker to identify markup problems.</p>
+      <p><a href="https://validator.w3.org/nu/" target="_blank" rel="noopener noreferrer">Open the Nu HTML Checker</a></p>
+      <p>Validation tools can find many markup errors, but they cannot decide whether your page is useful, clear or accessible. Always review the page yourself.</p>
+    </section>
+
+    <section class="lesson-card">
+      <h2>5. Final HTML Project Checklist</h2>
+      <ul>
+        <li>Document starts with <code>&lt;!DOCTYPE html&gt;</code>.</li>
+        <li>HTML element has the correct <code>lang</code> attribute.</li>
+        <li>Head includes charset, viewport and a meaningful title.</li>
+        <li>Content uses semantic structure.</li>
+        <li>Images have appropriate alt text and working paths.</li>
+        <li>Forms have labels and suitable input types.</li>
+        <li>Links and buttons work as expected.</li>
+        <li>Page is readable on mobile and desktop.</li>
+        <li>No unnecessary empty elements or duplicate IDs.</li>
+      </ul>
+    </section>
+
+    <section class="lesson-card">
+      <h2>✍️ Quick Practice</h2>
+      <ol>
+        <li>What is the purpose of DOCTYPE?</li>
+        <li>Why should the html element have a lang attribute?</li>
+        <li>What does the viewport meta tag help with?</li>
+        <li>Why should labels be connected to form inputs?</li>
+        <li>What is an HTML validator used for?</li>
+        <li>Why should you test a page at mobile and desktop sizes?</li>
+      </ol>
+      <p class="playground-note"><strong>Learning Tip:</strong> Validate your own project and fix the issues you understand before publishing it.</p>
+    </section>
+
+    <section class="lesson-card" aria-labelledby="playground-title">
+      <h2 id="playground-title">💻 Code Playground</h2>
+      <p>Use the checklist from this lesson to create a clean, accessible HTML page.</p>
+      <label for="lessonEditor"><strong>Write or edit your HTML code:</strong></label>
+      <textarea id="lessonEditor" spellcheck="false" aria-label="HTML code editor"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Final HTML Page</title>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Website</h1>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am learning to build websites.</p>
+      <img src="https://picsum.photos/seed/skillsaathi/500/250"
+           alt="A colorful learning workspace"
+           width="500" height="250">
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <form>
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" required>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created while learning with SkillSaathi.</p>
+  </footer>
+</body>
+</html></textarea>
+      <div class="playground-actions">
+        <button type="button" id="lessonRunBtn">Run Code</button>
+        <button type="button" id="lessonClearBtn">Clear</button>
+        <button type="button" id="lessonHintBtn" aria-expanded="false">Show Hint</button>
+        <button type="button" id="lessonCheckBtn">Check My Answer</button>
+      </div>
+      <p id="lessonHint" class="lesson-hint" hidden>Check that your document has DOCTYPE, lang, charset, viewport, title, header, nav, main, section, footer, an image alt attribute, and a labelled required email input.</p>
+      <p id="lessonFeedback" class="lesson-feedback" role="status" aria-live="polite"></p>
+      <h3>Output:</h3>
+      <div class="lesson-output" id="lessonOutput" hidden>
+        <iframe id="lessonPreview" title="Your HTML output" sandbox="allow-forms"></iframe>
+      </div>
+    </section>
+
+    <section class="lesson-card">
+      <h2>🎉 Congratulations!</h2>
+      <p>You have completed the HTML learning lessons from the basics to practical page building and professional checking. Next, review your practice work and complete the final course assessment when it is added to SkillSaathi.</p>
+    </section>
+<section class="lesson-card">
+  <h2>🏆 HTML Final Project</h2>
+  <p>Now apply everything you have learned and build your own personal portfolio website.</p>
+
+  <a href="html-project1.html"
+     style="display:inline-block;padding:12px 20px;
+     background:#a78bfa;color:#100c24;
+     text-decoration:none;font-weight:bold;border-radius:8px;">
+    Start Final Project →
+  </a>
+</section>
+
+    <nav class="lesson-navigation" aria-label="Lesson navigation">
+      <a href="lesson16.html">← Previous Lesson</a>
+      <a href="index.html">Back to Course Home</a>
+    </nav>
+  </main>
+</body>
+</html>

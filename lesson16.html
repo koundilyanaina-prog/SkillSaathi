@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 16: Useful HTML5 Elements | SkillSaathi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson16.js" defer></script>
+
+  <style>
+    .lesson-page {
+      max-width: 1000px;
+      margin: 35px auto;
+      padding: 0 18px 40px;
+      color: #e0def5;
+    }
+    .lesson-header {
+      padding: 26px;
+      margin-bottom: 22px;
+      background: linear-gradient(145deg, #171b33, #111427);
+      border: 1px solid #39335d;
+      border-radius: 16px;
+    }
+    .lesson-header h1 { color: #c4b5fd; margin: 0 0 10px; }
+    .lesson-header p { color: #c0c5dc; line-height: 1.7; margin: 0; }
+    .lesson-card {
+      padding: 24px;
+      margin: 20px 0;
+      background: linear-gradient(145deg, #171b33, #111427);
+      border: 1px solid #39335d;
+      border-radius: 14px;
+    }
+    .lesson-card h2, .lesson-card h3 { color: #c4b5fd; }
+    .lesson-card p, .lesson-card li { color: #d2d3e8; line-height: 1.75; }
+    .lesson-card code {
+      color: #ddd6fe; background: #090b18;
+      padding: 2px 6px; border-radius: 5px;
+    }
+    .lesson-card pre {
+      overflow-x: auto; padding: 16px; border-radius: 9px;
+      background: #090b18; border: 1px solid #39335d;
+      color: #e0def5; line-height: 1.6;
+    }
+    .lesson-card a { color: #c4b5fd; }
+    .lesson-navigation {
+      display: flex; justify-content: space-between; gap: 12px;
+      margin: 28px 0; flex-wrap: wrap;
+    }
+    .lesson-navigation a, .playground-actions button {
+      display: inline-block; padding: 11px 18px;
+      background: #a78bfa; color: #100c24;
+      text-decoration: none; font-weight: bold;
+      border: 0; border-radius: 8px; cursor: pointer;
+    }
+    .lesson-navigation a:hover, .playground-actions button:hover {
+      background: #c4b5fd; transform: translateY(-1px);
+    }
+    #lessonEditor {
+      display: block; width: 100%; min-height: 300px;
+      box-sizing: border-box; padding: 16px; margin: 15px 0;
+      background: #090b18; color: #e0def5;
+      border: 1px solid #55458a; border-radius: 10px;
+      font: 14px/1.65 Consolas, monospace; resize: vertical;
+    }
+    .playground-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .playground-actions button { transition: .2s; }
+    .playground-note, .lesson-hint {
+      padding: 13px 16px; background: #211c40;
+      border-left: 3px solid #a78bfa; border-radius: 8px;
+    }
+    .lesson-feedback { min-height: 24px; font-weight: bold; }
+    .lesson-output { width: 100%; margin-top: 14px; }
+    .lesson-output iframe {
+      width: 100%; min-height: 260px; background: #fff;
+      border: 0; border-radius: 9px;
+    }
+    .lesson-output[hidden] { display: none !important; }
+    .lesson-quiz-question {
+      padding: 14px; margin: 12px 0;
+      background: #101329; border: 1px solid #39335d; border-radius: 9px;
+    }
+    .lesson-quiz-question label { display: block; margin: 8px 0; color: #d2d3e8; }
+    .lesson-quiz-question input { margin-right: 8px; accent-color: #a78bfa; }
+    .quiz-actions { margin-top: 16px; }
+    .quiz-actions button {
+      padding: 10px 17px; border: 0; border-radius: 8px;
+      background: #a78bfa; color: #100c24; font-weight: bold; cursor: pointer;
+    }
+    @media (max-width: 650px) {
+      .lesson-card, .lesson-header { padding: 17px; }
+      .lesson-navigation { flex-direction: column; }
+      .lesson-navigation a { text-align: center; }
+    }
+  </style>
+
+</head>
+<body>
+  <main class="lesson-page">
+    <header class="lesson-header">
+      <h1>Lesson 16: Useful HTML5 Elements</h1>
+      <p>Explore useful HTML elements such as details, progress, meter, time, mark, abbr and dialog.</p>
+    </header>
+
+
+    <section class="lesson-card">
+      <h2>🎯 What You Will Learn</h2>
+      <ul>
+        <li>How to use details and summary for expandable information.</li>
+        <li>The difference between progress and meter.</li>
+        <li>How to represent dates and times with the time element.</li>
+        <li>How to highlight text with mark and explain abbreviations with abbr.</li>
+        <li>How to use dialog for a simple dialog box.</li>
+      </ul>
+    </section>
+
+    <section class="lesson-card">
+      <h2>1. Details and Summary</h2>
+      <p><code>&lt;details&gt;</code> creates a disclosure widget. The <code>&lt;summary&gt;</code> element provides the visible label. The user can open or close it without writing JavaScript.</p>
+      <pre><code>&lt;details&gt;
+  &lt;summary&gt;What is HTML?&lt;/summary&gt;
+  &lt;p&gt;HTML structures content on web pages.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>2. Progress and Meter</h2>
+      <p>Use <code>&lt;progress&gt;</code> to show the completion progress of a task. Use <code>&lt;meter&gt;</code> to show a measurement within a known range.</p>
+      <pre><code>&lt;label for="courseProgress"&gt;Course progress&lt;/label&gt;
+&lt;progress id="courseProgress"
+          value="7" max="10"&gt;70%&lt;/progress&gt;
+
+&lt;label for="skillLevel"&gt;Skill level&lt;/label&gt;
+&lt;meter id="skillLevel"
+       min="0" max="100" value="75"&gt;
+  75 out of 100
+&lt;/meter&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>3. Time, Mark and Abbr</h2>
+      <p><code>&lt;time&gt;</code> can provide a machine-readable date or time through its <code>datetime</code> attribute. <code>&lt;mark&gt;</code> highlights relevant text. <code>&lt;abbr&gt;</code> identifies an abbreviation and can provide its full meaning in a title.</p>
+      <pre><code>&lt;p&gt;Class starts on
+  &lt;time datetime="2026-11-10"&gt;10 November 2026&lt;/time&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;Remember to &lt;mark&gt;practice daily&lt;/mark&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;
+  HTML
+&lt;/abbr&gt; structures web content.&lt;/p&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>4. Dialog Element</h2>
+      <p><code>&lt;dialog&gt;</code> represents a dialog box. JavaScript can open it with <code>showModal()</code> and close it with <code>close()</code>. The example below uses buttons to control it.</p>
+      <pre><code>&lt;button type="button" onclick="document
+  .getElementById('infoDialog').showModal()"&gt;
+  Open information
+&lt;/button&gt;
+
+&lt;dialog id="infoDialog"&gt;
+  &lt;p&gt;Welcome to SkillSaathi!&lt;/p&gt;
+  &lt;button type="button"
+    onclick="document.getElementById('infoDialog').close()"&gt;
+    Close
+  &lt;/button&gt;
+&lt;/dialog&gt;</code></pre>
+      <p>In larger projects, keep JavaScript in a separate file and connect buttons with event listeners.</p>
+    </section>
+
+    <section class="lesson-card">
+      <h2>✍️ Quick Practice</h2>
+      <ol>
+        <li>Which elements create expandable content?</li>
+        <li>When should you use progress?</li>
+        <li>What does meter represent?</li>
+        <li>Why is datetime useful inside time?</li>
+        <li>What does mark do?</li>
+        <li>How can JavaScript open a dialog?</li>
+      </ol>
+      <p class="playground-note"><strong>Learning Tip:</strong> Add these elements to a small course dashboard.</p>
+    </section>
+
+    <section class="lesson-card" aria-labelledby="playground-title">
+      <h2 id="playground-title">💻 Code Playground</h2>
+      <p>Build a small learning dashboard using useful HTML elements.</p>
+      <label for="lessonEditor"><strong>Write or edit your HTML code:</strong></label>
+      <textarea id="lessonEditor" spellcheck="false" aria-label="HTML code editor"><h1>My Learning Dashboard</h1>
+
+<details>
+  <summary>What am I learning?</summary>
+  <p>I am learning HTML with SkillSaathi.</p>
+</details>
+
+<p>Course progress:</p>
+<progress value="7" max="10">70%</progress>
+
+<p>My confidence level:</p>
+<meter min="0" max="100" value="80">80%</meter>
+
+<p>Next class:
+  <time datetime="2026-11-10">10 November 2026</time>
+</p>
+
+<p>My goal is to <mark>practice every day</mark>.</p>
+
+<p><abbr title="HyperText Markup Language">HTML</abbr> is fun!</p>
+
+<button type="button" id="openInfo">Open information</button>
+<dialog id="infoDialog">
+  <p>Keep learning with SkillSaathi!</p>
+  <button type="button" id="closeInfo">Close</button>
+</dialog>
+
+<script>
+  const dialog = document.getElementById("infoDialog");
+  document.getElementById("openInfo").addEventListener("click", () => dialog.showModal());
+  document.getElementById("closeInfo").addEventListener("click", () => dialog.close());
+</script></textarea>
+      <div class="playground-actions">
+        <button type="button" id="lessonRunBtn">Run Code</button>
+        <button type="button" id="lessonClearBtn">Clear</button>
+        <button type="button" id="lessonHintBtn" aria-expanded="false">Show Hint</button>
+        <button type="button" id="lessonCheckBtn">Check My Answer</button>
+      </div>
+      <p id="lessonHint" class="lesson-hint" hidden>Try details/summary, progress, meter, time with datetime, mark, abbr, and a dialog opened with showModal().</p>
+      <p id="lessonFeedback" class="lesson-feedback" role="status" aria-live="polite"></p>
+      <h3>Output:</h3>
+      <div class="lesson-output" id="lessonOutput" hidden>
+        <iframe id="lessonPreview" title="Your HTML output" sandbox="allow-forms"></iframe>
+      </div>
+    </section>
+
+    <section class="lesson-card">
+      <h2>✅ Lesson Summary</h2>
+      <p>These HTML elements add useful meaning and built-in behavior to a page. Choose each element according to the meaning of the content, not just its appearance.</p>
+    </section>
+
+
+    <nav class="lesson-navigation" aria-label="Lesson navigation">
+      <a href="lesson15.html">← Previous Lesson</a>
+      <a href="lesson17.html">Next Lesson →</a>
+    </nav>
+  </main>
+</body>
+</html>

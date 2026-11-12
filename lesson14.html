@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lesson 14: HTML Attributes | SkillSaathi</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson14.js" defer></script>
+
+  <style>
+    .lesson-page {
+      max-width: 1000px;
+      margin: 35px auto;
+      padding: 20px;
+    }
+
+    .lesson-page > h1 {
+      color: #ffffff;
+      font-size: clamp(32px, 5vw, 46px);
+      letter-spacing: -1px;
+    }
+
+    .lesson-page > p {
+      color: #b5bad4;
+      line-height: 1.8;
+    }
+
+    .lesson-card {
+      padding: 26px;
+      margin: 22px 0;
+      border: 1px solid #39335d;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #171b33, #111427);
+      color: #c0c5dc;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .lesson-card p,
+    .lesson-card li {
+      color: #c0c5dc;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+
+    .lesson-card h2 {
+      color: #c4b5fd;
+      line-height: 1.5;
+    }
+
+    .lesson-card h3 {
+      color: #e3dcff;
+      line-height: 1.5;
+      margin-top: 24px;
+    }
+
+    .lesson-card code {
+      color: #c4b5fd;
+      font-size: 15px;
+    }
+
+    .lesson-card pre {
+      background: #090b18;
+      color: #c4b5fd;
+      padding: 18px;
+      border: 1px solid #39335d;
+      border-radius: 12px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      line-height: 1.8;
+    }
+
+    .lesson-navigation {
+      display: flex;
+      justify-content: flex-end;
+      margin: 30px 0;
+    }
+
+    .next-lesson {
+      display: inline-block;
+      padding: 12px 22px;
+      background: #a78bfa;
+      color: #100c24;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 9px;
+      transition: 0.3s;
+    }
+
+    .next-lesson:hover {
+      background: #c4b5fd;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .lesson-page {
+        margin: 20px auto;
+        padding: 16px;
+      }
+
+      .lesson-card {
+        padding: 19px;
+      }
+    }
+    /* Code Playground Styling */
+#lessonEditor {
+  display: block;
+  width: 100%;
+  min-height: 280px;
+  box-sizing: border-box;
+  padding: 16px;
+  margin: 15px 0;
+  background: #090b18;
+  color: #e0def5;
+  border: 1px solid #55458a;
+  border-radius: 10px;
+  font-family: Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+/* Playground Buttons */
+#lessonRunBtn,
+#lessonClearBtn,
+#lessonHintBtn,
+#lessonCheckBtn {
+  padding: 11px 17px;
+  margin: 5px 7px 10px 0;
+  border: none;
+  border-radius: 8px;
+  background: #a78bfa;
+  color: #100c24;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#lessonRunBtn:hover,
+#lessonClearBtn:hover,
+#lessonHintBtn:hover,
+#lessonCheckBtn:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+
+/* Output Area */
+.lesson-output {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+
+.lesson-output iframe {
+  width: 100%;
+  min-height: 250px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+}
+
+.lesson-output[hidden] {
+  display: none !important;
+}
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      Skill<span>Saathi</span>
+    </a>
+
+    <a href="lesson13.html">← Lesson 13</a>
+  </header>
+
+  <main class="lesson-page">
+
+    <p class="eyebrow">LESSON 14 · HTML ADVANCED</p>
+
+    <h1>Let's Master HTML Attributes! ⚙️</h1>
+
+    <p>
+      Learn how HTML attributes provide extra information
+      and control the behavior of HTML elements.
+    </p>
+
+    <section class="lesson-card">
+      <h2>🎯 What You Will Learn</h2>
+
+      <ul>
+        <li>Understand HTML attributes.</li>
+        <li>Learn global HTML attributes.</li>
+        <li>Use class, id, title and style.</li>
+        <li>Understand form attributes.</li>
+        <li>Learn data attributes.</li>
+        <li>Write clean and readable HTML code.</li>
+      </ul>
+    </section>
+
+    <section class="lesson-card">
+      <h2>📘 Part 1: What Are HTML Attributes?</h2>
+
+      <p>
+        HTML attributes provide additional information
+        about HTML elements. They are written inside
+        the opening tag.
+      </p>
+
+      <pre><code>&lt;a href="https://example.com"&gt;
+  Visit Website
+&lt;/a&gt;</code></pre>
+
+      <p>
+        In this example, <code>href</code> is an attribute
+        that specifies the destination of the link.
+      </p>
+
+      <h3>Basic Attribute Syntax</h3>
+
+      <pre><code>&lt;element attribute="value"&gt;
+  Content
+&lt;/element&gt;</code></pre>
+
+      <p>
+        Most attributes use a name and a value.
+        Always use quotation marks around attribute values.
+      </p>
+    </section>
+
+    <section class="lesson-card">
+      <h2>🏷️ Part 2: Global HTML Attributes</h2>
+
+      <p>
+        Global attributes can be used on most HTML elements.
+      </p>
+
+      <h3>1. id Attribute</h3>
+
+      <p>
+        The id attribute gives an element a unique identifier.
+      </p>
+
+      <pre><code>&lt;h1 id="main-heading"&gt;
+  Welcome to My Website
+&lt;/h1&gt;</code></pre>
+
+      <p>
+        An id should be unique within a webpage.
+      </p>
+
+      <h3>2. class Attribute</h3>
+
+      <p>
+        The class attribute groups elements so they can
+        share CSS styles or JavaScript behavior.
+      </p>
+
+      <pre><code>&lt;p class="intro"&gt;
+  Welcome to my website.
+&lt;/p&gt;
+
+&lt;p class="intro"&gt;
+  Learn HTML with us.
+&lt;/p&gt;</code></pre>
+
+      <h3>3. title Attribute</h3>
+
+      <p>
+        The title attribute provides additional information,
+        often displayed as a tooltip when hovering.
+      </p>
+
+      <pre><code>&lt;button title="Click to continue"&gt;
+  Continue
+&lt;/button&gt;</code></pre>
+
+      <h3>4. style Attribute</h3>
+
+      <p>
+        The style attribute adds inline CSS to an element.
+      </p>
+
+      <pre><code>&lt;p style="color: purple;"&gt;
+  Welcome to SkillSaathi!
+&lt;/p&gt;</code></pre>
+
+      <p>
+        For larger projects, using an external CSS file
+        is usually better.
+      </p>
+    </section>
+
+    <section class="lesson-card">
+      <h2>🔗 Part 3: Common HTML Attributes</h2>
+
+      <h3>1. href</h3>
+      <p>Specifies the destination of a link.</p>
+
+      <pre><code>&lt;a href="https://example.com"&gt;
+  Visit Example
+&lt;/a&gt;</code></pre>
+
+      <h3>2. src</h3>
+      <p>Specifies the location of an image or media file.</p>
+
+      <pre><code>&lt;img src="photo.jpg"
+     alt="A beautiful landscape"&gt;</code></pre>
+
+      <h3>3. alt</h3>
+      <p>
+        Provides alternative text for an image.
+        It is useful for screen readers and when an image
+        cannot be displayed.
+      </p>
+
+      <pre><code>&lt;img src="book.jpg"
+     alt="An open learning book"&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>📝 Part 4: HTML Form Attributes</h2>
+
+      <h3>1. placeholder</h3>
+      <p>Displays a short hint inside an input field.</p>
+
+      <pre><code>&lt;input type="text"
+       placeholder="Enter your name"&gt;</code></pre>
+
+      <h3>2. required</h3>
+      <p>Makes a form field mandatory before submission.</p>
+
+      <pre><code>&lt;input type="email" required&gt;</code></pre>
+
+      <h3>3. readonly</h3>
+      <p>
+        Makes a field uneditable by the user,
+        but its value can still be submitted with a form.
+      </p>
+
+      <pre><code>&lt;input type="text"
+       value="SkillSaathi"
+       readonly&gt;</code></pre>
+
+      <h3>4. disabled</h3>
+      <p>
+        Disables a form control. Its value is not submitted
+        with the form.
+      </p>
+
+      <pre><code>&lt;button disabled&gt;
+  Not Available
+&lt;/button&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>🧩 Part 5: Data Attributes</h2>
+
+      <p>
+        Custom data attributes begin with
+        <code>data-</code>. They allow developers to store
+        extra information on HTML elements.
+      </p>
+
+      <pre><code>&lt;button data-course="HTML"&gt;
+  Start Learning
+&lt;/button&gt;</code></pre>
+
+      <p>
+        JavaScript can read this information using
+        the element's <code>dataset</code> property.
+      </p>
+    </section>
+
+    <section class="lesson-card">
+      <h2>💬 Part 6: HTML Comments</h2>
+
+      <p>
+        Comments are notes written in HTML code.
+        Browsers do not display them as webpage content.
+      </p>
+
+      <pre><code>&lt;!-- This is an HTML comment --&gt;
+
+&lt;h1&gt;Welcome to SkillSaathi&lt;/h1&gt;</code></pre>
+
+      <p>
+        Comments help explain code and organize larger projects.
+        Never store passwords or private information in comments.
+      </p>
+    </section>
+
+    <section class="lesson-card">
+      <h2>🧹 Part 7: HTML Coding Best Practices</h2>
+
+      <ul>
+        <li>Use lowercase for HTML tag and attribute names.</li>
+        <li>Put quotation marks around attribute values.</li>
+        <li>Use meaningful id and class names.</li>
+        <li>Keep id values unique on each page.</li>
+        <li>Always provide useful alt text for meaningful images.</li>
+        <li>Close elements correctly and maintain proper nesting.</li>
+        <li>Indent code to make it easy to read.</li>
+        <li>Use external CSS for larger styling tasks.</li>
+      </ul>
+
+      <h3>Correct Nesting Example</h3>
+
+      <pre><code>&lt;p&gt;
+  This is &lt;strong&gt;important&lt;/strong&gt; text.
+&lt;/p&gt;</code></pre>
+
+      <h3>Incorrect Nesting Example</h3>
+
+      <pre><code>&lt;p&gt;
+  This is &lt;strong&gt;important&lt;/p&gt;
+&lt;/strong&gt;</code></pre>
+    </section>
+
+    <section class="lesson-card">
+      <h2>✍️ Quick Practice</h2>
+
+      <ol>
+        <li>What is the purpose of an HTML attribute?</li>
+        <li>Which attribute gives an element a unique identifier?</li>
+        <li>What is the difference between id and class?</li>
+        <li>Which attribute provides alternative image text?</li>
+        <li>Which attribute makes a form field mandatory?</li>
+        <li>What is the purpose of data-* attributes?</li>
+        <li>How do you write an HTML comment?</li>
+      </ol>
+
+      <p>
+        <strong>Learning Tip:</strong>
+        Try using different attributes in your own HTML webpage.
+      </p>
+    </section>
+    <section class="lesson-card">
+  <h2>💻 Code Playground</h2>
+  <p>Practice HTML attributes by writing your own code below.</p>
+
+  <textarea id="lessonEditor" rows="12" placeholder="Write your HTML code here..."><h1 title="Welcome Message">Welcome to SkillSaathi!</h1>
+
+<p id="intro" class="highlight">
+  I am learning HTML attributes.
+</p>
+
+<a href="https://example.com" target="_blank">
+  Visit Example
+</a>
+
+<img src="https://placehold.co/200x120"
+     alt="Sample image">
+</textarea>
+
+  <div class="lesson-buttons">
+    <button id="lessonRunBtn">Run Code</button>
+    <button id="lessonClearBtn">Clear</button>
+    <button id="lessonHintBtn">Show Hint</button>
+    <button id="lessonCheckBtn">Check My Answer</button>
+  </div>
+
+  <p id="lessonHint" hidden>
+    Try using id, class, title, href, target, src and alt attributes.
+  </p>
+
+  <p id="lessonFeedback"></p>
+
+  <div class="lesson-output">
+    <h3>Output:</h3>
+    <iframe id="lessonPreview" title="HTML Output"
+      sandbox="allow-scripts" hidden></iframe>
+  </div>
+</section>
+
+    <section class="lesson-card">
+      <h2>💡 Remember</h2>
+
+      <p>
+        HTML elements create the structure of a webpage,
+        while attributes provide additional information
+        and functionality to those elements.
+      </p>
+
+      <p>
+        Understanding attributes will help you write
+        more useful, accessible and organized HTML code.
+      </p>
+    </section>
+
+  </main>
+<div class="lesson-navigation">
+  <a href="lesson15.html" class="next-lesson">
+    Next Lesson →
+  </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lesson 13: Build Your First Website | SkillSaathi</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson13.js" defer></script>
+
+  <style>
+    .lesson-page {
+      max-width: 1000px;
+      margin: 35px auto;
+      padding: 20px;
+      color: #e3dcff;
+    }
+
+    .lesson-page h1 {
+      color: #c4b5fd;
+    }
+
+    .lesson-page > p {
+      color: #b5bad4;
+      line-height: 1.8;
+    }
+
+    .lesson-card {
+      background: linear-gradient(145deg, #171b33, #111427);
+      border: 1px solid #39335d;
+      border-radius: 14px;
+      padding: 24px;
+      margin: 24px 0;
+      color: #c0c5dc;
+      line-height: 1.8;
+    }
+
+    .lesson-card h2 {
+      color: #c4b5fd;
+      margin-top: 0;
+    }
+
+    .lesson-card pre {
+      background: #090b18;
+      color: #c4b5fd;
+      padding: 18px;
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+.lesson-editor {
+  width: 100%;
+  min-height: 500px;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: #090b18;
+  color: #c4b5fd;
+  font: 15px/1.6 monospace;
+  resize: vertical;
+}
+
+.lesson-btn {
+  margin: 12px 8px 12px 0;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #a78bfa;
+  color: #100c24;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lesson-btn:hover {
+  background: #c4b5fd;
+}
+
+.lesson-output {
+  display: block;
+  width: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: white;
+}
+
+#lessonHint {
+  color: #e3dcff;
+  background: #211c40;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+#lessonFeedback {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+#lessonFeedback.success {
+  color: #86efac;
+}
+
+#lessonFeedback.error {
+  color: #fca5a5;
+}
+    @media (max-width: 600px) {
+      .lesson-page {
+        padding: 14px;
+      }
+
+      .lesson-card {
+        padding: 16px;
+      }
+    }
+    .lesson-output[hidden] {
+  display: none !important;
+}
+.lesson-navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+}
+
+.next-lesson {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #a78bfa;
+  color: #100c24;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 9px;
+  transition: 0.3s ease;
+}
+
+.next-lesson:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      Skill<span>Saathi</span>
+    </a>
+
+    <a href="lesson12.html">← Lesson 12</a>
+  </header>
+
+  <main class="lesson-page">
+
+    <p class="eyebrow">LESSON 13 · HTML FINAL PROJECT</p>
+
+    <h1>Let's Build Your First Complete Website! 🚀</h1>
+
+    <p>
+      It's time to use everything you have learned in HTML
+      and create your own complete website.
+    </p>
+<section class="lesson-card">
+  <h2>🎯 What You Will Learn</h2>
+
+  <ul>
+    <li>How to create a complete HTML webpage</li>
+    <li>How to organize website sections</li>
+    <li>How to create navigation menus</li>
+    <li>How to add images and links</li>
+    <li>How to create contact forms</li>
+    <li>How to use semantic HTML elements</li>
+    <li>How to build a real mini website project</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>🌐 1. What Is a Complete Website?</h2>
+
+  <p>
+    A website is a collection of webpages that share information
+    with visitors. A complete website usually contains different
+    sections such as a header, navigation menu, main content and footer.
+  </p>
+
+  <pre><code>
+&lt;header&gt;Website Header&lt;/header&gt;
+
+&lt;nav&gt;Navigation Menu&lt;/nav&gt;
+
+&lt;main&gt;
+  &lt;section&gt;Main Content&lt;/section&gt;
+  &lt;section&gt;About Section&lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;Website Footer&lt;/footer&gt;
+  </code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🧱 2. Plan Your Website Structure</h2>
+
+  <p>
+    Before writing HTML, decide which sections your website needs.
+    For this project, we will create a personal learning website.
+  </p>
+
+  <ul>
+    <li><strong>Home:</strong> Welcome visitors.</li>
+    <li><strong>About:</strong> Introduce your website.</li>
+    <li><strong>Courses:</strong> Display available courses.</li>
+    <li><strong>Contact:</strong> Provide a contact form.</li>
+    <li><strong>Footer:</strong> Display copyright information.</li>
+  </ul>
+</section><section class="lesson-card">
+  <h2>🧭 3. Create a Navigation Menu</h2>
+
+  <p>
+    A navigation menu helps visitors move between different
+    sections of a website.
+  </p>
+
+  <pre><code>
+&lt;nav&gt;
+  &lt;a href="#home"&gt;Home&lt;/a&gt;
+  &lt;a href="#about"&gt;About&lt;/a&gt;
+  &lt;a href="#courses"&gt;Courses&lt;/a&gt;
+  &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+  </code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🖼️ 4. Add Images and Links</h2>
+
+  <p>
+    Images make a website attractive, while links help visitors
+    explore other webpages and resources.
+  </p>
+
+  <pre><code>
+&lt;img src="image.jpg"
+     alt="Learning illustration"&gt;
+
+&lt;a href="https://example.com"&gt;
+  Visit Website
+&lt;/a&gt;
+  </code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>📚 5. Display Your Courses</h2>
+
+  <p>
+    You can use sections, headings, paragraphs and lists
+    to display information about your courses.
+  </p>
+
+  <pre><code>
+&lt;section id="courses"&gt;
+  &lt;h2&gt;Our Courses&lt;/h2&gt;
+
+  &lt;article&gt;
+    &lt;h3&gt;HTML Basics&lt;/h3&gt;
+    &lt;p&gt;Learn how to build webpages.&lt;/p&gt;
+  &lt;/article&gt;
+
+  &lt;article&gt;
+    &lt;h3&gt;CSS Basics&lt;/h3&gt;
+    &lt;p&gt;Learn how to style webpages.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/section&gt;
+  </code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>📩 6. Create a Contact Form</h2>
+
+  <p>
+    A contact form allows visitors to enter their details
+    and send a message.
+  </p>
+
+  <pre><code>
+&lt;form&gt;
+  &lt;label for="name"&gt;Your Name:&lt;/label&gt;
+  &lt;input type="text" id="name" required&gt;
+
+  &lt;label for="email"&gt;Your Email:&lt;/label&gt;
+  &lt;input type="email" id="email" required&gt;
+
+  &lt;button type="submit"&gt;Send Message&lt;/button&gt;
+&lt;/form&gt;
+  </code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🦶 7. Create a Website Footer</h2>
+
+  <p>
+    A footer usually appears at the bottom of a webpage.
+    It can contain copyright information and useful links.
+  </p>
+
+  <pre><code>
+&lt;footer&gt;
+  &lt;p&gt;© 2026 My Learning Website&lt;/p&gt;
+&lt;/footer&gt;
+  </code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>⭐ 8. Final Project Checklist</h2>
+
+  <ul>
+    <li>Use a proper HTML document structure.</li>
+    <li>Add a website title.</li>
+    <li>Create a navigation menu.</li>
+    <li>Add Home and About sections.</li>
+    <li>Display at least two courses.</li>
+    <li>Add an image with alt text.</li>
+    <li>Create a contact form.</li>
+    <li>Add a footer.</li>
+  </ul>
+</section><!-- Code Playground -->
+<h2>💻 Build Your Own Website</h2>
+
+<p>
+  Now it's your turn! Edit the HTML code below
+  and click Run Code to see your complete website.
+</p>
+
+<section class="lesson-card">
+
+  <textarea
+    id="lessonEditor"
+    class="lesson-editor"
+    spellcheck="false"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My First Website</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Welcome to My Website!</h1>
+    <p>My journey into web development.</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#courses">Courses</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+
+    <section id="home">
+      <h2>Home</h2>
+      <p>Welcome to my first complete website.</p>
+    </section>
+
+    <section id="about">
+      <h2>About Us</h2>
+      <p>We love learning new skills.</p>
+    </section>
+
+    <section id="courses">
+      <h2>Our Courses</h2>
+      <ul>
+        <li>HTML Basics</li>
+        <li>CSS Basics</li>
+        <li>JavaScript Basics</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" required>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 My First Website</p>
+  </footer>
+
+</body>
+</html></textarea>
+
+  <div>
+    <button id="lessonRunBtn" class="lesson-btn" type="button">
+      ▶ Run Code
+    </button>
+
+    <button id="lessonHintBtn" class="lesson-btn" type="button">
+      Show Hint
+    </button>
+
+    <button id="lessonCheckBtn" class="lesson-btn" type="button">
+      Check My Answer
+    </button>
+  </div>
+
+  <p id="lessonHint" hidden>
+    Hint: Try using header, nav, main, section, form and footer elements.
+  </p>
+
+  <p id="lessonFeedback" aria-live="polite"></p>
+
+  <h2>👀 Your Website Output</h2>
+
+  <iframe
+    id="lessonPreview"
+    class="lesson-output"
+    title="Lesson 13 website output"
+    sandbox="allow-forms" hidden>
+  </iframe>
+
+</section>
+<div class="lesson-navigation">
+  <a href="lesson14.html" class="next-lesson">
+    Next Lesson →
+  </a>
+</div>
+  </main>
+
+</body>
+</html>

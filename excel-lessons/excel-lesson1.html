@@ -1,0 +1,688 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1: Introduction to Excel | SkillSaathi</title>
+
+  <style>
+    :root {
+      --gold: #d6ad45;
+      --gold-light: #f0d58a;
+      --bg: #111315;
+      --card: #1b1e20;
+      --card-light: #24282a;
+      --text: #f4f1e8;
+      --muted: #b9b6aa;
+      --border: #393a35;
+      --success: #8fc99a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      border-bottom: 1px solid var(--border);
+      background: #17191a;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: var(--gold-light);
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .back-link {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      color: var(--gold-light);
+    }
+
+    .hero {
+      padding: 65px 7% 45px;
+      background: linear-gradient(135deg, #24231d, #111315 70%);
+    }
+
+    .lesson-label {
+      color: var(--gold-light);
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      max-width: 750px;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .lesson-info {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      color: var(--gold-light);
+      font-size: 14px;
+    }
+
+    .container {
+      width: 86%;
+      max-width: 1050px;
+      margin: 45px auto;
+    }
+
+    .section {
+      margin-bottom: 42px;
+    }
+
+    h2 {
+      color: var(--gold-light);
+      font-size: 25px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin-bottom: 13px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 23px;
+      margin: 18px 0;
+    }
+
+    .info-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    ul {
+      padding-left: 22px;
+      color: var(--muted);
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .spreadsheet {
+      overflow-x: auto;
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 480px;
+      background: #202426;
+    }
+
+    th, td {
+      border: 1px solid #414542;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background: #34352e;
+      color: var(--gold-light);
+    }
+
+    td {
+      color: var(--text);
+    }
+
+    .row-heading {
+      background: #34352e;
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    .practice-box {
+      background: #22231e;
+      border: 1px solid #75602d;
+      border-radius: 13px;
+      padding: 25px;
+    }
+
+    .task-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .task-list li {
+      margin: 13px 0;
+    }
+
+    .task-list input {
+      accent-color: var(--gold);
+      margin-right: 9px;
+    }
+
+    .quiz-question {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 17px 0;
+    }
+
+    .quiz-question p {
+      color: var(--text);
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .quiz-question label {
+      display: block;
+      color: var(--muted);
+      margin: 9px 0;
+      cursor: pointer;
+    }
+
+    .quiz-question input {
+      accent-color: var(--gold);
+      margin-right: 8px;
+    }
+
+    .main-btn {
+      background: var(--gold);
+      color: #171717;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 7px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .main-btn:hover {
+      background: var(--gold-light);
+    }
+
+    #quizResult {
+      margin-top: 18px;
+      font-weight: bold;
+      color: var(--success);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 25px;
+      margin-top: 50px;
+    }
+
+    .nav-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 7px;
+      color: var(--gold-light);
+    }
+
+    .nav-btn:hover {
+      background: var(--gold);
+      color: #171717;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media(max-width: 600px) {
+      .container {
+        width: 90%;
+      }
+
+      .hero {
+        padding: 45px 6%;
+      }
+
+      .topbar {
+        padding: 16px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a href="../excel.html" class="logo">SkillSaathi.</a>
+    <a href="../excel.html" class="back-link">← Back to Excel Course</a>
+  </header>
+
+  <section class="hero">
+    <div class="lesson-label">EXCEL BASICS · LESSON 01</div>
+
+    <h1>Meet Your First Spreadsheet</h1>
+
+    <p>
+      Welcome to Microsoft Excel! In this lesson, you will understand
+      what Excel is, how spreadsheets work, and how to enter your
+      first data into a worksheet.
+    </p>
+
+    <div class="lesson-info">
+      <span>◷ 20–25 Minutes</span>
+      <span>Beginner Level</span>
+      <span>5 Questions Quiz</span>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section class="section">
+      <h2>🎯 What You Will Learn</h2>
+
+      <div class="info-card">
+        <ul>
+          <li>What Microsoft Excel is.</li>
+          <li>What a workbook and worksheet mean.</li>
+          <li>Understanding rows, columns and cells.</li>
+          <li>How cell addresses work.</li>
+          <li>How to enter and edit data.</li>
+          <li>How to save an Excel workbook.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>1. What is Microsoft Excel?</h2>
+
+      <p>
+        Microsoft Excel is a spreadsheet application used to organize,
+        calculate, analyze and present information.
+      </p>
+
+      <p>
+        It arranges information in rows and columns. You can enter
+        numbers, text, dates and formulas into individual cells.
+      </p>
+
+      <div class="info-card">
+        <h3>Where is Excel used?</h3>
+        <ul>
+          <li>Creating monthly expense records.</li>
+          <li>Managing student marks and attendance.</li>
+          <li>Preparing salary sheets.</li>
+          <li>Maintaining business records.</li>
+          <li>Creating reports and charts.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. Workbook and Worksheet</h2>
+
+      <p>
+        These are two important terms you should understand before
+        working with Excel.
+      </p>
+
+      <div class="info-card">
+        <h3>Workbook</h3>
+        <p>
+          A workbook is the complete Excel file. It can contain
+          one or more worksheets.
+        </p>
+
+        <h3>Worksheet</h3>
+        <p>
+          A worksheet is an individual spreadsheet inside a workbook.
+          It contains rows, columns and cells.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>3. Understanding Rows and Columns</h2>
+
+      <p>
+        An Excel worksheet is made up of rows and columns.
+      </p>
+
+      <ul>
+        <li><span class="highlight">Rows:</span> Horizontal lines identified by numbers (1, 2, 3...).</li>
+        <li><span class="highlight">Columns:</span> Vertical lines identified by letters (A, B, C...).</li>
+        <li><span class="highlight">Cells:</span> Small boxes formed where a row and column meet.</li>
+      </ul>
+
+      <div class="spreadsheet">
+        <table>
+          <tr>
+            <th></th>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+          </tr>
+          <tr>
+            <td class="row-heading">1</td>
+            <td>Name</td>
+            <td>Subject</td>
+            <td>Marks</td>
+          </tr>
+          <tr>
+            <td class="row-heading">2</td>
+            <td>Asha</td>
+            <td>Maths</td>
+            <td>88</td>
+          </tr>
+          <tr>
+            <td class="row-heading">3</td>
+            <td>Ravi</td>
+            <td>Science</td>
+            <td>92</td>
+          </tr>
+          <tr>
+            <td class="row-heading">4</td>
+            <td>Meena</td>
+            <td>English</td>
+            <td>81</td>
+          </tr>
+        </table>
+      </div>
+
+      <p style="margin-top:12px;">
+        In this example, A is a column, 1 is a row, and A1 is a cell.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>4. What is a Cell Address?</h2>
+
+      <p>
+        Every cell in Excel has a unique address. It is created by
+        combining the column letter and row number.
+      </p>
+
+      <div class="info-card">
+        <p><span class="highlight">A1</span> means Column A, Row 1.</p>
+        <p><span class="highlight">B2</span> means Column B, Row 2.</p>
+        <p><span class="highlight">C4</span> means Column C, Row 4.</p>
+      </div>
+
+      <p>
+        The currently selected cell is called the
+        <span class="highlight">Active Cell</span>.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>5. Types of Data in Excel</h2>
+
+      <p>You can enter different types of information into Excel cells.</p>
+
+      <div class="info-card">
+        <h3>Text</h3>
+        <p>Names, cities, subjects and descriptions.</p>
+
+        <h3>Numbers</h3>
+        <p>Marks, prices, quantities and amounts.</p>
+
+        <h3>Dates</h3>
+        <p>Dates such as 07/11/2026.</p>
+
+        <h3>Formulas</h3>
+        <p>
+          Instructions that perform calculations.
+          Most Excel formulas begin with an equals sign (=).
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6. Entering and Editing Data</h2>
+
+      <p>Follow these basic steps:</p>
+
+      <ol style="padding-left:22px; color:var(--muted);">
+        <li>Open Microsoft Excel.</li>
+        <li>Select Blank Workbook.</li>
+        <li>Click any cell.</li>
+        <li>Type your information.</li>
+        <li>Press Enter to move to the next row.</li>
+        <li>Select a cell and type again to replace its content.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>7. Saving Your Excel File</h2>
+
+      <p>
+        Saving your work is important. It helps you keep your data
+        safe and use it later.
+      </p>
+
+      <div class="info-card">
+        <h3>Keyboard Shortcut</h3>
+        <p><span class="highlight">Ctrl + S</span> — Save your workbook.</p>
+
+        <p>
+          Excel workbooks are commonly saved with the
+          <span class="highlight">.xlsx</span> file extension.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>📝 Your First Practice Task</h2>
+
+      <div class="practice-box">
+        <h3>Create a Student Record</h3>
+
+        <p>
+          Open Excel and create a table with the following information:
+        </p>
+
+        <div class="spreadsheet">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Subject</th>
+              <th>Marks</th>
+            </tr>
+            <tr>
+              <td>Asha</td>
+              <td>Maths</td>
+              <td>88</td>
+            </tr>
+            <tr>
+              <td>Ravi</td>
+              <td>Science</td>
+              <td>92</td>
+            </tr>
+            <tr>
+              <td>Meena</td>
+              <td>English</td>
+              <td>81</td>
+            </tr>
+          </table>
+        </div>
+
+        <h3 style="margin-top:22px;">Practice Checklist</h3>
+
+        <ul class="task-list">
+          <li><label><input type="checkbox"> Create a blank workbook.</label></li>
+          <li><label><input type="checkbox"> Enter the column headings.</label></li>
+          <li><label><input type="checkbox"> Enter all three student records.</label></li>
+          <li><label><input type="checkbox"> Identify cell A1 and cell C2.</label></li>
+          <li><label><input type="checkbox"> Save the workbook as Student Records.xlsx.</label></li>
+        </ul>
+
+        <p style="margin-top:15px;">
+          <span class="highlight">Challenge:</span>
+          Add one more student of your choice to the table.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Test Your Knowledge</h2>
+
+      <p>Answer all five questions to check what you have learned.</p>
+
+      <form id="excelQuiz">
+
+        <div class="quiz-question">
+          <p>1. What is Microsoft Excel mainly used for?</p>
+          <label><input type="radio" name="q1" value="a"> Playing games</label>
+          <label><input type="radio" name="q1" value="b"> Organizing and analyzing data</label>
+          <label><input type="radio" name="q1" value="c"> Editing videos</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>2. What is a workbook?</p>
+          <label><input type="radio" name="q2" value="a"> A complete Excel file</label>
+          <label><input type="radio" name="q2" value="b"> A single cell</label>
+          <label><input type="radio" name="q2" value="c"> A column</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>3. How are rows identified in Excel?</p>
+          <label><input type="radio" name="q3" value="a"> Letters</label>
+          <label><input type="radio" name="q3" value="b"> Colours</label>
+          <label><input type="radio" name="q3" value="c"> Numbers</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>4. What is the address of the cell in Column B and Row 2?</p>
+          <label><input type="radio" name="q4" value="a"> A2</label>
+          <label><input type="radio" name="q4" value="b"> B2</label>
+          <label><input type="radio" name="q4" value="c"> C2</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>5. Which shortcut is used to save a workbook?</p>
+          <label><input type="radio" name="q5" value="a"> Ctrl + S</label>
+          <label><input type="radio" name="q5" value="b"> Ctrl + P</label>
+          <label><input type="radio" name="q5" value="c"> Ctrl + X</label>
+        </div>
+
+        <button type="submit" class="main-btn">Submit Answers</button>
+        <button type="button" class="main-btn" id="retryBtn">Try Again</button>
+
+        <div id="quizResult" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <div class="navigation">
+      <a href="../excel.html" class="nav-btn">← Course Home</a>
+      <a href="excel-lesson2.html" class="nav-btn">Next Lesson →</a>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 SkillSaathi | Learn. Practice. Grow.
+  </footer>
+
+  <script>
+    const quiz = document.getElementById("excelQuiz");
+    const result = document.getElementById("quizResult");
+    const retryBtn = document.getElementById("retryBtn");
+
+    const answers = {
+      q1: "b",
+      q2: "a",
+      q3: "c",
+      q4: "b",
+      q5: "a"
+    };
+
+    quiz.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let score = 0;
+      let attempted = 0;
+
+      for (let question in answers) {
+        const selected = quiz.querySelector(
+          `input[name="${question}"]:checked`
+        );
+
+        if (selected) {
+          attempted++;
+
+          if (selected.value === answers[question]) {
+            score++;
+          }
+        }
+      }
+
+      if (attempted < 5) {
+        result.textContent =
+          "Please answer all 5 questions before submitting.";
+        return;
+      }
+
+      result.textContent =
+        `You scored ${score} out of 5! ` +
+        (score >= 4
+          ? "Excellent work! You are ready for the next lesson."
+          : "Good effort! Review the lesson and try again.");
+    });
+
+    retryBtn.addEventListener("click", function() {
+      quiz.reset();
+      result.textContent = "";
+    });
+  </script>
+
+</body>
+</html>

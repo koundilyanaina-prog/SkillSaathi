@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 9: HTML Entities | SkillSaathi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson9.js" defer></script>
+  <style>
+.lesson-page {
+  max-width: 1000px;
+  margin: 35px auto;
+  padding: 20px;
+  color: #e3dcff;
+}
+
+.lesson-page h1 {
+  color: #c4b5fd;
+}
+
+.lesson-page > p {
+  color: #b5bad4;
+  line-height: 1.8;
+}
+
+.lesson-card {
+  background: linear-gradient(145deg, #171b33, #111427);
+  border: 1px solid #39335d;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 24px 0;
+  color: #c0c5dc;
+  line-height: 1.8;
+}
+
+.lesson-card h2 {
+  color: #c4b5fd;
+  margin-top: 0;
+}
+
+.lesson-card strong {
+  color: #e3dcff;
+}
+
+.lesson-card pre {
+  background: #090b18;
+  color: #c4b5fd;
+  padding: 18px;
+  border-radius: 10px;
+  overflow-x: auto;
+  border: 1px solid #39335d;
+}
+
+.lesson-card code {
+  font-family: monospace;
+}
+
+.lesson-editor {
+  width: 100%;
+  min-height: 300px;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: #090b18;
+  color: #c4b5fd;
+  font: 15px/1.6 monospace;
+  resize: vertical;
+}
+
+.lesson-btn {
+  margin: 12px 8px 12px 0;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #a78bfa;
+  color: #100c24;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lesson-btn:hover {
+  background: #c4b5fd;
+}
+
+.lesson-output {
+  width: 100%;
+  min-height: 320px;
+  box-sizing: border-box;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: white;
+}
+
+#lessonHint {
+  color: #e3dcff;
+  background: #211c40;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+#lessonFeedback {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+#lessonFeedback.success {
+  color: #86efac;
+}
+
+#lessonFeedback.error {
+  color: #fca5a5;
+}
+@media (max-width: 600px) {
+  .lesson-page {
+    padding: 14px;
+  }
+
+  .lesson-card {
+    padding: 16px;
+  }
+}
+.lesson-navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+}
+
+.next-lesson {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #a78bfa;
+  color: #100c24;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 9px;
+  transition: 0.3s;
+}
+
+.next-lesson:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+</style>
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      Skill<span>Saathi</span>
+    </a>
+    <a href="lesson8.html">← Lesson 8</a>
+  </header>
+
+  <main class="lesson-page">
+
+    <p class="eyebrow">LESSON 09 · HTML BASICS</p>
+
+    <h1>Let's Learn HTML Entities & Symbols! ✨</h1>
+
+    <p>
+      Learn how to display special characters, symbols
+      and emojis on your webpages.
+    </p>
+
+   <section class="lesson-card">
+  <h2>🎯 What You Will Learn</h2>
+  <ul>
+    <li>What are HTML entities?</li>
+    <li>How to display special characters</li>
+    <li>How to use mathematical symbols</li>
+    <li>How to display currency symbols</li>
+    <li>How to add emojis to webpages</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>📖 1. What are HTML Entities?</h2>
+  <p>
+    HTML entities are special codes used to display reserved
+    characters and symbols that may otherwise be interpreted
+    as HTML code.
+  </p>
+
+  <pre><code>&amp;lt;  displays  <
+&amp;gt;  displays  >
+&amp;amp; displays  &amp;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🔤 2. Common HTML Entities</h2>
+  <p>Here are some commonly used HTML entities:</p>
+
+  <pre><code>&amp;nbsp;  → Non-breaking space
+&amp;copy;  → © Copyright
+&amp;reg;   → ® Registered
+&amp;trade; → ™ Trademark
+&amp;hearts; → ♥ Heart</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>💰 3. Currency Symbols</h2>
+  <p>HTML supports many currency symbols:</p>
+
+  <pre><code>&amp;#8377; → ₹ Indian Rupee
+&amp;euro;  → € Euro
+&amp;pound; → £ British Pound
+&amp;yen;   → ¥ Japanese Yen</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>➗ 4. Mathematical Symbols</h2>
+  <pre><code>&amp;plus;  → +
+&amp;minus; → −
+&amp;times; → ×
+&amp;divide; → ÷
+&amp;ne;    → ≠
+&amp;le;    → ≤
+&amp;ge;    → ≥</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>😊 5. Using Emojis in HTML</h2>
+  <p>
+    We can directly add emojis to HTML using UTF-8 encoding.
+    Our webpage already uses UTF-8 through the meta charset tag.
+  </p>
+
+  <pre><code>&lt;h2&gt;Welcome to SkillSaathi 😊&lt;/h2&gt;
+&lt;p&gt;Keep Learning 🚀&lt;/p&gt;
+&lt;p&gt;You can do it! ❤️&lt;/p&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>📌 6. Important Points</h2>
+  <ul>
+    <li>HTML entities usually begin with an ampersand (&amp;) and end with a semicolon (;).</li>
+    <li>Use entities to display reserved HTML characters.</li>
+    <li>Use UTF-8 encoding for a wide range of characters and emojis.</li>
+    <li>Numeric entities can represent characters using decimal or hexadecimal codes.</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>📝 Quick Practice</h2>
+  <ol>
+    <li>Which entity displays the copyright symbol?</li>
+    <li>How do you display the less-than sign?</li>
+    <li>Which encoding helps display emojis?</li>
+    <li>Which entity displays the Indian Rupee symbol?</li>
+  </ol>
+</section>
+<!-- Code Playground -->
+<h2>💻 Your Code Playground</h2>
+<p>
+  Practice using HTML entities, currency symbols and emojis.
+  Edit the code and click Run Code to see your result.
+</p>
+
+<section class="lesson-card">
+
+  <textarea id="lessonEditor" class="lesson-editor" spellcheck="false"><h1>Welcome to SkillSaathi 😊</h1>
+
+<h2>HTML Special Characters</h2>
+<p>Less than: &lt;</p>
+<p>Greater than: &gt;</p>
+<p>Copyright: &copy;</p>
+<p>Registered: &reg;</p>
+
+<h2>Currency Symbols</h2>
+<p>Indian Rupee: &#8377;</p>
+<p>Euro: &euro;</p>
+<p>Pound: &pound;</p>
+
+<h2>Keep Learning! 🚀</h2>
+<p>You can do it! &hearts;</p></textarea>
+
+  <div>
+    <button id="lessonRunBtn" class="lesson-btn" type="button">▶ Run Code</button>
+    <button id="lessonHintBtn" class="lesson-btn" type="button">Show Hint</button>
+    <button id="lessonCheckBtn" class="lesson-btn" type="button">Check My Answer</button>
+  </div>
+
+  <p id="lessonHint" hidden>
+    Hint: Try using &amp;copy;, &amp;lt;, &amp;gt; and numeric entities.
+  </p>
+
+  <p id="lessonFeedback" aria-live="polite"></p>
+
+  <h2>👀 Your Output</h2>
+
+  <iframe
+    id="lessonPreview"
+    class="lesson-output"
+    title="Lesson 9 HTML output"
+    sandbox=""
+    hidden>
+  </iframe>
+
+</section>
+<div class="lesson-navigation">
+  <a href="lesson10.html" class="next-lesson">
+    Next Lesson →
+  </a>
+</div>
+ </main>
+
+</body>
+</html>
+
+

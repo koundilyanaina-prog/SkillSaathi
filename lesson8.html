@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 8: HTML Iframes | SkillSaathi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson8.js" defer></script>
+  <style>
+.lesson-page {
+  max-width: 1000px;
+  margin: 35px auto;
+  padding: 20px;
+  color: #e3dcff;
+}
+
+.lesson-page h1 {
+  color: #c4b5fd;
+}
+
+.lesson-page > p {
+  color: #b5bad4;
+  line-height: 1.8;
+}
+
+.lesson-card {
+  background: linear-gradient(145deg, #171b33, #111427);
+  border: 1px solid #39335d;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 24px 0;
+  color: #c0c5dc;
+  line-height: 1.8;
+}
+
+.lesson-card h2 {
+  color: #c4b5fd;
+  margin-top: 0;
+}
+
+.lesson-card strong {
+  color: #e3dcff;
+}
+
+.lesson-card pre {
+  background: #090b18;
+  color: #c4b5fd;
+  padding: 18px;
+  border-radius: 10px;
+  overflow-x: auto;
+  border: 1px solid #39335d;
+}
+
+.lesson-card code {
+  font-family: monospace;
+}
+.lesson-editor {
+  width: 100%;
+  min-height: 300px;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: #090b18;
+  color: #c4b5fd;
+  font: 15px/1.6 monospace;
+  resize: vertical;
+}
+
+.lesson-btn {
+  margin: 12px 8px 12px 0;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #a78bfa;
+  color: #100c24;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lesson-btn:hover {
+  background: #c4b5fd;
+}
+
+.lesson-output {
+  width: 100%;
+  min-height: 320px;
+  box-sizing: border-box;
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  background: white;
+}
+
+#lessonHint {
+  color: #e3dcff;
+  background: #211c40;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+#lessonFeedback {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+#lessonFeedback.success {
+  color: #86efac;
+}
+
+#lessonFeedback.error {
+  color: #fca5a5;
+}
+.lesson-navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+}
+
+.next-lesson {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #a78bfa;
+  color: #100c24;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 9px;
+  transition: 0.3s;
+}
+
+.next-lesson:hover {
+  background: #c4b5fd;
+  transform: translateY(-2px);
+}
+@media (max-width: 600px) {
+  .lesson-page {
+    padding: 14px;
+  }
+
+  .lesson-card {
+    padding: 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      Skill<span>Saathi</span>
+    </a>
+    <a href="lesson7.html">← Lesson 7</a>
+  </header>
+
+  <main class="lesson-page">
+
+    <p class="eyebrow">LESSON 08 · HTML BASICS</p>
+
+    <h1>Let's Learn HTML Iframes! 🌐</h1>
+
+    <p>
+      Learn how to embed webpages, maps and videos
+      inside your HTML page.
+    </p>
+
+<section class="lesson-card">
+  <h2>🎯 What You Will Learn</h2>
+  <ul>
+    <li>What is an HTML iframe?</li>
+    <li>How to embed another webpage</li>
+    <li>How to embed YouTube videos</li>
+    <li>How to set iframe width and height</li>
+    <li>Important iframe attributes</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>📖 1. What is an HTML Iframe?</h2>
+  <p>
+    An iframe (Inline Frame) is used to display another
+    webpage or external content inside the current webpage.
+  </p>
+
+  <pre><code>&lt;iframe src="https://example.com"&gt;&lt;/iframe&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>💻 2. Iframe Width and Height</h2>
+  <p>
+    We can use width and height attributes to control
+    the size of an iframe.
+  </p>
+
+  <pre><code>&lt;iframe
+  src="https://example.com"
+  width="500"
+  height="300"&gt;
+&lt;/iframe&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🎬 3. Embedding YouTube Videos</h2>
+  <p>
+    We can embed YouTube videos using an iframe.
+    YouTube provides an Embed option to get the video URL.
+  </p>
+
+  <pre><code>&lt;iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  title="YouTube video"
+  allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>🗺️ 4. Embedding Google Maps</h2>
+  <p>
+    Google Maps can also be displayed inside a webpage
+    using an iframe embed link.
+  </p>
+
+  <pre><code>&lt;iframe
+  src="YOUR_GOOGLE_MAPS_EMBED_URL"
+  width="600"
+  height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>📌 5. Important Iframe Attributes</h2>
+  <ul>
+    <li><strong>src:</strong> Specifies the page to display.</li>
+    <li><strong>width:</strong> Sets the iframe width.</li>
+    <li><strong>height:</strong> Sets the iframe height.</li>
+    <li><strong>title:</strong> Describes the iframe content.</li>
+    <li><strong>allowfullscreen:</strong> Allows fullscreen viewing.</li>
+    <li><strong>loading:</strong> Controls when the iframe loads.</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>📝 Quick Practice</h2>
+  <p>Answer these questions:</p>
+  <ol>
+    <li>What is an iframe?</li>
+    <li>Which attribute specifies the webpage URL?</li>
+    <li>Which attributes control iframe size?</li>
+    <li>Can we embed YouTube videos using an iframe?</li>
+  </ol>
+</section>
+
+<!-- Code Playground -->
+<h2>💻 Your Code Playground</h2>
+<p>
+  Practice creating an iframe. Edit the code and click
+  Run Code to see your result.
+</p>
+
+<section class="lesson-card">
+
+  <textarea id="lessonEditor" class="lesson-editor" spellcheck="false"><h1>My First Iframe</h1>
+
+<p>This content is displayed inside an iframe:</p>
+
+<iframe
+  srcdoc="<h2 style='color:purple;'>Welcome to SkillSaathi!</h2><p>This is my first iframe.</p>"
+  width="100%"
+  height="180"
+  title="My First Iframe">
+</iframe></textarea>
+
+  <div>
+    <button id="lessonRunBtn" class="lesson-btn" type="button">▶ Run Code</button>
+    <button id="lessonHintBtn" class="lesson-btn" type="button">Show Hint</button>
+    <button id="lessonCheckBtn" class="lesson-btn" type="button">Check My Answer</button>
+  </div>
+
+  <p id="lessonHint" hidden>
+    Hint: Try using iframe, src, width, height and title attributes.
+  </p>
+
+  <p id="lessonFeedback" aria-live="polite"></p>
+
+  <h2>👀 Your Output</h2>
+
+  <iframe
+    id="lessonPreview"
+    class="lesson-output"
+    title="Lesson 8 HTML output"
+    sandbox=""
+    hidden>
+  </iframe>
+
+</section>
+<div class="lesson-navigation">
+  <a href="lesson9.html" class="next-lesson">
+    Next Lesson →
+  </a>
+</div>
+  </main>
+
+</body>
+</html>
