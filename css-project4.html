@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-commerce Store | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;line-height:1.6}
+header{background:#191827;padding:18px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;border-bottom:1px solid #343052}
+.logo{font-size:25px;font-weight:bold;color:#c4b5fd}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{color:#eee;text-decoration:none}
+nav a:hover{color:#c4b5fd}
+.cart{background:#343052;padding:9px 15px;border-radius:8px;color:#c4b5fd}
+.hero{padding:65px 10%;background:linear-gradient(120deg,#343052,#191827);display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap}
+.hero-text{flex:1;min-width:250px}
+.hero h1{font-size:clamp(35px,5vw,55px);line-height:1.2;margin-bottom:15px}
+.hero h1 span{color:#c4b5fd}
+.hero p{color:#ccc;margin-bottom:22px}
+.hero-art{font-size:100px;margin:auto}
+.btn{display:inline-block;padding:12px 23px;background:#a78bfa;color:#171327;text-decoration:none;font-weight:bold;border-radius:8px;transition:.3s}
+.btn:hover{background:#c4b5fd;transform:translateY(-3px)}
+section{padding:65px 10%}
+.title{text-align:center;font-size:32px;color:#c4b5fd;margin-bottom:30px}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px}
+.category{background:#191827;border:1px solid #343052;border-radius:12px;text-align:center;padding:22px;transition:.3s}
+.category:hover{border-color:#a78bfa;transform:translateY(-4px)}
+.category span{font-size:35px}
+.category h3{margin-top:10px;color:#ddd}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px}
+.product{background:#191827;border:1px solid #343052;border-radius:14px;overflow:hidden;transition:.3s}
+.product:hover{transform:translateY(-6px);border-color:#a78bfa}
+.product-image{height:170px;background:linear-gradient(135deg,#343052,#25213b);display:flex;align-items:center;justify-content:center;font-size:65px}
+.product-info{padding:20px}
+.product-info h3{color:#c4b5fd;margin-bottom:7px}
+.product-info p{color:#aaa;font-size:14px}
+.price{font-size:20px;font-weight:bold;margin:12px 0;color:#eee}
+.old-price{font-size:14px;color:#888;text-decoration:line-through;margin-left:8px}
+.product .btn{width:100%;text-align:center;padding:10px}
+.offer{background:#191827;border:1px solid #343052;border-radius:15px;text-align:center;padding:35px}
+.offer p{color:#bbb;margin:10px 0 20px}
+footer{text-align:center;padding:25px;color:#aaa;border-top:1px solid #343052}
+@media(max-width:650px){
+ header{justify-content:center}
+ nav{justify-content:center;gap:14px}
+ .hero{text-align:center;padding:50px 7%}
+ section{padding:50px 7%}
+ .hero-art{font-size:75px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">ShopSphere.</div>
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#categories">Categories</a>
+  <a href="#products">Products</a>
+  <a href="#offers">Offers</a>
+ </nav>
+ <div class="cart">🛒 Cart</div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="hero-text">
+  <h1>Discover Your <span>Style.</span></h1>
+  <p>Explore our collection of everyday essentials, creative accessories and lifestyle products.</p>
+  <a href="#products" class="btn">Shop Collection</a>
+ </div>
+ <div class="hero-art">🛍️</div>
+</section>
+
+<section id="categories">
+ <h2 class="title">Shop By Category</h2>
+ <div class="categories">
+  <div class="category"><span>👕</span><h3>Fashion</h3></div>
+  <div class="category"><span>💻</span><h3>Electronics</h3></div>
+  <div class="category"><span>⌚</span><h3>Accessories</h3></div>
+  <div class="category"><span>🏠</span><h3>Home Decor</h3></div>
+ </div>
+</section>
+
+<section id="products">
+ <h2 class="title">Featured Products</h2>
+ <div class="products">
+
+  <div class="product">
+   <div class="product-image">🎧</div>
+   <div class="product-info">
+    <h3>Wireless Headphones</h3>
+    <p>Comfortable audio experience for everyday use.</p>
+    <div class="price">₹1,499 <span class="old-price">₹1,999</span></div>
+    <a href="#offers" class="btn">View Details</a>
+   </div>
+  </div>
+
+  <div class="product">
+   <div class="product-image">⌚</div>
+   <div class="product-info">
+    <h3>Smart Watch</h3>
+    <p>A stylish accessory for your daily routine.</p>
+    <div class="price">₹2,499 <span class="old-price">₹2,999</span></div>
+    <a href="#offers" class="btn">View Details</a>
+   </div>
+  </div>
+
+  <div class="product">
+   <div class="product-image">🎒</div>
+   <div class="product-info">
+    <h3>Classic Backpack</h3>
+    <p>Simple and practical design for everyday use.</p>
+    <div class="price">₹899 <span class="old-price">₹1,199</span></div>
+    <a href="#offers" class="btn">View Details</a>
+   </div>
+  </div>
+
+  <div class="product">
+   <div class="product-image">📷</div>
+   <div class="product-info">
+    <h3>Digital Camera</h3>
+    <p>Capture special moments with creative detail.</p>
+    <div class="price">₹5,999 <span class="old-price">₹6,999</span></div>
+    <a href="#offers" class="btn">View Details</a>
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<section id="offers">
+ <div class="offer">
+  <h2 class="title">Special Offers</h2>
+  <p>Explore exciting deals and discover something new for yourself.</p>
+  <a href="#products" class="btn">Explore Products</a>
+ </div>
+</section>
+</main>
+
+<footer>
+ <p>© 2026 ShopSphere. E-commerce Design Practice Project.</p>
+ <p><a href="css.html" style="color:#c4b5fd">Back to SkillSaathi CSS Course</a></p>
+</footer>
+
+</body>
+</html>

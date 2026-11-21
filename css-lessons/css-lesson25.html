@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Lesson 25 - Professional CSS | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;padding:25px;line-height:1.7}
+.container{max-width:950px;margin:auto}
+h1,h2{color:#c4b5fd;margin-bottom:15px}
+h1{text-align:center;margin-bottom:25px}
+section{background:#1b1b2b;padding:22px;border-radius:12px;margin:20px 0}
+p,li{color:#b8b4c9;margin-bottom:10px}
+ul{padding-left:22px}
+pre{background:#10101a;padding:15px;border-left:4px solid #a78bfa;border-radius:8px;overflow-x:auto;color:#d8caff}
+button{background:#a78bfa;color:#171327;border:0;padding:10px 18px;border-radius:7px;font-weight:bold;cursor:pointer;margin:8px 5px 8px 0}
+textarea{width:100%;height:300px;background:#10101a;color:#d8caff;border:1px solid #62528b;border-radius:8px;padding:15px;font-family:monospace;font-size:14px}
+iframe{display:none;width:100%;height:350px;background:white;border:0;border-radius:8px;margin-top:15px}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:25px 0}
+.nav a{background:#a78bfa;color:#171327;text-decoration:none;font-weight:bold;padding:10px 18px;border-radius:8px;display:inline-block;transition:.3s}
+.nav a:hover{background:#c4b5fd;transform:translateY(-2px)}
+.nav a:first-child{background:#343052;color:#f4f1ff}
+.question{margin:18px 0;padding:15px;background:#24243a;border-radius:8px}
+label{display:block;color:#b8b4c9;margin:7px 0}
+#result{font-weight:bold;margin-top:15px}
+@media(max-width:600px){body{padding:12px}.nav{justify-content:center}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Lesson 25: Professional CSS</h1>
+
+<section>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand professional CSS practices.</li>
+<li>Learn accessibility basics.</li>
+<li>Understand CSS performance and optimization.</li>
+<li>Write maintainable CSS.</li>
+<li>Review important CSS concepts from the course.</li>
+</ul>
+</section>
+
+<section>
+<h2>1. What is Professional CSS?</h2>
+<p>Professional CSS is about creating stylesheets that are readable, accessible, efficient, consistent and easy to maintain.</p>
+<p>A good stylesheet should work reliably across supported browsers and different screen sizes.</p>
+</section>
+
+<section>
+<h2>2. CSS Accessibility</h2>
+<p>Accessibility helps people with different abilities use websites.</p>
+<ul>
+<li>Use readable font sizes.</li>
+<li>Maintain sufficient text and background contrast.</li>
+<li>Keep keyboard focus indicators visible.</li>
+<li>Do not communicate important information through color alone.</li>
+<li>Support reduced-motion preferences where appropriate.</li>
+<li>Keep interactive controls easy to identify and use.</li>
+</ul>
+<pre>
+button:focus-visible {
+    outline: 3px solid purple;
+    outline-offset: 3px;
+}
+</pre>
+</section>
+
+<section>
+<h2>3. Responsive and Flexible Design</h2>
+<p>Professional websites should adapt to different viewport sizes.</p>
+<pre>
+.container {
+    width: min(90%, 1100px);
+    margin-inline: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+</pre>
+<p>Use flexible layouts and test them on narrow and wide screens.</p>
+</section>
+
+<section>
+<h2>4. CSS Performance Optimization</h2>
+<ul>
+<li>Remove unused CSS rules when safe to do so.</li>
+<li>Avoid unnecessarily complicated selectors.</li>
+<li>Reuse common classes and design values.</li>
+<li>Minify production CSS when appropriate.</li>
+<li>Optimize images and avoid unnecessarily large assets.</li>
+<li>Use animations carefully, especially on lower-powered devices.</li>
+</ul>
+</section>
+
+<section>
+<h2>5. Maintainable CSS</h2>
+<p>Maintainable CSS is easy to understand and update.</p>
+<pre>
+:root {
+    --primary: #6d28d9;
+    --spacing: 16px;
+}
+
+.card {
+    padding: var(--spacing);
+    background: white;
+    border-radius: 10px;
+}
+</pre>
+<p>Use meaningful class names, consistent formatting and comments for important sections.</p>
+</section>
+
+<section>
+<h2>6. Testing and Browser Compatibility</h2>
+<ul>
+<li>Test your website in different browsers.</li>
+<li>Check mobile, tablet and desktop layouts.</li>
+<li>Test keyboard navigation.</li>
+<li>Inspect layout problems using Developer Tools.</li>
+<li>Check for horizontal overflow and unreadable content.</li>
+<li>Verify that interactive states are visible.</li>
+</ul>
+</section>
+
+<section>
+<h2>7. Professional CSS Code Editor</h2>
+<textarea id="code"><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root {
+    --primary: #6d28d9;
+    --surface: #f5f3ff;
+    --spacing: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--surface);
+    color: #25213a;
+    line-height: 1.6;
+    padding: var(--spacing);
+}
+
+.container {
+    width: min(100%, 650px);
+    margin: auto;
+}
+
+.card {
+    background: white;
+    padding: var(--spacing);
+    border-radius: 12px;
+}
+
+h1 {
+    color: var(--primary);
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+button:focus-visible {
+    outline: 3px solid #f59e0b;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>Professional CSS</h1>
+        <p>Accessible, responsive and maintainable design.</p>
+        <button>Explore SkillSaathi</button>
+    </div>
+</div>
+
+</body>
+</html></textarea>
+<button onclick="runCode()">Run Code</button>
+<button onclick="clearOutput()">Clear Output</button>
+<button onclick="showHint()">Hint</button>
+<p id="hint"></p>
+<iframe id="preview" title="Professional CSS preview"></iframe>
+</section>
+
+<section>
+<h2>8. Final CSS Course Revision</h2>
+<ul>
+<li>CSS syntax, selectors and properties.</li>
+<li>Colors, backgrounds, borders and typography.</li>
+<li>Box model, display and positioning.</li>
+<li>Flexbox and Grid layouts.</li>
+<li>Transitions, transforms and animations.</li>
+<li>Responsive design and media queries.</li>
+<li>Variables, shadows and filters.</li>
+<li>Forms, navigation and CSS architecture.</li>
+<li>Accessibility and optimization.</li>
+</ul>
+</section>
+
+<section>
+<h2>9. Professional Practice Checklist</h2>
+<ul>
+<li>Use consistent spacing and colors.</li>
+<li>Check contrast and readable typography.</li>
+<li>Test keyboard focus and navigation.</li>
+<li>Test on mobile and desktop.</li>
+<li>Remove unnecessary CSS.</li>
+<li>Organize code into meaningful sections.</li>
+</ul>
+</section>
+
+<section>
+<h2>10. Final Quick Quiz</h2>
+<form>
+<div class="question">
+<p>1. What is the purpose of accessible CSS?</p>
+<label><input type="radio" name="q1" value="0"> To make websites harder to use</label>
+<label><input type="radio" name="q1" value="1"> To improve usability for different users</label>
+</div>
+<div class="question">
+<p>2. Which pseudo-class helps keyboard users see focus?</p>
+<label><input type="radio" name="q2" value="0"> :focus-visible</label>
+<label><input type="radio" name="q2" value="1"> :hover</label>
+</div>
+<div class="question">
+<p>3. What is one CSS optimization practice?</p>
+<label><input type="radio" name="q3" value="0"> Add unnecessary selectors</label>
+<label><input type="radio" name="q3" value="1"> Remove unused CSS safely</label>
+</div>
+<div class="question">
+<p>4. Why test a website on different screen sizes?</p>
+<label><input type="radio" name="q4" value="0"> To check responsive behavior</label>
+<label><input type="radio" name="q4" value="1"> To change its domain name</label>
+</div>
+<div class="question">
+<p>5. What makes CSS maintainable?</p>
+<label><input type="radio" name="q5" value="0"> Unclear class names</label>
+<label><input type="radio" name="q5" value="1"> Organized and reusable code</label>
+</div>
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+<p id="result"></p>
+</form>
+</section>
+
+<section>
+<h2>Congratulations!</h2>
+<p>You have completed all 25 lessons of the SkillSaathi CSS course.</p>
+<p>Keep practicing, build your own projects and apply these skills to real websites.</p>
+</section>
+
+<div class="nav">
+<a href="css-lesson24.html">← Previous Lesson</a>
+<a href="../css.html">Course Home</a>
+<a href="../css.html">Finish CSS Course →</a>
+</div>
+</div>
+
+<script>
+function runCode(){
+let p=document.getElementById("preview");
+p.srcdoc=document.getElementById("code").value;
+p.style.display="block";
+}
+function clearOutput(){
+let p=document.getElementById("preview");
+p.srcdoc="";
+p.style.display="none";
+}
+function showHint(){
+document.getElementById("hint").textContent="Hint: Test keyboard focus, responsive width, readable colors and reduced-motion preferences.";
+}
+function checkQuiz(){
+let a=[1,0,1,0,1],s=0;
+for(let i=1;i<=5;i++){
+let x=document.querySelector('input[name="q'+i+'"]:checked');
+if(x && Number(x.value)===a[i-1])s++;
+}
+document.getElementById("result").textContent="Your Score: "+s+"/5";
+}
+</script>
+</body>
+</html>

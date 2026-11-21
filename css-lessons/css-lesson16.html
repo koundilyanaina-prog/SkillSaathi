@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Lesson 16 - Advanced CSS Selectors | SkillSaathi</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #11111b;
+    color: #eeeafc;
+    line-height: 1.7;
+}
+
+header {
+    background: #171b33;
+    padding: 25px 7%;
+    border-bottom: 1px solid #343052;
+}
+
+header a {
+    color: #c4b5fd;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    color: #c4b5fd;
+    margin-bottom: 12px;
+}
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 25px 18px;
+}
+
+.card {
+    background: #171b33;
+    border: 1px solid #343052;
+    border-radius: 14px;
+    padding: 22px;
+    margin: 20px 0;
+}
+
+p, li {
+    color: #ddd8ee;
+    margin-bottom: 10px;
+}
+
+pre {
+    background: #0c0d16;
+    padding: 15px;
+    border-radius: 9px;
+    overflow-x: auto;
+    color: #e9ddff;
+    margin: 12px 0;
+}
+
+code {
+    color: #f0abfc;
+}
+
+button {
+    background: #a78bfa;
+    color: #171327;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 7px 5px 7px 0;
+}
+
+textarea {
+    width: 100%;
+    min-height: 220px;
+    background: #0c0d16;
+    color: #eeeafc;
+    border: 1px solid #62558d;
+    border-radius: 9px;
+    padding: 14px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+iframe {
+    display: none;
+    width: 100%;
+    height: 300px;
+    background: white;
+    border: none;
+    border-radius: 9px;
+    margin-top: 12px;
+}
+
+.option {
+    display: block;
+    background: #22243d;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.feedback {
+    color: #c4b5fd;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.nav a {
+    background: #a78bfa;
+    color: #171327;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 18px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    background: #c4b5fd;
+    transform: translateY(-2px);
+}
+
+.nav a:first-child {
+    background: #343052;
+    color: #f4f1ff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="../css.html">← Back to CSS Course</a>
+<h1>Lesson 16: Advanced CSS Selectors</h1>
+<p>Learn how to select HTML elements precisely using advanced CSS selectors.</p>
+</header>
+
+<main>
+
+<div class="card">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand attribute selectors.</li>
+<li>Learn CSS combinators.</li>
+<li>Use descendant and child selectors.</li>
+<li>Understand sibling selectors.</li>
+<li>Combine selectors for better styling.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>1. Introduction to Advanced Selectors</h2>
+
+<p>CSS selectors are used to target HTML elements and apply styles to them.</p>
+
+<p>Basic selectors include element, class and ID selectors. Advanced selectors allow us to target elements based on their attributes and relationships with other elements.</p>
+
+<p>They help developers write more accurate and organized CSS.</p>
+</div>
+
+<div class="card">
+<h2>2. Attribute Selectors</h2>
+
+<p>Attribute selectors target HTML elements based on their attributes or attribute values.</p>
+
+<h3>Exact Attribute Value</h3>
+
+<pre>
+input[type="email"] {
+    border: 2px solid purple;
+}
+</pre>
+
+<p>This selects input elements whose type is email.</p>
+
+<h3>Attribute Exists</h3>
+
+<pre>
+input[required] {
+    background: #eee;
+}
+</pre>
+
+<p>This selects all input elements that have the required attribute.</p>
+
+<h3>Attribute Contains a Value</h3>
+
+<pre>
+a[href*="example"] {
+    color: purple;
+}
+</pre>
+
+<p>The *= operator matches an attribute value containing the specified text.</p>
+</div>
+
+<div class="card">
+<h2>3. Descendant Selector</h2>
+
+<p>A descendant selector selects elements located anywhere inside another element.</p>
+
+<pre>
+.card p {
+    color: purple;
+}
+</pre>
+
+<p>This selects all paragraph elements inside an element with the class card, including nested paragraphs.</p>
+</div>
+
+<div class="card">
+<h2>4. Child Selector</h2>
+
+<p>The child selector uses the greater-than symbol ( > ).</p>
+
+<pre>
+.menu > li {
+    list-style: none;
+}
+</pre>
+
+<p>It selects only direct child elements, not deeper nested elements.</p>
+</div>
+
+<div class="card">
+<h2>5. Adjacent Sibling Selector</h2>
+
+<p>The adjacent sibling selector uses the plus symbol ( + ).</p>
+
+<pre>
+h2 + p {
+    color: violet;
+}
+</pre>
+
+<p>It selects the first paragraph immediately following an h2 element, when both share the same parent.</p>
+</div>
+
+<div class="card">
+<h2>6. General Sibling Selector</h2>
+
+<p>The general sibling selector uses the tilde symbol ( ~ ).</p>
+
+<pre>
+h2 ~ p {
+    color: pink;
+}
+</pre>
+
+<p>It selects all paragraph siblings that appear after the h2 element under the same parent.</p>
+</div>
+
+<div class="card">
+<h2>7. Combining Selectors</h2>
+
+<p>You can combine selectors to target elements more precisely.</p>
+
+<pre>
+.card > p.highlight {
+    color: purple;
+    font-weight: bold;
+}
+</pre>
+
+<p>This selects paragraph elements with the class highlight that are direct children of an element with the class card.</p>
+</div>
+
+<div class="card">
+<h2>8. Practical Example</h2>
+
+<pre>
+/* Attribute selector */
+input[type="email"] {
+    border: 2px solid purple;
+}
+
+/* Descendant selector */
+.card p {
+    color: #555;
+}
+
+/* Direct child selector */
+.menu > li {
+    list-style: none;
+}
+
+/* Adjacent sibling selector */
+h2 + p {
+    margin-top: 0;
+}
+
+/* General sibling selector */
+h2 ~ p {
+    font-style: italic;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>Try It Yourself</h2>
+
+<p>Run the code and observe how different selectors apply styles.</p>
+
+<textarea id="code">
+<section class="card">
+    <h2>My Course Card</h2>
+
+    <p>This is the first paragraph.</p>
+
+    <div>
+        <p>This is a nested paragraph.</p>
+    </div>
+
+    <p class="highlight">This is another paragraph.</p>
+</section>
+
+<form>
+    <input type="email" placeholder="Enter your email">
+    <input type="text" required placeholder="Your name">
+</form>
+
+<style>
+.card {
+    padding: 20px;
+    border: 2px solid #8b5cf6;
+    border-radius: 12px;
+    color: #241b3d;
+}
+
+.card > p {
+    font-weight: bold;
+    color: #6d28d9;
+}
+
+.card h2 + p {
+    background: #eee7ff;
+    padding: 8px;
+}
+
+.card h2 ~ p {
+    font-style: italic;
+}
+
+input[type="email"] {
+    border: 2px solid purple;
+    padding: 10px;
+    margin: 8px;
+}
+
+input[required] {
+    background: #eee7ff;
+    padding: 10px;
+    margin: 8px;
+}
+</style>
+</textarea>
+
+<button onclick="runCode()">Run Code</button>
+<button onclick="clearOutput()">Clear Output</button>
+<button onclick="showHint()">Hint</button>
+
+<p id="hint" class="feedback"></p>
+
+<iframe id="preview" title="Code Preview"></iframe>
+</div>
+
+<div class="card">
+<h2>Practice Activity</h2>
+
+<p>Create a navigation menu using advanced CSS selectors.</p>
+
+<ul>
+<li>Use a child selector to style direct list items.</li>
+<li>Use an attribute selector to style links.</li>
+<li>Use a hover effect on navigation links.</li>
+<li>Use a descendant selector to style text inside a card.</li>
+</ul>
+
+<h3>Homework</h3>
+<p>Create a registration form and use attribute selectors to style email, password and required input fields differently.</p>
+</div>
+
+<h2>Knowledge Check</h2>
+
+<div class="card">
+<p><b>Q1. Which selector targets direct children?</b></p>
+<label class="option"><input type="radio" name="q1" value="0"> .parent p</label>
+<label class="option"><input type="radio" name="q1" value="1"> .parent > p</label>
+<label class="option"><input type="radio" name="q1" value="2"> .parent + p</label>
+<label class="option"><input type="radio" name="q1" value="3"> .parent ~ p</label>
+</div>
+
+<div class="card">
+<p><b>Q2. Which selector targets email input fields?</b></p>
+<label class="option"><input type="radio" name="q2" value="0"> input.email</label>
+<label class="option"><input type="radio" name="q2" value="1"> input[type="email"]</label>
+<label class="option"><input type="radio" name="q2" value="2"> email input</label>
+<label class="option"><input type="radio" name="q2" value="3"> input::email</label>
+</div>
+
+<div class="card">
+<p><b>Q3. What does a space between two selectors represent?</b></p>
+<label class="option"><input type="radio" name="q3" value="0"> Direct child</label>
+<label class="option"><input type="radio" name="q3" value="1"> Next sibling</label>
+<label class="option"><input type="radio" name="q3" value="2"> Descendant</label>
+<label class="option"><input type="radio" name="q3" value="3"> Same element</label>
+</div>
+
+<div class="card">
+<p><b>Q4. Which combinator selects the immediately following sibling?</b></p>
+<label class="option"><input type="radio" name="q4" value="0"> &gt;</label>
+<label class="option"><input type="radio" name="q4" value="1"> +</label>
+<label class="option"><input type="radio" name="q4" value="2"> ~</label>
+<label class="option"><input type="radio" name="q4" value="3"> *</label>
+</div>
+
+<div class="card">
+<p><b>Q5. What does [disabled] select?</b></p>
+<label class="option"><input type="radio" name="q5" value="0"> All buttons</label>
+<label class="option"><input type="radio" name="q5" value="1"> Elements having a disabled attribute</label>
+<label class="option"><input type="radio" name="q5" value="2"> Only paragraphs</label>
+<label class="option"><input type="radio" name="q5" value="3"> Elements without attributes</label>
+</div>
+
+<div class="card">
+<button onclick="checkQuiz()">Submit Quiz</button>
+<p id="result" class="feedback"></p>
+</div>
+
+<div class="nav">
+<a href="css-lesson15.html">← Previous Lesson</a>
+<a href="../css.html">Course Home</a>
+<a href="css-lesson17.html">Next Lesson →</a>
+</div>
+
+</main>
+
+<script>
+function runCode() {
+    const preview = document.getElementById("preview");
+
+    preview.srcdoc = document.getElementById("code").value;
+    preview.style.display = "block";
+}
+
+function clearOutput() {
+    const preview = document.getElementById("preview");
+
+    preview.srcdoc = "";
+    preview.style.display = "none";
+}
+
+function showHint() {
+    document.getElementById("hint").textContent =
+    "Hint: Try changing .card > p into .card p and compare which paragraphs are selected.";
+}
+
+function checkQuiz() {
+    const answers = [1,1,2,1,1];
+    let score = 0;
+
+    answers.forEach((answer,index) => {
+        const selected = document.querySelector(
+            'input[name="q' + (index+1) + '"]:checked'
+        );
+
+        if(selected && Number(selected.value) === answer) {
+            score++;
+        }
+    });
+
+    document.getElementById("result").textContent =
+    "Your Score: " + score + " / 5" +
+    (score === 5 ? " — Excellent work!" : " — Review and try again.");
+}
+</script>
+
+</body>
+</html>

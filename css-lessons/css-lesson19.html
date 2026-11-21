@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Lesson 19 - Responsive Web Design | SkillSaathi</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#11111b;
+    color:#eee;
+    padding:25px;
+    line-height:1.7;
+}
+
+.container{
+    max-width:950px;
+    margin:auto;
+}
+
+h1,h2{
+    color:#c4b5fd;
+    margin-bottom:15px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+section{
+    background:#1b1b2b;
+    padding:22px;
+    border-radius:12px;
+    margin:20px 0;
+}
+
+p,li{
+    color:#b8b4c9;
+    margin-bottom:10px;
+}
+
+ul{
+    padding-left:22px;
+}
+
+pre{
+    background:#10101a;
+    padding:15px;
+    border-left:4px solid #a78bfa;
+    border-radius:8px;
+    overflow-x:auto;
+    color:#d8caff;
+    margin:12px 0;
+}
+
+button{
+    background:#a78bfa;
+    color:#171327;
+    border:0;
+    padding:10px 18px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+    margin:8px 5px 8px 0;
+}
+
+button:hover{
+    background:#c4b5fd;
+}
+
+textarea{
+    width:100%;
+    height:260px;
+    background:#10101a;
+    color:#d8caff;
+    border:1px solid #62528b;
+    border-radius:8px;
+    padding:15px;
+    font-family:monospace;
+    font-size:14px;
+}
+
+iframe{
+    display:none;
+    width:100%;
+    height:350px;
+    background:white;
+    border:0;
+    border-radius:8px;
+    margin-top:15px;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:25px 0;
+}
+
+.nav a{
+    background:#a78bfa;
+    color:#171327;
+    text-decoration:none;
+    font-weight:bold;
+    padding:10px 18px;
+    border-radius:8px;
+    display:inline-block;
+    transition:.3s;
+}
+
+.nav a:hover{
+    background:#c4b5fd;
+    transform:translateY(-2px);
+}
+
+.nav a:first-child{
+    background:#343052;
+    color:#f4f1ff;
+}
+
+.question{
+    margin:18px 0;
+    padding:15px;
+    background:#24243a;
+    border-radius:8px;
+}
+
+label{
+    display:block;
+    color:#b8b4c9;
+    margin:7px 0;
+}
+
+#result{
+    font-weight:bold;
+    margin-top:15px;
+}
+
+@media(max-width:600px){
+    body{
+        padding:12px;
+    }
+
+    .nav{
+        justify-content:center;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Lesson 19: Responsive Web Design</h1>
+
+<section>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand responsive web design.</li>
+<li>Learn why responsive websites are important.</li>
+<li>Understand viewport and flexible layouts.</li>
+<li>Learn responsive units such as %, rem, em and vw.</li>
+<li>Understand flexible images and content.</li>
+<li>Create a basic responsive webpage.</li>
+</ul>
+</section>
+
+<section>
+<h2>1. What is Responsive Web Design?</h2>
+
+<p>Responsive Web Design (RWD) is an approach to designing websites that automatically adapt to different screen sizes and devices.</p>
+
+<p>A responsive website should provide a good user experience on:</p>
+
+<ul>
+<li>Desktop computers</li>
+<li>Laptops</li>
+<li>Tablets</li>
+<li>Smartphones</li>
+</ul>
+
+<p>For example, a website displayed in three columns on a desktop may use a single column on a narrow mobile screen.</p>
+</section>
+
+<section>
+<h2>2. Why is Responsive Design Important?</h2>
+
+<ul>
+<li>Improves user experience on different devices.</li>
+<li>Makes content easier to read.</li>
+<li>Prevents unnecessary horizontal scrolling.</li>
+<li>Improves accessibility and usability.</li>
+<li>Helps websites work across different screen sizes.</li>
+<li>Supports mobile-friendly website design.</li>
+</ul>
+</section>
+
+<section>
+<h2>3. Understanding the Viewport</h2>
+
+<p>The viewport is the visible area of a webpage inside the browser window.</p>
+
+<p>For mobile-friendly websites, we use the viewport meta tag inside the HTML head section.</p>
+
+<pre>
+&lt;meta name="viewport"
+content="width=device-width, initial-scale=1.0"&gt;
+</pre>
+
+<p><b>Explanation:</b></p>
+<ul>
+<li>width=device-width: Matches the page width to the device width.</li>
+<li>initial-scale=1.0: Sets the initial zoom level to normal.</li>
+</ul>
+</section>
+
+<section>
+<h2>4. Flexible Layouts</h2>
+
+<p>A flexible layout uses relative measurements instead of relying only on fixed pixel widths.</p>
+
+<p>For example, a container with width:80% adjusts its width according to its parent container.</p>
+
+<pre>
+.container {
+    width: 80%;
+    max-width: 1100px;
+    margin: auto;
+}
+</pre>
+
+<p>This allows the content area to grow or shrink while keeping a maximum width.</p>
+</section>
+
+<section>
+<h2>5. Responsive CSS Units</h2>
+
+<p>Responsive layouts commonly use flexible units.</p>
+
+<ul>
+<li><b>%:</b> Relative to the size of the containing element.</li>
+<li><b>rem:</b> Relative to the root font size.</li>
+<li><b>em:</b> Relative to the font size of the relevant element or inherited context.</li>
+<li><b>vw:</b> 1% of the viewport width.</li>
+<li><b>vh:</b> 1% of the viewport height.</li>
+</ul>
+
+<pre>
+.container {
+    width: 90%;
+    max-width: 1000px;
+}
+
+.heading {
+    font-size: 2rem;
+}
+
+.banner {
+    min-height: 50vh;
+}
+</pre>
+</section>
+
+<section>
+<h2>6. Flexible Images</h2>
+
+<p>Images should fit within their containing elements instead of overflowing outside them.</p>
+
+<pre>
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+</pre>
+
+<p>max-width:100% prevents the image from becoming wider than its container, while height:auto preserves its aspect ratio.</p>
+</section>
+
+<section>
+<h2>7. Responsive Layout Principles</h2>
+
+<ul>
+<li>Use flexible widths instead of unnecessary fixed widths.</li>
+<li>Keep images within their containers.</li>
+<li>Use readable font sizes and comfortable spacing.</li>
+<li>Avoid unnecessary horizontal scrolling.</li>
+<li>Keep buttons and links easy to use on touch screens.</li>
+<li>Test your website at different screen sizes.</li>
+</ul>
+</section>
+
+<section>
+<h2>8. Practical Code Editor</h2>
+
+<p>Run this example and resize the browser preview to understand flexible layouts.</p>
+
+<textarea id="code"><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Responsive Layout Demo</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3efff;
+    padding: 20px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+header {
+    background: #4c3285;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card {
+    flex: 1 1 220px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+}
+
+h2 {
+    color: #593a9a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>Responsive Web Design</h1>
+    <p>One website for different screen sizes.</p>
+</header>
+
+<div class="cards">
+
+    <div class="card">
+        <h2>Desktop</h2>
+        <p>Flexible website layout for large screens.</p>
+    </div>
+
+    <div class="card">
+        <h2>Tablet</h2>
+        <p>Content adjusts according to available space.</p>
+    </div>
+
+    <div class="card">
+        <h2>Mobile</h2>
+        <p>Cards can wrap when the screen becomes narrow.</p>
+    </div>
+
+</div>
+</div>
+
+</body>
+</html></textarea>
+
+<button onclick="runCode()">Run Code</button>
+<button onclick="clearOutput()">Clear Output</button>
+<button onclick="showHint()">Hint</button>
+
+<p id="hint"></p>
+
+<iframe id="preview" title="Code preview"></iframe>
+</section>
+
+<section>
+<h2>9. Practice Tasks</h2>
+
+<ul>
+<li>Create a webpage using a flexible container.</li>
+<li>Use percentage width instead of fixed width.</li>
+<li>Add three cards using Flexbox.</li>
+<li>Use flex-wrap to allow cards to move onto another row.</li>
+<li>Make an image responsive using max-width:100%.</li>
+<li>Test your page by resizing the browser window.</li>
+</ul>
+</section>
+
+<section>
+<h2>10. Quick Quiz</h2>
+
+<form>
+
+<div class="question">
+<p>1. What is Responsive Web Design?</p>
+<label><input type="radio" name="q1" value="0"> A website for desktop only</label>
+<label><input type="radio" name="q1" value="1"> A design that adapts to different screen sizes</label>
+<label><input type="radio" name="q1" value="2"> A programming language</label>
+</div>
+
+<div class="question">
+<p>2. What does the viewport represent?</p>
+<label><input type="radio" name="q2" value="0"> Visible browser area</label>
+<label><input type="radio" name="q2" value="1"> Website database</label>
+<label><input type="radio" name="q2" value="2"> Image file</label>
+</div>
+
+<div class="question">
+<p>3. Which unit is relative to the root font size?</p>
+<label><input type="radio" name="q3" value="0"> px</label>
+<label><input type="radio" name="q3" value="1"> rem</label>
+<label><input type="radio" name="q3" value="2"> cm</label>
+</div>
+
+<div class="question">
+<p>4. Which CSS rule helps prevent images from overflowing their containers?</p>
+<label><input type="radio" name="q4" value="0"> width:500px</label>
+<label><input type="radio" name="q4" value="1"> max-width:100%</label>
+<label><input type="radio" name="q4" value="2"> display:none</label>
+</div>
+
+<div class="question">
+<p>5. What does flex-wrap:wrap allow?</p>
+<label><input type="radio" name="q5" value="0"> Items to move onto another row when needed</label>
+<label><input type="radio" name="q5" value="1"> Text to disappear</label>
+<label><input type="radio" name="q5" value="2"> Images to become backgrounds</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+
+<p id="result"></p>
+
+</form>
+</section>
+
+<section>
+<h2>Lesson Summary</h2>
+
+<p>In this lesson, you learned the fundamentals of Responsive Web Design, including viewport settings, flexible layouts, relative units, responsive images and flexible content.</p>
+
+<p>In the next lesson, you will learn how to use CSS Media Queries to apply different styles at different screen sizes.</p>
+</section>
+
+<div class="nav">
+<a href="css-lesson18.html">← Previous Lesson</a>
+<a href="../css.html">Course Home</a>
+<a href="css-lesson20.html">Next Lesson →</a>
+</div>
+
+</div>
+
+<script>
+function runCode(){
+    let preview=document.getElementById("preview");
+    preview.srcdoc=document.getElementById("code").value;
+    preview.style.display="block";
+}
+
+function clearOutput(){
+    let preview=document.getElementById("preview");
+    preview.srcdoc="";
+    preview.style.display="none";
+}
+
+function showHint(){
+    document.getElementById("hint").textContent=
+    "Hint: Try changing the container width, flex-basis and max-width. Resize the preview to observe the layout.";
+}
+
+function checkQuiz(){
+    let answers=[1,0,1,1,0];
+    let score=0;
+
+    for(let i=1;i<=5;i++){
+        let selected=document.querySelector('input[name="q'+i+'"]:checked');
+
+        if(selected && Number(selected.value)===answers[i-1]){
+            score++;
+        }
+    }
+
+    document.getElementById("result").textContent=
+    "Your Score: "+score+"/5";
+}
+</script>
+
+</body>
+</html>

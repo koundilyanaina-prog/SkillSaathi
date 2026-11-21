@@ -1,0 +1,630 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Lesson 24 - Modules and Code Organization | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Arial,sans-serif;
+  background:#11111b;
+  color:#eee;
+  line-height:1.7;
+}
+header{
+  background:#191927;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #343047;
+  gap:15px;
+  flex-wrap:wrap;
+}
+header a{
+  color:#c4b5fd;
+  text-decoration:none;
+  font-weight:bold;
+}
+.container{width:90%;max-width:1050px;margin:35px auto}
+.hero{
+  background:linear-gradient(135deg,#211b3c,#17172a);
+  padding:35px;
+  border:1px solid #514477;
+  border-radius:18px;
+  margin-bottom:28px;
+}
+.tag{
+  display:inline-block;
+  color:#c4b5fd;
+  background:#30264d;
+  padding:5px 13px;
+  border-radius:20px;
+  font-size:13px;
+  margin-bottom:12px;
+}
+h1{color:#d8ccff;font-size:30px;margin-bottom:10px}
+h2{color:#c4b5fd;font-size:23px;margin-bottom:13px}
+h3{color:#ddd1ff;margin:16px 0 8px}
+p{color:#ccc;margin:10px 0}
+.lesson-card{
+  background:#1b1b2b;
+  border:1px solid #343047;
+  border-radius:15px;
+  padding:25px;
+  margin:22px 0;
+}
+.code{
+  background:#0b0b13;
+  border:1px solid #39334f;
+  border-radius:10px;
+  padding:17px;
+  overflow-x:auto;
+  margin:14px 0;
+  color:#c4b5fd;
+  white-space:pre-wrap;
+  font-family:Consolas,monospace;
+  font-size:14px;
+}
+.note{
+  background:#29213d;
+  border-left:4px solid #a78bfa;
+  padding:14px;
+  border-radius:7px;
+  margin:15px 0;
+  color:#ddd;
+}
+ul,ol{padding-left:25px;color:#ccc;margin:10px 0}
+li{margin:7px 0}
+button{
+  background:#8b5cf6;
+  color:white;
+  border:none;
+  padding:10px 17px;
+  border-radius:8px;
+  cursor:pointer;
+  margin:7px 5px 7px 0;
+  font-weight:bold;
+}
+button:hover{background:#7041d8}
+input,textarea{
+  width:100%;
+  padding:12px;
+  background:#10101b;
+  color:white;
+  border:1px solid #514477;
+  border-radius:8px;
+  margin:8px 0;
+  font-family:Consolas,monospace;
+}
+.output{
+  background:#0b0b13;
+  border:1px solid #39334f;
+  border-radius:9px;
+  padding:15px;
+  min-height:55px;
+  margin-top:12px;
+  color:#c4b5fd;
+  white-space:pre-wrap;
+}
+.task{
+  background:#222036;
+  padding:15px;
+  border-radius:10px;
+  margin:12px 0;
+}
+.quiz-question{margin:18px 0;padding:15px;background:#222036;border-radius:10px}
+.quiz-question label{display:block;margin:8px 0;color:#ccc;cursor:pointer}
+.result{font-weight:bold;margin-top:12px;color:#c4b5fd}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:30px 0;
+}
+footer{
+  text-align:center;
+  padding:25px;
+  border-top:1px solid #343047;
+  color:#999;
+}
+@media(max-width:600px){
+  h1{font-size:24px}
+  .hero,.lesson-card{padding:20px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="../index.html">SkillSaathi</a>
+  <a href="../javascript.html">JavaScript Course</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <span class="tag">PART 3 · LESSON 24 OF 25</span>
+  <h1>Modules and Code Organization</h1>
+  <p>Learn how to divide JavaScript code into separate files using modules, imports and exports.</p>
+  <p><strong>Level:</strong> Advanced Beginner</p>
+</section>
+
+<section class="lesson-card">
+  <h2>1. Introduction to JavaScript Modules</h2>
+  <p>A JavaScript module is a separate file that contains code such as variables, functions, classes or objects.</p>
+  <p>Modules allow us to divide a large program into smaller, manageable files.</p>
+
+  <div class="code">
+// math.js
+export function add(a, b) {
+  return a + b;
+}</div>
+
+  <p>Here, <strong>math.js</strong> is a module that exports an add function so another file can use it.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>2. Why Use Modules?</h2>
+  <p>Modules help us organize code and make projects easier to maintain.</p>
+  <ul>
+    <li>Keep code organized in separate files.</li>
+    <li>Reuse functions in multiple files.</li>
+    <li>Make large projects easier to understand.</li>
+    <li>Reduce unnecessary global variables.</li>
+    <li>Make teamwork easier.</li>
+  </ul>
+
+  <div class="note">
+    Think of modules like different departments in an organization. Each department handles a specific task, but they work together.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>3. Module Scope</h2>
+  <p>In JavaScript modules, variables and functions are private to that module by default.</p>
+  <p>They cannot be accessed from another file unless we export them.</p>
+
+  <div class="code">
+// user.js
+const username = "Nainsi";
+
+function welcome() {
+  console.log("Welcome " + username);
+}</div>
+
+  <p>Here, username and welcome() are not automatically available in other JavaScript files.</p>
+  <p>We need to export them if another module needs to use them.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>4. Export and Import</h2>
+  <p><strong>Export</strong> makes a variable, function or class available to other modules.</p>
+  <p><strong>Import</strong> allows another module to use an exported value.</p>
+
+  <div class="code">
+// math.js
+export const pi = 3.14;
+
+export function multiply(a, b) {
+  return a * b;
+}
+
+// app.js
+import { pi, multiply } from "./math.js";
+
+console.log(pi);
+console.log(multiply(4, 5));</div>
+
+  <div class="note">
+    The file path in an import statement identifies the module we want to use. Keep the file extension .js in browser module imports.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>5. Named Exports</h2>
+  <p>Named exports allow us to export multiple values from a single file.</p>
+
+  <div class="code">
+// tools.js
+export const course = "JavaScript";
+
+export const duration = "25 Lessons";
+
+export function showCourse() {
+  return "Welcome to SkillSaathi";
+}</div>
+
+  <p>Each exported value has its own name.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>6. Named Imports</h2>
+  <p>To import named exports, we use curly braces and write the exact exported names.</p>
+
+  <div class="code">
+// app.js
+import { course, duration, showCourse } from "./tools.js";
+
+console.log(course);
+console.log(duration);
+console.log(showCourse());</div>
+
+  <p>Remember: named imports must match the exported names unless we rename them.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>7. Default Export</h2>
+  <p>A module can also have one default export. It is useful when a file mainly provides one important value.</p>
+
+  <div class="code">
+// message.js
+export default function greet() {
+  return "Hello, welcome to SkillSaathi!";
+}</div>
+
+  <div class="note">
+    A module can have only one default export, but it can also have multiple named exports.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>8. Default Import</h2>
+  <p>We can import a default export without using curly braces.</p>
+
+  <div class="code">
+// app.js
+import greet from "./message.js";
+
+console.log(greet());</div>
+
+  <p>The name used for a default import can be chosen by the importing file.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>9. Importing Multiple Values</h2>
+  <p>We can import multiple named values from one module in a single statement.</p>
+
+  <div class="code">
+// student.js
+export const name = "Aarav";
+export const age = 20;
+
+export function getDetails() {
+  return name + " is " + age + " years old.";
+}
+
+// app.js
+import { name, age, getDetails } from "./student.js";
+
+console.log(name);
+console.log(age);
+console.log(getDetails());</div>
+</section>
+
+<section class="lesson-card">
+  <h2>10. Renaming Imports and Exports</h2>
+  <p>We can use the <strong>as</strong> keyword to give an exported or imported value another name.</p>
+
+  <h3>Renaming during export</h3>
+  <div class="code">
+const firstName = "Nainsi";
+
+export { firstName as studentName };</div>
+
+  <h3>Renaming during import</h3>
+  <div class="code">
+import { studentName as name } from "./student.js";
+
+console.log(name);</div>
+</section>
+
+<section class="lesson-card">
+  <h2>11. Exporting from Another Module</h2>
+  <p>We can re-export values from another module. This is useful when organizing large projects into folders.</p>
+
+  <div class="code">
+// math.js
+export function add(a, b) {
+  return a + b;
+}
+
+// index.js
+export { add } from "./math.js";
+
+// app.js
+import { add } from "./index.js";
+
+console.log(add(10, 5));</div>
+
+  <p>The index.js file acts as a central place for exporting functions from other files.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>12. Dynamic Imports</h2>
+  <p>Dynamic imports allow us to load a module when it is needed instead of loading it at the beginning.</p>
+
+  <div class="code">
+// app.js
+async function loadMath() {
+  const mathModule = await import("./math.js");
+
+  console.log(mathModule.add(10, 20));
+}
+
+loadMath();</div>
+
+  <p>Dynamic import returns a Promise, so we can use await or .then().</p>
+
+  <div class="code">
+import("./math.js")
+  .then((module) => {
+    console.log(module.add(5, 3));
+  })
+  .catch((error) => {
+    console.log("Module loading failed:", error);
+  });</div>
+</section>
+
+<section class="lesson-card">
+  <h2>13. Organizing Project Files</h2>
+  <p>A good project structure keeps related files together.</p>
+
+  <div class="code">
+module-project/
+│
+├── index.html
+├── app.js
+│
+├── modules/
+│   ├── math.js
+│   ├── message.js
+│   └── student.js
+│
+└── styles/
+    └── style.css</div>
+
+  <p>Here:</p>
+  <ul>
+    <li><strong>index.html:</strong> Main webpage.</li>
+    <li><strong>app.js:</strong> Main JavaScript file.</li>
+    <li><strong>modules:</strong> Contains reusable JavaScript files.</li>
+    <li><strong>styles:</strong> Contains CSS files.</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>14. Practical Modular Project</h2>
+  <p>Let's create a small student information project using separate JavaScript modules.</p>
+
+  <h3>Step 1: Create the project folder</h3>
+  <p>Inside your js-lessons folder, create a folder named <strong>module-project</strong>.</p>
+
+  <h3>Step 2: Create this file structure</h3>
+  <div class="code">
+module-project/
+│
+├── index.html
+├── app.js
+├── student.js
+└── message.js</div>
+
+  <h3>Step 3: index.html</h3>
+  <div class="code">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Student Module Project&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Student Information&lt;/h1&gt;
+  &lt;div id="output"&gt;&lt;/div&gt;
+
+  &lt;script type="module" src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+
+  <h3>Step 4: student.js</h3>
+  <div class="code">
+// student.js
+export const student = {
+  name: "Aarav",
+  course: "JavaScript",
+  progress: "Lesson 24"
+};</div>
+
+  <h3>Step 5: message.js</h3>
+  <div class="code">
+// message.js
+export function createMessage(student) {
+  return `Hello ${student.name}! 
+You are learning ${student.course}.
+Your current progress is ${student.progress}.`;
+}</div>
+
+  <h3>Step 6: app.js</h3>
+  <div class="code">
+// app.js
+import { student } from "./student.js";
+import { createMessage } from "./message.js";
+
+const output = document.getElementById("output");
+
+output.textContent = createMessage(student);</div>
+
+  <div class="note">
+    <strong>Important:</strong> Browser modules should be tested through a local server, not by directly opening index.html using file://.
+  </div>
+
+  <h3>Step 7: Run the project with Live Server</h3>
+  <ol>
+    <li>Open VS Code.</li>
+    <li>Install the Live Server extension if it is not already installed.</li>
+    <li>Open the module-project folder.</li>
+    <li>Right-click index.html.</li>
+    <li>Select Open with Live Server.</li>
+    <li>Your browser should show the student information.</li>
+  </ol>
+</section>
+
+<section class="lesson-card">
+  <h2>15. Code Playground</h2>
+  <p>Practice the idea of exporting and importing by reading these examples. This playground runs ordinary JavaScript; actual module imports must be tested using separate files and Live Server.</p>
+
+  <textarea id="codeInput" rows="9">// Example: A reusable function
+function welcome(name) {
+  return "Welcome to SkillSaathi, " + name;
+}
+
+console.log(welcome("Learner"));</textarea>
+
+  <button onclick="runCode()">Run Code</button>
+  <button onclick="clearCode()">Clear</button>
+
+  <div class="output" id="playOutput">Your output will appear here...</div>
+</section>
+
+<section class="lesson-card">
+  <h2>16. Practice Tasks and Quiz</h2>
+
+  <div class="task">
+    <strong>Task 1:</strong> Create a file named calculator.js and export an add() function.
+  </div>
+  <div class="task">
+    <strong>Task 2:</strong> Import the add() function into app.js and display its result.
+  </div>
+  <div class="task">
+    <strong>Task 3:</strong> Create a default export for a greeting function.
+  </div>
+  <div class="task">
+    <strong>Task 4:</strong> Create a folder named modules and organize at least two JavaScript files inside it.
+  </div>
+
+  <h2 style="margin-top:25px">Knowledge Check</h2>
+
+  <div class="quiz-question">
+    <p><strong>1. What is a JavaScript module?</strong></p>
+    <label><input type="radio" name="q1" value="a"> A CSS file</label>
+    <label><input type="radio" name="q1" value="b"> A separate JavaScript file containing reusable code</label>
+    <label><input type="radio" name="q1" value="c"> An HTML heading</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>2. Which keyword is used to make a value available to other modules?</strong></p>
+    <label><input type="radio" name="q2" value="a"> export</label>
+    <label><input type="radio" name="q2" value="b"> return</label>
+    <label><input type="radio" name="q2" value="c"> console</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>3. Which syntax is used for named imports?</strong></p>
+    <label><input type="radio" name="q3" value="a"> import (name)</label>
+    <label><input type="radio" name="q3" value="b"> import [name]</label>
+    <label><input type="radio" name="q3" value="c"> import { name }</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>4. How many default exports can a module have?</strong></p>
+    <label><input type="radio" name="q4" value="a"> Unlimited</label>
+    <label><input type="radio" name="q4" value="b"> One</label>
+    <label><input type="radio" name="q4" value="c"> Zero only</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>5. Which attribute value is used to load a JavaScript module in HTML?</strong></p>
+    <label><input type="radio" name="q5" value="a"> type="module"</label>
+    <label><input type="radio" name="q5" value="b"> type="text"</label>
+    <label><input type="radio" name="q5" value="c"> type="style"</label>
+  </div>
+
+  <button onclick="checkQuiz()">Submit Quiz</button>
+  <button onclick="resetQuiz()">Try Again</button>
+  <div class="result" id="quizResult"></div>
+</section>
+
+<div class="nav">
+  <a href="js-lesson23.html"><button>← Previous Lesson</button></a>
+  <a href="../javascript.html"><button>Course Home</button></a>
+  <a href="js-lesson25.html"><button>Next Lesson →</button></a>
+</div>
+
+</main>
+
+<footer>
+  <p>© 2026 SkillSaathi | Learn, Practice and Grow</p>
+</footer>
+
+<script>
+function runCode(){
+  const code = document.getElementById("codeInput").value;
+  const output = document.getElementById("playOutput");
+  const logs = [];
+
+  const customConsole = {
+    log: (...args) => logs.push(args.join(" "))
+  };
+
+  try{
+    new Function("console", code)(customConsole);
+    output.textContent = logs.length ? logs.join("\n") : "Code executed successfully.";
+  }catch(error){
+    output.textContent = "Error: " + error.message;
+  }
+}
+
+function clearCode(){
+  document.getElementById("codeInput").value = "";
+  document.getElementById("playOutput").textContent = "Your output will appear here...";
+}
+
+function checkQuiz(){
+  const answers = {
+    q1:"b",
+    q2:"a",
+    q3:"c",
+    q4:"b",
+    q5:"a"
+  };
+
+  let score = 0;
+  let attempted = 0;
+
+  for(const question in answers){
+    const selected = document.querySelector('input[name="'+question+'"]:checked');
+    if(selected){
+      attempted++;
+      if(selected.value === answers[question]){
+        score++;
+      }
+    }
+  }
+
+  const result = document.getElementById("quizResult");
+
+  if(attempted < 5){
+    result.textContent = "Please answer all 5 questions before submitting.";
+    return;
+  }
+
+  result.textContent = "Your Score: " + score + "/5 " +
+    (score === 5 ? "Excellent! Perfect score!" :
+    score >= 3 ? "Good work! Keep practicing." :
+    "Keep learning and try again!");
+}
+
+function resetQuiz(){
+  document.querySelectorAll('.quiz-question input').forEach(input => {
+    input.checked = false;
+  });
+  document.getElementById("quizResult").textContent = "";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Lesson 18 - Animations and Keyframes | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eeeafc;line-height:1.7}
+header{background:#171b33;padding:25px 7%;border-bottom:1px solid #343052}
+header a,.nav a{color:#c4b5fd;text-decoration:none}
+main{max-width:1000px;margin:auto;padding:25px 18px}
+h1,h2,h3{color:#c4b5fd;margin-bottom:12px}
+.card{background:#171b33;border:1px solid #343052;border-radius:14px;padding:22px;margin:20px 0}
+p,li{color:#ddd8ee;margin-bottom:10px}
+pre{background:#0c0d16;padding:15px;border-radius:9px;overflow-x:auto;color:#e9ddff;margin:12px 0}
+code{color:#f0abfc}
+textarea{width:100%;min-height:230px;background:#0c0d16;color:#eeeafc;border:1px solid #62558d;border-radius:9px;padding:14px;font-family:monospace;font-size:14px}
+button{background:#a78bfa;color:#171327;border:0;padding:11px 18px;border-radius:8px;cursor:pointer;font-weight:bold;margin:7px 5px 7px 0}
+iframe{display:none;width:100%;height:320px;background:white;border:0;border-radius:9px;margin-top:12px}
+.option{display:block;background:#22243d;padding:10px;border-radius:8px;margin:8px 0}
+.feedback{color:#c4b5fd;font-weight:bold;margin-top:12px}
+.nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px;margin:25px 0}
+
+.nav a{
+    background:#a78bfa;
+    color:#171327;
+    text-decoration:none;
+    font-weight:bold;
+    padding:10px 18px;
+    border-radius:8px;
+    display:inline-block;
+    transition:0.3s;
+}
+
+.nav a:hover{
+    background:#c4b5fd;
+    transform:translateY(-2px);
+}
+
+.nav a:first-child{
+    background:#343052;
+    color:#f4f1ff;
+}</style>
+</head>
+<body>
+
+<header>
+<a href="../css.html">← Back to CSS Course</a>
+<h1>Lesson 18: CSS Animations and Keyframes</h1>
+<p>Learn to create moving and animated elements using CSS.</p>
+</header>
+
+<main>
+<div class="card">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand CSS animations.</li>
+<li>Learn @keyframes.</li>
+<li>Use animation properties.</li>
+<li>Create simple loading and movement effects.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>1. What are CSS Animations?</h2>
+<p>CSS animations allow elements to change their styles over time without requiring JavaScript.</p>
+<p>Animations can run once, repeat, move, rotate or change colors.</p>
+</div>
+
+<div class="card">
+<h2>2. Understanding @keyframes</h2>
+<p>The @keyframes rule defines the stages of an animation.</p>
+<pre>
+@keyframes example {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+</pre>
+<p>You can also use percentages to define multiple stages.</p>
+<pre>
+@keyframes moveBox {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(100px); }
+    100% { transform: translateX(0); }
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>3. Animation Properties</h2>
+<ul>
+<li><b>animation-name:</b> Name of the keyframes animation.</li>
+<li><b>animation-duration:</b> Time taken to complete one cycle.</li>
+<li><b>animation-delay:</b> Waiting time before it starts.</li>
+<li><b>animation-iteration-count:</b> Number of repetitions.</li>
+<li><b>animation-direction:</b> Direction of animation.</li>
+<li><b>animation-timing-function:</b> Speed pattern.</li>
+<li><b>animation-fill-mode:</b> Styles applied before or after animation.</li>
+</ul>
+<pre>
+.box {
+    animation-name: moveBox;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>4. Animation Shorthand</h2>
+<p>You can combine multiple animation properties into one declaration.</p>
+<pre>
+.box {
+    animation: moveBox 2s ease-in-out infinite alternate;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>5. Example: Bouncing Box</h2>
+<pre>
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-40px);
+    }
+}
+
+.box {
+    animation: bounce 1s infinite;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>6. Example: Loading Spinner</h2>
+<pre>
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    width: 45px;
+    height: 45px;
+    border: 5px solid #ddd;
+    border-top-color: purple;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>Try It Yourself</h2>
+<p>Run the code to see the animated box.</p>
+<textarea id="code"><div class="container">
+    <div class="box"></div>
+    <h2>CSS Animation</h2>
+    <p>Created with SkillSaathi</p>
+</div>
+
+<style>
+.container {
+    text-align: center;
+    padding: 30px;
+    color: #241b3d;
+}
+.box {
+    width: 65px;
+    height: 65px;
+    background: #8b5cf6;
+    border-radius: 12px;
+    margin: 20px auto;
+    animation: bounce 1.2s ease-in-out infinite alternate;
+}
+@keyframes bounce {
+    from {
+        transform: translateY(0) rotate(0);
+    }
+    to {
+        transform: translateY(-35px) rotate(15deg);
+    }
+}
+</style></textarea>
+<button onclick="runCode()">Run Code</button>
+<button onclick="clearOutput()">Clear Output</button>
+<button onclick="showHint()">Hint</button>
+<p id="hint" class="feedback"></p>
+<iframe id="preview" title="Code Preview"></iframe>
+</div>
+
+<div class="card">
+<h2>Practice Activity</h2>
+<ul>
+<li>Create a bouncing ball.</li>
+<li>Make a rotating loading spinner.</li>
+<li>Animate a heading using opacity.</li>
+<li>Change an element's background color over time.</li>
+</ul>
+<h3>Homework</h3>
+<p>Create a simple animated loading screen using at least two CSS animations.</p>
+</div>
+
+<h2>Knowledge Check</h2>
+<div class="card">
+<p><b>Q1. Which rule defines animation stages?</b></p>
+<label class="option"><input type="radio" name="q1" value="0"> @media</label>
+<label class="option"><input type="radio" name="q1" value="1"> @keyframes</label>
+<label class="option"><input type="radio" name="q1" value="2"> @import</label>
+<label class="option"><input type="radio" name="q1" value="3"> @font-face</label>
+</div>
+<div class="card">
+<p><b>Q2. Which property controls animation duration?</b></p>
+<label class="option"><input type="radio" name="q2" value="0"> animation-speed</label>
+<label class="option"><input type="radio" name="q2" value="1"> animation-duration</label>
+<label class="option"><input type="radio" name="q2" value="2"> transition-delay</label>
+<label class="option"><input type="radio" name="q2" value="3"> transform-time</label>
+</div>
+<div class="card">
+<p><b>Q3. What does infinite mean in animation?</b></p>
+<label class="option"><input type="radio" name="q3" value="0"> Runs once</label>
+<label class="option"><input type="radio" name="q3" value="1"> Runs twice</label>
+<label class="option"><input type="radio" name="q3" value="2"> Repeats continuously</label>
+<label class="option"><input type="radio" name="q3" value="3"> Stops immediately</label>
+</div>
+<div class="card">
+<p><b>Q4. Which property controls how many times an animation runs?</b></p>
+<label class="option"><input type="radio" name="q4" value="0"> animation-iteration-count</label>
+<label class="option"><input type="radio" name="q4" value="1"> animation-name</label>
+<label class="option"><input type="radio" name="q4" value="2"> animation-fill-mode</label>
+<label class="option"><input type="radio" name="q4" value="3"> animation-delay</label>
+</div>
+<div class="card">
+<p><b>Q5. Which value makes an animation run at a constant speed?</b></p>
+<label class="option"><input type="radio" name="q5" value="0"> ease</label>
+<label class="option"><input type="radio" name="q5" value="1"> linear</label>
+<label class="option"><input type="radio" name="q5" value="2"> alternate</label>
+<label class="option"><input type="radio" name="q5" value="3"> reverse</label>
+</div>
+<div class="card">
+<button onclick="checkQuiz()">Submit Quiz</button>
+<p id="result" class="feedback"></p>
+</div>
+
+<div class="nav">
+<a href="css-lesson17.html">← Previous Lesson</a>
+<a href="../css.html">Course Home</a>
+<a href="css-lesson19.html">Next Lesson →</a>
+</div>
+</main>
+
+<script>
+function runCode(){
+const p=document.getElementById("preview");
+p.srcdoc=document.getElementById("code").value;
+p.style.display="block";
+}
+function clearOutput(){
+const p=document.getElementById("preview");
+p.srcdoc="";
+p.style.display="none";
+}
+function showHint(){
+document.getElementById("hint").textContent="Try changing the animation duration to 0.5s or 2s and observe the speed.";
+}
+function checkQuiz(){
+const answers=[1,1,2,0,1];
+let score=0;
+answers.forEach((a,i)=>{
+const s=document.querySelector('input[name="q'+(i+1)+'"]:checked');
+if(s && Number(s.value)===a) score++;
+});
+document.getElementById("result").textContent="Your Score: "+score+" / 5";
+}
+</script>
+</body>
+</html>

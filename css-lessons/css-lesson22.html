@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Lesson 22 - Shadows and Filters | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;padding:25px;line-height:1.7}
+.container{max-width:950px;margin:auto}
+h1,h2{color:#c4b5fd;margin-bottom:15px}
+h1{text-align:center;margin-bottom:25px}
+section{background:#1b1b2b;padding:22px;border-radius:12px;margin:20px 0}
+p,li{color:#b8b4c9;margin-bottom:10px}
+ul{padding-left:22px}
+pre{background:#10101a;padding:15px;border-left:4px solid #a78bfa;border-radius:8px;overflow-x:auto;color:#d8caff}
+button{background:#a78bfa;color:#171327;border:0;padding:10px 18px;border-radius:7px;font-weight:bold;cursor:pointer;margin:8px 5px 8px 0}
+textarea{width:100%;height:300px;background:#10101a;color:#d8caff;border:1px solid #62528b;border-radius:8px;padding:15px;font-family:monospace;font-size:14px}
+iframe{display:none;width:100%;height:400px;background:white;border:0;border-radius:8px;margin-top:15px}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:25px 0}
+.nav a{background:#a78bfa;color:#171327;text-decoration:none;font-weight:bold;padding:10px 18px;border-radius:8px;display:inline-block;transition:.3s}
+.nav a:hover{background:#c4b5fd;transform:translateY(-2px)}
+.nav a:first-child{background:#343052;color:#f4f1ff}
+.question{margin:18px 0;padding:15px;background:#24243a;border-radius:8px}
+label{display:block;color:#b8b4c9;margin:7px 0}
+#result{font-weight:bold;margin-top:15px}
+@media(max-width:600px){body{padding:12px}.nav{justify-content:center}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Lesson 22: CSS Shadows and Filters</h1>
+
+<section>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand box-shadow.</li>
+<li>Learn text-shadow.</li>
+<li>Use CSS filter effects.</li>
+<li>Understand opacity and blend modes.</li>
+<li>Create attractive visual effects.</li>
+</ul>
+</section>
+
+<section>
+<h2>1. What are CSS Shadows?</h2>
+<p>CSS shadows add depth and visual emphasis to elements. They can be applied to boxes and text.</p>
+</section>
+
+<section>
+<h2>2. Box Shadow</h2>
+<p>The box-shadow property adds a shadow around an element's box.</p>
+<pre>
+box-shadow: 5px 5px 10px gray;
+</pre>
+<p>Its common values are:</p>
+<ul>
+<li>Horizontal offset</li>
+<li>Vertical offset</li>
+<li>Blur radius</li>
+<li>Spread radius (optional)</li>
+<li>Shadow color</li>
+</ul>
+<pre>
+.card {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+</pre>
+</section>
+
+<section>
+<h2>3. Text Shadow</h2>
+<p>The text-shadow property adds a shadow to text.</p>
+<pre>
+h1 {
+    text-shadow: 2px 3px 5px gray;
+}
+</pre>
+<p>It can make headings stand out, but excessive shadows can reduce readability.</p>
+</section>
+
+<section>
+<h2>4. CSS Filters</h2>
+<p>The filter property applies visual effects to images and other elements.</p>
+<pre>
+img {
+    filter: grayscale(100%);
+}
+</pre>
+<p>Common filter functions include:</p>
+<ul>
+<li><b>blur():</b> Adds blur.</li>
+<li><b>brightness():</b> Adjusts brightness.</li>
+<li><b>contrast():</b> Adjusts contrast.</li>
+<li><b>grayscale():</b> Converts colors to grayscale.</li>
+<li><b>sepia():</b> Adds a warm brown tone.</li>
+<li><b>saturate():</b> Adjusts color intensity.</li>
+<li><b>invert():</b> Inverts colors.</li>
+<li><b>opacity():</b> Adjusts transparency.</li>
+</ul>
+</section>
+
+<section>
+<h2>5. Opacity and Blend Modes</h2>
+<p>Opacity controls how transparent an element appears. Its value ranges from 0 (fully transparent) to 1 (fully opaque).</p>
+<pre>
+.card {
+    opacity: 0.7;
+}
+</pre>
+<p>The mix-blend-mode property controls how an element's content blends with the content behind it.</p>
+<pre>
+img {
+    mix-blend-mode: multiply;
+}
+</pre>
+</section>
+
+<section>
+<h2>6. Practical Code Editor</h2>
+<textarea id="code"><!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    font-family: Arial;
+    background: #eee8ff;
+    padding: 35px;
+    text-align: center;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    max-width: 300px;
+    margin: 25px auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(45,20,90,0.25);
+}
+
+h1 {
+    color: #56329a;
+    text-shadow: 2px 2px 4px #b8a5df;
+}
+
+button {
+    padding: 12px 20px;
+    background: #6d28d9;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px #999;
+}
+
+button:hover {
+    filter: brightness(1.2);
+}
+
+.demo {
+    margin: 20px;
+    padding: 15px;
+    background: #a78bfa;
+    opacity: 0.85;
+}
+</style>
+</head>
+<body>
+<h1>CSS Visual Effects</h1>
+
+<div class="card">
+    <h2>SkillSaathi</h2>
+    <p>Learn CSS shadows and filters.</p>
+    <button>Explore</button>
+</div>
+
+<div class="demo">Opacity Example</div>
+</body>
+</html></textarea>
+<button onclick="runCode()">Run Code</button>
+<button onclick="clearOutput()">Clear Output</button>
+<button onclick="showHint()">Hint</button>
+<p id="hint"></p>
+<iframe id="preview" title="Shadows and filters preview"></iframe>
+</section>
+
+<section>
+<h2>7. Practice Tasks</h2>
+<ul>
+<li>Create a card using box-shadow.</li>
+<li>Add text-shadow to a heading.</li>
+<li>Apply grayscale and blur filters to an image.</li>
+<li>Change opacity of a box.</li>
+<li>Experiment with different shadow colors and blur values.</li>
+</ul>
+</section>
+
+<section>
+<h2>8. Quick Quiz</h2>
+<form>
+<div class="question">
+<p>1. Which property creates a shadow around a box?</p>
+<label><input type="radio" name="q1" value="0"> text-shadow</label>
+<label><input type="radio" name="q1" value="1"> box-shadow</label>
+<label><input type="radio" name="q1" value="2"> border-shadow</label>
+</div>
+<div class="question">
+<p>2. Which property adds a shadow to text?</p>
+<label><input type="radio" name="q2" value="0"> text-shadow</label>
+<label><input type="radio" name="q2" value="1"> font-shadow</label>
+</div>
+<div class="question">
+<p>3. Which filter converts an image to grayscale?</p>
+<label><input type="radio" name="q3" value="0"> blur()</label>
+<label><input type="radio" name="q3" value="1"> grayscale()</label>
+<label><input type="radio" name="q3" value="2"> brightness()</label>
+</div>
+<div class="question">
+<p>4. What does opacity:0 mean?</p>
+<label><input type="radio" name="q4" value="0"> Fully opaque</label>
+<label><input type="radio" name="q4" value="1"> Fully transparent</label>
+</div>
+<div class="question">
+<p>5. Which property controls how an element blends with content behind it?</p>
+<label><input type="radio" name="q5" value="0"> mix-blend-mode</label>
+<label><input type="radio" name="q5" value="1"> font-style</label>
+</div>
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+<p id="result"></p>
+</form>
+</section>
+
+<section>
+<h2>Lesson Summary</h2>
+<p>You learned box-shadow, text-shadow, CSS filters, opacity and blend modes. These properties help create depth and visual effects in modern websites.</p>
+</section>
+
+<div class="nav">
+<a href="css-lesson21.html">← Previous Lesson</a>
+<a href="../css.html">Course Home</a>
+<a href="css-lesson23.html">Next Lesson →</a>
+</div>
+</div>
+
+<script>
+function runCode(){
+let p=document.getElementById("preview");
+p.srcdoc=document.getElementById("code").value;
+p.style.display="block";
+}
+function clearOutput(){
+let p=document.getElementById("preview");
+p.srcdoc="";
+p.style.display="none";
+}
+function showHint(){
+document.getElementById("hint").textContent="Hint: Try box-shadow for cards, text-shadow for headings and grayscale() or blur() for filter effects.";
+}
+function checkQuiz(){
+let a=[1,0,1,1,0],s=0;
+for(let i=1;i<=5;i++){
+let x=document.querySelector('input[name="q'+i+'"]:checked');
+if(x && Number(x.value)===a[i-1])s++;
+}
+document.getElementById("result").textContent="Your Score: "+s+"/5";
+}
+</script>
+</body>
+</html>
+

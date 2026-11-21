@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 5: Typography | SkillSaathi</title>
+<style>
+:root{--bg:#11111b;--panel:#171b33;--panel2:#111427;--purple:#a78bfa;--lav:#c4b5fd;--text:#f4f1ff;--muted:#c7c2dc;--line:#343052;--green:#86efac}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{padding:28px 7%;background:linear-gradient(135deg,#19152d,#25204a);border-bottom:1px solid var(--line)}
+header a,.nav a{color:var(--lav);text-decoration:none}
+header p{color:var(--muted);margin-top:6px}
+main{width:min(1050px,90%);margin:28px auto 55px}
+section,.lesson-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;margin:18px 0}
+h1{font-size:clamp(25px,4vw,36px);color:var(--lav)}
+h2{font-size:22px;color:var(--lav);margin-bottom:12px}
+h3{color:#e9ddff;margin:14px 0 6px}
+p,li{color:var(--muted)}
+ul,ol{padding-left:24px;margin:8px 0}
+code{color:#e9d5ff;background:#292342;padding:2px 6px;border-radius:5px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0c0d17;border:1px solid var(--line);padding:16px;border-radius:10px;color:#e9ddff;margin:12px 0;overflow-x:auto}
+.example{background:var(--panel2);padding:14px;border-radius:10px;margin:10px 0;border-left:3px solid var(--purple)}
+button,.btn{background:var(--purple);color:#171326;border:0;border-radius:8px;padding:10px 16px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block;margin:5px 5px 5px 0}
+button.secondary,.btn.secondary{background:#343052;color:var(--text)}
+textarea{width:100%;min-height:180px;background:#0c0d17;color:#f4f1ff;border:1px solid var(--line);border-radius:10px;padding:14px;font:14px/1.6 Consolas,monospace;resize:vertical}
+iframe{width:100%;height:260px;background:white;border:0;border-radius:10px;margin-top:12px;display:none}
+.feedback{color:var(--green);margin-top:10px;font-weight:bold}
+.question{padding:13px 0;border-bottom:1px solid var(--line)}
+.question label{display:block;color:var(--muted);margin:5px 0}
+.nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:22px}
+.small{font-size:14px;color:var(--muted)}
+@media(max-width:650px){section,.lesson-box{padding:17px}header{padding:23px 5%}main{width:92%}}
+</style>
+</head>
+<body>
+<header>
+  <p><a href="../css.html">← CSS Course Home</a></p>
+  <h1>Lesson 5: Typography</h1>
+  <p>Style text so every page feels clear, readable and professional.</p>
+</header>
+<main>
+<section>
+<h2>Learning Objectives</h2>
+<ul><li>Choose font families and fallback fonts</li><li>Control font size, weight and line height</li><li>Style alignment, decoration and spacing</li><li>Use web-safe font stacks and readable text</li></ul>
+</section>
+
+<section>
+<h2>1. Font family</h2>
+<p>font-family chooses the typeface. Always provide fallback fonts so the browser can use another option if the first font is unavailable. A generic family such as sans-serif should usually appear last.</p>
+<pre>body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+}</pre>
+</section>
+<section>
+<h2>2. Font size, weight and style</h2>
+<p>font-size controls text size. Use relative units such as rem for scalable typography. font-weight controls thickness (normal, bold or values such as 600). font-style is commonly used for italic text.</p>
+<pre>h1 { font-size: 2rem; font-weight: 700; }
+p { font-size: 1rem; font-style: normal; }
+strong { font-weight: 700; }</pre>
+</section>
+<section>
+<h2>3. Line height and text alignment</h2>
+<p>line-height controls the distance between lines. A value around 1.4 to 1.7 is often comfortable for paragraphs. text-align can be left, right, center or justify. Avoid long centered paragraphs because they can be harder to scan.</p>
+<pre>p {
+  line-height: 1.6;
+  text-align: left;
+}
+.hero-title { text-align: center; }</pre>
+</section>
+<section>
+<h2>4. Decoration, transform and spacing</h2>
+<p>text-decoration adds or removes lines such as underlines. text-transform changes letter casing visually. letter-spacing adjusts space between characters; word-spacing adjusts space between words. Use these carefully to keep text readable.</p>
+<pre>a { text-decoration: none; }
+.label { text-transform: uppercase; letter-spacing: 1px; }
+h2 { word-spacing: 3px; }</pre>
+</section>
+<section>
+<h2>5. Readable typography</h2>
+<p>Use a clear hierarchy: larger headings, comfortable body text and consistent spacing. Keep paragraph line lengths moderate. Do not use too many font families or tiny text. Make sure links and important text remain distinguishable.</p>
+<pre>main { max-width: 70ch; margin: auto; }
+p { font-size: 1rem; line-height: 1.65; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }</pre>
+</section>
+<section>
+<h2>Practical Code Playground</h2>
+<p>Try editing the code, then select <strong>Run Code</strong> to see the result.</p>
+<textarea id="editor" spellcheck="false"><article class="story">
+  <p class="eyebrow">LEARNING JOURNAL</p>
+  <h1>Small Steps, Big Progress</h1>
+  <p class="subtitle">A little practice every day builds confidence.</p>
+  <p>Typography helps readers understand what matters first. Use clear headings, comfortable line spacing and a readable font.</p>
+</article>
+<style>
+body { font-family: Arial, sans-serif; padding: 25px; }
+.story { max-width: 650px; margin: auto; }
+/* Style the eyebrow, title, subtitle and paragraph */
+</style></textarea>
+<div>
+<button type="button" id="run">Run Code</button>
+<button type="button" class="secondary" id="clear">Clear Output</button>
+<button type="button" class="secondary" id="hint">Show Hint</button>
+</div>
+<p id="hintText" class="small" hidden>Hint: Read the examples above, then add or change CSS rules inside the style section. For Lesson 3, remember that external CSS belongs in a separate .css file.</p>
+<div id="output">
+<h3>Live Preview</h3>
+<iframe id="preview" title="Code preview" sandbox="allow-scripts"></iframe>
+</div>
+</section>
+<section>
+<h2>Quick Practice</h2>
+<p>Create a mini article with a title, subtitle and two paragraphs. Use different font sizes, weights, line heights and text colors to build a clear hierarchy.</p>
+</section>
+<section>
+<h2>Knowledge Check</h2>
+<p class="small">Choose one answer for each question, then check your score.</p>
+<div class="question"><p><strong>1. Which property chooses the typeface?</strong></p><label><input type="radio" name="q1" value="0"> A. font-size</label><label><input type="radio" name="q1" value="1"> B. font-family</label><label><input type="radio" name="q1" value="2"> C. font-style</label><label><input type="radio" name="q1" value="3"> D. text-align</label></div><div class="question"><p><strong>2. Which property controls thickness?</strong></p><label><input type="radio" name="q2" value="0"> A. font-weight</label><label><input type="radio" name="q2" value="1"> B. line-height</label><label><input type="radio" name="q2" value="2"> C. word-spacing</label><label><input type="radio" name="q2" value="3"> D. text-transform</label></div><div class="question"><p><strong>3. What does line-height control?</strong></p><label><input type="radio" name="q3" value="0"> A. Text color</label><label><input type="radio" name="q3" value="1"> B. Distance between lines</label><label><input type="radio" name="q3" value="2"> C. Font family</label><label><input type="radio" name="q3" value="3"> D. Border width</label></div><div class="question"><p><strong>4. Which unit is commonly useful for scalable font sizes?</strong></p><label><input type="radio" name="q4" value="0"> A. rem</label><label><input type="radio" name="q4" value="1"> B. px only</label><label><input type="radio" name="q4" value="2"> C. kg</label><label><input type="radio" name="q4" value="3"> D. deg</label></div><div class="question"><p><strong>5. Which property removes an underline from a link?</strong></p><label><input type="radio" name="q5" value="0"> A. text-transform:none</label><label><input type="radio" name="q5" value="1"> B. font-style:none</label><label><input type="radio" name="q5" value="2"> C. text-decoration:none</label><label><input type="radio" name="q5" value="3"> D. line-height:0</label></div>
+<button type="button" id="checkQuiz">Check Answers</button>
+<p id="quizResult" class="feedback" aria-live="polite"></p>
+</section>
+<section>
+<h2>Lesson Summary</h2>
+<p>You have studied the key concepts of typography. Revisit the examples and complete the practice task before moving ahead.</p>
+<h3>Homework</h3>
+<p>Build a small web page using the concepts from this lesson. Keep your code organized and test it in the browser.</p>
+</section>
+<div class="nav">
+<a class="btn secondary" href="css-lesson4.html">← Previous Lesson</a>
+<a class="btn" href="css-lesson6.html">Next Lesson →</a>
+</div>
+</main>
+<script>
+const editor = document.getElementById('editor');
+const preview = document.getElementById('preview');
+const output = document.getElementById('output');
+document.getElementById('run').addEventListener('click', () => {
+  preview.srcdoc = editor.value;
+  preview.style.display = 'block';
+  output.style.display = 'block';
+});
+document.getElementById('clear').addEventListener('click', () => {
+  preview.srcdoc = '';
+  preview.style.display = 'none';
+});
+document.getElementById('hint').addEventListener('click', () => {
+  const hint = document.getElementById('hintText');
+  hint.hidden = !hint.hidden;
+});
+document.getElementById('checkQuiz').addEventListener('click', () => {
+  const answers = [1, 0, 1, 0, 2];
+  let score = 0;
+  answers.forEach((answer, index) => {
+    const chosen = document.querySelector('input[name="q' + (index+1) + '"]:checked');
+    if (chosen && Number(chosen.value) === answer) score++;
+  });
+  document.getElementById('quizResult').textContent = 'You scored ' + score + ' out of ' + answers.length + '. ' + (score === answers.length ? 'Excellent work!' : 'Review the lesson and try again.');
+});
+</script>
+</body>
+</html>

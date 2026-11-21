@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 2 - Variables: var, let and const | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Arial,sans-serif;
+  background:#11111b;
+  color:#eee;
+  line-height:1.7;
+  padding:25px;
+}
+.container{max-width:950px;margin:auto}
+header,.card{
+  background:#1c1c2b;
+  padding:25px;
+  border-radius:14px;
+  margin-bottom:22px;
+  border:1px solid #34344b;
+}
+h1,h2,h3{color:#c4b5fd;margin-bottom:14px}
+h1{font-size:30px}
+p,li{color:#d1d1df;margin-bottom:10px}
+ul{padding-left:25px}
+pre{
+  background:#101019;
+  padding:18px;
+  border-radius:10px;
+  overflow-x:auto;
+  color:#a7f3d0;
+  margin:15px 0;
+}
+button,.nav a{
+  background:#8b5cf6;
+  color:white;
+  border:0;
+  padding:11px 18px;
+  border-radius:8px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+  margin:5px;
+}
+button:hover,.nav a:hover{background:#a78bfa;color:#171327}
+textarea{
+  width:100%;
+  min-height:170px;
+  background:#101019;
+  color:#a7f3d0;
+  border:1px solid #514174;
+  border-radius:8px;
+  padding:15px;
+  font-family:monospace;
+  font-size:14px;
+  resize:vertical;
+}
+.output{
+  background:#101019;
+  border:1px solid #444;
+  padding:15px;
+  border-radius:8px;
+  min-height:55px;
+  margin:12px 0;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.note{
+  background:#29243d;
+  border-left:4px solid #a78bfa;
+  padding:15px;
+  border-radius:7px;
+  margin:15px 0;
+}
+.lesson-label{
+  color:#a78bfa;
+  font-weight:bold;
+  letter-spacing:2px;
+  font-size:13px;
+}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div class="lesson-label">JAVASCRIPT COURSE | LESSON 02</div>
+  <h1>Variables: var, let and const</h1>
+  <p>Learn how to declare, store, update and use variables in JavaScript.</p>
+</header>
+
+<section class="card">
+  <h2>1. What are Variables?</h2>
+  <p>
+    A variable is a named container used to store information.
+    We can give a variable a name and use that name whenever
+    we need its stored value.
+  </p>
+
+  <p>Example:</p>
+  <pre>
+let studentName = "Aarav";
+
+console.log(studentName);
+  </pre>
+
+  <p>
+    Here, <b>studentName</b> is the variable name and
+    <b>"Aarav"</b> is the value stored in it.
+  </p>
+</section>
+
+<section class="card">
+  <h2>2. Declaring Variables</h2>
+  <p>
+    JavaScript provides three keywords to declare variables:
+    <b>var, let and const.</b>
+  </p>
+
+  <h3>Using var</h3>
+  <p>
+    <b>var</b> is the older way to declare variables.
+    A variable declared with var can be reassigned and
+    redeclared within the same scope.
+  </p>
+  <pre>
+var city = "Patna";
+
+city = "Ranchi";
+
+var city = "Delhi";
+
+console.log(city);
+  </pre>
+
+  <h3>Using let</h3>
+  <p>
+    <b>let</b> is used when a variable's value may change.
+    It can be reassigned, but it cannot be redeclared
+    in the same scope.
+  </p>
+  <pre>
+let score = 50;
+
+score = 80;
+
+console.log(score);
+  </pre>
+
+  <h3>Using const</h3>
+  <p>
+    <b>const</b> is used when a variable should not be
+    reassigned. A const variable must be initialized
+    when it is declared.
+  </p>
+  <pre>
+const country = "India";
+
+console.log(country);
+
+// country = "Japan";
+// This reassignment causes an error.
+  </pre>
+</section>
+
+<section class="card">
+  <h2>3. Difference Between var, let and const</h2>
+
+  <pre>
+var age = 20;
+age = 21;       // Allowed
+var age = 22;   // Redeclaration allowed
+
+let marks = 75;
+marks = 85;     // Allowed
+// let marks = 90;  // Error in same scope
+
+const pi = 3.14;
+// pi = 3.15;    // Error
+  </pre>
+
+  <div class="note">
+    <b>Important:</b>
+    In modern JavaScript, prefer <b>const</b> by default.
+    Use <b>let</b> when reassignment is needed.
+    Avoid using <b>var</b> in most modern code.
+  </div>
+</section>
+
+<section class="card">
+  <h2>4. Variable Scope</h2>
+  <p>
+    Scope determines where a variable can be accessed
+    in a JavaScript program.
+  </p>
+
+  <h3>Global Scope</h3>
+  <p>
+    A variable declared outside a function or block
+    can generally be accessed throughout its scope.
+  </p>
+  <pre>
+let message = "Hello Students";
+
+function showMessage(){
+  console.log(message);
+}
+
+showMessage();
+  </pre>
+
+  <h3>Block Scope</h3>
+  <p>
+    Variables declared with let and const inside a block
+    are accessible only within that block.
+  </p>
+  <pre>
+{
+  let course = "JavaScript";
+  const level = "Beginner";
+
+  console.log(course);
+  console.log(level);
+}
+
+// Variables above cannot be accessed here.
+  </pre>
+
+  <h3>Function Scope</h3>
+  <p>
+    A variable declared with var inside a function
+    is available within that function.
+  </p>
+  <pre>
+function studentDetails(){
+  var name = "Meera";
+  console.log(name);
+}
+
+studentDetails();
+
+// name cannot be accessed outside the function.
+  </pre>
+</section>
+
+<section class="card">
+  <h2>5. Rules for Naming Variables</h2>
+  <ul>
+    <li>Variable names can contain letters, numbers, underscores and dollar signs.</li>
+    <li>A variable name cannot begin with a number.</li>
+    <li>Spaces are not allowed in variable names.</li>
+    <li>JavaScript variable names are case-sensitive.</li>
+    <li>Reserved keywords cannot be used as variable names.</li>
+    <li>Use meaningful names that describe the stored information.</li>
+  </ul>
+
+  <h3>Valid Names</h3>
+  <pre>
+let studentName = "Aarav";
+let total_marks = 450;
+let userAge = 20;
+let $price = 100;
+  </pre>
+
+  <h3>Invalid Names</h3>
+  <pre>
+// let 2name = "Aarav";
+// let student name = "Aarav";
+// let let = 10;
+  </pre>
+
+  <div class="note">
+    <b>Best Practice:</b>
+    Use camelCase for variable names, such as
+    <b>studentName</b>, <b>totalMarks</b> and <b>userAge</b>.
+  </div>
+</section>
+
+<section class="card">
+  <h2>6. Practical Example</h2>
+  <p>
+    Let's create a simple student profile using variables.
+  </p>
+
+  <pre>
+let studentName = "Meera";
+let courseName = "JavaScript";
+let studyHours = 3;
+
+console.log("Student:", studentName);
+console.log("Course:", courseName);
+console.log("Daily Study Hours:", studyHours);
+  </pre>
+</section>
+
+<section class="card">
+  <h2>7. Try It Yourself – Code Playground</h2>
+  <p>
+    Change the values or write your own code.
+    Click Run Code to see the console output.
+  </p>
+
+  <textarea id="codeEditor">let studentName = "Aarav";
+let course = "JavaScript";
+
+let studyHours = 2;
+
+console.log("Student:", studentName);
+console.log("Course:", course);
+console.log("Study Hours:", studyHours);
+
+studyHours = 4;
+
+console.log("Updated Study Hours:", studyHours);</textarea>
+
+  <button onclick="runCode()">Run Code</button>
+  <button onclick="resetCode()">Reset Code</button>
+
+  <h3>Output</h3>
+  <div class="output" id="output">Your output will appear here.</div>
+</section>
+
+<section class="card">
+  <h2>8. Practice Tasks</h2>
+  <ol style="padding-left:22px;color:#d1d1df">
+    <li>Create a variable using let to store your name.</li>
+    <li>Create a variable using const to store your country.</li>
+    <li>Create a variable using var and then update its value.</li>
+    <li>Display all three variables using console.log().</li>
+    <li>Create a block and test the scope of let and const.</li>
+  </ol>
+</section>
+
+<section class="card">
+  <h2>9. Quick Knowledge Check</h2>
+
+  <p><b>Question 1:</b> Which keyword is preferred when a variable needs to be reassigned?</p>
+  <button onclick="checkAnswer(1,'var')">var</button>
+  <button onclick="checkAnswer(1,'let')">let</button>
+  <button onclick="checkAnswer(1,'const')">const</button>
+  <p id="answer1"></p>
+
+  <hr style="border-color:#34344b;margin:20px 0">
+
+  <p><b>Question 2:</b> Which keyword prevents reassignment of a variable?</p>
+  <button onclick="checkAnswer(2,'var')">var</button>
+  <button onclick="checkAnswer(2,'let')">let</button>
+  <button onclick="checkAnswer(2,'const')">const</button>
+  <p id="answer2"></p>
+
+  <hr style="border-color:#34344b;margin:20px 0">
+
+  <p><b>Question 3:</b> Which keywords provide block scope?</p>
+  <button onclick="checkAnswer(3,'var')">Only var</button>
+  <button onclick="checkAnswer(3,'letconst')">let and const</button>
+  <button onclick="checkAnswer(3,'all')">All three</button>
+  <p id="answer3"></p>
+</section>
+
+<div class="nav">
+  <a href="js-lesson1.html">← Previous Lesson</a>
+  <a href="../javascript.html">Course Home</a>
+  <a href="js-lesson3.html">Next Lesson →</a>
+</div>
+
+</div>
+
+<script>
+const starterCode = document.getElementById("codeEditor").value;
+
+function runCode(){
+  const code = document.getElementById("codeEditor").value;
+  const output = document.getElementById("output");
+  let logs = [];
+
+  const oldLog = console.log;
+
+  console.log = (...args) => {
+    logs.push(args.map(value =>
+      typeof value === "object" ? JSON.stringify(value) : String(value)
+    ).join(" "));
+  };
+
+  try{
+    new Function(code)();
+    output.textContent = logs.join("\n") || "Code executed successfully. No console output.";
+  }catch(error){
+    output.textContent = "Error: " + error.message;
+  }finally{
+    console.log = oldLog;
+  }
+}
+
+function resetCode(){
+  document.getElementById("codeEditor").value = starterCode;
+  document.getElementById("output").textContent = "Your output will appear here.";
+}
+
+function checkAnswer(question,answer){
+  const correct = {
+    1:"let",
+    2:"const",
+    3:"letconst"
+  };
+
+  const message = answer === correct[question]
+    ? "Correct! Well done."
+    : "Not quite. Try again!";
+
+  document.getElementById("answer"+question).textContent = message;
+}
+</script>
+
+</body>
+</html>

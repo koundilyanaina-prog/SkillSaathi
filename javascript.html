@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Course | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#11111b;
+  color:#eee;
+  line-height:1.6;
+}
+
+header{
+  background:#191827;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  border-bottom:1px solid #343052;
+}
+
+.logo{
+  color:#c4b5fd;
+  font-size:25px;
+  font-weight:bold;
+}
+
+nav{display:flex;gap:22px;flex-wrap:wrap}
+
+nav a{
+  color:#eee;
+  text-decoration:none;
+  transition:.3s;
+}
+
+nav a:hover{color:#c4b5fd}
+
+.hero{
+  padding:75px 10%;
+  text-align:center;
+  background:radial-gradient(circle at top,#343052,#11111b 65%);
+}
+
+.hero .tag{
+  color:#a78bfa;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.hero h1{
+  font-size:clamp(35px,6vw,55px);
+  margin:15px 0;
+}
+
+.hero h1 span{color:#c4b5fd}
+
+.hero p{
+  max-width:750px;
+  margin:0 auto 25px;
+  color:#bbb;
+}
+
+.hero-btn{
+  display:inline-block;
+  padding:12px 25px;
+  background:#a78bfa;
+  color:#171327;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.hero-btn:hover{
+  background:#c4b5fd;
+  transform:translateY(-3px);
+}
+
+.info{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:30px;
+}
+
+.info div{
+  background:#191827;
+  border:1px solid #343052;
+  padding:12px 20px;
+  border-radius:8px;
+  color:#c4b5fd;
+}
+
+section{padding:60px 10%}
+
+.section-title{
+  text-align:center;
+  font-size:30px;
+  color:#c4b5fd;
+  margin-bottom:35px;
+}
+
+.intro{
+  background:#191827;
+  border:1px solid #343052;
+  border-radius:14px;
+  padding:28px;
+  text-align:center;
+  color:#bbb;
+}
+
+.intro h2{color:#c4b5fd;margin-bottom:12px}
+
+.part-title{
+  color:#a78bfa;
+  font-size:23px;
+  margin:35px 0 20px;
+  border-left:4px solid #a78bfa;
+  padding-left:14px;
+}
+
+.lesson-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+}
+
+.lesson-card{
+  background:#191827;
+  border:1px solid #343052;
+  padding:22px;
+  border-radius:12px;
+  transition:.3s;
+  display:flex;
+  flex-direction:column;
+}
+
+.lesson-card:hover{
+  transform:translateY(-5px);
+  border-color:#a78bfa;
+}
+
+.lesson-number{
+  color:#a78bfa;
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.lesson-card h3{
+  color:#c4b5fd;
+  margin:10px 0;
+  font-size:19px;
+}
+
+.lesson-card p{
+  color:#aaa;
+  font-size:14px;
+  flex:1;
+  margin-bottom:16px;
+}
+
+.lesson-card a{
+  display:inline-block;
+  background:#343052;
+  color:#c4b5fd;
+  text-decoration:none;
+  padding:10px 14px;
+  border-radius:7px;
+  text-align:center;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.lesson-card a:hover{
+  background:#a78bfa;
+  color:#171327;
+}
+
+.project-card{
+  border-color:#514174;
+}
+
+.project-card a{background:#514174}
+
+.course-footer{
+  text-align:center;
+  background:#191827;
+  padding:35px 15px;
+  border-top:1px solid #343052;
+  color:#aaa;
+}
+
+.course-footer a{
+  color:#c4b5fd;
+  text-decoration:none;
+}
+
+@media(max-width:650px){
+  header{justify-content:center}
+  nav{justify-content:center;gap:14px}
+  .hero{padding:55px 7%}
+  section{padding:45px 7%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">SkillSaathi.</div>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#about">About Course</a>
+    <a href="#lessons">Lessons</a>
+    <a href="#projects">Projects</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="tag">SKILLSAATHI PROGRAMMING COURSE</div>
+  <h1>Learn <span>JavaScript</span></h1>
+  <p>
+    Learn JavaScript from the basics to advanced concepts.
+    Build interactive websites, understand programming logic
+    and create real-world projects through practical learning.
+  </p>
+
+  <a href="#lessons" class="hero-btn">Start Learning →</a>
+
+  <div class="info">
+    <div>25 Lessons</div>
+    <div>4 Practical Projects</div>
+    <div>Beginner to Advanced</div>
+    <div>Free Learning</div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">About This Course</h2>
+  <div class="intro">
+    <h2>What Will You Learn?</h2>
+    <p>
+      This course introduces you to JavaScript, one of the most
+      important programming languages for web development.
+      You will learn variables, functions, arrays, objects,
+      DOM manipulation, events, APIs and asynchronous programming.
+      Every topic includes explanations, examples and practice tasks.
+    </p>
+  </div>
+</section>
+
+<section id="lessons">
+  <h2 class="section-title">Course Lessons</h2>
+
+  <h3 class="part-title">Part 1 – JavaScript Fundamentals</h3>
+  <div class="lesson-grid">
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 01</span>
+      <h3>Introduction to JavaScript</h3>
+      <p>Understand JavaScript, its uses and how it works in browsers.</p>
+      <a href="js-lessons/js-lesson1.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 02</span>
+      <h3>Variables: var, let and const</h3>
+      <p>Learn how to store and manage information in JavaScript.</p>
+      <a href="js-lessons/js-lesson2.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 03</span>
+      <h3>Data Types and Type Conversion</h3>
+      <p>Explore strings, numbers, booleans and data conversion.</p>
+      <a href="js-lessons/js-lesson3.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 04</span>
+      <h3>Operators and Expressions</h3>
+      <p>Understand arithmetic, comparison and logical operators.</p>
+      <a href="js-lessons/js-lesson4.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 05</span>
+      <h3>Conditional Statements</h3>
+      <p>Make decisions using if, else and switch statements.</p>
+      <a href="js-lessons/js-lesson5.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 06</span>
+      <h3>Loops: for, while and do-while</h3>
+      <p>Repeat tasks using different JavaScript loops.</p>
+      <a href="js-lessons/js-lesson6.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 07</span>
+      <h3>Functions and Parameters</h3>
+      <p>Create reusable blocks of code using functions.</p>
+      <a href="js-lessons/js-lesson7.html">Start Lesson →</a>
+    </div>
+
+  </div>
+
+  <h3 class="part-title">Part 2 – Core JavaScript</h3>
+  <div class="lesson-grid">
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 08</span>
+      <h3>Arrays and Array Methods</h3>
+      <p>Store multiple values and work with arrays.</p>
+      <a href="js-lessons/js-lesson8.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 09</span>
+      <h3>Strings and String Methods</h3>
+      <p>Explore string properties and useful string methods.</p>
+      <a href="js-lessons/js-lesson9.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 10</span>
+      <h3>Objects and Object Properties</h3>
+      <p>Understand objects, properties and methods.</p>
+      <a href="js-lessons/js-lesson10.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 11</span>
+      <h3>Scope and Hoisting</h3>
+      <p>Understand variable scope and JavaScript hoisting.</p>
+      <a href="js-lessons/js-lesson11.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 12</span>
+      <h3>DOM Introduction and Selection</h3>
+      <p>Learn how JavaScript interacts with HTML documents.</p>
+      <a href="js-lessons/js-lesson12.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 13</span>
+      <h3>DOM Manipulation</h3>
+      <p>Change HTML content, styles and elements dynamically.</p>
+      <a href="js-lessons/js-lesson13.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 14</span>
+      <h3>Events and Event Listeners</h3>
+      <p>Respond to clicks, keyboard input and user actions.</p>
+      <a href="js-lessons/js-lesson14.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 15</span>
+      <h3>Forms and Form Validation</h3>
+      <p>Handle user input and validate form information.</p>
+      <a href="js-lessons/js-lesson15.html">Start Lesson →</a>
+    </div>
+
+  </div>
+
+  <h3 class="part-title">Part 3 – Advanced JavaScript</h3>
+  <div class="lesson-grid">
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 16</span>
+      <h3>ES6 Features and Template Literals</h3>
+      <p>Explore modern JavaScript syntax and features.</p>
+      <a href="js-lessons/js-lesson16.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 17</span>
+      <h3>Destructuring and Spread Operator</h3>
+      <p>Work with modern ways of handling arrays and objects.</p>
+      <a href="js-lessons/js-lesson17.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 18</span>
+      <h3>Array Methods: map, filter and reduce</h3>
+      <p>Transform, filter and calculate array data.</p>
+      <a href="js-lessons/js-lesson18.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 19</span>
+      <h3>Error Handling and Debugging</h3>
+      <p>Find errors and handle exceptions in JavaScript.</p>
+      <a href="js-lessons/js-lesson19.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 20</span>
+      <h3>JSON and Local Storage</h3>
+      <p>Store and retrieve data in the browser.</p>
+      <a href="js-lessons/js-lesson20.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 21</span>
+      <h3>Asynchronous JavaScript</h3>
+      <p>Understand synchronous and asynchronous execution.</p>
+      <a href="js-lessons/js-lesson21.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 22</span>
+      <h3>Promises and Async/Await</h3>
+      <p>Manage asynchronous operations using promises.</p>
+      <a href="js-lessons/js-lesson22.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 23</span>
+      <h3>Fetch API and Working with APIs</h3>
+      <p>Request and use data from external APIs.</p>
+      <a href="js-lessons/js-lesson23.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 24</span>
+      <h3>Modules and Code Organization</h3>
+      <p>Organize JavaScript into reusable modules.</p>
+      <a href="js-lessons/js-lesson24.html">Start Lesson →</a>
+    </div>
+
+    <div class="lesson-card">
+      <span class="lesson-number">LESSON 25</span>
+      <h3>JavaScript Best Practices and Final Review</h3>
+      <p>Learn clean coding practices and review key concepts.</p>
+      <a href="js-lessons/js-lesson25.html">Start Lesson →</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Practical Projects</h2>
+
+  <div class="lesson-grid">
+
+    <div class="lesson-card project-card">
+      <span class="lesson-number">PROJECT 01</span>
+      <h3>Interactive Calculator</h3>
+      <p>Build a working calculator using JavaScript functions and events.</p>
+      <a href="js-project1.html">Open Project →</a>
+    </div>
+
+    <div class="lesson-card project-card">
+      <span class="lesson-number">PROJECT 02</span>
+      <h3>To-Do List App</h3>
+      <p>Create a task manager with add, delete and save features.</p>
+      <a href="js-project2.html">Open Project →</a>
+    </div>
+
+    <div class="lesson-card project-card">
+      <span class="lesson-number">PROJECT 03</span>
+      <h3>Weather App</h3>
+      <p>Display weather information using an external API.</p>
+      <a href="js-project3.html">Open Project →</a>
+    </div>
+
+    <div class="lesson-card project-card">
+      <span class="lesson-number">PROJECT 04</span>
+      <h3>Student Management System</h3>
+      <p>Manage student records using arrays, objects and browser storage.</p>
+      <a href="js-project4.html">Open Project →</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="course-footer">
+  <h3>Keep Learning. Keep Growing.</h3>
+  <p>JavaScript Course | SkillSaathi</p>
+  <p><a href="../index.html">Back to SkillSaathi Home</a></p>
+  <p>© 2026 SkillSaathi. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

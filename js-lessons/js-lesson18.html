@@ -1,0 +1,761 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Lesson 18 - Array Methods | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;line-height:1.7}
+header{background:#191927;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #302d45;position:sticky;top:0;z-index:10}
+header a{color:#c4b5fd;text-decoration:none;font-weight:bold}
+header .brand{font-size:21px}
+.hero{padding:45px 7% 30px;background:linear-gradient(135deg,#211b38,#171725)}
+.hero p{color:#c4b5fd;margin-top:8px}
+.container{display:grid;grid-template-columns:250px 1fr;gap:25px;padding:30px 7%;align-items:start}
+.sidebar{background:#1b1b2b;border:1px solid #343047;border-radius:12px;padding:20px;position:sticky;top:85px;max-height:80vh;overflow:auto}
+.sidebar h3{color:#c4b5fd;margin-bottom:12px}
+.sidebar a{display:block;color:#ccc;text-decoration:none;padding:7px 8px;border-radius:6px;font-size:14px}
+.sidebar a:hover{background:#30294b;color:#fff}
+.content{min-width:0}
+section{background:#1b1b2b;border:1px solid #343047;border-radius:12px;padding:25px;margin-bottom:22px;scroll-margin-top:90px}
+h1,h2,h3{color:#c4b5fd}
+h1{font-size:30px}
+h2{font-size:23px;margin-bottom:14px}
+h3{font-size:18px;margin:18px 0 8px}
+p{margin:10px 0;color:#ddd}
+ul,ol{padding-left:24px;margin:10px 0}
+li{margin:6px 0;color:#ddd}
+pre{background:#101019;border:1px solid #39334f;padding:16px;border-radius:9px;overflow-x:auto;margin:14px 0;color:#d8ccff;white-space:pre}
+code{font-family:Consolas,monospace}
+.note{background:#28223d;border-left:4px solid #a78bfa;padding:12px 15px;border-radius:5px;margin:15px 0;color:#eee}
+.example{background:#242238;padding:14px;border-radius:8px;margin:12px 0}
+button{background:#8b5cf6;color:white;border:0;border-radius:7px;padding:11px 19px;cursor:pointer;font-weight:bold;margin:5px 5px 5px 0}
+button:hover{background:#7042d5}
+textarea{width:100%;min-height:200px;background:#101019;color:#e9ddff;border:1px solid #51466d;border-radius:8px;padding:14px;font-family:Consolas,monospace;font-size:14px;resize:vertical}
+.output{background:#101019;border:1px solid #39334f;border-radius:8px;padding:15px;min-height:55px;margin-top:12px;white-space:pre-wrap;color:#b9f6ca}
+.task{background:#242238;border-radius:8px;padding:13px;margin:10px 0}
+.quiz-question{padding:15px 0;border-bottom:1px solid #39334f}
+.quiz-question label{display:block;margin:7px 0;cursor:pointer;color:#ddd}
+.result{font-weight:bold;margin-top:12px}
+.nav-buttons{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:25px 0}
+footer{text-align:center;padding:25px;color:#aaa;border-top:1px solid #302d45}
+@media(max-width:800px){
+.container{grid-template-columns:1fr;padding:20px 5%}
+.sidebar{position:static;max-height:300px}
+header{padding:15px 5%}
+.hero{padding:35px 5%}
+section{padding:19px}
+h1{font-size:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a class="brand" href="../index.html">SkillSaathi</a>
+<a href="../javascript.html">JavaScript Course</a>
+</header>
+
+<div class="hero">
+<h1>Lesson 18: Array Methods – map, filter and reduce</h1>
+<p>Learn how to transform, filter and calculate data using powerful JavaScript array methods.</p>
+</div>
+
+<div class="container">
+
+<aside class="sidebar">
+<h3>Lesson Contents</h3>
+<a href="#intro">1. Introduction to Array Methods</a>
+<a href="#map">2. Introduction to map()</a>
+<a href="#map-syntax">3. map() Syntax</a>
+<a href="#map-numbers">4. map() with Numbers</a>
+<a href="#map-objects">5. map() with Objects</a>
+<a href="#filter">6. Introduction to filter()</a>
+<a href="#filter-syntax">7. filter() Syntax</a>
+<a href="#filter-numbers">8. Filtering Numbers</a>
+<a href="#filter-objects">9. Filtering Objects</a>
+<a href="#reduce">10. Introduction to reduce()</a>
+<a href="#reduce-syntax">11. reduce() Syntax</a>
+<a href="#reduce-sum">12. Sum with reduce()</a>
+<a href="#total-average">13. Total and Average</a>
+<a href="#comparison">14. Method Comparison</a>
+<a href="#chaining">15. Chaining Methods</a>
+<a href="#practical">16. Practical Examples</a>
+<a href="#playground">17. Code Playground</a>
+<a href="#tasks">18. Practice Tasks</a>
+<a href="#quiz">19. Knowledge Check</a>
+</aside>
+
+<main class="content">
+
+<section id="intro">
+<h2>1. Introduction to Array Methods</h2>
+<p>JavaScript provides several built-in methods to work with arrays. Three very useful methods are <code>map()</code>, <code>filter()</code> and <code>reduce()</code>.</p>
+
+<ul>
+<li><strong>map():</strong> Creates a new array by transforming every element.</li>
+<li><strong>filter():</strong> Creates a new array containing only elements that pass a condition.</li>
+<li><strong>reduce():</strong> Processes array elements and combines them into one final value.</li>
+</ul>
+
+<div class="note">All three methods are useful when working with lists of numbers, student records, products and other data.</div>
+</section>
+
+<section id="map">
+<h2>2. Introduction to map()</h2>
+<p>The <code>map()</code> method runs a callback function for every element of an array and returns a new array containing the results.</p>
+
+<pre><code>const numbers = [1, 2, 3, 4];
+
+const doubled = numbers.map(function(number){
+  return number * 2;
+});
+
+console.log(doubled);
+
+// [2, 4, 6, 8]</code></pre>
+
+<p>The original array remains unchanged.</p>
+
+<pre><code>const numbers = [2, 4, 6];
+
+const result = numbers.map(num => num + 5);
+
+console.log(result);  // [7, 9, 11]
+console.log(numbers); // [2, 4, 6]</code></pre>
+</section>
+
+<section id="map-syntax">
+<h2>3. map() Syntax</h2>
+<p>The basic syntax is:</p>
+
+<pre><code>array.map(function(element, index, array){
+  // return a new value
+});</code></pre>
+
+<h3>Parameters</h3>
+<ul>
+<li><strong>element:</strong> Current element being processed.</li>
+<li><strong>index:</strong> Position of the current element.</li>
+<li><strong>array:</strong> The original array being processed.</li>
+</ul>
+
+<h3>Using an Arrow Function</h3>
+<pre><code>const prices = [100, 200, 300];
+
+const updatedPrices = prices.map(price => price + 50);
+
+console.log(updatedPrices);</code></pre>
+
+<div class="note">map() returns a new array. If you do not return a value from the callback, the resulting elements will be undefined.</div>
+</section>
+
+<section id="map-numbers">
+<h2>4. Using map() with Numbers</h2>
+<p>We can use map() to perform calculations on every number in an array.</p>
+
+<h3>Square Every Number</h3>
+<pre><code>const numbers = [2, 3, 4, 5];
+
+const squares = numbers.map(num => num * num);
+
+console.log(squares);
+
+// [4, 9, 16, 25]</code></pre>
+
+<h3>Add 10 to Every Number</h3>
+<pre><code>const marks = [50, 60, 70, 80];
+
+const updatedMarks = marks.map(mark => mark + 10);
+
+console.log(updatedMarks);
+
+// [60, 70, 80, 90]</code></pre>
+
+<h3>Convert Values to Strings</h3>
+<pre><code>const numbers = [10, 20, 30];
+
+const labels = numbers.map(num => "Value: " + num);
+
+console.log(labels);</code></pre>
+</section>
+
+<section id="map-objects">
+<h2>5. Using map() with Objects</h2>
+<p>Arrays often contain objects. map() can extract or transform a particular property from every object.</p>
+
+<pre><code>const students = [
+  {name: "Aman", marks: 80},
+  {name: "Riya", marks: 90},
+  {name: "Neha", marks: 85}
+];
+
+const names = students.map(student => student.name);
+
+console.log(names);
+
+// ["Aman", "Riya", "Neha"]</code></pre>
+
+<h3>Update Object Data</h3>
+<pre><code>const products = [
+  {name: "Pen", price: 10},
+  {name: "Book", price: 100}
+];
+
+const updatedProducts = products.map(product => {
+  return {
+    ...product,
+    price: product.price + 5
+  };
+});
+
+console.log(updatedProducts);</code></pre>
+
+<p>This creates a new array with updated objects while leaving the original objects unchanged.</p>
+</section>
+
+<section id="filter">
+<h2>6. Introduction to filter()</h2>
+<p>The <code>filter()</code> method creates a new array containing only the elements that satisfy a given condition.</p>
+
+<pre><code>const numbers = [10, 15, 20, 25, 30];
+
+const result = numbers.filter(num => num > 20);
+
+console.log(result);
+
+// [25, 30]</code></pre>
+
+<p>Here, only numbers greater than 20 are included in the new array.</p>
+
+<div class="note">filter() does not modify the original array. It returns a new array with the matching elements.</div>
+</section>
+
+<section id="filter-syntax">
+<h2>7. filter() Syntax</h2>
+
+<pre><code>array.filter(function(element, index, array){
+  return condition;
+});</code></pre>
+
+<h3>How it works</h3>
+<ol>
+<li>JavaScript checks each element.</li>
+<li>The callback function returns true or false.</li>
+<li>If true, the element is included.</li>
+<li>If false, the element is excluded.</li>
+</ol>
+
+<pre><code>const ages = [12, 18, 25, 15, 30];
+
+const adults = ages.filter(age => age >= 18);
+
+console.log(adults);
+
+// [18, 25, 30]</code></pre>
+</section>
+
+<section id="filter-numbers">
+<h2>8. Filtering Numbers</h2>
+<p>filter() is useful for selecting numbers based on conditions.</p>
+
+<h3>Even Numbers</h3>
+<pre><code>const numbers = [1, 2, 3, 4, 5, 6];
+
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+
+console.log(evenNumbers);
+
+// [2, 4, 6]</code></pre>
+
+<h3>Numbers Greater Than 50</h3>
+<pre><code>const marks = [35, 60, 75, 40, 90];
+
+const passedMarks = marks.filter(mark => mark >= 50);
+
+console.log(passedMarks);
+
+// [60, 75, 90]</code></pre>
+
+<h3>Remove Negative Numbers</h3>
+<pre><code>const values = [-5, 10, -2, 20, 0];
+
+const positive = values.filter(num => num >= 0);
+
+console.log(positive);
+
+// [10, 20, 0]</code></pre>
+</section>
+
+<section id="filter-objects">
+<h2>9. Filtering Objects</h2>
+<p>We can filter arrays of objects using their properties.</p>
+
+<h3>Students Who Passed</h3>
+<pre><code>const students = [
+  {name: "Aman", marks: 35},
+  {name: "Riya", marks: 85},
+  {name: "Neha", marks: 72}
+];
+
+const passed = students.filter(student => student.marks >= 40);
+
+console.log(passed);</code></pre>
+
+<h3>Products Under a Budget</h3>
+<pre><code>const products = [
+  {name: "Pen", price: 10},
+  {name: "Bag", price: 800},
+  {name: "Book", price: 100}
+];
+
+const affordable = products.filter(product => product.price <= 100);
+
+console.log(affordable);</code></pre>
+</section>
+
+<section id="reduce">
+<h2>10. Introduction to reduce()</h2>
+<p>The <code>reduce()</code> method processes every array element and combines the results into a single value.</p>
+
+<p>It is commonly used for:</p>
+<ul>
+<li>Calculating totals.</li>
+<li>Adding numbers.</li>
+<li>Calculating averages.</li>
+<li>Counting items.</li>
+<li>Building a single result from many values.</li>
+</ul>
+
+<pre><code>const numbers = [10, 20, 30];
+
+const total = numbers.reduce((sum, num) => {
+  return sum + num;
+}, 0);
+
+console.log(total);
+
+// 60</code></pre>
+
+<div class="note">reduce() returns one accumulated result. That result can be a number, string, array or object.</div>
+</section>
+
+<section id="reduce-syntax">
+<h2>11. reduce() Syntax</h2>
+
+<pre><code>array.reduce(function(accumulator, currentValue){
+  return updatedAccumulator;
+}, initialValue);</code></pre>
+
+<h3>Important Parameters</h3>
+<ul>
+<li><strong>Accumulator:</strong> Stores the result collected so far.</li>
+<li><strong>Current Value:</strong> The current array element.</li>
+<li><strong>Initial Value:</strong> The starting value of the accumulator.</li>
+</ul>
+
+<h3>Step-by-Step Example</h3>
+<pre><code>const numbers = [5, 10, 15];
+
+const total = numbers.reduce((sum, num) => {
+  return sum + num;
+}, 0);
+
+// First: 0 + 5 = 5
+// Second: 5 + 10 = 15
+// Third: 15 + 15 = 30
+
+console.log(total);</code></pre>
+
+<div class="note">Providing an initial value is generally recommended because it makes the starting state clear and also handles empty arrays safely.</div>
+</section>
+
+<section id="reduce-sum">
+<h2>12. Calculating Sum with reduce()</h2>
+
+<h3>Sum of Numbers</h3>
+<pre><code>const numbers = [10, 20, 30, 40];
+
+const sum = numbers.reduce((total, num) => total + num, 0);
+
+console.log(sum);
+
+// 100</code></pre>
+
+<h3>Product of Numbers</h3>
+<pre><code>const numbers = [2, 3, 4];
+
+const product = numbers.reduce((result, num) => {
+  return result * num;
+}, 1);
+
+console.log(product);
+
+// 24</code></pre>
+
+<h3>Count Array Elements</h3>
+<pre><code>const fruits = ["Apple", "Mango", "Banana", "Apple"];
+
+const count = fruits.reduce((total, fruit) => {
+  return total + 1;
+}, 0);
+
+console.log(count);
+
+// 4</code></pre>
+</section>
+
+<section id="total-average">
+<h2>13. Finding Total and Average</h2>
+<p>We can use reduce() to calculate the total marks and then divide by the number of students to find the average.</p>
+
+<pre><code>const marks = [80, 90, 70, 60];
+
+const total = marks.reduce((sum, mark) => {
+  return sum + mark;
+}, 0);
+
+const average = total / marks.length;
+
+console.log("Total Marks:", total);
+console.log("Average Marks:", average);
+
+// Total Marks: 300
+// Average Marks: 75</code></pre>
+
+<h3>Calculate Total Shopping Bill</h3>
+<pre><code>const prices = [100, 250, 50, 300];
+
+const bill = prices.reduce((total, price) => {
+  return total + price;
+}, 0);
+
+console.log("Total Bill:", bill);</code></pre>
+</section>
+
+<section id="comparison">
+<h2>14. map(), filter() and reduce() Comparison</h2>
+
+<table style="width:100%;border-collapse:collapse;margin:15px 0">
+<tr style="background:#30294b">
+<th style="padding:10px;border:1px solid #51466d">Method</th>
+<th style="padding:10px;border:1px solid #51466d">Purpose</th>
+<th style="padding:10px;border:1px solid #51466d">Returns</th>
+</tr>
+<tr>
+<td style="padding:10px;border:1px solid #51466d">map()</td>
+<td style="padding:10px;border:1px solid #51466d">Transforms every element</td>
+<td style="padding:10px;border:1px solid #51466d">New array</td>
+</tr>
+<tr>
+<td style="padding:10px;border:1px solid #51466d">filter()</td>
+<td style="padding:10px;border:1px solid #51466d">Selects matching elements</td>
+<td style="padding:10px;border:1px solid #51466d">New array</td>
+</tr>
+<tr>
+<td style="padding:10px;border:1px solid #51466d">reduce()</td>
+<td style="padding:10px;border:1px solid #51466d">Combines elements into a result</td>
+<td style="padding:10px;border:1px solid #51466d">Single accumulated value</td>
+</tr>
+</table>
+
+<h3>Same Array, Different Results</h3>
+<pre><code>const numbers = [1, 2, 3, 4];
+
+const doubled = numbers.map(num => num * 2);
+
+const even = numbers.filter(num => num % 2 === 0);
+
+const total = numbers.reduce((sum, num) => sum + num, 0);
+
+console.log(doubled); // [2, 4, 6, 8]
+console.log(even);    // [2, 4]
+console.log(total);   // 10</code></pre>
+</section>
+
+<section id="chaining">
+<h2>15. Chaining Array Methods</h2>
+<p>We can use multiple array methods one after another. This is called method chaining.</p>
+
+<h3>Example: Filter and Then Transform</h3>
+<pre><code>const numbers = [1, 2, 3, 4, 5, 6];
+
+const result = numbers
+  .filter(num => num % 2 === 0)
+  .map(num => num * 10);
+
+console.log(result);
+
+// [20, 40, 60]</code></pre>
+
+<h3>Example: Filter and Calculate Total</h3>
+<pre><code>const prices = [100, 200, 50, 300, 80];
+
+const total = prices
+  .filter(price => price >= 100)
+  .reduce((sum, price) => sum + price, 0);
+
+console.log(total);
+
+// 600</code></pre>
+
+<div class="note">Chaining makes it possible to perform multiple operations in a readable sequence without creating many temporary arrays.</div>
+</section>
+
+<section id="practical">
+<h2>16. Practical Examples</h2>
+
+<h3>Example 1: Student Marks</h3>
+<pre><code>const students = [
+  {name: "Aman", marks: 85},
+  {name: "Riya", marks: 35},
+  {name: "Neha", marks: 90},
+  {name: "Rahul", marks: 40}
+];
+
+const passedStudents = students.filter(student => student.marks >= 40);
+
+const studentNames = passedStudents.map(student => student.name);
+
+console.log("Passed Students:", studentNames);</code></pre>
+
+<h3>Example 2: Shopping Cart Total</h3>
+<pre><code>const cart = [
+  {name: "Book", price: 200},
+  {name: "Pen", price: 20},
+  {name: "Bag", price: 800}
+];
+
+const total = cart.reduce((sum, item) => {
+  return sum + item.price;
+}, 0);
+
+console.log("Shopping Total:", total);</code></pre>
+
+<h3>Example 3: Employee Salary Update</h3>
+<pre><code>const employees = [
+  {name: "Aman", salary: 20000},
+  {name: "Riya", salary: 25000},
+  {name: "Neha", salary: 30000}
+];
+
+const updatedEmployees = employees.map(employee => ({
+  ...employee,
+  salary: employee.salary + 2000
+}));
+
+console.log(updatedEmployees);</code></pre>
+</section>
+
+<section id="playground">
+<h2>17. Code Playground</h2>
+<p>Try map(), filter() and reduce() yourself. Change the code and click Run Code.</p>
+
+<textarea id="codeInput">// Sample array
+const numbers = [10, 15, 20, 25, 30];
+
+// map(): Double every number
+const doubled = numbers.map(num => num * 2);
+
+// filter(): Select numbers greater than 20
+const filtered = numbers.filter(num => num > 20);
+
+// reduce(): Calculate total
+const total = numbers.reduce((sum, num) => sum + num, 0);
+
+console.log("Original:", numbers);
+console.log("Doubled:", doubled);
+console.log("Filtered:", filtered);
+console.log("Total:", total);</textarea>
+
+<br>
+<button onclick="runCode()">Run Code</button>
+<button onclick="resetCode()">Reset Code</button>
+
+<div class="output" id="output">Your output will appear here...</div>
+</section>
+
+<section id="tasks">
+<h2>18. Practice Tasks</h2>
+<p>Complete these tasks to strengthen your understanding.</p>
+
+<div class="task"><strong>Task 1:</strong> Use map() to double every number in an array.</div>
+<div class="task"><strong>Task 2:</strong> Use map() to convert an array of names into uppercase names.</div>
+<div class="task"><strong>Task 3:</strong> Use filter() to select even numbers from an array.</div>
+<div class="task"><strong>Task 4:</strong> Filter students who scored at least 40 marks.</div>
+<div class="task"><strong>Task 5:</strong> Use reduce() to calculate the sum of five numbers.</div>
+<div class="task"><strong>Task 6:</strong> Calculate the average marks of students using reduce().</div>
+<div class="task"><strong>Task 7:</strong> Use filter() and map() together to select and transform data.</div>
+<div class="task"><strong>Task 8:</strong> Calculate the total price of products in a shopping cart using reduce().</div>
+</section>
+
+<section id="quiz">
+<h2>19. Quick Knowledge Check</h2>
+<p>Choose the correct answer for each question.</p>
+
+<form id="quizForm">
+
+<div class="quiz-question">
+<p><strong>1. Which method creates a new array by transforming every element?</strong></p>
+<label><input type="radio" name="q1" value="a"> filter()</label>
+<label><input type="radio" name="q1" value="b"> map()</label>
+<label><input type="radio" name="q1" value="c"> reduce()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2. Which method selects elements based on a condition?</strong></p>
+<label><input type="radio" name="q2" value="a"> filter()</label>
+<label><input type="radio" name="q2" value="b"> map()</label>
+<label><input type="radio" name="q2" value="c"> push()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3. What does reduce() commonly return?</strong></p>
+<label><input type="radio" name="q3" value="a"> Always a new array</label>
+<label><input type="radio" name="q3" value="b"> Always a string</label>
+<label><input type="radio" name="q3" value="c"> An accumulated result</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4. What is the result of [1,2,3].map(num => num * 2)?</strong></p>
+<label><input type="radio" name="q4" value="a"> [1,2,3]</label>
+<label><input type="radio" name="q4" value="b"> [2,4,6]</label>
+<label><input type="radio" name="q4" value="c"> [3,6,9]</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5. What is the result of [10,20,30].filter(num => num > 15)?</strong></p>
+<label><input type="radio" name="q5" value="a"> [10]</label>
+<label><input type="radio" name="q5" value="b"> [10,20,30]</label>
+<label><input type="radio" name="q5" value="c"> [20,30]</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>6. Which parameter stores the accumulated result in reduce()?</strong></p>
+<label><input type="radio" name="q6" value="a"> Accumulator</label>
+<label><input type="radio" name="q6" value="b"> Index</label>
+<label><input type="radio" name="q6" value="c"> Element</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>7. Which method is suitable for calculating the total of an array?</strong></p>
+<label><input type="radio" name="q7" value="a"> map()</label>
+<label><input type="radio" name="q7" value="b"> reduce()</label>
+<label><input type="radio" name="q7" value="c"> filter()</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Answers</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+
+<div class="result" id="quizResult"></div>
+</form>
+</section>
+
+<div class="nav-buttons">
+<a href="js-lesson17.html"><button>← Previous Lesson</button></a>
+<a href="../javascript.html"><button>Course Home</button></a>
+<a href="js-lesson19.html"><button>Next Lesson →</button></a>
+</div>
+
+</main>
+</div>
+
+<footer>
+<p>© 2026 SkillSaathi | Learn. Practice. Grow.</p>
+</footer>
+
+<script>
+const starterCode = `// Sample array
+const numbers = [10, 15, 20, 25, 30];
+
+// map(): Double every number
+const doubled = numbers.map(num => num * 2);
+
+// filter(): Select numbers greater than 20
+const filtered = numbers.filter(num => num > 20);
+
+// reduce(): Calculate total
+const total = numbers.reduce((sum, num) => sum + num, 0);
+
+console.log("Original:", numbers);
+console.log("Doubled:", doubled);
+console.log("Filtered:", filtered);
+console.log("Total:", total);`;
+
+function runCode(){
+ const code = document.getElementById("codeInput").value;
+ const output = document.getElementById("output");
+ let logs = [];
+
+ const customConsole = {
+  log: (...args) => {
+   logs.push(args.map(value => {
+    if(typeof value === "object" && value !== null){
+     try{return JSON.stringify(value, null, 2)}
+     catch(e){return String(value)}
+    }
+    return String(value);
+   }).join(" "));
+  },
+  error: (...args) => logs.push("Error: " + args.join(" ")),
+  warn: (...args) => logs.push("Warning: " + args.join(" "))
+ };
+
+ try{
+  new Function("console", code)(customConsole);
+  output.textContent = logs.length ? logs.join("\n") : "Code executed successfully. No output.";
+ }catch(error){
+  output.textContent = "Error: " + error.message;
+ }
+}
+
+function resetCode(){
+ document.getElementById("codeInput").value = starterCode;
+ document.getElementById("output").textContent = "Your output will appear here...";
+}
+
+function checkQuiz(){
+ const answers = {
+  q1:"b",
+  q2:"a",
+  q3:"c",
+  q4:"b",
+  q5:"c",
+  q6:"a",
+  q7:"b"
+ };
+
+ let score = 0;
+ const total = Object.keys(answers).length;
+
+ for(let question in answers){
+  const selected = document.querySelector('input[name="'+question+'"]:checked');
+  if(selected && selected.value === answers[question]){
+   score++;
+  }
+ }
+
+ const result = document.getElementById("quizResult");
+ result.textContent = "Your Score: " + score + " / " + total;
+
+ if(score === total){
+  result.style.color = "#86efac";
+  result.textContent += " — Excellent! All answers are correct.";
+ }else{
+  result.style.color = "#fbbf24";
+  result.textContent += " — Review the lesson and try again.";
+ }
+}
+
+function resetQuiz(){
+ document.getElementById("quizForm").reset();
+ document.getElementById("quizResult").textContent = "";
+}
+</script>
+
+</body>
+</html>

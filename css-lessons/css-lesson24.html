@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Lesson 24 - Architecture and Debugging | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;padding:25px;line-height:1.7}
+.container{max-width:950px;margin:auto}
+h1,h2{color:#c4b5fd;margin-bottom:15px}
+h1{text-align:center;margin-bottom:25px}
+section{background:#1b1b2b;padding:22px;border-radius:12px;margin:20px 0}
+p,li{color:#b8b4c9;margin-bottom:10px}
+ul{padding-left:22px}
+pre{background:#10101a;padding:15px;border-left:4px solid #a78bfa;border-radius:8px;overflow-x:auto;color:#d8caff}
+button{background:#a78bfa;color:#171327;border:0;padding:10px 18px;border-radius:7px;font-weight:bold;cursor:pointer;margin:8px 5px 8px 0}
+textarea{width:100%;height:300px;background:#10101a;color:#d8caff;border:1px solid #62528b;border-radius:8px;padding:15px;font-family:monospace;font-size:14px}
+iframe{display:none;width:100%;height:350px;background:white;border:0;border-radius:8px;margin-top:15px}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:25px 0}
+.nav a{background:#a78bfa;color:#171327;text-decoration:none;font-weight:bold;padding:10px 18px;border-radius:8px;display:inline-block;transition:.3s}
+.nav a:hover{background:#c4b5fd;transform:translateY(-2px)}
+.nav a:first-child{background:#343052;color:#f4f1ff}
+.question{margin:18px 0;padding:15px;background:#24243a;border-radius:8px}
+label{display:block;color:#b8b4c9;margin:7px 0}
+#result{font-weight:bold;margin-top:15px}
+@media(max-width:600px){body{padding:12px}.nav{justify-content:center}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Lesson 24: CSS Architecture and Debugging</h1>
+
+<section>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand CSS architecture.</li>
+<li>Learn the cascade, specificity and inheritance.</li>
+<li>Organize stylesheets into sections.</li>
+<li>Understand reusable CSS patterns.</li>
+<li>Learn how to debug common CSS problems.</li>
+</ul>
+</section>
+
+<section>
+<h2>1. What is CSS Architecture?</h2>
+<p>CSS architecture means organizing CSS code in a structured and maintainable way. It becomes especially important when websites contain many pages and components.</p>
+<p>A good structure helps developers find styles, reuse components and make changes safely.</p>
+</section>
+
+<section>
+<h2>2. Organizing CSS Files</h2>
+<p>A stylesheet can be divided into meaningful sections.</p>
+<pre>
+/* 1. Reset and Base */
+/* 2. Variables */
+/* 3. Typography */
+/* 4. Navigation */
+/* 5. Layout */
+/* 6. Components */
+/* 7. Forms */
+/* 8. Responsive Styles */
+</pre>
+</section>
+
+<section>
+<h2>3. CSS Cascade</h2>
+<p>The cascade decides which declarations apply when multiple CSS rules compete. It considers origin, importance, cascade layers, specificity and source order.</p>
+<pre>
+p {
+    color: blue;
+}
+
+p {
+    color: purple;
+}
+</pre>
+<p>When both declarations have the same cascade priority and specificity, the later declaration wins.</p>
+</section>
+
+<section>
+<h2>4. CSS Specificity</h2>
+<p>Specificity helps determine which selector wins when competing declarations apply.</p>
+<ul>
+<li>ID selectors have greater specificity than class selectors.</li>
+<li>Class, attribute and pseudo-class selectors have greater specificity than element selectors.</li>
+<li>Inline styles generally outrank normal stylesheet declarations.</li>
+<li>!important changes the cascade priority and should be used sparingly.</li>
+</ul>
+<pre>
+p { color: blue; }
+.note { color: green; }
+#message { color: red; }
+</pre>
+</section>
+
+<section>
+<h2>5. CSS Inheritance</h2>
+<p>Some properties pass from a parent element to its children. Text color and font family commonly inherit, while margin and padding do not normally inherit.</p>
+<pre>
+body {
+    color: purple;
+    font-family: Arial;
+}
+</pre>
+</section>
+
+<section>
+<h2>6. Common CSS Debugging Problems</h2>
+<ul>
+<li><b>Wrong selector:</b> Check whether the selector matches the intended HTML element.</li>
+<li><b>Missing semicolon:</b> Check the end of CSS declarations.</li>
+<li><b>Specificity conflict:</b> Inspect competing CSS rules.</li>
+<li><b>Incorrect file path:</b> Verify the stylesheet link.</li>
+<li><b>Layout overflow:</b> Check widths, padding and box-sizing.</li>
+<li><b>Unexpected spacing:</b> Inspect margin and padding.</li>
+</ul>
+</section>
+
+<section>
+<h2>7. Using Browser Developer Tools</h2>
+<p>Browser Developer Tools help inspect HTML and CSS, test style changes and identify errors.</p>
+<ul>
+<li>Right-click a webpage and choose Inspect.</li>
+<li>Use the Elements panel to inspect HTML.</li>
+<li>Use the Styles panel to view applied CSS.</li>
+<li>Temporarily change CSS values to test solutions.</li>
+<li>Check the Console for relevant errors.</li>
+</ul>
+</section>
+
+<section>
+<h2>8. Practical Code Editor</h2>
+<textarea id="code"><!DOCTYPE html>
+<html>
+<head>
+<style>
+:root {
+    --primary: #6d28d9;
+    --surface: #f3e8ff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    background: var(--surface);
+    padding: 30px;
+}
+
+.card {
+    max-width: 350px;
+    margin: 20px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+}
+
+.card h2 {
+    color: var(--primary);
+}
+
+.card p {
+    color: #444;
+}
+
+.button {
+    background: var(--primary);
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+}
+
+.button:hover {
+    background: #4c1d95;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h2>CSS Architecture</h2>
+    <p>Organized CSS is easier to maintain and debug.</p>
+    <button class="button">Learn More</button>
+</div>
+
+</body>
+</html></textarea>
+<button onclick="runCode()">Run Code</button>
+<button onclick="clearOutput()">Clear Output</button>
+<button onclick="showHint()">Debugging Hint</button>
+<p id="hint"></p>
+<iframe id="preview" title="CSS architecture preview"></iframe>
+</section>
+
+<section>
+<h2>9. Practice Tasks</h2>
+<ul>
+<li>Organize a stylesheet using comments.</li>
+<li>Create reusable classes for cards and buttons.</li>
+<li>Test element, class and ID specificity.</li>
+<li>Inspect a webpage using browser Developer Tools.</li>
+<li>Find and fix a missing CSS declaration or incorrect selector.</li>
+</ul>
+</section>
+
+<section>
+<h2>10. Quick Quiz</h2>
+<form>
+<div class="question">
+<p>1. What is CSS architecture?</p>
+<label><input type="radio" name="q1" value="0"> Organizing CSS in a maintainable structure</label>
+<label><input type="radio" name="q1" value="1"> Creating images</label>
+</div>
+<div class="question">
+<p>2. Which selector has greater specificity: ID or class?</p>
+<label><input type="radio" name="q2" value="0"> ID</label>
+<label><input type="radio" name="q2" value="1"> Class</label>
+</div>
+<div class="question">
+<p>3. Which tool helps inspect applied CSS in a browser?</p>
+<label><input type="radio" name="q3" value="0"> Calculator</label>
+<label><input type="radio" name="q3" value="1"> Developer Tools</label>
+</div>
+<div class="question">
+<p>4. Which properties commonly inherit?</p>
+<label><input type="radio" name="q4" value="0"> color and font-family</label>
+<label><input type="radio" name="q4" value="1"> margin and padding</label>
+</div>
+<div class="question">
+<p>5. What happens when equal-priority, equal-specificity rules conflict?</p>
+<label><input type="radio" name="q5" value="0"> The later rule usually wins</label>
+<label><input type="radio" name="q5" value="1"> The first rule always wins</label>
+</div>
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+<p id="result"></p>
+</form>
+</section>
+
+<section>
+<h2>Lesson Summary</h2>
+<p>You learned CSS architecture, organization, cascade, specificity, inheritance and practical debugging techniques.</p>
+</section>
+
+<div class="nav">
+<a href="css-lesson23.html">← Previous Lesson</a>
+<a href="../css.html">Course Home</a>
+<a href="css-lesson25.html">Next Lesson →</a>
+</div>
+</div>
+
+<script>
+function runCode(){
+let p=document.getElementById("preview");
+p.srcdoc=document.getElementById("code").value;
+p.style.display="block";
+}
+function clearOutput(){
+let p=document.getElementById("preview");
+p.srcdoc="";
+p.style.display="none";
+}
+function showHint(){
+document.getElementById("hint").textContent="Hint: Inspect the element in browser Developer Tools and check the Styles panel for conflicting rules.";
+}
+function checkQuiz(){
+let a=[0,0,1,0,0],s=0;
+for(let i=1;i<=5;i++){
+let x=document.querySelector('input[name="q'+i+'"]:checked');
+if(x && Number(x.value)===a[i-1])s++;
+}
+document.getElementById("result").textContent="Your Score: "+s+"/5";
+}
+</script>
+</body>
+</html>

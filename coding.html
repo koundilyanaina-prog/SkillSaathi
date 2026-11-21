@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Courses | SkillSaathi</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0d0d18;
+  color: #eee;
+}
+
+header {
+  padding: 22px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #29253b;
+}
+
+.logo {
+  color: #c4b5fd;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+header a {
+  color: #c4b5fd;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 75px 20px 45px;
+}
+
+.hero h1 {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.hero h1 span {
+  color: #c4b5fd;
+}
+
+.hero p {
+  color: #aaa;
+  line-height: 1.7;
+  max-width: 650px;
+  margin: auto;
+}
+
+.courses {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 25px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #171625;
+  border: 1px solid #302b46;
+  border-radius: 16px;
+  padding: 30px 25px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  border-color: #a78bfa;
+  box-shadow: 0 10px 30px #0005;
+}
+
+.number {
+  color: #a78bfa;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  color: #e9ddff;
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: #aaa;
+  line-height: 1.7;
+  min-height: 80px;
+  margin-bottom: 22px;
+}
+
+.tag {
+  display: inline-block;
+  background: #29233d;
+  color: #c4b5fd;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 22px;
+}
+
+.card a {
+  display: block;
+  text-align: center;
+  background: #a78bfa;
+  color: #171326;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 13px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.card a:hover {
+  background: #c4b5fd;
+}
+
+.note {
+  text-align: center;
+  color: #999;
+  padding: 0 20px 60px;
+  line-height: 1.7;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  border-top: 1px solid #29253b;
+  color: #888;
+  font-size: 14px;
+}
+
+@media(max-width: 600px) {
+  .hero h1 {
+    font-size: 29px;
+  }
+
+  header {
+    padding: 18px 5%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">SkillSaathi</div>
+  <a href="index.html">← Home</a>
+</header>
+
+<section class="hero">
+  <h1>Explore <span>Coding Courses</span></h1>
+  <p>
+    Start your coding journey from zero.
+    Learn step by step, practice with real examples
+    and build your own projects.
+  </p>
+</section>
+
+<section class="courses">
+
+  <div class="card">
+    <div class="number">COURSE 01</div>
+    <h2>HTML</h2>
+    <span class="tag">Web Structure</span>
+    <p>
+      Learn how to create web pages using HTML.
+      Understand elements, headings, forms, tables
+      and build your first website.
+    </p>
+    <a href="lesson1-theory.html">Start Learning →</a>
+  </div>
+
+  <div class="card">
+    <div class="number">COURSE 02</div>
+    <h2>CSS</h2>
+    <span class="tag">Web Design</span>
+    <p>
+      Learn to style beautiful websites.
+      Explore colors, layouts, animations,
+      responsive design and practical projects.
+    </p>
+    <a href="css.html">Start Learning →</a>
+  </div>
+
+  <div class="card">
+    <div class="number">COURSE 03</div>
+    <h2>JavaScript</h2>
+    <span class="tag">Programming & Logic</span>
+    <p>
+      Make websites interactive with JavaScript.
+      Learn variables, functions, DOM, events
+      and build useful web applications.
+    </p>
+    <a href="javascript.html">Start Learning →</a>
+  </div>
+
+</section>
+
+<div class="note">
+  <p>Learn at your own pace. Practice every day. Keep growing.</p>
+  <p>All courses are free on SkillSaathi.</p>
+</div>
+
+<footer>
+  © 2026 SkillSaathi | Learn • Practice • Grow
+</footer>
+
+</body>
+</html>

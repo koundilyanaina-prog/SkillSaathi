@@ -1,0 +1,856 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Lesson 17 - Destructuring and Spread Operator | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+ font-family:Arial,sans-serif;
+ background:#11111b;
+ color:#eee;
+ line-height:1.7;
+}
+header{
+ background:#191927;
+ padding:18px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:1px solid #302d45;
+ position:sticky;
+ top:0;
+ z-index:10;
+}
+header a{
+ color:#c4b5fd;
+ text-decoration:none;
+ font-weight:bold;
+}
+header .brand{font-size:21px}
+.hero{
+ padding:45px 7% 30px;
+ background:linear-gradient(135deg,#211b38,#171725);
+}
+.hero p{color:#c4b5fd;margin-top:8px}
+.container{
+ display:grid;
+ grid-template-columns:250px 1fr;
+ gap:25px;
+ padding:30px 7%;
+ align-items:start;
+}
+.sidebar{
+ background:#1b1b2b;
+ border:1px solid #343047;
+ border-radius:12px;
+ padding:20px;
+ position:sticky;
+ top:85px;
+ max-height:80vh;
+ overflow:auto;
+}
+.sidebar h3{color:#c4b5fd;margin-bottom:12px}
+.sidebar a{
+ display:block;
+ color:#ccc;
+ text-decoration:none;
+ padding:7px 8px;
+ border-radius:6px;
+ font-size:14px;
+}
+.sidebar a:hover{background:#30294b;color:#fff}
+.content{min-width:0}
+section{
+ background:#1b1b2b;
+ border:1px solid #343047;
+ border-radius:12px;
+ padding:25px;
+ margin-bottom:22px;
+ scroll-margin-top:90px;
+}
+h1,h2,h3{color:#c4b5fd}
+h1{font-size:30px}
+h2{font-size:23px;margin-bottom:14px}
+h3{font-size:18px;margin:18px 0 8px}
+p{margin:10px 0;color:#ddd}
+ul,ol{padding-left:24px;margin:10px 0}
+li{margin:6px 0;color:#ddd}
+pre{
+ background:#101019;
+ border:1px solid #39334f;
+ padding:16px;
+ border-radius:9px;
+ overflow-x:auto;
+ margin:14px 0;
+ color:#d8ccff;
+ white-space:pre;
+}
+code{font-family:Consolas,monospace}
+.note{
+ background:#28223d;
+ border-left:4px solid #a78bfa;
+ padding:12px 15px;
+ border-radius:5px;
+ margin:15px 0;
+ color:#eee;
+}
+.example{
+ background:#242238;
+ padding:14px;
+ border-radius:8px;
+ margin:12px 0;
+}
+button{
+ background:#8b5cf6;
+ color:white;
+ border:0;
+ border-radius:7px;
+ padding:11px 19px;
+ cursor:pointer;
+ font-weight:bold;
+ margin:5px 5px 5px 0;
+}
+button:hover{background:#7042d5}
+textarea{
+ width:100%;
+ min-height:190px;
+ background:#101019;
+ color:#e9ddff;
+ border:1px solid #51466d;
+ border-radius:8px;
+ padding:14px;
+ font-family:Consolas,monospace;
+ font-size:14px;
+ resize:vertical;
+}
+.output{
+ background:#101019;
+ border:1px solid #39334f;
+ border-radius:8px;
+ padding:15px;
+ min-height:55px;
+ margin-top:12px;
+ white-space:pre-wrap;
+ color:#b9f6ca;
+}
+.task{
+ background:#242238;
+ border-radius:8px;
+ padding:13px;
+ margin:10px 0;
+}
+.quiz-question{
+ padding:15px 0;
+ border-bottom:1px solid #39334f;
+}
+.quiz-question label{
+ display:block;
+ margin:7px 0;
+ cursor:pointer;
+ color:#ddd;
+}
+.result{font-weight:bold;margin-top:12px}
+.nav-buttons{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ flex-wrap:wrap;
+ margin:25px 0;
+}
+footer{
+ text-align:center;
+ padding:25px;
+ color:#aaa;
+ border-top:1px solid #302d45;
+}
+@media(max-width:800px){
+ .container{grid-template-columns:1fr;padding:20px 5%}
+ .sidebar{position:static;max-height:300px}
+ header{padding:15px 5%}
+ .hero{padding:35px 5%}
+ section{padding:19px}
+ h1{font-size:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <a class="brand" href="../index.html">SkillSaathi</a>
+ <a href="../javascript.html">JavaScript Course</a>
+</header>
+
+<div class="hero">
+ <h1>Lesson 17: Destructuring and Spread Operator</h1>
+ <p>Learn how to unpack values, work with objects and arrays, and create copies using modern JavaScript syntax.</p>
+</div>
+
+<div class="container">
+
+<aside class="sidebar">
+ <h3>Lesson Contents</h3>
+ <a href="#intro">1. Introduction to Destructuring</a>
+ <a href="#array">2. Array Destructuring</a>
+ <a href="#skip">3. Skipping Array Elements</a>
+ <a href="#default">4. Default Values</a>
+ <a href="#swap">5. Swapping Variables</a>
+ <a href="#nested-array">6. Nested Arrays</a>
+ <a href="#object">7. Object Destructuring</a>
+ <a href="#rename">8. Renaming Variables</a>
+ <a href="#object-default">9. Default Values in Objects</a>
+ <a href="#nested-object">10. Nested Objects</a>
+ <a href="#spread-intro">11. Introduction to Spread</a>
+ <a href="#spread-array">12. Spread with Arrays</a>
+ <a href="#copy-array">13. Copying and Combining Arrays</a>
+ <a href="#spread-object">14. Spread with Objects</a>
+ <a href="#rest">15. Rest Operator Introduction</a>
+ <a href="#practical">16. Practical Examples</a>
+ <a href="#playground">17. Code Playground</a>
+ <a href="#tasks">18. Practice Tasks</a>
+ <a href="#quiz">19. Knowledge Check</a>
+</aside>
+
+<main class="content">
+
+<section id="intro">
+<h2>1. Introduction to Destructuring</h2>
+<p>Destructuring is an ES6 feature that allows us to extract values from arrays or properties from objects and store them in separate variables.</p>
+
+<p>Without destructuring:</p>
+<pre><code>const student = ["Aman", 21, "BCA"];
+
+const name = student[0];
+const age = student[1];
+const course = student[2];
+
+console.log(name, age, course);</code></pre>
+
+<p>Using destructuring:</p>
+<pre><code>const student = ["Aman", 21, "BCA"];
+
+const [name, age, course] = student;
+
+console.log(name);
+console.log(age);
+console.log(course);</code></pre>
+
+<div class="note">Destructuring makes code shorter, cleaner and easier to read.</div>
+</section>
+
+<section id="array">
+<h2>2. Array Destructuring</h2>
+<p>Array destructuring extracts array elements into variables according to their positions.</p>
+
+<pre><code>const colors = ["Red", "Green", "Blue"];
+
+const [first, second, third] = colors;
+
+console.log(first);  // Red
+console.log(second); // Green
+console.log(third);  // Blue</code></pre>
+
+<h3>Important Point</h3>
+<p>The order of variables matters. The first variable receives the first array element, the second receives the second element, and so on.</p>
+
+<pre><code>const numbers = [10, 20, 30];
+
+const [a, b, c] = numbers;
+
+console.log(a); // 10
+console.log(b); // 20
+console.log(c); // 30</code></pre>
+</section>
+
+<section id="skip">
+<h2>3. Skipping Array Elements</h2>
+<p>You can skip unwanted array elements by leaving an empty space between commas.</p>
+
+<pre><code>const fruits = ["Apple", "Mango", "Banana"];
+
+const [first, , third] = fruits;
+
+console.log(first); // Apple
+console.log(third); // Banana</code></pre>
+
+<p>Here, the second element, Mango, is skipped.</p>
+
+<div class="note">An empty position in destructuring tells JavaScript to ignore that array element.</div>
+</section>
+
+<section id="default">
+<h2>4. Default Values in Destructuring</h2>
+<p>If an array does not contain enough elements, you can provide default values.</p>
+
+<pre><code>const student = ["Riya"];
+
+const [name, age = 20] = student;
+
+console.log(name); // Riya
+console.log(age);  // 20</code></pre>
+
+<p>The default value is used when the extracted value is undefined.</p>
+
+<pre><code>const colors = ["Red"];
+
+const [first, second = "Blue"] = colors;
+
+console.log(first);
+console.log(second);</code></pre>
+</section>
+
+<section id="swap">
+<h2>5. Swapping Variables</h2>
+<p>Destructuring makes it easy to exchange the values of two variables without using a temporary variable.</p>
+
+<pre><code>let a = 10;
+let b = 20;
+
+[a, b] = [b, a];
+
+console.log(a); // 20
+console.log(b); // 10</code></pre>
+
+<h3>How does it work?</h3>
+<ul>
+<li>The right side creates an array containing the values.</li>
+<li>The left side assigns those values in a different order.</li>
+<li>The two variables exchange their values.</li>
+</ul>
+</section>
+
+<section id="nested-array">
+<h2>6. Nested Array Destructuring</h2>
+<p>An array can contain another array. We can extract values from nested arrays using nested destructuring.</p>
+
+<pre><code>const numbers = [10, [20, 30]];
+
+const [first, [second, third]] = numbers;
+
+console.log(first);  // 10
+console.log(second); // 20
+console.log(third);  // 30</code></pre>
+
+<p>Another example:</p>
+<pre><code>const data = ["Aman", [85, 90]];
+
+const [name, [maths, science]] = data;
+
+console.log(name);
+console.log(maths);
+console.log(science);</code></pre>
+</section>
+
+<section id="object">
+<h2>7. Object Destructuring</h2>
+<p>Object destructuring extracts property values from an object and stores them in variables.</p>
+
+<pre><code>const student = {
+  name: "Neha",
+  age: 22,
+  course: "MCA"
+};
+
+const { name, age, course } = student;
+
+console.log(name);
+console.log(age);
+console.log(course);</code></pre>
+
+<div class="note">Unlike array destructuring, object destructuring uses property names instead of positions.</div>
+
+<h3>Property names must match</h3>
+<pre><code>const product = {
+  title: "Laptop",
+  price: 45000
+};
+
+const { title, price } = product;
+
+console.log(title);
+console.log(price);</code></pre>
+</section>
+
+<section id="rename">
+<h2>8. Renaming Variables</h2>
+<p>You can give a different variable name to an object property while destructuring.</p>
+
+<pre><code>const student = {
+  name: "Aman",
+  age: 21
+};
+
+const { name: studentName, age: studentAge } = student;
+
+console.log(studentName);
+console.log(studentAge);</code></pre>
+
+<p>Here, <code>name</code> is assigned to <code>studentName</code> and <code>age</code> is assigned to <code>studentAge</code>.</p>
+
+<div class="note">Syntax: <code>{ propertyName: newVariableName }</code></div>
+</section>
+
+<section id="object-default">
+<h2>9. Default Values in Objects</h2>
+<p>You can assign default values when an object property may be missing.</p>
+
+<pre><code>const student = {
+  name: "Priya"
+};
+
+const { name, age = 18 } = student;
+
+console.log(name); // Priya
+console.log(age);  // 18</code></pre>
+
+<p>If the property already has a value, the actual value is used.</p>
+
+<pre><code>const product = {
+  name: "Phone",
+  price: 15000
+};
+
+const { name, price = 10000 } = product;
+
+console.log(price); // 15000</code></pre>
+</section>
+
+<section id="nested-object">
+<h2>10. Nested Object Destructuring</h2>
+<p>Objects can contain other objects. Nested destructuring helps extract deeply nested properties.</p>
+
+<pre><code>const student = {
+  name: "Rohan",
+  address: {
+    city: "Ranchi",
+    state: "Jharkhand"
+  }
+};
+
+const {
+  name,
+  address: { city, state }
+} = student;
+
+console.log(name);
+console.log(city);
+console.log(state);</code></pre>
+
+<div class="note">In this example, city and state are extracted from the nested address object.</div>
+</section>
+
+<section id="spread-intro">
+<h2>11. Introduction to Spread Operator</h2>
+<p>The spread operator (<code>...</code>) expands elements of an array or properties of an object.</p>
+
+<p>Example:</p>
+<pre><code>const numbers = [10, 20, 30];
+
+console.log(...numbers);
+
+// Output:
+// 10 20 30</code></pre>
+
+<p>Without spread, the array is treated as one value. With spread, its individual elements are expanded.</p>
+
+<div class="note">The three dots (...) are called the spread syntax when used to expand elements or properties.</div>
+</section>
+
+<section id="spread-array">
+<h2>12. Spread with Arrays</h2>
+<p>You can use spread to insert all elements of an existing array into another array.</p>
+
+<pre><code>const first = [1, 2, 3];
+
+const second = [...first, 4, 5];
+
+console.log(second);
+
+// [1, 2, 3, 4, 5]</code></pre>
+
+<h3>Combining values</h3>
+<pre><code>const numbers = [10, 20];
+
+const updated = [5, ...numbers, 30];
+
+console.log(updated);
+
+// [5, 10, 20, 30]</code></pre>
+</section>
+
+<section id="copy-array">
+<h2>13. Copying and Combining Arrays</h2>
+<p>Spread syntax can create a shallow copy of an array.</p>
+
+<pre><code>const original = ["HTML", "CSS", "JavaScript"];
+
+const copy = [...original];
+
+console.log(copy);</code></pre>
+
+<p>Now you can modify the copied array without changing the original array's top-level elements.</p>
+
+<pre><code>const original = [10, 20, 30];
+
+const copy = [...original];
+
+copy.push(40);
+
+console.log(original); // [10, 20, 30]
+console.log(copy);     // [10, 20, 30, 40]</code></pre>
+
+<h3>Combining two arrays</h3>
+<pre><code>const frontend = ["HTML", "CSS"];
+const backend = ["Node.js", "PHP"];
+
+const skills = [...frontend, ...backend];
+
+console.log(skills);</code></pre>
+
+<div class="note">Spread creates a shallow copy, not a deep copy. Nested objects inside an array may still share references.</div>
+</section>
+
+<section id="spread-object">
+<h2>14. Spread with Objects</h2>
+<p>Spread syntax can copy and combine object properties.</p>
+
+<pre><code>const student = {
+  name: "Aman",
+  age: 21
+};
+
+const updatedStudent = {
+  ...student,
+  course: "MCA"
+};
+
+console.log(updatedStudent);</code></pre>
+
+<h3>Combining Objects</h3>
+<pre><code>const personal = {
+  name: "Riya",
+  age: 22
+};
+
+const education = {
+  course: "MCA",
+  college: "Ranchi University"
+};
+
+const profile = {
+  ...personal,
+  ...education
+};
+
+console.log(profile);</code></pre>
+
+<h3>Overwriting Properties</h3>
+<pre><code>const user = {
+  name: "Aman",
+  city: "Delhi"
+};
+
+const updatedUser = {
+  ...user,
+  city: "Ranchi"
+};
+
+console.log(updatedUser);
+
+// city will be Ranchi</code></pre>
+
+<div class="note">If the same property appears more than once, the value from the last occurrence is used.</div>
+</section>
+
+<section id="rest">
+<h2>15. Rest Operator Introduction</h2>
+<p>Rest syntax also uses three dots (<code>...</code>), but it collects remaining values into a single array or object.</p>
+
+<p>Example with arrays:</p>
+<pre><code>const numbers = [10, 20, 30, 40, 50];
+
+const [first, second, ...remaining] = numbers;
+
+console.log(first);     // 10
+console.log(second);    // 20
+console.log(remaining); // [30, 40, 50]</code></pre>
+
+<p>Example with objects:</p>
+<pre><code>const student = {
+  name: "Neha",
+  age: 22,
+  course: "MCA",
+  city: "Ranchi"
+};
+
+const { name, ...details } = student;
+
+console.log(name);
+console.log(details);</code></pre>
+
+<div class="note"><strong>Remember:</strong> Spread expands values, while rest collects remaining values. Their meaning depends on where the ... syntax is used.</div>
+</section>
+
+<section id="practical">
+<h2>16. Practical Examples</h2>
+
+<h3>Example 1: Student Profile</h3>
+<pre><code>const student = {
+  name: "Anjali",
+  marks: [85, 90, 88]
+};
+
+const { name, marks } = student;
+const [maths, science, computer] = marks;
+
+console.log("Student:", name);
+console.log("Maths:", maths);
+console.log("Science:", science);
+console.log("Computer:", computer);</code></pre>
+
+<h3>Example 2: Shopping Cart</h3>
+<pre><code>const cart1 = ["Book", "Pen"];
+const cart2 = ["Notebook", "Pencil"];
+
+const finalCart = [...cart1, ...cart2];
+
+console.log("Cart Items:", finalCart);</code></pre>
+
+<h3>Example 3: Updating User Details</h3>
+<pre><code>const user = {
+  name: "Rahul",
+  city: "Patna",
+  role: "Student"
+};
+
+const updatedUser = {
+  ...user,
+  city: "Ranchi",
+  role: "Developer"
+};
+
+console.log(updatedUser);</code></pre>
+</section>
+
+<section id="playground">
+<h2>17. Code Playground</h2>
+<p>Write your own JavaScript code and click Run Code to see the output.</p>
+
+<textarea id="codeInput">// Try array destructuring
+const subjects = ["HTML", "CSS", "JavaScript"];
+
+const [first, second, third] = subjects;
+
+console.log(first);
+console.log(second);
+console.log(third);
+
+// Try spread operator
+const moreSubjects = [...subjects, "Python"];
+
+console.log(moreSubjects);</textarea>
+
+<br>
+<button onclick="runCode()">Run Code</button>
+<button onclick="resetCode()">Reset Code</button>
+
+<div class="output" id="output">Your output will appear here...</div>
+</section>
+
+<section id="tasks">
+<h2>18. Practice Tasks</h2>
+<p>Complete these tasks to strengthen your understanding.</p>
+
+<div class="task">
+<strong>Task 1:</strong> Create an array of five fruits and extract the first three using array destructuring.
+</div>
+
+<div class="task">
+<strong>Task 2:</strong> Skip the second element while destructuring an array of numbers.
+</div>
+
+<div class="task">
+<strong>Task 3:</strong> Create an object containing name, age and city. Extract its properties using object destructuring.
+</div>
+
+<div class="task">
+<strong>Task 4:</strong> Rename the name property to studentName while destructuring an object.
+</div>
+
+<div class="task">
+<strong>Task 5:</strong> Create a copy of an array using the spread operator. Add a new element to the copy.
+</div>
+
+<div class="task">
+<strong>Task 6:</strong> Combine two arrays using spread syntax.
+</div>
+
+<div class="task">
+<strong>Task 7:</strong> Create a new object by copying an existing object and changing one property.
+</div>
+
+<div class="task">
+<strong>Task 8:</strong> Use rest syntax to collect the remaining elements of an array.
+</div>
+</section>
+
+<section id="quiz">
+<h2>19. Quick Knowledge Check</h2>
+<p>Choose the correct answer for each question.</p>
+
+<form id="quizForm">
+
+<div class="quiz-question">
+<p><strong>1. What is destructuring used for?</strong></p>
+<label><input type="radio" name="q1" value="a"> Deleting variables</label>
+<label><input type="radio" name="q1" value="b"> Extracting values from arrays and objects</label>
+<label><input type="radio" name="q1" value="c"> Creating loops</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2. Which syntax is used for array destructuring?</strong></p>
+<label><input type="radio" name="q2" value="a"> { }</label>
+<label><input type="radio" name="q2" value="b"> ( )</label>
+<label><input type="radio" name="q2" value="c"> [ ]</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3. Which syntax is used for object destructuring?</strong></p>
+<label><input type="radio" name="q3" value="a"> { }</label>
+<label><input type="radio" name="q3" value="b"> [ ]</label>
+<label><input type="radio" name="q3" value="c"> &lt; &gt;</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4. What does the spread operator do?</strong></p>
+<label><input type="radio" name="q4" value="a"> Collects all remaining values</label>
+<label><input type="radio" name="q4" value="b"> Expands elements or properties</label>
+<label><input type="radio" name="q4" value="c"> Deletes an array</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5. What is the output of [first, ...rest] = [1,2,3]?</strong></p>
+<label><input type="radio" name="q5" value="a"> first = 1, rest = [2,3]</label>
+<label><input type="radio" name="q5" value="b"> first = [1,2], rest = 3</label>
+<label><input type="radio" name="q5" value="c"> first = 3, rest = [1,2]</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>6. What happens when the same object property is spread more than once?</strong></p>
+<label><input type="radio" name="q6" value="a"> The first value always wins</label>
+<label><input type="radio" name="q6" value="b"> JavaScript gives an error</label>
+<label><input type="radio" name="q6" value="c"> The last value wins</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Answers</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+
+<div class="result" id="quizResult"></div>
+
+</form>
+</section>
+
+<div class="nav-buttons">
+ <a href="js-lesson16.html"><button>← Previous Lesson</button></a>
+ <a href="../javascript.html"><button>Course Home</button></a>
+ <a href="js-lesson18.html"><button>Next Lesson →</button></a>
+</div>
+
+</main>
+</div>
+
+<footer>
+<p>© 2026 SkillSaathi | Learn. Practice. Grow.</p>
+</footer>
+
+<script>
+const starterCode = `// Try array destructuring
+const subjects = ["HTML", "CSS", "JavaScript"];
+
+const [first, second, third] = subjects;
+
+console.log(first);
+console.log(second);
+console.log(third);
+
+// Try spread operator
+const moreSubjects = [...subjects, "Python"];
+
+console.log(moreSubjects);`;
+
+function runCode(){
+ const code = document.getElementById("codeInput").value;
+ const output = document.getElementById("output");
+ let logs = [];
+
+ const customConsole = {
+  log: (...args) => {
+   logs.push(args.map(value => {
+    if(typeof value === "object" && value !== null){
+     try{return JSON.stringify(value, null, 2)}
+     catch(e){return String(value)}
+    }
+    return String(value);
+   }).join(" "));
+  },
+  error: (...args) => logs.push("Error: " + args.join(" ")),
+  warn: (...args) => logs.push("Warning: " + args.join(" "))
+ };
+
+ try{
+  new Function("console", code)(customConsole);
+  output.textContent = logs.length ? logs.join("\n") : "Code executed successfully. No output.";
+ }catch(error){
+  output.textContent = "Error: " + error.message;
+ }
+}
+
+function resetCode(){
+ document.getElementById("codeInput").value = starterCode;
+ document.getElementById("output").textContent = "Your output will appear here...";
+}
+
+function checkQuiz(){
+ const answers = {
+  q1:"b",
+  q2:"c",
+  q3:"a",
+  q4:"b",
+  q5:"a",
+  q6:"c"
+ };
+
+ let score = 0;
+ let total = Object.keys(answers).length;
+
+ for(let question in answers){
+  const selected = document.querySelector('input[name="'+question+'"]:checked');
+  if(selected && selected.value === answers[question]){
+   score++;
+  }
+ }
+
+ const result = document.getElementById("quizResult");
+ result.textContent = "Your Score: " + score + " / " + total;
+
+ if(score === total){
+  result.style.color = "#86efac";
+  result.textContent += " — Excellent! All answers are correct.";
+ }else{
+  result.style.color = "#fbbf24";
+  result.textContent += " — Review the lesson and try again.";
+ }
+}
+
+function resetQuiz(){
+ document.getElementById("quizForm").reset();
+ document.getElementById("quizResult").textContent = "";
+}
+</script>
+
+</body>
+</html>

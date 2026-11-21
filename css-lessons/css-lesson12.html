@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 12: CSS Flexbox | SkillSaathi</title>
+<style>
+:root{--bg:#11111b;--panel:#171b33;--panel2:#111427;--purple:#a78bfa;--lav:#c4b5fd;--text:#f4f1ff;--muted:#c7c2dc;--line:#343052;--green:#86efac}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{padding:28px 7%;background:linear-gradient(135deg,#19152d,#25204a);border-bottom:1px solid var(--line)}
+header a,.nav a{color:var(--lav);text-decoration:none}
+header p{color:var(--muted);margin-top:6px}
+main{width:min(1050px,90%);margin:28px auto 55px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;margin:18px 0}
+h1{font-size:clamp(25px,4vw,36px);color:var(--lav)}
+h2{font-size:22px;color:var(--lav);margin-bottom:12px}
+h3{color:#e9ddff;margin:14px 0 6px}
+p,li{color:var(--muted)}
+ul,ol{padding-left:24px;margin:8px 0}
+code{color:#e9d5ff;background:#292342;padding:2px 6px;border-radius:5px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0c0d17;border:1px solid var(--line);padding:16px;border-radius:10px;color:#e9ddff;margin:12px 0;overflow-x:auto}
+button,.btn{background:var(--purple);color:#171326;border:0;border-radius:8px;padding:10px 16px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block;margin:5px 5px 5px 0}
+button.secondary,.btn.secondary{background:#343052;color:var(--text)}
+textarea{width:100%;min-height:190px;background:#0c0d17;color:#f4f1ff;border:1px solid var(--line);border-radius:10px;padding:14px;font:14px/1.6 Consolas,monospace;resize:vertical}
+iframe{width:100%;height:280px;background:white;border:0;border-radius:10px;margin-top:12px;display:none}
+.feedback{color:var(--green);margin-top:10px;font-weight:bold}
+.question{padding:13px 0;border-bottom:1px solid var(--line)}
+.question label{display:block;color:var(--muted);margin:5px 0}
+.nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:22px}
+.small{font-size:14px;color:var(--muted)}
+@media(max-width:650px){section{padding:17px}header{padding:23px 5%}main{width:92%}}
+</style>
+</head>
+<body>
+<header>
+<p><a href="../css.html">← CSS Course Home</a></p>
+<h1>Lesson 12: CSS Flexbox</h1>
+<p>Build flexible one-dimensional layouts with containers and items.</p>
+</header>
+<main>
+<section><h2>Learning Objectives</h2><ul><li>Create a flex container</li><li>Control direction, wrapping and alignment</li><li>Use justify-content and align-items</li><li>Use gap, flex-grow, flex-shrink and flex-basis</li></ul></section>
+<section><h2>1. Flex container and items</h2><p>Set display:flex on a parent to create a flex formatting context. Its direct children become flex items. By default, items are laid out in a row.</p><pre>.container { display: flex; }
+.item { padding: 20px; }</pre></section><section><h2>2. Direction and wrapping</h2><p>flex-direction sets row, row-reverse, column or column-reverse. flex-wrap allows items to move onto multiple lines when they do not fit.</p><pre>.container { display: flex; flex-direction: row; flex-wrap: wrap; }</pre></section><section><h2>3. Main-axis alignment</h2><p>justify-content aligns items along the main axis. Common values include flex-start, center, flex-end, space-between, space-around and space-evenly. The main axis changes when flex-direction changes.</p><pre>.container { display: flex; justify-content: space-between; }</pre></section><section><h2>4. Cross-axis alignment and gap</h2><p>align-items aligns items along the cross axis. align-content controls spacing between multiple flex lines. gap adds consistent space between items without adding margins to each child.</p><pre>.container { display: flex; align-items: center; gap: 16px; }</pre></section><section><h2>5. Flexible item sizing</h2><p>flex-grow controls how extra space is distributed. flex-shrink controls how items shrink when space is limited. flex-basis sets an item's initial main size. The flex shorthand combines these values.</p><pre>.item { flex: 1 1 220px; }
+.featured { flex-grow: 2; }</pre></section>
+<section>
+<h2>Practical Code Playground</h2>
+<p>Edit the starter code and select Run Code to preview your work.</p>
+<textarea id="editor" spellcheck="false"><nav class="nav">
+  <strong>SkillSaathi</strong>
+  <a href="#">Courses</a><a href="#">Projects</a><a href="#">About</a>
+</nav>
+<div class="cards">
+  <article>HTML Basics</article>
+  <article>CSS Design</article>
+  <article>JavaScript</article>
+</div>
+<style>
+body { font-family: Arial; padding: 20px; }
+.nav { /* Make this a flex row */ background: #eee; color: #222; padding: 18px; }
+.cards { /* Make cards flexible and allow wrapping */ margin-top: 25px; }
+article { background: #ddd; color: #222; padding: 30px; border-radius: 10px; }
+</style></textarea>
+<div>
+<button type="button" id="run">Run Code</button>
+<button type="button" class="secondary" id="clear">Clear Output</button>
+<button type="button" class="secondary" id="hint">Show Hint</button>
+</div>
+<p id="hintText" class="small" hidden>Hint: Try one CSS property at a time in the style section. Run the code after each change and compare the output.</p>
+<h3>Live Preview</h3>
+<iframe id="preview" title="Code preview" sandbox="allow-scripts"></iframe>
+</section>
+<section><h2>Quick Practice</h2><p>Create a responsive navigation row and a group of three cards. Use gap, justify-content, align-items and flex-wrap. Resize the preview to observe wrapping.</p></section>
+<section>
+<h2>Knowledge Check</h2><p class="small">Choose one answer for each question.</p>
+<div class="question"><p><strong>1. Which declaration creates a flex container?</strong></p><label><input type="radio" name="q1" value="0"> A. display:grid</label><label><input type="radio" name="q1" value="1"> B. display:flex</label><label><input type="radio" name="q1" value="2"> C. position:flex</label><label><input type="radio" name="q1" value="3"> D. flex:display</label></div><div class="question"><p><strong>2. Which property controls the main-axis alignment?</strong></p><label><input type="radio" name="q2" value="0"> A. align-items</label><label><input type="radio" name="q2" value="1"> B. justify-content</label><label><input type="radio" name="q2" value="2"> C. flex-wrap</label><label><input type="radio" name="q2" value="3"> D. gap</label></div><div class="question"><p><strong>3. Which property allows items to wrap onto multiple lines?</strong></p><label><input type="radio" name="q3" value="0"> A. flex-wrap</label><label><input type="radio" name="q3" value="1"> B. flex-grow</label><label><input type="radio" name="q3" value="2"> C. flex-basis</label><label><input type="radio" name="q3" value="3"> D. align-content</label></div><div class="question"><p><strong>4. Which property adds spacing between flex items?</strong></p><label><input type="radio" name="q4" value="0"> A. letter-spacing</label><label><input type="radio" name="q4" value="1"> B. gap</label><label><input type="radio" name="q4" value="2"> C. word-spacing</label><label><input type="radio" name="q4" value="3"> D. z-index</label></div><div class="question"><p><strong>5. What does flex-grow control?</strong></p><label><input type="radio" name="q5" value="0"> A. Text size</label><label><input type="radio" name="q5" value="1"> B. Distribution of extra space</label><label><input type="radio" name="q5" value="2"> C. Border thickness</label><label><input type="radio" name="q5" value="3"> D. Element visibility</label></div>
+<button type="button" id="checkQuiz">Check Answers</button>
+<p id="quizResult" class="feedback" aria-live="polite"></p>
+</section>
+<section>
+<h2>Lesson Summary</h2>
+<p>You have learned the key ideas in css flexbox. Revisit the examples and complete the practice activity before moving ahead.</p>
+<h3>Homework</h3><p>Create a small page or component using the concepts from this lesson. Test your work in the browser at different screen sizes.</p>
+</section>
+<div class="nav">
+<a class="btn secondary" href="css-lesson11.html">← Previous Lesson</a>
+<a class="btn" href="css-lesson13.html">Next Lesson →</a>
+</div>
+</main>
+<script>
+const editor=document.getElementById('editor');
+const preview=document.getElementById('preview');
+document.getElementById('run').addEventListener('click',()=>{
+ preview.srcdoc=editor.value;
+ preview.style.display='block';
+});
+document.getElementById('clear').addEventListener('click',()=>{
+ preview.srcdoc='';
+ preview.style.display='none';
+});
+document.getElementById('hint').addEventListener('click',()=>{
+ const hint=document.getElementById('hintText');
+ hint.hidden=!hint.hidden;
+});
+document.getElementById('checkQuiz').addEventListener('click',()=>{
+ const answers=[1, 1, 0, 1, 1];
+ let score=0;
+ answers.forEach((answer,index)=>{
+  const selected=document.querySelector('input[name="q'+(index+1)+'"]:checked');
+  if(selected && Number(selected.value)===answer) score++;
+ });
+ document.getElementById('quizResult').textContent='You scored '+score+' out of '+answers.length+'. '+(score===answers.length?'Excellent work!':'Review the lesson and try again.');
+});
+</script>
+</body>
+</html>

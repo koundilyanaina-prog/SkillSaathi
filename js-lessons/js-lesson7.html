@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Lesson 7 - Functions and Parameters | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;line-height:1.7}
+header{background:#191927;padding:22px 8%;border-bottom:1px solid #34304a}
+header h1{color:#c4b5fd;font-size:25px}
+nav{margin-top:10px;font-size:14px}
+nav a{color:#c4b5fd;text-decoration:none;margin-right:15px}
+.container{max-width:1000px;margin:30px auto;padding:0 20px}
+.lesson-heading{background:#1c1b2b;padding:28px;border-radius:14px;margin-bottom:25px;border:1px solid #38334e}
+.lesson-heading h2{color:#c4b5fd;margin-bottom:8px}
+.tag{color:#a78bfa;font-size:13px}
+section{background:#1c1b2b;padding:25px;margin-bottom:22px;border-radius:13px;border:1px solid #302d43}
+h2{color:#c4b5fd;margin-bottom:14px;font-size:22px}
+h3{color:#d8ccff;margin:18px 0 8px}
+p{color:#ccc;margin:9px 0}
+ul,ol{padding-left:23px;color:#ccc}
+li{margin:7px 0}
+code{color:#f0abfc;background:#29263a;padding:3px 6px;border-radius:4px}
+pre{background:#10101a;color:#ddd;padding:16px;border-radius:9px;overflow-x:auto;margin:12px 0;border:1px solid #38334e}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{padding:12px;border:1px solid #45405e;text-align:left;color:#ccc}
+th{background:#302b48;color:#d8ccff}
+textarea{width:100%;height:180px;background:#10101a;color:#eee;border:1px solid #514879;border-radius:8px;padding:12px;font-family:monospace;font-size:14px}
+button{background:#8b5cf6;color:white;border:0;padding:11px 20px;border-radius:7px;cursor:pointer;margin:10px 6px 10px 0;font-weight:bold}
+button:hover{background:#7042d2}
+.output{background:#10101a;border:1px solid #45405e;padding:15px;border-radius:8px;min-height:55px;margin-top:10px;white-space:pre-wrap;color:#a7f3d0}
+.task{background:#252238;padding:14px;border-left:3px solid #a78bfa;border-radius:6px;margin:12px 0}
+.quiz-question{margin:18px 0;padding:15px;background:#252238;border-radius:8px}
+.quiz-question label{display:block;color:#ccc;margin:7px 0;cursor:pointer}
+.result{color:#a7f3d0;margin-top:12px;font-weight:bold}
+.lesson-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:30px 0}
+.lesson-nav a{background:#29243f;color:#d8ccff;text-decoration:none;padding:12px 18px;border-radius:8px}
+footer{text-align:center;color:#888;padding:25px}
+@media(max-width:600px){header{padding:18px 5%}.lesson-heading,section{padding:18px}.lesson-nav{flex-direction:column}.lesson-nav a{text-align:center}table{font-size:13px}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>SkillSaathi | JavaScript Course</h1>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../javascript.html">JavaScript Course</a>
+</nav>
+</header>
+
+<div class="container">
+
+<div class="lesson-heading">
+<span class="tag">PART 1 • LESSON 07</span>
+<h2>Functions and Parameters</h2>
+<p>Learn how to create reusable blocks of code, pass information to functions and return results.</p>
+</div>
+
+<section>
+<h2>1. Introduction to Functions</h2>
+<p>A function is a reusable block of code designed to perform a particular task.</p>
+<p>Instead of writing the same code repeatedly, you can write it once inside a function and use it whenever needed.</p>
+
+<h3>Example</h3>
+<pre>function greet() {
+    console.log("Welcome to SkillSaathi!");
+}
+
+greet();</pre>
+<p>Output:</p>
+<pre>Welcome to SkillSaathi!</pre>
+<p>Here, <code>greet</code> is the function name. The code inside the function runs when the function is called.</p>
+</section>
+
+<section>
+<h2>2. Why Do We Use Functions?</h2>
+<p>Functions help us organize programs and avoid repeating the same code.</p>
+<ul>
+<li><strong>Code Reusability:</strong> Write code once and use it multiple times.</li>
+<li><strong>Better Organization:</strong> Divide a large program into smaller parts.</li>
+<li><strong>Easy Maintenance:</strong> Update code in one place.</li>
+<li><strong>Readability:</strong> Make programs easier to understand.</li>
+<li><strong>Less Repetition:</strong> Avoid writing identical code again and again.</li>
+</ul>
+
+<h3>Without a Function</h3>
+<pre>console.log("Hello Aarav");
+console.log("Hello Meera");
+console.log("Hello Riya");</pre>
+
+<h3>With a Function</h3>
+<pre>function greet(name) {
+    console.log("Hello " + name);
+}
+
+greet("Aarav");
+greet("Meera");
+greet("Riya");</pre>
+</section>
+
+<section>
+<h2>3. Function Declaration</h2>
+<p>A function declaration defines a function using the <code>function</code> keyword, followed by its name and parentheses.</p>
+
+<h3>Syntax</h3>
+<pre>function functionName() {
+    // Statements
+}</pre>
+
+<h3>Example</h3>
+<pre>function showMessage() {
+    console.log("Learning JavaScript is fun!");
+}
+
+showMessage();</pre>
+
+<p>A function declaration has three main parts:</p>
+<table>
+<tr><th>Part</th><th>Description</th></tr>
+<tr><td>function</td><td>Keyword used to declare a function.</td></tr>
+<tr><td>Function name</td><td>Name used to identify and call the function.</td></tr>
+<tr><td>Function body</td><td>Code written inside curly braces.</td></tr>
+</table>
+</section>
+
+<section>
+<h2>4. Calling a Function</h2>
+<p>Defining a function does not automatically execute it. You must call the function to run its code.</p>
+
+<h3>Example</h3>
+<pre>function welcome() {
+    console.log("Welcome!");
+}
+
+// Calling the function
+welcome();
+welcome();
+welcome();</pre>
+
+<p>Output:</p>
+<pre>Welcome!
+Welcome!
+Welcome!</pre>
+
+<p>You can call a function multiple times whenever you need it.</p>
+</section>
+
+<section>
+<h2>5. Parameters and Arguments</h2>
+<p>Parameters allow functions to receive information. Arguments are the actual values passed when calling a function.</p>
+
+<h3>Example</h3>
+<pre>function greet(name) {
+    console.log("Hello " + name);
+}
+
+greet("Aarav");
+greet("Meera");</pre>
+
+<p>In this example:</p>
+<ul>
+<li><code>name</code> is a parameter.</li>
+<li><code>"Aarav"</code> and <code>"Meera"</code> are arguments.</li>
+</ul>
+
+<h3>Multiple Parameters</h3>
+<pre>function add(a, b) {
+    console.log(a + b);
+}
+
+add(10, 20);
+add(5, 15);</pre>
+
+<p>Output:</p>
+<pre>30
+20</pre>
+
+<h3>Parameters vs Arguments</h3>
+<table>
+<tr><th>Parameters</th><th>Arguments</th></tr>
+<tr><td>Written in function definition.</td><td>Passed during function call.</td></tr>
+<tr><td>Act as input variables.</td><td>Provide actual input values.</td></tr>
+<tr><td>Example: a, b</td><td>Example: 10, 20</td></tr>
+</table>
+</section>
+
+<section>
+<h2>6. Return Statement</h2>
+<p>The <code>return</code> statement sends a value back from a function to the place where it was called.</p>
+
+<h3>Example</h3>
+<pre>function add(a, b) {
+    return a + b;
+}
+
+let result = add(10, 20);
+
+console.log(result);</pre>
+
+<p>Output: <code>30</code></p>
+
+<h3>Return vs console.log</h3>
+<pre>function calculate1(a, b) {
+    console.log(a + b);
+}
+
+function calculate2(a, b) {
+    return a + b;
+}
+
+let answer = calculate2(5, 10);
+
+console.log(answer);</pre>
+
+<p><strong>console.log:</strong> Displays information in the console.</p>
+<p><strong>return:</strong> Sends a value back so it can be stored, reused or calculated further.</p>
+
+<h3>Important</h3>
+<p>Once JavaScript reaches a return statement, the function stops executing.</p>
+<pre>function test() {
+    return "Finished";
+    console.log("This will not run");
+}
+
+console.log(test());</pre>
+</section>
+
+<section>
+<h2>7. Function Expressions</h2>
+<p>A function expression stores a function inside a variable.</p>
+
+<h3>Example</h3>
+<pre>const greet = function() {
+    console.log("Hello from a function expression!");
+};
+
+greet();</pre>
+
+<p>Functions created using function expressions can also receive parameters and return values.</p>
+
+<h3>Example with Parameters</h3>
+<pre>const multiply = function(a, b) {
+    return a * b;
+};
+
+console.log(multiply(4, 5));</pre>
+
+<p>Output: <code>20</code></p>
+<p>Unlike a normal function declaration, a function expression cannot generally be called before its assignment is initialized.</p>
+</section>
+
+<section>
+<h2>8. Arrow Functions</h2>
+<p>Arrow functions provide a shorter syntax for writing functions. They were introduced in ES6.</p>
+
+<h3>Basic Syntax</h3>
+<pre>const functionName = () => {
+    // Statements
+};</pre>
+
+<h3>Example</h3>
+<pre>const greet = () => {
+    console.log("Hello JavaScript!");
+};
+
+greet();</pre>
+
+<h3>Arrow Function with Parameters</h3>
+<pre>const add = (a, b) => {
+    return a + b;
+};
+
+console.log(add(10, 5));</pre>
+
+<h3>Shorter Return Syntax</h3>
+<p>When the function contains a single expression, you can omit curly braces and the return keyword.</p>
+<pre>const square = number => number * number;
+
+console.log(square(5));</pre>
+<p>Output: <code>25</code></p>
+
+<h3>Different Function Styles</h3>
+<table>
+<tr><th>Function Type</th><th>Example</th></tr>
+<tr><td>Declaration</td><td><code>function greet() { }</code></td></tr>
+<tr><td>Expression</td><td><code>const greet = function() { };</code></td></tr>
+<tr><td>Arrow</td><td><code>const greet = () => { };</code></td></tr>
+</table>
+</section>
+
+<section>
+<h2>9. Default Parameters</h2>
+<p>Default parameters provide a predefined value when an argument is not supplied during a function call.</p>
+
+<h3>Example</h3>
+<pre>function greet(name = "Student") {
+    console.log("Hello " + name);
+}
+
+greet("Aarav");
+greet();</pre>
+
+<p>Output:</p>
+<pre>Hello Aarav
+Hello Student</pre>
+
+<h3>Multiple Default Parameters</h3>
+<pre>function calculateTotal(price, quantity = 1) {
+    return price * quantity;
+}
+
+console.log(calculateTotal(100, 3));
+console.log(calculateTotal(100));</pre>
+
+<p>Output:</p>
+<pre>300
+100</pre>
+</section>
+
+<section>
+<h2>10. Practical Examples</h2>
+
+<h3>Example 1: Calculate Square</h3>
+<pre>function square(number) {
+    return number * number;
+}
+
+console.log(square(4));
+console.log(square(8));</pre>
+
+<h3>Example 2: Calculate Rectangle Area</h3>
+<pre>function rectangleArea(length, width) {
+    return length * width;
+}
+
+let area = rectangleArea(10, 5);
+
+console.log("Area:", area);</pre>
+
+<h3>Example 3: Student Result</h3>
+<pre>function checkResult(marks) {
+    if (marks >= 40) {
+        return "Pass";
+    }
+
+    return "Fail";
+}
+
+console.log(checkResult(75));
+console.log(checkResult(30));</pre>
+
+<h3>Example 4: Arrow Function for Discount</h3>
+<pre>const calculateDiscount = (price, discount) => {
+    return price - (price * discount / 100);
+};
+
+console.log(calculateDiscount(1000, 10));</pre>
+<p>Output: <code>900</code></p>
+</section>
+
+<section>
+<h2>11. Code Playground</h2>
+<p>Write your own function and click Run Code to see the output.</p>
+<textarea id="codeInput">function calculateTotal(price, quantity) {
+    return price * quantity;
+}
+
+let total = calculateTotal(100, 3);
+
+console.log("Total Amount:", total);</textarea>
+<br>
+<button onclick="runCode()">Run Code</button>
+<button onclick="resetCode()">Reset Code</button>
+<div class="output" id="output">Your output will appear here...</div>
+</section>
+
+<section>
+<h2>12. Practice Tasks</h2>
+<div class="task"><strong>Task 1:</strong> Create a function named greet() that displays a welcome message.</div>
+<div class="task"><strong>Task 2:</strong> Create a function that accepts two numbers and displays their sum.</div>
+<div class="task"><strong>Task 3:</strong> Write a function that returns the square of a number.</div>
+<div class="task"><strong>Task 4:</strong> Create a function expression to calculate the area of a rectangle.</div>
+<div class="task"><strong>Task 5:</strong> Write an arrow function to calculate the cube of a number.</div>
+<div class="task"><strong>Task 6:</strong> Create a function with a default parameter for a student's name.</div>
+<div class="task"><strong>Task 7:</strong> Create a discount calculator that returns the final price.</div>
+</section>
+
+<section>
+<h2>13. Quick Knowledge Check</h2>
+
+<div class="quiz-question">
+<p><strong>1. Which keyword is used to declare a normal function?</strong></p>
+<label><input type="radio" name="q1" value="a"> let</label>
+<label><input type="radio" name="q1" value="b"> function</label>
+<label><input type="radio" name="q1" value="c"> return</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2. What are the actual values passed to a function called?</strong></p>
+<label><input type="radio" name="q2" value="a"> Parameters</label>
+<label><input type="radio" name="q2" value="b"> Arguments</label>
+<label><input type="radio" name="q2" value="c"> Variables</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3. Which statement sends a value back from a function?</strong></p>
+<label><input type="radio" name="q3" value="a"> console.log</label>
+<label><input type="radio" name="q3" value="b"> break</label>
+<label><input type="radio" name="q3" value="c"> return</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4. Which symbol is used in arrow functions?</strong></p>
+<label><input type="radio" name="q4" value="a"> =&gt;</label>
+<label><input type="radio" name="q4" value="b"> ==</label>
+<label><input type="radio" name="q4" value="c"> +=</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5. What happens when a function argument is omitted and a default parameter exists?</strong></p>
+<label><input type="radio" name="q5" value="a"> The function always stops</label>
+<label><input type="radio" name="q5" value="b"> The default value is used</label>
+<label><input type="radio" name="q5" value="c"> The function is deleted</label>
+</div>
+
+<button onclick="checkQuiz()">Submit Answers</button>
+<div class="result" id="quizResult"></div>
+</section>
+
+<div class="lesson-nav">
+<a href="js-lesson6.html">← Previous Lesson</a>
+<a href="../javascript.html">Course Home</a>
+<a href="js-lesson8.html">Next Lesson →</a>
+</div>
+
+</div>
+
+<footer>
+<p>SkillSaathi • Learn Today, Grow Tomorrow</p>
+</footer>
+
+<script>
+const defaultCode = `function calculateTotal(price, quantity) {
+    return price * quantity;
+}
+
+let total = calculateTotal(100, 3);
+
+console.log("Total Amount:", total);`;
+
+function runCode(){
+    const code = document.getElementById("codeInput").value;
+    const output = document.getElementById("output");
+    let logs = [];
+
+    try{
+        const customConsole = {
+            log: (...args) => logs.push(args.join(" "))
+        };
+
+        new Function("console", code)(customConsole);
+        output.textContent = logs.length ? logs.join("\n") : "Code executed successfully. No output.";
+    }catch(error){
+        output.textContent = "Error: " + error.message;
+    }
+}
+
+function resetCode(){
+    document.getElementById("codeInput").value = defaultCode;
+    document.getElementById("output").textContent = "Your output will appear here...";
+}
+
+function checkQuiz(){
+    const answers = {q1:"b",q2:"b",q3:"c",q4:"a",q5:"b"};
+    let score = 0;
+
+    for(let question in answers){
+        const selected = document.querySelector('input[name="'+question+'"]:checked');
+        if(selected && selected.value === answers[question]){
+            score++;
+        }
+    }
+
+    document.getElementById("quizResult").textContent =
+        "You scored " + score + " out of 5.";
+}
+</script>
+
+</body>
+</html>

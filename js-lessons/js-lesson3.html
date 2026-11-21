@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3 - Data Types and Type Conversion | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;line-height:1.7;padding:25px}
+.container{max-width:950px;margin:auto}
+header,.card{background:#1c1c2b;padding:25px;border-radius:14px;margin-bottom:22px;border:1px solid #34344b}
+h1,h2,h3{color:#c4b5fd;margin-bottom:14px}
+h1{font-size:30px}
+p,li{color:#d1d1df;margin-bottom:10px}
+ul,ol{padding-left:25px}
+pre{background:#101019;padding:18px;border-radius:10px;overflow-x:auto;color:#a7f3d0;margin:15px 0}
+button,.nav a{background:#8b5cf6;color:white;border:0;padding:11px 18px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-block;margin:5px}
+button:hover,.nav a:hover{background:#a78bfa;color:#171327}
+textarea{width:100%;min-height:170px;background:#101019;color:#a7f3d0;border:1px solid #514174;border-radius:8px;padding:15px;font-family:monospace;font-size:14px;resize:vertical}
+.output{background:#101019;border:1px solid #444;padding:15px;border-radius:8px;min-height:55px;margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.note{background:#29243d;border-left:4px solid #a78bfa;padding:15px;border-radius:7px;margin:15px 0}
+.lesson-label{color:#a78bfa;font-weight:bold;letter-spacing:2px;font-size:13px}
+.nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{border:1px solid #514174;padding:10px;text-align:left;color:#d1d1df}
+th{background:#29243d;color:#c4b5fd}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+<div class="lesson-label">JAVASCRIPT COURSE | LESSON 03</div>
+<h1>Data Types and Type Conversion</h1>
+<p>Understand different types of data in JavaScript and learn how to convert values from one type to another.</p>
+</header>
+
+<section class="card">
+<h2>1. What are Data Types?</h2>
+<p>A data type describes the kind of value stored in a variable.</p>
+<p>JavaScript has different data types to represent text, numbers, logical values and collections of information.</p>
+<pre>
+let studentName = "Meera";
+let age = 21;
+let isLearning = true;
+</pre>
+<p>Here, the values belong to different data types.</p>
+</section>
+
+<section class="card">
+<h2>2. String Data Type</h2>
+<p>A String is used to store text. Strings are written inside single quotes, double quotes or backticks.</p>
+<pre>
+let firstName = "Aarav";
+let city = 'Patna';
+let message = `Welcome to SkillSaathi`;
+
+console.log(firstName);
+console.log(city);
+console.log(message);
+</pre>
+<div class="note">
+<b>Remember:</b> A string represents text, even when it contains numbers inside quotation marks.
+</div>
+<pre>
+let phoneNumber = "9876543210";
+</pre>
+</section>
+
+<section class="card">
+<h2>3. Number Data Type</h2>
+<p>The Number data type is used for both whole numbers and decimal numbers.</p>
+<pre>
+let age = 20;
+let price = 99.50;
+let temperature = -5;
+
+console.log(age);
+console.log(price);
+console.log(temperature);
+</pre>
+<p>JavaScript also supports special numeric values such as Infinity and NaN (Not a Number).</p>
+<pre>
+console.log(10 / 0);       // Infinity
+console.log("hello" * 2);  // NaN
+</pre>
+</section>
+
+<section class="card">
+<h2>4. Boolean Data Type</h2>
+<p>Boolean values represent only two possible states: true or false.</p>
+<pre>
+let isStudent = true;
+let isLoggedIn = false;
+
+console.log(isStudent);
+console.log(isLoggedIn);
+</pre>
+<p>Booleans are commonly used when a program needs to represent a yes/no or on/off condition.</p>
+</section>
+
+<section class="card">
+<h2>5. Undefined and Null</h2>
+
+<h3>Undefined</h3>
+<p>A variable that has been declared but not assigned a value contains undefined.</p>
+<pre>
+let result;
+
+console.log(result); // undefined
+</pre>
+
+<h3>Null</h3>
+<p>Null represents an intentional absence of a value.</p>
+<pre>
+let selectedStudent = null;
+
+console.log(selectedStudent); // null
+</pre>
+
+<div class="note">
+<b>Difference:</b> undefined often means a value has not been assigned. Null is used when we intentionally want to represent no value.
+</div>
+</section>
+
+<section class="card">
+<h2>6. Object and Array – Introduction</h2>
+
+<h3>Object</h3>
+<p>An object stores related information using key-value pairs.</p>
+<pre>
+let student = {
+  name: "Meera",
+  age: 20,
+  course: "JavaScript"
+};
+
+console.log(student);
+console.log(student.name);
+</pre>
+
+<h3>Array</h3>
+<p>An array stores an ordered collection of values.</p>
+<pre>
+let subjects = ["HTML", "CSS", "JavaScript"];
+
+console.log(subjects);
+console.log(subjects[0]);
+console.log(subjects[2]);
+</pre>
+<p>Array positions start from index 0.</p>
+</section>
+
+<section class="card">
+<h2>7. The typeof Operator</h2>
+<p>The typeof operator helps us identify the data type of a value.</p>
+<pre>
+let name = "Aarav";
+let age = 22;
+let active = true;
+let result;
+
+console.log(typeof name);   // string
+console.log(typeof age);    // number
+console.log(typeof active); // boolean
+console.log(typeof result); // undefined
+</pre>
+<div class="note">
+<b>Important JavaScript detail:</b> typeof null returns "object". This is a long-standing JavaScript behaviour, not an indication that null is actually an object.
+</div>
+</section>
+
+<section class="card">
+<h2>8. Type Conversion</h2>
+<p>Type conversion means deliberately changing a value from one data type to another.</p>
+
+<h3>Convert to String</h3>
+<pre>
+let age = 25;
+
+let textAge = String(age);
+
+console.log(textAge);
+console.log(typeof textAge);
+</pre>
+
+<h3>Convert to Number</h3>
+<pre>
+let price = "150";
+
+let numericPrice = Number(price);
+
+console.log(numericPrice);
+console.log(typeof numericPrice);
+</pre>
+
+<h3>Convert to Boolean</h3>
+<pre>
+let value = 1;
+
+let status = Boolean(value);
+
+console.log(status); // true
+</pre>
+
+<h3>Other useful conversion examples</h3>
+<pre>
+console.log(Number("50"));     // 50
+console.log(Number("Hello"));  // NaN
+console.log(String(100));      // "100"
+console.log(Boolean(0));       // false
+console.log(Boolean("Hello"));// true
+</pre>
+</section>
+
+<section class="card">
+<h2>9. Type Coercion</h2>
+<p>Type coercion happens when JavaScript automatically converts a value from one type to another during an operation.</p>
+<pre>
+console.log("5" + 2); // "52"
+console.log("5" - 2); // 3
+console.log("5" * 2); // 10
+</pre>
+<p>In the first example, JavaScript converts 2 into a string and joins the values. In the other examples, the numeric string is converted to a number.</p>
+<div class="note">
+<b>Tip:</b> Use explicit conversion with String(), Number() or Boolean() when you want your code to be easier to understand.
+</div>
+</section>
+
+<section class="card">
+<h2>10. Data Types Comparison Table</h2>
+<table>
+<tr><th>Data Type</th><th>Example</th><th>Purpose</th></tr>
+<tr><td>String</td><td>"Hello"</td><td>Text</td></tr>
+<tr><td>Number</td><td>25, 10.5</td><td>Numeric values</td></tr>
+<tr><td>Boolean</td><td>true</td><td>Logical values</td></tr>
+<tr><td>Undefined</td><td>undefined</td><td>Value not assigned</td></tr>
+<tr><td>Null</td><td>null</td><td>Intentional empty value</td></tr>
+<tr><td>Object</td><td>{ name: "Aarav" }</td><td>Related data</td></tr>
+<tr><td>Array</td><td>[10, 20, 30]</td><td>Ordered collection</td></tr>
+</table>
+</section>
+
+<section class="card">
+<h2>11. Try It Yourself – Code Playground</h2>
+<p>Experiment with values, typeof and type conversion.</p>
+
+<textarea id="codeEditor">let studentName = "Aarav";
+let age = "20";
+let isLearning = true;
+
+console.log("Name:", studentName);
+console.log("Name type:", typeof studentName);
+
+console.log("Age before conversion:", typeof age);
+
+age = Number(age);
+
+console.log("Age after conversion:", age);
+console.log("Age type:", typeof age);
+
+console.log("Is Learning:", isLearning);
+console.log("Boolean conversion:", Boolean(1));</textarea>
+
+<button onclick="runCode()">Run Code</button>
+<button onclick="resetCode()">Reset Code</button>
+
+<h3>Output</h3>
+<div class="output" id="output">Your output will appear here.</div>
+</section>
+
+<section class="card">
+<h2>12. Practice Tasks</h2>
+<ol>
+<li>Create a string variable to store your favourite subject.</li>
+<li>Create a number variable to store your age.</li>
+<li>Create a Boolean variable to represent whether you are learning JavaScript.</li>
+<li>Declare a variable without assigning a value and check its type.</li>
+<li>Convert a string containing a number into a number using Number().</li>
+<li>Use typeof to identify the data types of different variables.</li>
+<li>Create an array containing three favourite subjects.</li>
+</ol>
+</section>
+
+<section class="card">
+<h2>13. Quick Knowledge Check</h2>
+
+<p><b>Question 1:</b> Which data type stores text?</p>
+<button onclick="checkAnswer(1,'string')">String</button>
+<button onclick="checkAnswer(1,'number')">Number</button>
+<button onclick="checkAnswer(1,'boolean')">Boolean</button>
+<p id="answer1"></p>
+
+<hr style="border-color:#34344b;margin:20px 0">
+
+<p><b>Question 2:</b> What does typeof return for a Boolean value?</p>
+<button onclick="checkAnswer(2,'number')">number</button>
+<button onclick="checkAnswer(2,'boolean')">boolean</button>
+<button onclick="checkAnswer(2,'string')">string</button>
+<p id="answer2"></p>
+
+<hr style="border-color:#34344b;margin:20px 0">
+
+<p><b>Question 3:</b> Which function converts a value into a number?</p>
+<button onclick="checkAnswer(3,'String')">String()</button>
+<button onclick="checkAnswer(3,'Number')">Number()</button>
+<button onclick="checkAnswer(3,'Boolean')">Boolean()</button>
+<p id="answer3"></p>
+
+<hr style="border-color:#34344b;margin:20px 0">
+
+<p><b>Question 4:</b> What does an unassigned variable contain?</p>
+<button onclick="checkAnswer(4,'null')">null</button>
+<button onclick="checkAnswer(4,'undefined')">undefined</button>
+<button onclick="checkAnswer(4,'false')">false</button>
+<p id="answer4"></p>
+</section>
+
+<div class="nav">
+<a href="js-lesson2.html">← Previous Lesson</a>
+<a href="../javascript.html">Course Home</a>
+<a href="js-lesson4.html">Next Lesson →</a>
+</div>
+
+</div>
+
+<script>
+const starterCode = document.getElementById("codeEditor").value;
+
+function runCode(){
+  const code = document.getElementById("codeEditor").value;
+  const output = document.getElementById("output");
+  let logs = [];
+  const oldLog = console.log;
+
+  console.log = (...args) => {
+    logs.push(args.map(value =>
+      typeof value === "object" && value !== null
+        ? JSON.stringify(value)
+        : String(value)
+    ).join(" "));
+  };
+
+  try{
+    new Function(code)();
+    output.textContent = logs.join("\n") || "Code executed successfully. No console output.";
+  }catch(error){
+    output.textContent = "Error: " + error.message;
+  }finally{
+    console.log = oldLog;
+  }
+}
+
+function resetCode(){
+  document.getElementById("codeEditor").value = starterCode;
+  document.getElementById("output").textContent = "Your output will appear here.";
+}
+
+function checkAnswer(question,answer){
+  const correct = {
+    1:"string",
+    2:"boolean",
+    3:"Number",
+    4:"undefined"
+  };
+
+  document.getElementById("answer"+question).textContent =
+    answer === correct[question]
+      ? "Correct! Well done."
+      : "Not quite. Try again!";
+}
+</script>
+
+</body>
+</html>

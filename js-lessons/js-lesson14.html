@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Lesson 14 - Events and Event Listeners | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#11111b;
+  color:#eee;
+  line-height:1.7;
+}
+
+header{
+  background:#191927;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  border-bottom:1px solid #33334b;
+}
+
+header a{
+  color:#c4b5fd;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.container{
+  width:86%;
+  max-width:1000px;
+  margin:35px auto;
+}
+
+.hero{
+  background:linear-gradient(135deg,#25213e,#17172b);
+  padding:35px;
+  border-radius:15px;
+  margin-bottom:30px;
+  border:1px solid #393454;
+}
+
+.hero h1{
+  color:#c4b5fd;
+  margin-bottom:12px;
+  font-size:30px;
+}
+
+.hero p{color:#c9c5d8}
+
+.lesson-card{
+  background:#1b1b2b;
+  padding:25px;
+  border-radius:13px;
+  margin-bottom:22px;
+  border:1px solid #303047;
+}
+
+.lesson-card h2{
+  color:#c4b5fd;
+  margin-bottom:15px;
+  font-size:22px;
+}
+
+.lesson-card h3{
+  color:#d8ccff;
+  margin:18px 0 8px;
+}
+
+.lesson-card p,.lesson-card li{color:#d1cede}
+
+.lesson-card ul,.lesson-card ol{
+  padding-left:24px;
+  margin:10px 0;
+}
+
+pre{
+  background:#10101a;
+  color:#d8c9ff;
+  padding:17px;
+  border-radius:9px;
+  overflow-x:auto;
+  margin:14px 0;
+  border:1px solid #39334e;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.note{
+  background:#292342;
+  border-left:4px solid #a78bfa;
+  padding:13px;
+  margin:15px 0;
+  border-radius:5px;
+  color:#e4dcff;
+}
+
+.warning{
+  background:#38252d;
+  border-left:4px solid #f0a0ad;
+  padding:13px;
+  margin:15px 0;
+  border-radius:5px;
+  color:#f5dce2;
+}
+
+button{
+  background:#8b5cf6;
+  color:white;
+  border:none;
+  padding:11px 20px;
+  border-radius:7px;
+  cursor:pointer;
+  margin:10px 8px 10px 0;
+  font-weight:bold;
+}
+
+button:hover{background:#a78bfa}
+
+.demo-box{
+  background:#292342;
+  padding:18px;
+  border-radius:9px;
+  margin:14px 0;
+}
+
+.demo-box input{
+  background:#10101a;
+  color:#eee;
+  border:1px solid #494064;
+  padding:10px;
+  border-radius:6px;
+  margin:8px 0;
+  width:100%;
+  max-width:350px;
+}
+
+.demo-output{
+  color:#c4b5fd;
+  margin-top:10px;
+  min-height:25px;
+  overflow-wrap:anywhere;
+}
+
+.playground textarea{
+  width:100%;
+  min-height:190px;
+  background:#10101a;
+  color:#e9d5ff;
+  border:1px solid #494064;
+  border-radius:8px;
+  padding:15px;
+  font-family:Consolas,monospace;
+  font-size:14px;
+  resize:vertical;
+}
+
+.output{
+  background:#10101a;
+  border:1px solid #39334e;
+  padding:15px;
+  border-radius:8px;
+  min-height:55px;
+  margin-top:10px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  color:#c4b5fd;
+}
+
+.task{
+  background:#242238;
+  padding:13px;
+  border-radius:8px;
+  margin:10px 0;
+}
+
+.quiz-question{
+  margin:18px 0;
+  padding:15px;
+  background:#222136;
+  border-radius:8px;
+}
+
+.quiz-question label{
+  display:block;
+  margin:7px 0;
+  cursor:pointer;
+  color:#ddd7ec;
+}
+
+#quizResult{
+  margin-top:15px;
+  font-weight:bold;
+  color:#c4b5fd;
+}
+
+.navigation{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:35px 0;
+}
+
+.navigation a{
+  text-decoration:none;
+  color:#c4b5fd;
+  background:#25213e;
+  padding:12px 18px;
+  border-radius:8px;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  background:#191927;
+  color:#aaa;
+  margin-top:40px;
+}
+
+@media(max-width:600px){
+  .container{width:92%}
+  .hero{padding:23px}
+  .hero h1{font-size:25px}
+  .lesson-card{padding:18px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="../index.html">SkillSaathi</a>
+  <a href="../javascript.html">JavaScript Course</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h1>Lesson 14: Events and Event Listeners</h1>
+  <p>Learn how JavaScript responds to clicks, keyboard actions, mouse movements, and other user interactions.</p>
+  <p><strong>Part 2 – Core JavaScript</strong></p>
+</section>
+
+<section class="lesson-card">
+  <h2>1. What are JavaScript Events?</h2>
+
+  <p>An event is an action or occurrence that happens in the browser or on a webpage.</p>
+
+  <p>Events can be triggered by users or by the browser itself.</p>
+
+  <h3>Examples of Events</h3>
+
+  <ul>
+    <li>Clicking a button.</li>
+    <li>Moving the mouse over an element.</li>
+    <li>Pressing a keyboard key.</li>
+    <li>Typing inside an input field.</li>
+    <li>Submitting a form.</li>
+    <li>Loading a webpage.</li>
+  </ul>
+
+  <pre><code>&lt;button onclick="alert('Hello!')"&gt;
+  Click Me
+&lt;/button&gt;</code></pre>
+
+  <p>Here, clicking the button triggers a click event.</p>
+
+  <div class="note">
+    Events make webpages interactive by allowing JavaScript to respond to actions.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>2. Common HTML Events</h2>
+
+  <p>JavaScript supports many types of events.</p>
+
+  <h3>Common Events</h3>
+
+  <ul>
+    <li><code>click</code> – When an element is clicked.</li>
+    <li><code>dblclick</code> – When an element is double-clicked.</li>
+    <li><code>mouseover</code> – When the pointer moves over an element.</li>
+    <li><code>mouseout</code> – When the pointer leaves an element.</li>
+    <li><code>keydown</code> – When a key is pressed.</li>
+    <li><code>keyup</code> – When a key is released.</li>
+    <li><code>input</code> – When an input value changes.</li>
+    <li><code>change</code> – When a form control's value is committed.</li>
+    <li><code>submit</code> – When a form is submitted.</li>
+    <li><code>load</code> – When a resource has finished loading.</li>
+  </ul>
+
+  <pre><code>const button = document.getElementById("myButton");
+
+button.addEventListener("click", function() {
+  console.log("Button clicked!");
+});</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>3. What is an Event Listener?</h2>
+
+  <p>An event listener is a function that waits for a particular event to happen on an element.</p>
+
+  <p>When that event occurs, the attached function executes.</p>
+
+  <h3>Basic Syntax</h3>
+
+  <pre><code>element.addEventListener("event", function() {
+  // Code to execute
+});</code></pre>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;button id="clickBtn"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  const button = document.getElementById("clickBtn");
+
+  button.addEventListener("click", function() {
+    console.log("You clicked the button!");
+  });
+&lt;/script&gt;</code></pre>
+
+  <p>Whenever the button is clicked, the message appears in the browser console.</p>
+
+  <div class="note">
+    addEventListener() is the recommended way to attach event handlers because it keeps JavaScript behavior separate from HTML markup.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>4. addEventListener() Method</h2>
+
+  <p>The <code>addEventListener()</code> method attaches an event handler to an HTML element.</p>
+
+  <h3>Syntax</h3>
+
+  <pre><code>element.addEventListener(event, function, useCapture);</code></pre>
+
+  <p><strong>Parameters:</strong></p>
+
+  <ul>
+    <li><strong>event:</strong> The name of the event, such as "click".</li>
+    <li><strong>function:</strong> The function that runs when the event occurs.</li>
+    <li><strong>useCapture:</strong> An optional setting that controls the event propagation phase. Its default value is false.</li>
+  </ul>
+
+  <h3>Example</h3>
+
+  <pre><code>const heading = document.getElementById("title");
+
+heading.addEventListener("click", function() {
+  console.log("Heading clicked!");
+});</code></pre>
+
+  <p>You can also use an arrow function:</p>
+
+  <pre><code>heading.addEventListener("click", () => {
+  console.log("Heading clicked!");
+});</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>5. Click Events</h2>
+
+  <p>A click event occurs when a user clicks an element.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;button id="myButton"&gt;Click Here&lt;/button&gt;
+
+&lt;script&gt;
+  const button = document.getElementById("myButton");
+
+  button.addEventListener("click", function() {
+    alert("Welcome to SkillSaathi!");
+  });
+&lt;/script&gt;</code></pre>
+
+  <h3>Double Click Event</h3>
+
+  <pre><code>button.addEventListener("dblclick", function() {
+  console.log("Button double-clicked!");
+});</code></pre>
+
+  <div class="note">
+    A single click triggers the click event. A double-click can trigger click events as well as a dblclick event.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>6. Mouse Events</h2>
+
+  <p>Mouse events occur when a user interacts with an element using a mouse or pointer.</p>
+
+  <h3>Common Mouse Events</h3>
+
+  <ul>
+    <li><code>mouseover</code> – Pointer enters an element or one of its descendants.</li>
+    <li><code>mouseout</code> – Pointer leaves an element or one of its descendants.</li>
+    <li><code>mousedown</code> – Mouse button is pressed.</li>
+    <li><code>mouseup</code> – Mouse button is released.</li>
+    <li><code>mousemove</code> – Pointer moves over an element.</li>
+  </ul>
+
+  <h3>Example</h3>
+
+  <pre><code>const box = document.getElementById("myBox");
+
+box.addEventListener("mouseover", function() {
+  console.log("Mouse entered the box");
+});
+
+box.addEventListener("mouseout", function() {
+  console.log("Mouse left the box");
+});</code></pre>
+
+  <div class="note">
+    Mouse events are useful for interactive cards, hover effects, games, and visual feedback.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>7. Keyboard Events</h2>
+
+  <p>Keyboard events occur when a user presses or releases a key.</p>
+
+  <h3>Important Keyboard Events</h3>
+
+  <ul>
+    <li><code>keydown</code> – Fires when a key is pressed.</li>
+    <li><code>keyup</code> – Fires when a key is released.</li>
+  </ul>
+
+  <h3>Example</h3>
+
+  <pre><code>document.addEventListener("keydown", function(event) {
+  console.log("Key pressed:", event.key);
+});</code></pre>
+
+  <p>If the user presses the letter A, the console displays:</p>
+
+  <pre><code>Key pressed: a</code></pre>
+
+  <p>You can also check for a specific key:</p>
+
+  <pre><code>document.addEventListener("keydown", function(event) {
+  if(event.key === "Enter") {
+    console.log("Enter key pressed!");
+  }
+});</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>8. Input Events</h2>
+
+  <p>The input event occurs whenever the value of an input or textarea changes due to user interaction.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;input type="text" id="username" placeholder="Enter your name"&gt;
+
+&lt;script&gt;
+  const input = document.getElementById("username");
+
+  input.addEventListener("input", function() {
+    console.log(input.value);
+  });
+&lt;/script&gt;</code></pre>
+
+  <p>As the user types, the current input value is displayed.</p>
+
+  <h3>Change Event</h3>
+
+  <p>The change event fires when a value is committed. For text inputs, this generally happens after the value changes and the field loses focus.</p>
+
+  <pre><code>input.addEventListener("change", function() {
+  console.log("Final value:", input.value);
+});</code></pre>
+
+  <div class="note">
+    input is useful for live feedback. change is useful when you want to respond after a value has been committed.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>9. Event Object</h2>
+
+  <p>When an event occurs, the browser provides an event object containing information about that event.</p>
+
+  <p>We can receive it as a parameter in the event handler function.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>const button = document.getElementById("myButton");
+
+button.addEventListener("click", function(event) {
+  console.log(event.type);
+  console.log(event.target);
+});</code></pre>
+
+  <p><strong>Some useful event object properties:</strong></p>
+
+  <ul>
+    <li><code>event.type</code> – The event's name.</li>
+    <li><code>event.target</code> – The element that triggered the event.</li>
+    <li><code>event.currentTarget</code> – The element whose listener is currently running.</li>
+    <li><code>event.key</code> – The key involved in a keyboard event.</li>
+    <li><code>event.clientX</code> – Horizontal mouse position relative to the viewport.</li>
+    <li><code>event.clientY</code> – Vertical mouse position relative to the viewport.</li>
+  </ul>
+
+  <div class="note">
+    The event object helps us understand what happened and which element was involved.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>10. Removing Event Listeners</h2>
+
+  <p>The <code>removeEventListener()</code> method removes an event listener that was previously attached to an element.</p>
+
+  <p>To remove a listener, we must use the same event name and the same function reference that was originally registered.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>const button = document.getElementById("myButton");
+
+function showMessage() {
+  console.log("Button clicked!");
+}
+
+button.addEventListener("click", showMessage);
+
+// Remove the listener
+button.removeEventListener("click", showMessage);</code></pre>
+
+  <div class="warning">
+    An anonymous function cannot be removed by writing another identical-looking anonymous function. Use a named function or keep the original function reference.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>11. Practical Examples</h2>
+
+  <h3>Example 1: Button Click Counter</h3>
+
+  <pre><code>&lt;button id="countBtn"&gt;Click Me&lt;/button&gt;
+&lt;p id="countText"&gt;Clicks: 0&lt;/p&gt;
+
+&lt;script&gt;
+  let count = 0;
+
+  const button = document.getElementById("countBtn");
+  const text = document.getElementById("countText");
+
+  button.addEventListener("click", function() {
+    count++;
+    text.textContent = "Clicks: " + count;
+  });
+&lt;/script&gt;</code></pre>
+
+  <h3>Example 2: Mouse Hover</h3>
+
+  <pre><code>&lt;div id="hoverBox"&gt;Move your mouse here&lt;/div&gt;
+
+&lt;script&gt;
+  const box = document.getElementById("hoverBox");
+
+  box.addEventListener("mouseover", function() {
+    console.log("Mouse entered!");
+  });
+
+  box.addEventListener("mouseout", function() {
+    console.log("Mouse left!");
+  });
+&lt;/script&gt;</code></pre>
+
+  <h3>Example 3: Live Input Display</h3>
+
+  <pre><code>&lt;input id="nameInput" placeholder="Your name"&gt;
+&lt;p id="preview"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  const input = document.getElementById("nameInput");
+  const preview = document.getElementById("preview");
+
+  input.addEventListener("input", function() {
+    preview.textContent = input.value;
+  });
+&lt;/script&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>12. Code Playground</h2>
+
+  <p>Experiment with different event listeners. The sample elements below are connected to the playground.</p>
+
+  <div class="demo-box">
+    <h3>Interactive Demo</h3>
+
+    <button id="demoClickBtn" type="button">Click Me</button>
+
+    <div id="demoMouseBox" style="background:#45366d;padding:20px;border-radius:8px;margin:12px 0;cursor:pointer">
+      Move your mouse over this box
+    </div>
+
+    <input id="demoInput" type="text" placeholder="Type something here">
+
+    <p class="demo-output" id="demoLiveOutput">Your input will appear here.</p>
+  </div>
+
+  <textarea id="codeInput">const button = document.getElementById("demoClickBtn");
+
+button.addEventListener("click", function(event) {
+  console.log("Button clicked!");
+  console.log("Event type: " + event.type);
+});
+
+const box = document.getElementById("demoMouseBox");
+
+box.addEventListener("mouseover", function() {
+  console.log("Mouse entered the box");
+});
+
+const input = document.getElementById("demoInput");
+
+input.addEventListener("input", function() {
+  console.log("You typed: " + input.value);
+});</textarea>
+
+  <br>
+  <button onclick="runCode()">Run Code</button>
+  <button onclick="resetCode()">Reset Code</button>
+
+  <h3>Output</h3>
+  <div class="output" id="output">Run your code, then interact with the demo elements. Output will appear here.</div>
+</section>
+
+<section class="lesson-card">
+  <h2>13. Practice Tasks</h2>
+
+  <div class="task">
+    <strong>Task 1:</strong> Create a button and display a message when it is clicked.
+  </div>
+
+  <div class="task">
+    <strong>Task 2:</strong> Create a box and use mouseover and mouseout events to display messages.
+  </div>
+
+  <div class="task">
+    <strong>Task 3:</strong> Listen for a keydown event and display the pressed key.
+  </div>
+
+  <div class="task">
+    <strong>Task 4:</strong> Create an input field and display its value using the input event.
+  </div>
+
+  <div class="task">
+    <strong>Task 5:</strong> Use the event object to display the event type and target element.
+  </div>
+
+  <div class="task">
+    <strong>Task 6:</strong> Attach an event listener using a named function and then remove it.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>14. Quick Knowledge Check</h2>
+
+  <form id="quizForm">
+
+    <div class="quiz-question">
+      <p><strong>1. What is an event in JavaScript?</strong></p>
+      <label><input type="radio" name="q1" value="a"> A CSS property</label>
+      <label><input type="radio" name="q1" value="b"> An action or occurrence in the browser</label>
+      <label><input type="radio" name="q1" value="c"> A variable declaration</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>2. Which method attaches an event listener?</strong></p>
+      <label><input type="radio" name="q2" value="a"> addEventListener()</label>
+      <label><input type="radio" name="q2" value="b"> createElement()</label>
+      <label><input type="radio" name="q2" value="c"> remove()</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>3. Which event occurs when a keyboard key is pressed?</strong></p>
+      <label><input type="radio" name="q3" value="a"> mouseover</label>
+      <label><input type="radio" name="q3" value="b"> keydown</label>
+      <label><input type="radio" name="q3" value="c"> change</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>4. Which event object property gives the event name?</strong></p>
+      <label><input type="radio" name="q4" value="a"> event.target</label>
+      <label><input type="radio" name="q4" value="b"> event.key</label>
+      <label><input type="radio" name="q4" value="c"> event.type</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>5. Which method removes an event listener?</strong></p>
+      <label><input type="radio" name="q5" value="a"> removeEventListener()</label>
+      <label><input type="radio" name="q5" value="b"> removeAttribute()</label>
+      <label><input type="radio" name="q5" value="c"> classList.remove()</label>
+    </div>
+
+    <button type="button" onclick="checkQuiz()">Submit Answers</button>
+    <button type="reset" onclick="document.getElementById('quizResult').textContent=''">Reset Quiz</button>
+
+    <div id="quizResult"></div>
+  </form>
+</section>
+
+<div class="navigation">
+  <a href="js-lesson13.html">← Previous Lesson</a>
+  <a href="../javascript.html">Course Home</a>
+  <a href="js-lesson15.html">Next Lesson →</a>
+</div>
+
+</main>
+
+<footer>
+  <p>© 2026 SkillSaathi | Learn. Practice. Grow.</p>
+</footer>
+
+&lt;script&gt;
+const defaultCode = `const button = document.getElementById("demoClickBtn");
+
+button.addEventListener("click", function(event) {
+  console.log("Button clicked!");
+  console.log("Event type: " + event.type);
+});
+
+const box = document.getElementById("demoMouseBox");
+
+box.addEventListener("mouseover", function() {
+  console.log("Mouse entered the box");
+});
+
+const input = document.getElementById("demoInput");
+
+input.addEventListener("input", function() {
+  console.log("You typed: " + input.value);
+});`;
+
+let playgroundFrame = null;
+
+function runCode(){
+  const code = document.getElementById("codeInput").value;
+  const output = document.getElementById("output");
+
+  if(playgroundFrame){
+    playgroundFrame.remove();
+  }
+
+  const frame = document.createElement("iframe");
+  frame.style.display = "none";
+  document.body.appendChild(frame);
+
+  playgroundFrame = frame;
+
+  const doc = frame.contentDocument;
+
+  doc.open();
+  doc.write(`
+    <!DOCTYPE html>
+    <html>
+    <body>
+      <button id="demoClickBtn">Click Me</button>
+
+      <div id="demoMouseBox">
+        Move your mouse over this box
+      </div>
+
+      <input id="demoInput" placeholder="Type something here">
+
+      <p id="demoLiveOutput"></p>
+    </body>
+    </html>
+  `);
+  doc.close();
+
+  let logs = [];
+
+  const customConsole = {
+    log: (...values) => {
+      logs.push(values.map(value => {
+        if(value === null) return "null";
+        if(value === undefined) return "undefined";
+        if(typeof value === "object"){
+          return value.outerHTML || JSON.stringify(value);
+        }
+        return String(value);
+      }).join(" "));
+    }
+  };
+
+  try{
+    const execute = new Function(
+      "document",
+      "console",
+      code
+    );
+
+    execute(doc,customConsole);
+
+    output.textContent = logs.length
+      ? logs.join("\n") + "\n\nNow interact with the demo elements."
+      : "Listeners attached successfully. Now interact with the demo elements.";
+
+    frame.contentWindow.addEventListener("error", function(event){
+      output.textContent += "\nError: " + event.message;
+    });
+
+    const originalLog = customConsole.log;
+
+    customConsole.log = originalLog;
+
+  }catch(error){
+    output.textContent = error.name + ": " + error.message;
+  }
+}
+
+function resetCode(){
+  if(playgroundFrame){
+    playgroundFrame.remove();
+    playgroundFrame = null;
+  }
+
+  document.getElementById("codeInput").value = defaultCode;
+  document.getElementById("output").textContent =
+    "Run your code, then interact with the demo elements. Output will appear here.";
+}
+
+function checkQuiz(){
+  const answers = {
+    q1:"b",
+    q2:"a",
+    q3:"b",
+    q4:"c",
+    q5:"a"
+  };
+
+  let score = 0;
+  const total = Object.keys(answers).length;
+
+  for(let question in answers){
+    const selected = document.querySelector(
+      `input[name="${question}"]:checked`
+    );
+
+    if(selected && selected.value === answers[question]){
+      score++;
+    }
+  }
+
+  const result = document.getElementById("quizResult");
+
+  result.textContent =
+    "You scored " + score + " out of " + total + "." +
+    (score === total
+      ? " Excellent work!"
+      : " Review the lesson and try again.");
+}
+</script>
+
+</body>
+</html>

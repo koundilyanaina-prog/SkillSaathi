@@ -1,0 +1,920 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 21 - Asynchronous JavaScript | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ font-family:Arial,sans-serif;
+ background:#11111b;
+ color:#e5e5e5;
+ line-height:1.7;
+}
+header{
+ background:#191927;
+ padding:18px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:1px solid #302d46;
+ position:sticky;
+ top:0;
+ z-index:10;
+}
+header a{
+ color:#c4b5fd;
+ text-decoration:none;
+ font-weight:bold;
+}
+header .course-link{color:#aaa}
+.container{
+ width:90%;
+ max-width:1100px;
+ margin:35px auto;
+}
+.hero{
+ background:linear-gradient(135deg,#211b3b,#17172a);
+ padding:35px;
+ border-radius:16px;
+ border:1px solid #40365f;
+ margin-bottom:30px;
+}
+.lesson-tag{
+ color:#a78bfa;
+ font-size:13px;
+ font-weight:bold;
+ letter-spacing:2px;
+}
+h1{
+ color:#ddd6fe;
+ font-size:32px;
+ margin:10px 0;
+}
+.hero p{color:#c5c1d5}
+.progress{
+ height:7px;
+ background:#302d46;
+ border-radius:20px;
+ margin-top:20px;
+ overflow:hidden;
+}
+.progress span{
+ display:block;
+ width:84%;
+ height:100%;
+ background:#a78bfa;
+}
+section{
+ background:#191927;
+ border:1px solid #302d46;
+ padding:25px;
+ border-radius:13px;
+ margin-bottom:22px;
+}
+h2{
+ color:#c4b5fd;
+ margin-bottom:14px;
+ font-size:23px;
+}
+h3{
+ color:#ddd6fe;
+ margin:18px 0 8px;
+ font-size:18px;
+}
+p{margin:9px 0;color:#d0ceda}
+ul,ol{padding-left:25px;margin:10px 0}
+li{margin:7px 0;color:#d0ceda}
+strong{color:#ddd6fe}
+.note{
+ background:#25213a;
+ border-left:4px solid #a78bfa;
+ padding:13px 16px;
+ border-radius:6px;
+ margin:15px 0;
+}
+.warning{
+ background:#30251f;
+ border-left:4px solid #e6a65c;
+ padding:13px 16px;
+ border-radius:6px;
+ margin:15px 0;
+}
+pre{
+ background:#101018;
+ border:1px solid #38334f;
+ padding:17px;
+ border-radius:9px;
+ overflow-x:auto;
+ margin:12px 0;
+ color:#c4b5fd;
+ font-size:14px;
+ line-height:1.6;
+}
+code{font-family:Consolas,monospace}
+table{
+ width:100%;
+ border-collapse:collapse;
+ margin:15px 0;
+}
+th,td{
+ border:1px solid #39344e;
+ padding:11px;
+ text-align:left;
+}
+th{background:#29233e;color:#ddd6fe}
+td{color:#d0ceda}
+button{
+ background:#8b5cf6;
+ color:white;
+ border:none;
+ padding:10px 17px;
+ border-radius:7px;
+ cursor:pointer;
+ font-weight:bold;
+ margin:5px 5px 5px 0;
+}
+button:hover{background:#7c3aed}
+.secondary{background:#39334e}
+.secondary:hover{background:#4a4264}
+.demo-box{
+ background:#131320;
+ border:1px solid #39344e;
+ padding:17px;
+ border-radius:9px;
+ margin:12px 0;
+}
+.demo-output{
+ color:#a7f3d0;
+ margin-top:10px;
+ min-height:25px;
+ white-space:pre-wrap;
+}
+input,textarea{
+ width:100%;
+ background:#101018;
+ color:#eee;
+ border:1px solid #49415f;
+ border-radius:7px;
+ padding:12px;
+ margin:8px 0;
+ font-family:Consolas,monospace;
+}
+textarea{min-height:190px;resize:vertical}
+.play-output{
+ background:#101018;
+ color:#a7f3d0;
+ border:1px solid #39344e;
+ border-radius:8px;
+ padding:15px;
+ min-height:80px;
+ margin-top:12px;
+ white-space:pre-wrap;
+ overflow-wrap:anywhere;
+}
+.quiz-question{
+ padding:15px;
+ border-bottom:1px solid #39344e;
+}
+.quiz-question label{
+ display:block;
+ margin:8px 0;
+ color:#d0ceda;
+ cursor:pointer;
+}
+.result{
+ margin-top:15px;
+ color:#c4b5fd;
+ font-weight:bold;
+}
+.navigation{
+ display:flex;
+ justify-content:space-between;
+ gap:12px;
+ flex-wrap:wrap;
+ margin:30px 0;
+}
+footer{
+ text-align:center;
+ padding:25px;
+ color:#85819a;
+ border-top:1px solid #302d46;
+}
+@media(max-width:650px){
+ header{padding:15px 5%}
+ h1{font-size:25px}
+ .container{width:94%}
+ section,.hero{padding:19px}
+ table{font-size:13px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <a href="../index.html">SkillSaathi</a>
+ <a class="course-link" href="../javascript.html">JavaScript Course</a>
+</header>
+
+<main class="container">
+
+<div class="hero">
+ <div class="lesson-tag">JAVASCRIPT • PART 3 • LESSON 21</div>
+ <h1>Asynchronous JavaScript</h1>
+ <p>Understand how JavaScript handles tasks that take time without blocking the entire program.</p>
+ <div class="progress"><span></span></div>
+ <p style="font-size:13px;margin-top:8px">Lesson 21 of 25</p>
+</div>
+
+<section>
+<h2>1. Introduction to Asynchronous JavaScript</h2>
+<p>JavaScript normally executes code one statement at a time. But some tasks take time, such as waiting for a timer, responding to a user action, or reading data from a browser API.</p>
+<p><strong>Asynchronous JavaScript</strong> allows certain operations to complete later while the rest of the program continues running.</p>
+
+<div class="note">
+<strong>Simple meaning:</strong> Asynchronous programming means starting a task and allowing other code to continue while that task is waiting.
+</div>
+
+<h3>Examples of time-consuming tasks</h3>
+<ul>
+<li>Waiting for a timer.</li>
+<li>Responding to a button click.</li>
+<li>Reading or writing browser data.</li>
+<li>Receiving information from an external source.</li>
+</ul>
+</section>
+
+<section>
+<h2>2. Synchronous vs Asynchronous Code</h2>
+
+<h3>Synchronous code</h3>
+<p>Synchronous code runs line by line. Each statement waits for the previous statement to finish.</p>
+<pre><code>console.log("First");
+console.log("Second");
+console.log("Third");</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>First
+Second
+Third</code></pre>
+
+<h3>Asynchronous code</h3>
+<p>Some operations are scheduled to happen later. JavaScript can continue executing the next statements in the meantime.</p>
+<pre><code>console.log("First");
+
+setTimeout(function(){
+    console.log("Second");
+}, 2000);
+
+console.log("Third");</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code>First
+Third
+Second</code></pre>
+
+<div class="note">
+The timer schedules the callback for later. It does not stop the next line from running.
+</div>
+</section>
+
+<section>
+<h2>3. Blocking and Non-Blocking Code</h2>
+
+<h3>Blocking code</h3>
+<p>Blocking code prevents the next operation from continuing until the current operation finishes.</p>
+<pre><code>console.log("Task 1");
+
+// A long-running operation can block execution.
+
+console.log("Task 2");</code></pre>
+
+<h3>Non-blocking code</h3>
+<p>Non-blocking operations allow JavaScript to continue with other work while waiting for a scheduled task.</p>
+<pre><code>console.log("Start");
+
+setTimeout(function(){
+    console.log("Delayed task");
+}, 2000);
+
+console.log("Continue working");</code></pre>
+
+<div class="warning">
+A long-running synchronous loop can still freeze the browser. Asynchronous programming does not automatically make every operation faster.
+</div>
+</section>
+
+<section>
+<h2>4. JavaScript Execution and Call Stack</h2>
+<p>JavaScript uses a <strong>Call Stack</strong> to keep track of which function is currently running.</p>
+<p>When a function is called, it is added to the stack. When it finishes, it is removed.</p>
+
+<pre><code>function first(){
+    console.log("Inside first");
+}
+
+function second(){
+    first();
+    console.log("Inside second");
+}
+
+second();</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>Inside first
+Inside second</code></pre>
+
+<h3>How the Call Stack works</h3>
+<ol>
+<li>The global code starts executing.</li>
+<li>The function second() is called and enters the stack.</li>
+<li>Inside it, first() is called and enters the stack.</li>
+<li>first() finishes and leaves the stack.</li>
+<li>second() finishes and leaves the stack.</li>
+</ol>
+</section>
+
+<section>
+<h2>5. setTimeout()</h2>
+<p><code>setTimeout()</code> schedules a function to run after a specified delay.</p>
+
+<h3>Syntax</h3>
+<pre><code>setTimeout(function, delay);</code></pre>
+
+<h3>Example</h3>
+<pre><code>console.log("Hello");
+
+setTimeout(function(){
+    console.log("This runs later");
+}, 2000);
+
+console.log("Welcome");</code></pre>
+
+<p>The delay is measured in milliseconds.</p>
+<ul>
+<li>1000 milliseconds = 1 second</li>
+<li>2000 milliseconds = 2 seconds</li>
+<li>5000 milliseconds = 5 seconds</li>
+</ul>
+
+<div class="demo-box">
+<strong>Try setTimeout()</strong>
+<p>Click the button and wait for the message.</p>
+<button onclick="runTimeoutDemo()">Start Timer</button>
+<div class="demo-output" id="timeoutOutput">Waiting for your action...</div>
+</div>
+
+</section>
+
+<section>
+<h2>6. setInterval()</h2>
+<p><code>setInterval()</code> repeatedly executes a function after a fixed time interval.</p>
+
+<h3>Syntax</h3>
+<pre><code>setInterval(function, interval);</code></pre>
+
+<h3>Example</h3>
+<pre><code>let count = 1;
+
+let timer = setInterval(function(){
+    console.log(count);
+    count++;
+}, 1000);</code></pre>
+
+<p>This example prints a new number every second.</p>
+
+<div class="demo-box">
+<strong>Try setInterval()</strong>
+<p>Start a counter and stop it whenever you want.</p>
+<button onclick="startCounter()">Start Counter</button>
+<button class="secondary" onclick="stopCounter()">Stop Counter</button>
+<div class="demo-output" id="counterOutput">Counter: 0</div>
+</div>
+</section>
+
+<section>
+<h2>7. clearTimeout()</h2>
+<p><code>clearTimeout()</code> cancels a timeout before its scheduled callback executes.</p>
+
+<pre><code>let timer = setTimeout(function(){
+    console.log("This message will not appear");
+}, 3000);
+
+clearTimeout(timer);</code></pre>
+
+<div class="demo-box">
+<strong>Try clearTimeout()</strong>
+<p>Start a delayed message. You can cancel it before it appears.</p>
+<button onclick="startCancelDemo()">Start Delayed Message</button>
+<button class="secondary" onclick="cancelTimeoutDemo()">Cancel Timer</button>
+<div class="demo-output" id="cancelOutput">No timer started.</div>
+</div>
+</section>
+
+<section>
+<h2>8. clearInterval()</h2>
+<p><code>clearInterval()</code> stops a repeating interval.</p>
+
+<pre><code>let count = 0;
+
+let timer = setInterval(function(){
+    count++;
+    console.log(count);
+}, 1000);
+
+// Stop the repeating task
+clearInterval(timer);</code></pre>
+
+<div class="note">
+Remember:
+<ul>
+<li><code>clearTimeout()</code> cancels a scheduled one-time callback.</li>
+<li><code>clearInterval()</code> stops a repeating callback.</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>9. Callback Functions</h2>
+<p>A callback is a function passed as an argument to another function. The receiving function can call it when needed.</p>
+
+<pre><code>function greet(name, callback){
+    console.log("Hello " + name);
+    callback();
+}
+
+function welcome(){
+    console.log("Welcome to SkillSaathi!");
+}
+
+greet("Student", welcome);</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>Hello Student
+Welcome to SkillSaathi!</code></pre>
+
+<p>Callbacks are useful in asynchronous operations because they allow us to specify what should happen when a scheduled task is ready to run.</p>
+
+<pre><code>function showMessage(callback){
+    setTimeout(function(){
+        callback();
+    }, 2000);
+}
+
+showMessage(function(){
+    console.log("Task completed!");
+});</code></pre>
+</section>
+
+<section>
+<h2>10. The Event Loop</h2>
+<p>The <strong>Event Loop</strong> helps JavaScript decide when scheduled callbacks can run.</p>
+<p>It checks whether the Call Stack is empty and whether a callback is ready in the relevant queue.</p>
+
+<h3>Important parts</h3>
+<ul>
+<li><strong>Call Stack:</strong> Keeps track of currently executing functions.</li>
+<li><strong>Web APIs:</strong> Browser-provided features that handle timers and other browser tasks.</li>
+<li><strong>Callback Queue:</strong> Holds ready callbacks waiting for the Call Stack.</li>
+<li><strong>Event Loop:</strong> Checks the stack and coordinates when queued callbacks can run.</li>
+</ul>
+
+<h3>Basic execution flow</h3>
+<pre><code>JavaScript Code
+      |
+      v
+  Call Stack
+      |
+      v
+  Browser APIs
+      |
+      v
+ Callback Queue
+      |
+      v
+   Event Loop
+      |
+      v
+  Call Stack (when empty)</code></pre>
+
+<div class="note">
+This is a simplified introduction. JavaScript also has a separate microtask queue, which we will explore when learning Promises.
+</div>
+</section>
+
+<section>
+<h2>11. Web APIs and Callback Queue</h2>
+<p>Browsers provide Web APIs that JavaScript can use for tasks such as timers and user interactions.</p>
+
+<p>When a timer finishes, its callback becomes eligible to run. It waits until the Call Stack is clear before JavaScript executes it.</p>
+
+<pre><code>console.log("A");
+
+setTimeout(function(){
+    console.log("B");
+}, 0);
+
+console.log("C");</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>A
+C
+B</code></pre>
+
+<p>Even with a delay of zero milliseconds, the callback does not interrupt the current synchronous code.</p>
+</section>
+
+<section>
+<h2>12. Understanding Execution Order</h2>
+<p>Let's understand the order using another example.</p>
+
+<pre><code>console.log("Start");
+
+setTimeout(function(){
+    console.log("Timer 1");
+}, 1000);
+
+setTimeout(function(){
+    console.log("Timer 2");
+}, 500);
+
+console.log("End");</code></pre>
+
+<p><strong>Expected output:</strong></p>
+<pre><code>Start
+End
+Timer 2
+Timer 1</code></pre>
+
+<p>The synchronous statements run first. The timer with the shorter delay becomes ready earlier.</p>
+
+<div class="warning">
+Timer delays are minimum scheduling delays, not guarantees of exact execution time. A busy Call Stack can delay a callback.
+</div>
+</section>
+
+<section>
+<h2>13. Practical Examples</h2>
+
+<h3>Example 1: Delayed greeting</h3>
+<pre><code>function greeting(){
+    console.log("Good morning!");
+}
+
+setTimeout(greeting, 2000);</code></pre>
+
+<h3>Example 2: Digital counter</h3>
+<pre><code>let number = 1;
+
+let counter = setInterval(function(){
+    console.log(number);
+    number++;
+
+    if(number > 5){
+        clearInterval(counter);
+    }
+}, 1000);</code></pre>
+
+<h3>Example 3: Stop a timer</h3>
+<pre><code>let messageTimer = setTimeout(function(){
+    console.log("Your time is up!");
+}, 5000);
+
+// Cancel it before five seconds
+clearTimeout(messageTimer);</code></pre>
+</section>
+
+<section>
+<h2>14. Code Playground</h2>
+<p>Write JavaScript code and click Run Code to see the output. Timer functions are supported in this playground.</p>
+
+<textarea id="codeEditor" spellcheck="false">console.log("Program started");
+
+setTimeout(function(){
+    console.log("This message appears after 2 seconds");
+}, 2000);
+
+console.log("Program continues");</textarea>
+
+<button onclick="runPlayground()">Run Code</button>
+<button class="secondary" onclick="resetPlayground()">Reset Code</button>
+<div class="play-output" id="playOutput">Your output will appear here...</div>
+</section>
+
+<section>
+<h2>15. Practice Tasks</h2>
+<ol>
+<li>Print three messages using synchronous console.log() statements.</li>
+<li>Use setTimeout() to display a message after three seconds.</li>
+<li>Create a counter that increases every second using setInterval().</li>
+<li>Stop the counter after it reaches 10 using clearInterval().</li>
+<li>Create a timeout and cancel it using clearTimeout().</li>
+<li>Write a function that accepts another function as a callback.</li>
+<li>Predict the output of a program containing console.log() and setTimeout().</li>
+</ol>
+<div class="note">
+<strong>Challenge:</strong> Create a countdown from 5 to 1 using setInterval(). Display "Time's up!" and stop the interval when the countdown reaches zero.
+</div>
+</section>
+
+<section>
+<h2>16. Lesson Quiz</h2>
+<p>Choose the correct answer for each question.</p>
+
+<form id="quizForm">
+
+<div class="quiz-question">
+<p><strong>1. What is asynchronous JavaScript?</strong></p>
+<label><input type="radio" name="q1" value="a"> Code that never executes</label>
+<label><input type="radio" name="q1" value="b"> Code that allows other work to continue while waiting</label>
+<label><input type="radio" name="q1" value="c"> Code that only uses variables</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2. Which function runs a callback after a delay?</strong></p>
+<label><input type="radio" name="q2" value="a"> setTimeout()</label>
+<label><input type="radio" name="q2" value="b"> clearInterval()</label>
+<label><input type="radio" name="q2" value="c"> console.log()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3. Which function repeatedly executes a callback?</strong></p>
+<label><input type="radio" name="q3" value="a"> clearTimeout()</label>
+<label><input type="radio" name="q3" value="b"> setInterval()</label>
+<label><input type="radio" name="q3" value="c"> alert()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4. How do you cancel a timeout?</strong></p>
+<label><input type="radio" name="q4" value="a"> stopTimer()</label>
+<label><input type="radio" name="q4" value="b"> clearInterval()</label>
+<label><input type="radio" name="q4" value="c"> clearTimeout()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5. How do you stop a repeating interval?</strong></p>
+<label><input type="radio" name="q5" value="a"> clearInterval()</label>
+<label><input type="radio" name="q5" value="b"> clearTimeout()</label>
+<label><input type="radio" name="q5" value="c"> setTimeout()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>6. What does the Call Stack manage?</strong></p>
+<label><input type="radio" name="q6" value="a"> Website colors</label>
+<label><input type="radio" name="q6" value="b"> Currently executing function calls</label>
+<label><input type="radio" name="q6" value="c"> Image files</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>7. What is a callback function?</strong></p>
+<label><input type="radio" name="q7" value="a"> A function passed to another function</label>
+<label><input type="radio" name="q7" value="b"> A CSS selector</label>
+<label><input type="radio" name="q7" value="c"> A variable that cannot change</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>8. What coordinates callback execution with the Call Stack?</strong></p>
+<label><input type="radio" name="q8" value="a"> HTML</label>
+<label><input type="radio" name="q8" value="b"> Event Loop</label>
+<label><input type="radio" name="q8" value="c"> CSS</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>9. What is the output order?</strong></p>
+<pre><code>console.log("A");
+setTimeout(function(){
+ console.log("B");
+}, 0);
+console.log("C");</code></pre>
+<label><input type="radio" name="q9" value="a"> A, B, C</label>
+<label><input type="radio" name="q9" value="b"> B, A, C</label>
+<label><input type="radio" name="q9" value="c"> A, C, B</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>10. 1000 milliseconds equals:</strong></p>
+<label><input type="radio" name="q10" value="a"> 1 second</label>
+<label><input type="radio" name="q10" value="b"> 10 seconds</label>
+<label><input type="radio" name="q10" value="c"> 100 seconds</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+<button type="reset" class="secondary" onclick="resetQuiz()">Reset Quiz</button>
+<div class="result" id="quizResult"></div>
+</form>
+</section>
+
+<div class="navigation">
+ <a href="js-lesson20.html"><button class="secondary">← Previous Lesson</button></a>
+ <a href="../javascript.html"><button class="secondary">Course Home</button></a>
+ <a href="js-lesson22.html"><button>Next Lesson →</button></a>
+</div>
+
+</main>
+
+<footer>
+<p>SkillSaathi © 2026 | Learn. Practice. Grow.</p>
+</footer>
+
+<script>
+/* setTimeout demo */
+function runTimeoutDemo(){
+ const output=document.getElementById("timeoutOutput");
+ output.textContent="Timer started. Please wait...";
+ setTimeout(function(){
+  output.textContent="Hello! This message appeared after 2 seconds.";
+ },2000);
+}
+
+/* setInterval demo */
+let counterTimer=null;
+let counterValue=0;
+
+function startCounter(){
+ if(counterTimer!==null)return;
+ counterValue=0;
+ const output=document.getElementById("counterOutput");
+ output.textContent="Counter: 0";
+
+ counterTimer=setInterval(function(){
+  counterValue++;
+  output.textContent="Counter: "+counterValue;
+ },1000);
+}
+
+function stopCounter(){
+ if(counterTimer!==null){
+  clearInterval(counterTimer);
+  counterTimer=null;
+  document.getElementById("counterOutput").textContent=
+   "Counter stopped at: "+counterValue;
+ }
+}
+
+/* clearTimeout demo */
+let cancelTimer=null;
+
+function startCancelDemo(){
+ const output=document.getElementById("cancelOutput");
+ if(cancelTimer!==null)clearTimeout(cancelTimer);
+
+ output.textContent="Message scheduled. Cancel it within 4 seconds.";
+
+ cancelTimer=setTimeout(function(){
+  output.textContent="Your delayed message has appeared!";
+  cancelTimer=null;
+ },4000);
+}
+
+function cancelTimeoutDemo(){
+ const output=document.getElementById("cancelOutput");
+
+ if(cancelTimer!==null){
+  clearTimeout(cancelTimer);
+  cancelTimer=null;
+  output.textContent="Timer successfully cancelled!";
+ }else{
+  output.textContent="There is no active timer to cancel.";
+ }
+}
+
+/* Playground */
+const defaultCode=`console.log("Program started");
+
+setTimeout(function(){
+    console.log("This message appears after 2 seconds");
+}, 2000);
+
+console.log("Program continues");`;
+
+function runPlayground(){
+ const code=document.getElementById("codeEditor").value;
+ const output=document.getElementById("playOutput");
+ let logs=[];
+ let timers=[];
+ let intervals=[];
+ let stopped=false;
+
+ output.textContent="Running...";
+
+ const customConsole={
+  log:function(...args){
+   if(!stopped){
+    logs.push(args.map(value=>{
+     if(typeof value==="object"){
+      try{return JSON.stringify(value)}catch(e){return String(value)}
+     }
+     return String(value);
+    }).join(" "));
+    output.textContent=logs.join("\n")||"No output";
+   }
+  },
+  error:function(...args){
+   this.log("Error:",...args);
+  },
+  warn:function(...args){
+   this.log("Warning:",...args);
+  }
+ };
+
+ const safeTimeout=function(callback,delay){
+  const id=setTimeout(function(){
+   if(!stopped && typeof callback==="function"){
+    try{callback()}catch(error){customConsole.error(error.message)}
+   }
+  },Math.min(Math.max(Number(delay)||0,0),10000));
+  timers.push(id);
+  return id;
+ };
+
+ const safeInterval=function(callback,delay){
+  const id=setInterval(function(){
+   if(!stopped && typeof callback==="function"){
+    try{callback()}catch(error){
+     customConsole.error(error.message);
+     clearInterval(id);
+    }
+   }
+  },Math.min(Math.max(Number(delay)||0,100),10000));
+  intervals.push(id);
+  return id;
+ };
+
+ try{
+  const execute=new Function(
+   "console",
+   "setTimeout",
+   "setInterval",
+   "clearTimeout",
+   "clearInterval",
+   code
+  );
+
+  execute(
+   customConsole,
+   safeTimeout,
+   safeInterval,
+   function(id){clearTimeout(id)},
+   function(id){clearInterval(id)}
+  );
+
+  if(logs.length===0){
+   output.textContent="Code executed. Waiting for any scheduled output...";
+  }
+ }catch(error){
+  output.textContent="Error: "+error.message;
+ }
+
+ /* Stop timers after 15 seconds to protect the playground */
+ setTimeout(function(){
+  stopped=true;
+  timers.forEach(id=>clearTimeout(id));
+  intervals.forEach(id=>clearInterval(id));
+  if(logs.length===0){
+   output.textContent="Code executed. No console output.";
+  }
+ },15000);
+}
+
+function resetPlayground(){
+ document.getElementById("codeEditor").value=defaultCode;
+ document.getElementById("playOutput").textContent=
+  "Your output will appear here...";
+}
+
+/* Quiz */
+function checkQuiz(){
+ const answers={
+  q1:"b",q2:"a",q3:"b",q4:"c",q5:"a",
+  q6:"b",q7:"a",q8:"b",q9:"c",q10:"a"
+ };
+
+ let score=0;
+ let total=Object.keys(answers).length;
+
+ for(let question in answers){
+  const selected=document.querySelector(
+   'input[name="'+question+'"]:checked'
+  );
+  if(selected && selected.value===answers[question]){
+   score++;
+  }
+ }
+
+ const result=document.getElementById("quizResult");
+ result.textContent="Your Score: "+score+" / "+total+
+  (score>=7 ? " — Great job! Keep learning!" :
+   " — Keep practicing. You can try again!");
+
+}
+
+function resetQuiz(){
+ document.getElementById("quizResult").textContent="";
+}
+</script>
+
+</body>
+</html>

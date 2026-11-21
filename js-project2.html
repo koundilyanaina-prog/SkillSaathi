@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List App | SkillSaathi</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #11111b;
+    color: #eee;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #1c1c2b;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #34344b;
+}
+
+h1 {
+    text-align: center;
+    color: #c4b5fd;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid #44445c;
+    border-radius: 8px;
+    background: #11111b;
+    color: white;
+    outline: none;
+}
+
+input:focus {
+    border-color: #a78bfa;
+}
+
+button {
+    padding: 12px 17px;
+    border: none;
+    border-radius: 8px;
+    background: #a78bfa;
+    color: #171323;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #c4b5fd;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #252538;
+    padding: 13px;
+    border-radius: 9px;
+    margin-bottom: 10px;
+}
+
+.task span {
+    flex: 1;
+    overflow-wrap: anywhere;
+}
+
+.task.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task input {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    accent-color: #a78bfa;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: #e87979;
+    padding: 8px 12px;
+}
+
+.delete-btn:hover {
+    background: #fca5a5;
+}
+
+#taskCount {
+    color: #c4b5fd;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+#emptyMessage {
+    text-align: center;
+    color: #888;
+    padding: 20px 0;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    .input-area button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>My To-Do List</h1>
+    <p class="subtitle">Plan your day. Complete your goals.</p>
+
+    <div class="input-area">
+        <input type="text" id="taskInput" placeholder="Enter a new task...">
+        <button id="addBtn">Add Task</button>
+    </div>
+
+    <p id="taskCount">0 tasks remaining</p>
+
+    <div id="taskList"></div>
+
+    <p id="emptyMessage">No tasks yet. Add your first task!</p>
+
+</div>
+
+<script>
+const taskInput = document.getElementById("taskInput");
+const addBtn = document.getElementById("addBtn");
+const taskList = document.getElementById("taskList");
+const taskCount = document.getElementById("taskCount");
+const emptyMessage = document.getElementById("emptyMessage");
+
+let tasks = [];
+
+try {
+    const savedTasks = JSON.parse(localStorage.getItem("skillSaathiTasks"));
+    if (Array.isArray(savedTasks)) {
+        tasks = savedTasks.filter(task =>
+            task &&
+            typeof task.text === "string" &&
+            typeof task.completed === "boolean"
+        );
+    }
+} catch (error) {
+    tasks = [];
+}
+
+function saveTasks() {
+    localStorage.setItem("skillSaathiTasks", JSON.stringify(tasks));
+}
+
+function updateCount() {
+    const remaining = tasks.filter(task => !task.completed).length;
+    taskCount.textContent = `${remaining} tasks remaining`;
+    emptyMessage.style.display = tasks.length === 0 ? "block" : "none";
+}
+
+function renderTasks() {
+    taskList.innerHTML = "";
+
+    tasks.forEach((task, index) => {
+        const taskDiv = document.createElement("div");
+        taskDiv.className = task.completed ? "task completed" : "task";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.completed;
+
+        checkbox.addEventListener("change", function() {
+            tasks[index].completed = checkbox.checked;
+            saveTasks();
+            renderTasks();
+        });
+
+        const taskText = document.createElement("span");
+        taskText.textContent = task.text;
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.className = "delete-btn";
+
+        deleteBtn.addEventListener("click", function() {
+            tasks.splice(index, 1);
+            saveTasks();
+            renderTasks();
+        });
+
+        taskDiv.append(checkbox, taskText, deleteBtn);
+        taskList.appendChild(taskDiv);
+    });
+
+    updateCount();
+}
+
+function addTask() {
+    const text = taskInput.value.trim();
+
+    if (text === "") {
+        alert("Please enter a task!");
+        return;
+    }
+
+    tasks.push({
+        text: text,
+        completed: false
+    });
+
+    saveTasks();
+    renderTasks();
+    taskInput.value = "";
+    taskInput.focus();
+}
+
+addBtn.addEventListener("click", addTask);
+
+taskInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        addTask();
+    }
+});
+
+renderTasks();
+</script>
+
+</body>
+</html>

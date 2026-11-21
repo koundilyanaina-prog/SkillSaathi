@@ -1,0 +1,691 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Lesson 25 - Best Practices and Final Review | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Arial,sans-serif;
+  background:#11111b;
+  color:#eee;
+  line-height:1.7;
+}
+header{
+  background:#191927;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #343047;
+  gap:15px;
+  flex-wrap:wrap;
+}
+header a{color:#c4b5fd;text-decoration:none;font-weight:bold}
+.container{width:90%;max-width:1050px;margin:35px auto}
+.hero{
+  background:linear-gradient(135deg,#211b3c,#17172a);
+  padding:35px;
+  border:1px solid #514477;
+  border-radius:18px;
+  margin-bottom:28px;
+}
+.tag{
+  display:inline-block;
+  color:#c4b5fd;
+  background:#30264d;
+  padding:5px 13px;
+  border-radius:20px;
+  font-size:13px;
+  margin-bottom:12px;
+}
+h1{color:#d8ccff;font-size:30px;margin-bottom:10px}
+h2{color:#c4b5fd;font-size:23px;margin-bottom:13px}
+h3{color:#ddd1ff;margin:16px 0 8px}
+p{color:#ccc;margin:10px 0}
+.lesson-card{
+  background:#1b1b2b;
+  border:1px solid #343047;
+  border-radius:15px;
+  padding:25px;
+  margin:22px 0;
+}
+.code{
+  background:#0b0b13;
+  border:1px solid #39334f;
+  border-radius:10px;
+  padding:17px;
+  overflow-x:auto;
+  margin:14px 0;
+  color:#c4b5fd;
+  white-space:pre-wrap;
+  font-family:Consolas,monospace;
+  font-size:14px;
+}
+.note{
+  background:#29213d;
+  border-left:4px solid #a78bfa;
+  padding:14px;
+  border-radius:7px;
+  margin:15px 0;
+  color:#ddd;
+}
+ul,ol{padding-left:25px;color:#ccc;margin:10px 0}
+li{margin:7px 0}
+button{
+  background:#8b5cf6;
+  color:white;
+  border:none;
+  padding:10px 17px;
+  border-radius:8px;
+  cursor:pointer;
+  margin:7px 5px 7px 0;
+  font-weight:bold;
+}
+button:hover{background:#7041d8}
+textarea{
+  width:100%;
+  padding:12px;
+  background:#10101b;
+  color:white;
+  border:1px solid #514477;
+  border-radius:8px;
+  margin:8px 0;
+  font-family:Consolas,monospace;
+}
+.output{
+  background:#0b0b13;
+  border:1px solid #39334f;
+  border-radius:9px;
+  padding:15px;
+  min-height:55px;
+  margin-top:12px;
+  color:#c4b5fd;
+  white-space:pre-wrap;
+}
+.task{
+  background:#222036;
+  padding:15px;
+  border-radius:10px;
+  margin:12px 0;
+}
+.quiz-question{margin:18px 0;padding:15px;background:#222036;border-radius:10px}
+.quiz-question label{display:block;margin:8px 0;color:#ccc;cursor:pointer}
+.quiz-question input{margin-right:8px}
+.result{font-weight:bold;margin-top:12px;color:#c4b5fd}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:30px 0;
+}
+footer{
+  text-align:center;
+  padding:25px;
+  border-top:1px solid #343047;
+  color:#999;
+}
+@media(max-width:600px){
+  h1{font-size:24px}
+  .hero,.lesson-card{padding:20px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="../index.html">SkillSaathi</a>
+  <a href="../javascript.html">JavaScript Course</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <span class="tag">PART 3 · LESSON 25 OF 25</span>
+  <h1>JavaScript Best Practices and Final Review</h1>
+  <p>Learn how to write clean, readable, efficient and reliable JavaScript code.</p>
+  <p><strong>Level:</strong> Beginner to Advanced Review</p>
+</section>
+
+<section class="lesson-card">
+  <h2>1. What Are JavaScript Best Practices?</h2>
+  <p>Best practices are recommended ways of writing code that make programs easier to read, understand, test and maintain.</p>
+
+  <p>Good JavaScript code should be:</p>
+  <ul>
+    <li>Easy to read and understand.</li>
+    <li>Well organized.</li>
+    <li>Reusable whenever possible.</li>
+    <li>Efficient and reliable.</li>
+    <li>Easy to debug and maintain.</li>
+  </ul>
+
+  <div class="note">
+    Writing code that works is important. Writing code that other developers can understand is equally important.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>2. Use Meaningful Variable and Function Names</h2>
+  <p>Choose names that clearly describe the purpose of a variable or function.</p>
+
+  <h3>Bad example</h3>
+  <div class="code">
+let x = 500;
+let y = 10;
+let z = x * y;</div>
+
+  <h3>Better example</h3>
+  <div class="code">
+let productPrice = 500;
+let quantity = 10;
+let totalPrice = productPrice * quantity;</div>
+
+  <p>Meaningful names make code easier to understand without extra explanation.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>3. Use const and let Instead of var</h2>
+  <p>Use const when a variable will not be reassigned. Use let when its value needs to change.</p>
+
+  <div class="code">
+// Value will not be reassigned
+const courseName = "JavaScript";
+
+// Value can change
+let completedLessons = 10;
+
+completedLessons = 11;</div>
+
+  <div class="note">
+    Prefer const by default. Use let when reassignment is necessary. Avoid var in modern JavaScript unless you specifically need its older function-scoped behavior.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>4. Write Clean and Consistent Code</h2>
+  <p>Use proper indentation, spacing and line breaks to make your code readable.</p>
+
+  <h3>Hard to read</h3>
+  <div class="code">
+function total(a,b){let result=a+b;return result;}</div>
+
+  <h3>Clean code</h3>
+  <div class="code">
+function calculateTotal(price, quantity) {
+  let result = price * quantity;
+  return result;
+}</div>
+
+  <p>Consistent formatting makes debugging and teamwork easier.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>5. Avoid Repeating Code (DRY Principle)</h2>
+  <p>DRY means <strong>Don't Repeat Yourself</strong>. Instead of writing the same logic repeatedly, create reusable functions.</p>
+
+  <h3>Repeated code</h3>
+  <div class="code">
+let total1 = 100 + 50;
+let total2 = 200 + 50;
+let total3 = 300 + 50;</div>
+
+  <h3>Reusable function</h3>
+  <div class="code">
+function addTax(price, tax) {
+  return price + tax;
+}
+
+console.log(addTax(100, 50));
+console.log(addTax(200, 50));
+console.log(addTax(300, 50));</div>
+</section>
+
+<section class="lesson-card">
+  <h2>6. Use Strict Equality</h2>
+  <p>JavaScript provides two common equality operators:</p>
+  <ul>
+    <li><strong>==</strong> compares values after possible type conversion.</li>
+    <li><strong>===</strong> compares values and their types.</li>
+  </ul>
+
+  <div class="code">
+console.log(5 == "5");  // true
+console.log(5 === "5"); // false</div>
+
+  <p>Prefer strict equality (===) to avoid unexpected type conversion.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>7. Handle Errors Properly</h2>
+  <p>Use try...catch when an operation may fail and you want to handle the error gracefully.</p>
+
+  <div class="code">
+try {
+  let result = JSON.parse("{invalid JSON}");
+  console.log(result);
+} catch (error) {
+  console.log("Something went wrong:", error.message);
+}</div>
+
+  <p>Good error handling prevents unexpected failures from becoming confusing for users.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>8. Write Useful Comments</h2>
+  <p>Comments explain why a piece of code exists or what a complex section does.</p>
+
+  <div class="code">
+// Calculate the final price after applying discount
+function calculateDiscount(price, discount) {
+  return price - (price * discount / 100);
+}</div>
+
+  <p>Avoid unnecessary comments that simply repeat what the code already says.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>9. Avoid Unnecessary Global Variables</h2>
+  <p>Global variables can be accessed from many parts of a program. Too many global variables can cause naming conflicts and make code difficult to manage.</p>
+
+  <h3>Example</h3>
+  <div class="code">
+function calculateTotal() {
+  const price = 500;
+  const quantity = 2;
+
+  return price * quantity;
+}
+
+console.log(calculateTotal());</div>
+
+  <p>Keep variables inside the smallest scope where they are needed.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>10. Improve Performance</h2>
+  <p>Efficient code avoids unnecessary work and uses resources carefully.</p>
+
+  <ul>
+    <li>Avoid unnecessary loops and calculations.</li>
+    <li>Reuse results when appropriate.</li>
+    <li>Use efficient array methods when suitable.</li>
+    <li>Avoid repeatedly selecting the same DOM element.</li>
+    <li>Load large resources only when needed.</li>
+  </ul>
+
+  <div class="code">
+// Better: Select the element once
+const heading = document.getElementById("title");
+
+heading.textContent = "Welcome";
+heading.style.color = "purple";</div>
+</section>
+
+<section class="lesson-card">
+  <h2>11. Protect Your Website</h2>
+  <p>Security is an important part of JavaScript development.</p>
+
+  <ul>
+    <li>Never expose passwords, secret keys or private tokens in frontend code.</li>
+    <li>Validate user input on the server as well as the client.</li>
+    <li>Use textContent for plain text instead of inserting untrusted input with innerHTML.</li>
+    <li>Use HTTPS when sending sensitive information.</li>
+    <li>Do not trust data received from users or external APIs.</li>
+  </ul>
+
+  <h3>Safer text insertion</h3>
+  <div class="code">
+const message = document.getElementById("message");
+
+message.textContent = userInput;</div>
+
+  <div class="note">
+    Client-side validation improves user experience, but it cannot replace server-side security checks.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>12. Debugging and Testing</h2>
+  <p>Debugging means finding and fixing errors in a program.</p>
+
+  <p>Useful browser debugging tools include:</p>
+  <ul>
+    <li><strong>console.log():</strong> Displays values for inspection.</li>
+    <li><strong>console.error():</strong> Displays error messages.</li>
+    <li><strong>Debugger:</strong> Pauses execution so you can inspect variables and program flow.</li>
+    <li><strong>Browser DevTools:</strong> Helps inspect HTML, CSS, JavaScript and network requests.</li>
+  </ul>
+
+  <div class="code">
+const marks = [70, 85, 90];
+
+console.log("Marks:", marks);
+console.table(marks);
+
+debugger;
+
+const average = marks.reduce((sum, mark) => sum + mark, 0)
+  / marks.length;
+
+console.log("Average:", average);</div>
+</section>
+
+<section class="lesson-card">
+  <h2>13. Use Modern JavaScript Features</h2>
+  <p>Modern JavaScript provides useful syntax that makes code shorter and clearer.</p>
+
+  <h3>Template literals</h3>
+  <div class="code">
+const name = "Aarav";
+
+console.log(`Welcome, ${name}!`);</div>
+
+  <h3>Arrow functions</h3>
+  <div class="code">
+const square = number => number * number;
+
+console.log(square(5));</div>
+
+  <h3>Destructuring</h3>
+  <div class="code">
+const student = {
+  name: "Meera",
+  age: 19
+};
+
+const { name, age } = student;
+
+console.log(name, age);</div>
+</section>
+
+<section class="lesson-card">
+  <h2>14. Keep Your Code Organized</h2>
+  <p>Divide code into meaningful sections and separate files when a project becomes large.</p>
+
+  <div class="code">
+my-project/
+│
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── app.js
+│   ├── functions.js
+│   └── validation.js
+└── assets/
+    └── images/</div>
+
+  <p>Use clear file names and keep related code together.</p>
+  <p>For larger projects, modules help you import and export reusable functionality between files.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>15. Final JavaScript Revision</h2>
+  <p>Let's revise the important topics covered throughout this course.</p>
+
+  <h3>Part 1: JavaScript Fundamentals</h3>
+  <ul>
+    <li>Introduction to JavaScript</li>
+    <li>Variables: var, let and const</li>
+    <li>Data Types and Type Conversion</li>
+    <li>Operators and Expressions</li>
+    <li>Conditional Statements</li>
+    <li>Loops: for, while and do-while</li>
+    <li>Functions and Parameters</li>
+  </ul>
+
+  <h3>Part 2: Core JavaScript</h3>
+  <ul>
+    <li>Arrays and Array Methods</li>
+    <li>Strings and String Methods</li>
+    <li>Objects and Object Properties</li>
+    <li>Scope and Hoisting</li>
+    <li>DOM Introduction and Selection</li>
+    <li>DOM Manipulation</li>
+    <li>Events and Event Listeners</li>
+    <li>Forms and Form Validation</li>
+  </ul>
+
+  <h3>Part 3: Advanced JavaScript</h3>
+  <ul>
+    <li>ES6 Features and Template Literals</li>
+    <li>Destructuring and Spread Operator</li>
+    <li>Array Methods: map, filter and reduce</li>
+    <li>Error Handling and Debugging</li>
+    <li>JSON and Local Storage</li>
+    <li>Asynchronous JavaScript</li>
+    <li>Promises and Async/Await</li>
+    <li>Fetch API and Working with APIs</li>
+    <li>Modules and Code Organization</li>
+    <li>JavaScript Best Practices and Final Review</li>
+  </ul>
+
+  <div class="note">
+    Congratulations! You have reached the end of the 25-lesson JavaScript learning path. Now strengthen your skills by building practical projects.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>16. Final Practice Challenge</h2>
+  <p>Write a JavaScript program that calculates the average marks of students and displays the result.</p>
+
+  <textarea id="codeInput" rows="10">const students = [
+  { name: "Aarav", marks: 80 },
+  { name: "Meera", marks: 90 },
+  { name: "Riya", marks: 70 }
+];
+
+// Calculate the average marks
+const total = students.reduce((sum, student) => {
+  return sum + student.marks;
+}, 0);
+
+const average = total / students.length;
+
+console.log("Total Students:", students.length);
+console.log("Average Marks:", average);</textarea>
+
+  <button onclick="runCode()">Run Code</button>
+  <button onclick="resetCode()">Reset Code</button>
+
+  <div class="output" id="playOutput">Your output will appear here...</div>
+</section>
+
+<section class="lesson-card">
+  <h2>17. Final Knowledge Check</h2>
+
+  <div class="quiz-question">
+    <p><strong>1. Which keyword is preferred for a variable that will not be reassigned?</strong></p>
+    <label><input type="radio" name="q1" value="a"> var</label>
+    <label><input type="radio" name="q1" value="b"> const</label>
+    <label><input type="radio" name="q1" value="c"> return</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>2. What does DRY stand for?</strong></p>
+    <label><input type="radio" name="q2" value="a"> Do Repeat Yourself</label>
+    <label><input type="radio" name="q2" value="b"> Don't Run Yourself</label>
+    <label><input type="radio" name="q2" value="c"> Don't Repeat Yourself</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>3. Which operator checks both value and type?</strong></p>
+    <label><input type="radio" name="q3" value="a"> ===</label>
+    <label><input type="radio" name="q3" value="b"> ==</label>
+    <label><input type="radio" name="q3" value="c"> =</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>4. Which method is safer for inserting untrusted plain text into an element?</strong></p>
+    <label><input type="radio" name="q4" value="a"> innerHTML</label>
+    <label><input type="radio" name="q4" value="b"> textContent</label>
+    <label><input type="radio" name="q4" value="c"> document.write</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>5. Which tool helps inspect JavaScript errors in the browser?</strong></p>
+    <label><input type="radio" name="q5" value="a"> Browser DevTools</label>
+    <label><input type="radio" name="q5" value="b"> Paint</label>
+    <label><input type="radio" name="q5" value="c"> Calculator</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>6. Which block is used to handle exceptions?</strong></p>
+    <label><input type="radio" name="q6" value="a"> if...else</label>
+    <label><input type="radio" name="q6" value="b"> for...of</label>
+    <label><input type="radio" name="q6" value="c"> try...catch</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>7. What is the purpose of meaningful variable names?</strong></p>
+    <label><input type="radio" name="q7" value="a"> To make code longer</label>
+    <label><input type="radio" name="q7" value="b"> To make code easier to understand</label>
+    <label><input type="radio" name="q7" value="c"> To remove functions</label>
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>8. What should be avoided in frontend JavaScript?</strong></p>
+    <label><input type="radio" name="q8" value="a"> Meaningful names</label>
+    <label><input type="radio" name="q8" value="b"> Reusable functions</label>
+    <label><input type="radio" name="q8" value="c"> Exposing secret keys</label>
+  </div>
+
+  <button onclick="checkQuiz()">Submit Quiz</button>
+  <button onclick="resetQuiz()">Try Again</button>
+
+  <div class="result" id="quizResult"></div>
+</section>
+
+<section class="lesson-card">
+  <h2>18. What's Next?</h2>
+  <p>You have completed the JavaScript theory and lesson sequence. The next step is to apply your knowledge through practical projects.</p>
+
+  <ul>
+    <li>Interactive Calculator</li>
+    <li>To-Do List App</li>
+    <li>Weather App</li>
+    <li>Student Management System</li>
+  </ul>
+
+  <div class="note">
+    Keep practicing, experiment with your own ideas and build projects independently. Every project will make your JavaScript skills stronger.
+  </div>
+</section>
+
+<div class="nav">
+  <a href="js-lesson24.html"><button>← Previous Lesson</button></a>
+  <a href="../javascript.html"><button>Course Home</button></a>
+  <a href="../javascript.html"><button>Finish Course ✓</button></a>
+</div>
+
+</main>
+
+<footer>
+  <p>© 2026 SkillSaathi | Learn, Practice and Grow</p>
+</footer>
+
+<script>
+function runCode(){
+  const code = document.getElementById("codeInput").value;
+  const output = document.getElementById("playOutput");
+  const logs = [];
+
+  const customConsole = {
+    log: (...args) => logs.push(args.join(" "))
+  };
+
+  try{
+    new Function("console", code)(customConsole);
+    output.textContent = logs.length
+      ? logs.join("\n")
+      : "Code executed successfully.";
+  }catch(error){
+    output.textContent = "Error: " + error.message;
+  }
+}
+
+function resetCode(){
+  document.getElementById("codeInput").value =
+`const students = [
+  { name: "Aarav", marks: 80 },
+  { name: "Meera", marks: 90 },
+  { name: "Riya", marks: 70 }
+];
+
+const total = students.reduce((sum, student) => {
+  return sum + student.marks;
+}, 0);
+
+const average = total / students.length;
+
+console.log("Total Students:", students.length);
+console.log("Average Marks:", average);`;
+
+  document.getElementById("playOutput").textContent =
+    "Your output will appear here...";
+}
+
+function checkQuiz(){
+  const answers = {
+    q1:"b",
+    q2:"c",
+    q3:"a",
+    q4:"b",
+    q5:"a",
+    q6:"c",
+    q7:"b",
+    q8:"c"
+  };
+
+  let score = 0;
+  let attempted = 0;
+
+  for(const question in answers){
+    const selected = document.querySelector(
+      'input[name="'+question+'"]:checked'
+    );
+
+    if(selected){
+      attempted++;
+      if(selected.value === answers[question]){
+        score++;
+      }
+    }
+  }
+
+  const result = document.getElementById("quizResult");
+
+  if(attempted < 8){
+    result.textContent =
+      "Please answer all 8 questions before submitting.";
+    return;
+  }
+
+  result.textContent =
+    "Your Score: " + score + "/8 " +
+    (score === 8
+      ? "Excellent! Perfect score!"
+      : score >= 6
+      ? "Very good! Keep practicing."
+      : score >= 4
+      ? "Good effort! Revise the topics once more."
+      : "Keep learning and try again!");
+}
+
+function resetQuiz(){
+  document.querySelectorAll(".quiz-question input").forEach(input => {
+    input.checked = false;
+  });
+
+  document.getElementById("quizResult").textContent = "";
+}
+</script>
+
+</body>
+</html>

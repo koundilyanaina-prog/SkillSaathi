@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Dashboard UI | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;min-height:100vh}
+.dashboard{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.sidebar{background:#191827;padding:28px 20px;border-right:1px solid #343052}
+.logo{font-size:23px;font-weight:bold;color:#c4b5fd;margin-bottom:40px}
+.menu a{display:block;padding:13px 15px;margin:8px 0;border-radius:8px;color:#bbb;text-decoration:none;transition:.3s}
+.menu a:hover,.menu a.active{background:#343052;color:#c4b5fd}
+.main{padding:30px;min-width:0}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:30px}
+.topbar h1{font-size:28px}
+.user{background:#343052;padding:10px 15px;border-radius:25px;color:#c4b5fd}
+.welcome{background:linear-gradient(120deg,#343052,#25213b);padding:25px;border-radius:15px;margin-bottom:25px}
+.welcome h2{margin-bottom:8px;color:#c4b5fd}
+.welcome p{color:#ccc}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-bottom:28px}
+.stat{background:#191827;border:1px solid #343052;border-radius:12px;padding:22px}
+.stat .label{color:#aaa;font-size:14px}
+.stat h2{font-size:30px;margin:10px 0;color:#c4b5fd}
+.stat small{color:#9bd7ad}
+.content-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.panel{background:#191827;border:1px solid #343052;border-radius:12px;padding:22px;min-width:0}
+.panel h3{color:#c4b5fd;margin-bottom:20px}
+.course{margin:18px 0}
+.course-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;color:#ccc}
+.bar{height:9px;background:#343052;border-radius:20px;overflow:hidden}
+.fill{height:100%;background:#a78bfa;border-radius:20px}
+.activity{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid #343052;color:#ccc}
+.activity:last-child{border:0}
+.status{color:#9bd7ad;font-size:13px}
+table{width:100%;border-collapse:collapse;min-width:480px}
+th,td{text-align:left;padding:14px 12px;border-bottom:1px solid #343052}
+th{color:#c4b5fd}
+td{color:#ccc}
+.table-wrap{overflow-x:auto}
+footer{color:#888;text-align:center;padding:25px}
+@media(max-width:850px){
+ .dashboard{grid-template-columns:1fr}
+ .sidebar{border-right:0;border-bottom:1px solid #343052;padding:18px}
+ .logo{margin-bottom:15px}
+ .menu{display:flex;flex-wrap:wrap;gap:5px}
+ .menu a{margin:0}
+ .content-grid{grid-template-columns:1fr}
+}
+@media(max-width:500px){
+ .main{padding:18px}
+ .topbar h1{font-size:23px}
+ .welcome{padding:20px}
+}
+</style>
+</head>
+<body>
+<div class="dashboard">
+ <aside class="sidebar">
+  <div class="logo">SkillBoard.</div>
+  <nav class="menu">
+   <a href="#" class="active">▦ Dashboard</a>
+   <a href="#courses">▣ My Courses</a>
+   <a href="#activity">◷ Activity</a>
+   <a href="#reports">▤ Reports</a>
+   <a href="css.html">← CSS Course</a>
+  </nav>
+ </aside>
+
+ <main class="main">
+  <div class="topbar">
+   <h1>Dashboard</h1>
+   <div class="user">👤 Alex Morgan</div>
+  </div>
+
+  <section class="welcome">
+   <h2>Welcome back, Alex! 👋</h2>
+   <p>Here is an overview of your learning progress and activities.</p>
+  </section>
+
+  <section class="stats">
+   <div class="stat">
+    <div class="label">Total Courses</div>
+    <h2>08</h2>
+    <small>↑ 2 new this month</small>
+   </div>
+   <div class="stat">
+    <div class="label">Completed</div>
+    <h2>05</h2>
+    <small>Great progress!</small>
+   </div>
+   <div class="stat">
+    <div class="label">Learning Hours</div>
+    <h2>42</h2>
+    <small>↑ 6 hours this week</small>
+   </div>
+   <div class="stat">
+    <div class="label">Certificates</div>
+    <h2>03</h2>
+    <small>Keep learning!</small>
+   </div>
+  </section>
+
+  <div class="content-grid">
+   <section class="panel" id="courses">
+    <h3>Course Progress</h3>
+    <div class="course">
+     <div class="course-top"><span>HTML Fundamentals</span><span>90%</span></div>
+     <div class="bar"><div class="fill" style="width:90%"></div></div>
+    </div>
+    <div class="course">
+     <div class="course-top"><span>CSS Masterclass</span><span>70%</span></div>
+     <div class="bar"><div class="fill" style="width:70%"></div></div>
+    </div>
+    <div class="course">
+     <div class="course-top"><span>JavaScript Basics</span><span>45%</span></div>
+     <div class="bar"><div class="fill" style="width:45%"></div></div>
+    </div>
+    <div class="course">
+     <div class="course-top"><span>Excel & Office</span><span>60%</span></div>
+     <div class="bar"><div class="fill" style="width:60%"></div></div>
+    </div>
+   </section>
+
+   <section class="panel" id="activity">
+    <h3>Recent Activity</h3>
+    <div class="activity"><span>HTML Lesson 10</span><span class="status">Completed</span></div>
+    <div class="activity"><span>CSS Lesson 08</span><span class="status">Completed</span></div>
+    <div class="activity"><span>Excel Practice</span><span class="status">In Progress</span></div>
+    <div class="activity"><span>Quiz Assessment</span><span class="status">Passed</span></div>
+   </section>
+  </div>
+
+  <section class="panel" id="reports" style="margin-top:20px">
+   <h3>Learning Report</h3>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>Course</th><th>Last Activity</th><th>Progress</th><th>Status</th></tr></thead>
+     <tbody>
+      <tr><td>HTML</td><td>Today</td><td>90%</td><td class="status">Active</td></tr>
+      <tr><td>CSS</td><td>Yesterday</td><td>70%</td><td class="status">Active</td></tr>
+      <tr><td>Excel</td><td>Monday</td><td>60%</td><td class="status">Active</td></tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+  <footer>© 2026 SkillBoard | Dashboard UI Practice Project</footer>
+ </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Portfolio | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#11111b;
+  color:#eee;
+  line-height:1.7;
+}
+
+header{
+  background:#191827;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  border-bottom:1px solid #343052;
+}
+
+.logo{color:#c4b5fd;font-size:25px;font-weight:bold}
+
+nav{display:flex;gap:22px;flex-wrap:wrap}
+
+nav a{
+  color:#eee;
+  text-decoration:none;
+  transition:.3s;
+}
+
+nav a:hover{color:#c4b5fd}
+
+.hero{
+  min-height:85vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:35px;
+  padding:70px 10%;
+  flex-wrap:wrap;
+}
+
+.hero-text{flex:1;min-width:260px}
+
+.hero-text h1{
+  font-size:clamp(35px,6vw,58px);
+  line-height:1.2;
+  margin:15px 0;
+}
+
+.hero-text h1 span{color:#c4b5fd}
+
+.hero-text p{color:#bbb;max-width:550px;margin-bottom:25px}
+
+.tag{color:#a78bfa;font-weight:bold;letter-spacing:2px}
+
+.btn{
+  display:inline-block;
+  background:#a78bfa;
+  color:#171327;
+  padding:12px 25px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#c4b5fd;
+  transform:translateY(-3px);
+}
+
+.profile{
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#343052,#a78bfa);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:85px;
+  border:6px solid #343052;
+  margin:auto;
+}
+
+section{padding:70px 10%}
+
+.section-title{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:35px;
+  color:#c4b5fd;
+}
+
+.about{
+  background:#191827;
+  border-radius:15px;
+  padding:30px;
+  max-width:850px;
+  margin:auto;
+  text-align:center;
+  color:#ccc;
+}
+
+.skills-grid,.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:20px;
+}
+
+.skill,.project-card{
+  background:#191827;
+  padding:25px;
+  border:1px solid #343052;
+  border-radius:12px;
+  transition:.3s;
+}
+
+.skill:hover,.project-card:hover{
+  transform:translateY(-6px);
+  border-color:#a78bfa;
+}
+
+.skill h3,.project-card h3{color:#c4b5fd;margin-bottom:10px}
+
+.skill p,.project-card p{color:#bbb}
+
+.project-card .number{
+  font-size:30px;
+  color:#a78bfa;
+  font-weight:bold;
+}
+
+.contact{
+  background:#191827;
+  text-align:center;
+  border-radius:15px;
+}
+
+.contact p{color:#bbb;margin-bottom:20px}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#aaa;
+  border-top:1px solid #343052;
+}
+
+@media(max-width:600px){
+  header{justify-content:center}
+  nav{justify-content:center;gap:14px}
+  .hero{text-align:center;padding:55px 7%}
+  .hero-text p{margin:0 auto 25px}
+  section{padding:55px 7%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">MyPortfolio.</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="tag">HELLO, I'M</div>
+    <h1>Your <span>Name</span></h1>
+    <h2>Web Designer & Creative Learner</h2>
+    <p>
+      I create beautiful, responsive and user-friendly websites.
+      Welcome to my personal portfolio!
+    </p>
+    <a href="#projects" class="btn">Explore My Work</a>
+  </div>
+
+  <div class="profile">👩‍💻</div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">About Me</h2>
+  <div class="about">
+    <p>
+      Hello! I am a passionate learner interested in web design
+      and technology. I enjoy learning new skills and creating
+      useful digital experiences. My goal is to become a skilled
+      web developer and build meaningful projects.
+    </p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="section-title">My Skills</h2>
+
+  <div class="skills-grid">
+    <div class="skill">
+      <h3>HTML</h3>
+      <p>Creating structured web pages using HTML.</p>
+    </div>
+
+    <div class="skill">
+      <h3>CSS</h3>
+      <p>Designing attractive and responsive layouts.</p>
+    </div>
+
+    <div class="skill">
+      <h3>JavaScript</h3>
+      <p>Adding interactive features to websites.</p>
+    </div>
+
+    <div class="skill">
+      <h3>Creative Design</h3>
+      <p>Building clean and user-friendly interfaces.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">My Projects</h2>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="number">01</div>
+      <h3>Personal Portfolio</h3>
+      <p>A website to showcase my profile, skills and work.</p>
+    </div>
+
+    <div class="project-card">
+      <div class="number">02</div>
+      <h3>Landing Page</h3>
+      <p>A modern and responsive landing page design.</p>
+    </div>
+
+    <div class="project-card">
+      <div class="number">03</div>
+      <h3>Dashboard UI</h3>
+      <p>A clean dashboard interface with useful information.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2 class="section-title">Let's Connect</h2>
+    <p>Have a project or an idea? Feel free to get in touch.</p>
+    <a href="mailto:yourname@example.com" class="btn">Contact Me</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 Your Name | Personal Portfolio</p>
+  <p>Designed while learning at SkillSaathi</p>
+</footer>
+
+</body>
+</html>

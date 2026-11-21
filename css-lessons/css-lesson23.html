@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Lesson 23 - Forms and Navigation Styling | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;padding:25px;line-height:1.7}
+.container{max-width:950px;margin:auto}
+h1,h2{color:#c4b5fd;margin-bottom:15px}
+h1{text-align:center;margin-bottom:25px}
+section{background:#1b1b2b;padding:22px;border-radius:12px;margin:20px 0}
+p,li{color:#b8b4c9;margin-bottom:10px}
+ul{padding-left:22px}
+pre{background:#10101a;padding:15px;border-left:4px solid #a78bfa;border-radius:8px;overflow-x:auto;color:#d8caff}
+button{background:#a78bfa;color:#171327;border:0;padding:10px 18px;border-radius:7px;font-weight:bold;cursor:pointer;margin:8px 5px 8px 0}
+textarea{width:100%;height:300px;background:#10101a;color:#d8caff;border:1px solid #62528b;border-radius:8px;padding:15px;font-family:monospace;font-size:14px}
+iframe{display:none;width:100%;height:400px;background:white;border:0;border-radius:8px;margin-top:15px}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:25px 0}
+.nav a{background:#a78bfa;color:#171327;text-decoration:none;font-weight:bold;padding:10px 18px;border-radius:8px;display:inline-block;transition:.3s}
+.nav a:hover{background:#c4b5fd;transform:translateY(-2px)}
+.nav a:first-child{background:#343052;color:#f4f1ff}
+.question{margin:18px 0;padding:15px;background:#24243a;border-radius:8px}
+label{display:block;color:#b8b4c9;margin:7px 0}
+#result{font-weight:bold;margin-top:15px}
+@media(max-width:600px){body{padding:12px}.nav{justify-content:center}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Lesson 23: Forms and Navigation Styling</h1>
+
+<section>
+<h2>Learning Objectives</h2>
+<ul>
+<li>Style HTML forms using CSS.</li>
+<li>Customize input fields and text areas.</li>
+<li>Design attractive buttons.</li>
+<li>Create navigation menus.</li>
+<li>Use hover, focus and active states.</li>
+</ul>
+</section>
+
+<section>
+<h2>1. Styling HTML Forms</h2>
+<p>Forms collect information from users. CSS makes form elements visually clear, consistent and easy to use.</p>
+<pre>
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+</pre>
+</section>
+
+<section>
+<h2>2. Styling Input Fields</h2>
+<p>Input fields can be styled using background, padding, border, font size and border radius.</p>
+<pre>
+input:focus {
+    outline: none;
+    border-color: purple;
+    box-shadow: 0 0 5px #a78bfa;
+}
+</pre>
+<p>Always keep a visible focus indicator so keyboard users can identify the active field.</p>
+</section>
+
+<section>
+<h2>3. Styling Buttons</h2>
+<pre>
+button {
+    background: purple;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: indigo;
+}
+</pre>
+<p>Use hover and focus states to make buttons easier to understand and operate.</p>
+</section>
+
+<section>
+<h2>4. Navigation Styling</h2>
+<p>Navigation menus help users move between different pages or sections of a website.</p>
+<pre>
+nav {
+    display: flex;
+    gap: 20px;
+    background: #222;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+</pre>
+</section>
+
+<section>
+<h2>5. Navigation Hover and Active States</h2>
+<pre>
+nav a:hover {
+    color: lavender;
+}
+
+nav a:focus-visible {
+    outline: 2px solid purple;
+    outline-offset: 4px;
+}
+</pre>
+<p>The focus-visible state helps keyboard users see which navigation link is selected.</p>
+</section>
+
+<section>
+<h2>6. Practical Code Editor</h2>
+<textarea id="code"><!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: Arial;
+    background: #f3efff;
+    margin: 0;
+}
+
+nav {
+    background: #30245c;
+    padding: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #d8c9ff;
+}
+
+nav a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
+form {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    box-sizing: border-box;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+}
+
+input:focus, textarea:focus {
+    outline: 2px solid #a78bfa;
+    border-color: #6d28d9;
+}
+
+button {
+    background: #6d28d9;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4c1d95;
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Courses</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</nav>
+
+<form>
+<h2>Contact Form</h2>
+
+<label for="name">Name</label>
+<input id="name" type="text" placeholder="Enter your name">
+
+<label for="email">Email</label>
+<input id="email" type="email" placeholder="Enter your email">
+
+<label for="message">Message</label>
+<textarea id="message" placeholder="Write your message"></textarea>
+
+<button type="submit">Submit</button>
+</form>
+
+</body>
+</html></textarea>
+<button onclick="runCode()">Run Code</button>
+<button onclick="clearOutput()">Clear Output</button>
+<button onclick="showHint()">Hint</button>
+<p id="hint"></p>
+<iframe id="preview" title="Forms and navigation preview"></iframe>
+</section>
+
+<section>
+<h2>7. Practice Tasks</h2>
+<ul>
+<li>Create a registration form.</li>
+<li>Style text, email and password inputs.</li>
+<li>Add a textarea and submit button.</li>
+<li>Create a navigation bar with four links.</li>
+<li>Add hover and keyboard focus styles.</li>
+</ul>
+</section>
+
+<section>
+<h2>8. Quick Quiz</h2>
+<form>
+<div class="question">
+<p>1. Which CSS pseudo-class styles an element when the pointer is over it?</p>
+<label><input type="radio" name="q1" value="0"> :hover</label>
+<label><input type="radio" name="q1" value="1"> :visited</label>
+</div>
+<div class="question">
+<p>2. Which element creates a multiline text input?</p>
+<label><input type="radio" name="q2" value="0"> input</label>
+<label><input type="radio" name="q2" value="1"> textarea</label>
+</div>
+<div class="question">
+<p>3. Which property removes the underline from a link?</p>
+<label><input type="radio" name="q3" value="0"> text-decoration</label>
+<label><input type="radio" name="q3" value="1"> font-weight</label>
+</div>
+<div class="question">
+<p>4. Which pseudo-class helps show keyboard focus?</p>
+<label><input type="radio" name="q4" value="0"> :focus-visible</label>
+<label><input type="radio" name="q4" value="1"> :first-child</label>
+</div>
+<div class="question">
+<p>5. Which CSS property adds space inside an input field?</p>
+<label><input type="radio" name="q5" value="0"> margin</label>
+<label><input type="radio" name="q5" value="1"> padding</label>
+</div>
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+<p id="result"></p>
+</form>
+</section>
+
+<section>
+<h2>Lesson Summary</h2>
+<p>You learned how to style forms, input fields, buttons and navigation menus using CSS, including hover and focus states.</p>
+</section>
+
+<div class="nav">
+<a href="css-lesson22.html">← Previous Lesson</a>
+<a href="../css.html">Course Home</a>
+<a href="css-lesson24.html">Next Lesson →</a>
+</div>
+</div>
+
+<script>
+function runCode(){
+let p=document.getElementById("preview");
+p.srcdoc=document.getElementById("code").value;
+p.style.display="block";
+}
+function clearOutput(){
+let p=document.getElementById("preview");
+p.srcdoc="";
+p.style.display="none";
+}
+function showHint(){
+document.getElementById("hint").textContent="Hint: Use padding, border-radius, :hover and :focus-visible to style forms and navigation.";
+}
+function checkQuiz(){
+let a=[0,1,0,0,1],s=0;
+for(let i=1;i<=5;i++){
+let x=document.querySelector('input[name="q'+i+'"]:checked');
+if(x && Number(x.value)===a[i-1])s++;
+}
+document.getElementById("result").textContent="Your Score: "+s+"/5";
+}
+</script>
+</body>
+</html>

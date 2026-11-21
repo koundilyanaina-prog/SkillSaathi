@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1: Introduction to CSS | SkillSaathi</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;line-height:1.7}
+.lesson-page{max-width:1000px;margin:35px auto;padding:0 18px 40px}
+.lesson-header,.lesson-card{background:linear-gradient(145deg,#171b33,#111427);border:1px solid #39335d;border-radius:15px;padding:25px;margin-bottom:22px}
+.lesson-header h1,.lesson-card h2,.lesson-card h3{color:#c4b5fd;margin-bottom:12px}
+.lesson-header p,.lesson-card p,.lesson-card li{color:#d2d3e8}
+.lesson-card ul,.lesson-card ol{padding-left:23px;margin:12px 0}
+.lesson-card li{margin:7px 0}
+.lesson-card pre{background:#090b18;color:#e0def5;padding:16px;border-radius:9px;overflow-x:auto;margin:14px 0;border:1px solid #39335d}
+.lesson-card code{color:#ddd6fe}
+.highlight{background:#211c40;padding:15px;border-left:3px solid #a78bfa;border-radius:8px;margin:14px 0;color:#e0def5}
+.example-box{background:#fff;color:#222;padding:20px;border-radius:9px;margin:15px 0}
+.example-box h2{color:#6d50a8}
+.lesson-navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:25px}
+.lesson-navigation a,.actions button{display:inline-block;padding:11px 18px;background:#a78bfa;color:#100c24;text-decoration:none;font-weight:bold;border:0;border-radius:8px;cursor:pointer}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+#editor{width:100%;min-height:220px;padding:15px;background:#090b18;color:#e0def5;border:1px solid #55458a;border-radius:9px;font:14px/1.6 Consolas,monospace;margin:12px 0}
+#output{display:none;background:white;border-radius:9px;margin-top:15px}
+#output iframe{width:100%;height:240px;border:0}
+.feedback{min-height:25px;color:#c4b5fd;font-weight:bold}
+.question{background:#101329;border:1px solid #39335d;padding:15px;border-radius:9px;margin:12px 0}
+.question label{display:block;margin:9px 0;color:#d2d3e8}
+.question input{accent-color:#a78bfa;margin-right:8px}
+@media(max-width:600px){.lesson-card,.lesson-header{padding:17px}.lesson-navigation{flex-direction:column}.lesson-navigation a{text-align:center}}
+</style>
+</head>
+
+<body>
+<main class="lesson-page">
+
+<header class="lesson-header">
+<h1>Lesson 1: Introduction to CSS</h1>
+<p>Understand Cascading Style Sheets, why CSS is important, how it works with HTML and how to create your first styled web page.</p>
+</header>
+
+<section class="lesson-card">
+<h2>🎯 Learning Objectives</h2>
+<p>After completing this lesson, you will be able to:</p>
+<ul>
+<li>Understand the meaning of CSS.</li>
+<li>Explain why websites need CSS.</li>
+<li>Understand the relationship between HTML and CSS.</li>
+<li>Identify the three ways of adding CSS.</li>
+<li>Write your first CSS rule.</li>
+</ul>
+</section>
+
+<section class="lesson-card">
+<h2>1. What is CSS?</h2>
+<p>CSS stands for <strong>Cascading Style Sheets</strong>. It is a stylesheet language used to describe how HTML elements should look on a web page.</p>
+<p>HTML creates the structure and content of a webpage, while CSS controls its visual appearance.</p>
+<div class="highlight"><strong>Simple Definition:</strong> CSS is used to style HTML elements by controlling their colors, fonts, sizes, spacing, borders, backgrounds and layouts.</div>
+<h3>Examples of what CSS can do</h3>
+<ul>
+<li>Change the color of headings and paragraphs.</li>
+<li>Set font sizes and font styles.</li>
+<li>Add backgrounds, borders and shadows.</li>
+<li>Arrange content into rows and columns.</li>
+<li>Make a website responsive on mobile devices.</li>
+<li>Create animations and interactive visual effects.</li>
+</ul>
+</section>
+
+<section class="lesson-card">
+<h2>2. HTML vs CSS</h2>
+<p>HTML and CSS work together, but they have different responsibilities.</p>
+<pre><code>HTML = Structure and Content
+CSS  = Appearance and Layout</code></pre>
+<h3>Example without CSS</h3>
+<div class="example-box">
+<h2 style="color:#222">Welcome to My Website</h2>
+<p>This is a simple webpage created using HTML.</p>
+</div>
+<h3>Example with CSS</h3>
+<div class="example-box" style="background:#eee7ff;padding:22px">
+<h2 style="color:#6741a5">Welcome to My Website</h2>
+<p style="color:#333;font-size:17px">This is a styled webpage created using HTML and CSS.</p>
+</div>
+<p>The content can remain the same while CSS changes how it appears.</p>
+</section>
+
+<section class="lesson-card">
+<h2>3. How Does CSS Work?</h2>
+<p>A browser reads the HTML document, applies the CSS rules that match its elements, and displays the styled webpage.</p>
+<ol>
+<li>The HTML file contains elements such as headings, paragraphs and images.</li>
+<li>The CSS file contains styling rules.</li>
+<li>The browser connects the CSS rules to matching HTML elements.</li>
+<li>The browser displays the final visual result.</li>
+</ol>
+<div class="highlight">Remember: CSS does not replace HTML. It works with HTML to improve the presentation of a webpage.</div>
+</section>
+
+<section class="lesson-card">
+<h2>4. Basic CSS Syntax</h2>
+<p>A CSS rule contains a selector and a declaration block.</p>
+<pre><code>h1 {
+  color: purple;
+  font-size: 32px;
+}</code></pre>
+<h3>Understanding the parts</h3>
+<ul>
+<li><strong>Selector:</strong> Selects the HTML element to style. Here it is <code>h1</code>.</li>
+<li><strong>Property:</strong> The style feature being changed. Here it is <code>color</code> or <code>font-size</code>.</li>
+<li><strong>Value:</strong> The setting assigned to a property, such as <code>purple</code> or <code>32px</code>.</li>
+<li><strong>Declaration:</strong> A property and its value together.</li>
+</ul>
+<p>Each declaration normally ends with a semicolon. Curly braces contain the declarations.</p>
+</section>
+
+<section class="lesson-card">
+<h2>5. Three Ways to Add CSS</h2>
+<h3>Inline CSS</h3>
+<p>CSS is written directly inside an HTML element using the style attribute.</p>
+<pre><code>&lt;p style="color: blue;"&gt;
+  Hello Students!
+&lt;/p&gt;</code></pre>
+<h3>Internal CSS</h3>
+<p>CSS is written inside a style element in the HTML document's head.</p>
+<pre><code>&lt;head&gt;
+  &lt;style&gt;
+    p {
+      color: green;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+<h3>External CSS</h3>
+<p>CSS is stored in a separate file and connected to HTML using a link element.</p>
+<pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+<div class="highlight">Professional websites commonly use external CSS because it makes styling easier to maintain and reuse.</div>
+</section>
+
+<section class="lesson-card">
+<h2>6. Advantages of CSS</h2>
+<ul>
+<li>Improves the appearance of websites.</li>
+<li>Separates content from presentation.</li>
+<li>Allows consistent styling across multiple pages.</li>
+<li>Reduces repeated styling code.</li>
+<li>Supports responsive layouts for different devices.</li>
+<li>Makes website maintenance easier.</li>
+</ul>
+</section>
+
+<section class="lesson-card">
+<h2>7. Practical Example</h2>
+<p>Study this complete example of HTML connected with internal CSS.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My First CSS Page&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      background-color: #eee7ff;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: purple;
+      text-align: center;
+    }
+
+    p {
+      color: #333;
+      font-size: 18px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Welcome to CSS&lt;/h1&gt;
+  &lt;p&gt;I am learning to style websites.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</section>
+
+<section class="lesson-card">
+<h2>💻 CSS Code Playground</h2>
+<p>Try changing the heading color, background color and font size. Then run your code to see the result.</p>
+<textarea id="editor" spellcheck="false"><!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+body {
+  background-color: #eee7ff;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  color: purple;
+  text-align: center;
+}
+
+p {
+  color: #333;
+  font-size: 18px;
+}
+</style>
+</head>
+<body>
+<h1>Welcome to CSS!</h1>
+<p>I am learning to design beautiful websites.</p>
+</body>
+</html></textarea>
+<div class="actions">
+<button type="button" id="run">Run Code</button>
+<button type="button" id="clear">Clear</button>
+<button type="button" id="hint">Show Hint</button>
+</div>
+<p id="hintText" class="highlight" hidden>Try changing purple to blue, #eee7ff to lightyellow, and 18px to 22px. Run the code again to see the changes.</p>
+<div id="output"><iframe id="preview" title="CSS code output" sandbox></iframe></div>
+</section>
+
+<section class="lesson-card">
+<h2>📝 Quick Practice Questions</h2>
+<div class="question">
+<p>1. What does CSS stand for?</p>
+<label><input type="radio" name="q1" value="a"> Creative Style System</label>
+<label><input type="radio" name="q1" value="b"> Cascading Style Sheets</label>
+<label><input type="radio" name="q1" value="c"> Computer Styling Software</label>
+</div>
+<div class="question">
+<p>2. What is the main purpose of CSS?</p>
+<label><input type="radio" name="q2" value="a"> To create databases</label>
+<label><input type="radio" name="q2" value="b"> To write server programs</label>
+<label><input type="radio" name="q2" value="c"> To style HTML webpages</label>
+</div>
+<div class="question">
+<p>3. Which HTML element connects an external CSS file?</p>
+<label><input type="radio" name="q3" value="a"> &lt;link&gt;</label>
+<label><input type="radio" name="q3" value="b"> &lt;style&gt;</label>
+<label><input type="radio" name="q3" value="c"> &lt;script&gt;</label>
+</div>
+<div class="question">
+<p>4. Which symbol contains CSS declarations?</p>
+<label><input type="radio" name="q4" value="a"> Square brackets [ ]</label>
+<label><input type="radio" name="q4" value="b"> Curly braces { }</label>
+<label><input type="radio" name="q4" value="c"> Parentheses ( )</label>
+</div>
+<div class="question">
+<p>5. Which method is generally preferred for styling multiple pages?</p>
+<label><input type="radio" name="q5" value="a"> Inline CSS</label>
+<label><input type="radio" name="q5" value="b"> Internal CSS</label>
+<label><input type="radio" name="q5" value="c"> External CSS</label>
+</div>
+<button type="button" class="actions" id="checkQuiz">Check Answers</button>
+<p class="feedback" id="quizFeedback" role="status" aria-live="polite"></p>
+</section>
+
+<section class="lesson-card">
+<h2>📚 Lesson Summary</h2>
+<ul>
+<li>CSS stands for Cascading Style Sheets.</li>
+<li>CSS controls the visual presentation of HTML pages.</li>
+<li>A CSS rule contains a selector and declarations.</li>
+<li>CSS can be added inline, internally or externally.</li>
+<li>External CSS is useful for maintaining multiple pages.</li>
+</ul>
+<h3>🎯 Homework</h3>
+<p>Create a simple HTML page with one heading and two paragraphs. Apply internal CSS to change the heading color, paragraph font size and page background.</p>
+<p>In the next lesson, you will learn CSS syntax, selectors and comments in detail.</p>
+</section>
+
+<nav class="lesson-navigation">
+<a href="../css.html">← Course Home</a>
+<a href="css-lesson2.html">Next Lesson →</a>
+</nav>
+
+</main>
+
+<script>
+const editor = document.getElementById("editor");
+const output = document.getElementById("output");
+const preview = document.getElementById("preview");
+
+document.getElementById("run").addEventListener("click", function(){
+  preview.srcdoc = editor.value;
+  output.style.display = "block";
+});
+
+document.getElementById("clear").addEventListener("click", function(){
+  editor.value = "";
+  preview.srcdoc = "";
+  output.style.display = "none";
+});
+
+document.getElementById("hint").addEventListener("click", function(){
+  const hint = document.getElementById("hintText");
+  hint.hidden = !hint.hidden;
+  this.textContent = hint.hidden ? "Show Hint" : "Hide Hint";
+});
+
+document.getElementById("checkQuiz").addEventListener("click", function(){
+  const answers = {q1:"b",q2:"c",q3:"a",q4:"b",q5:"c"};
+  let score = 0;
+  let unanswered = false;
+
+  Object.keys(answers).forEach(function(question){
+    const selected = document.querySelector('input[name="' + question + '"]:checked');
+    if(!selected){
+      unanswered = true;
+    } else if(selected.value === answers[question]){
+      score++;
+    }
+  });
+
+  const feedback = document.getElementById("quizFeedback");
+
+  if(unanswered){
+    feedback.textContent = "Please answer all five questions before checking.";
+  } else {
+    feedback.textContent = "Your score: " + score + "/5. " +
+      (score === 5 ? "Excellent work!" : "Review the lesson and try again.");
+  }
+});
+</script>
+
+</body>
+</html>

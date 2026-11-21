@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1 - Introduction to JavaScript | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;line-height:1.7;padding:25px}
+.container{max-width:950px;margin:auto}
+header,.card{background:#1c1c2b;padding:25px;border-radius:14px;margin-bottom:22px;border:1px solid #34344b}
+h1,h2,h3{color:#c4b5fd;margin-bottom:12px}
+h1{font-size:30px}
+p,li{color:#d1d1df;margin-bottom:10px}
+pre{background:#101019;padding:18px;border-radius:10px;overflow-x:auto;color:#a7f3d0;margin:15px 0}
+button,.nav a{background:#8b5cf6;color:white;border:0;padding:11px 18px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-block;margin:5px}
+.output{background:#101019;border:1px solid #444;padding:15px;border-radius:8px;min-height:45px;margin:12px 0}
+input{padding:10px;border-radius:6px;margin:8px;background:#29293a;color:white;border:1px solid #666}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>Lesson 1: Introduction to JavaScript</h1>
+<p>Learn what JavaScript is, why it is used, and how it makes websites interactive.</p>
+</header>
+
+<section class="card">
+<h2>1. What is JavaScript?</h2>
+<p>JavaScript is a programming language used to make websites interactive and dynamic.</p>
+<p>HTML creates the structure, CSS designs the appearance, and JavaScript adds behaviour.</p>
+<ul>
+<li>HTML: Structure of a webpage.</li>
+<li>CSS: Styling and layout.</li>
+<li>JavaScript: Interaction and functionality.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>2. What can JavaScript do?</h2>
+<ul>
+<li>Respond to button clicks.</li>
+<li>Validate forms.</li>
+<li>Display messages and alerts.</li>
+<li>Update webpage content.</li>
+<li>Create games, calculators and interactive applications.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>3. Your First JavaScript Program</h2>
+<p>The <b>console.log()</b> method displays information in the browser console.</p>
+<pre>console.log("Hello, SkillSaathi!");</pre>
+<p>The <b>alert()</b> method displays a popup message.</p>
+<pre>alert("Welcome to JavaScript!");</pre>
+</section>
+
+<section class="card">
+<h2>4. Run Your First Code</h2>
+<textarea id="code" rows="5" style="width:100%;background:#101019;color:#a7f3d0;padding:12px;border-radius:8px">console.log("Hello, SkillSaathi!");
+document.getElementById("result").innerHTML = "JavaScript is working!";</textarea>
+<br>
+<button onclick="runCode()">Run Code</button>
+<div class="output" id="result">Your output will appear here.</div>
+<pre id="consoleOutput">Console output will appear here.</pre>
+</section>
+
+<section class="card">
+<h2>5. Practice Task</h2>
+<p>Write a JavaScript program to display your name in the console.</p>
+<p><b>Hint:</b> Use console.log("Your Name");</p>
+</section>
+
+<section class="card">
+<h2>6. Quick Knowledge Check</h2>
+<p>Which language makes a webpage interactive?</p>
+<button onclick="checkAnswer('a')">HTML</button>
+<button onclick="checkAnswer('b')">CSS</button>
+<button onclick="checkAnswer('c')">JavaScript</button>
+<p id="answer"></p>
+</section>
+
+<div class="nav">
+<a href="../javascript.html">Course Home</a>
+<a href="js-lesson2.html">Next Lesson →</a>
+</div>
+</div>
+
+<script>
+function runCode(){
+const code=document.getElementById("code").value;
+const output=document.getElementById("consoleOutput");
+let logs=[];
+const oldLog=console.log;
+console.log=(...args)=>logs.push(args.join(" "));
+try{
+const result=document.getElementById("result");
+result.textContent="Code executed. Check console output below.";
+new Function(code)();
+output.textContent=logs.join("\n")||"No console output.";
+}catch(error){
+output.textContent="Error: "+error.message;
+}finally{
+console.log=oldLog;
+}
+}
+function checkAnswer(answer){
+document.getElementById("answer").textContent=
+answer==="c"?"Correct! JavaScript makes websites interactive.":"Try again! Think about the role of JavaScript.";
+}
+</script>
+</body>
+</html>

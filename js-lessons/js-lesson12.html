@@ -1,0 +1,778 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Lesson 12 - DOM Introduction and Selection | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#11111b;
+  color:#eee;
+  line-height:1.7;
+}
+
+header{
+  background:#191927;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  border-bottom:1px solid #33334b;
+}
+
+header a{
+  color:#c4b5fd;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.container{
+  width:86%;
+  max-width:1000px;
+  margin:35px auto;
+}
+
+.hero{
+  background:linear-gradient(135deg,#25213e,#17172b);
+  padding:35px;
+  border-radius:15px;
+  margin-bottom:30px;
+  border:1px solid #393454;
+}
+
+.hero h1{
+  color:#c4b5fd;
+  margin-bottom:12px;
+  font-size:30px;
+}
+
+.hero p{color:#c9c5d8}
+
+.lesson-card{
+  background:#1b1b2b;
+  padding:25px;
+  border-radius:13px;
+  margin-bottom:22px;
+  border:1px solid #303047;
+}
+
+.lesson-card h2{
+  color:#c4b5fd;
+  margin-bottom:15px;
+  font-size:22px;
+}
+
+.lesson-card h3{
+  color:#d8ccff;
+  margin:18px 0 8px;
+}
+
+.lesson-card p,.lesson-card li{color:#d1cede}
+
+.lesson-card ul,.lesson-card ol{
+  padding-left:24px;
+  margin:10px 0;
+}
+
+pre{
+  background:#10101a;
+  color:#d8c9ff;
+  padding:17px;
+  border-radius:9px;
+  overflow-x:auto;
+  margin:14px 0;
+  border:1px solid #39334e;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.note{
+  background:#292342;
+  border-left:4px solid #a78bfa;
+  padding:13px;
+  margin:15px 0;
+  border-radius:5px;
+  color:#e4dcff;
+}
+
+.example-box{
+  background:#242238;
+  padding:15px;
+  border-radius:8px;
+  margin:12px 0;
+}
+
+button{
+  background:#8b5cf6;
+  color:white;
+  border:none;
+  padding:11px 20px;
+  border-radius:7px;
+  cursor:pointer;
+  margin:10px 8px 10px 0;
+  font-weight:bold;
+}
+
+button:hover{background:#a78bfa}
+
+.playground textarea{
+  width:100%;
+  min-height:180px;
+  background:#10101a;
+  color:#e9d5ff;
+  border:1px solid #494064;
+  border-radius:8px;
+  padding:15px;
+  font-family:Consolas,monospace;
+  font-size:14px;
+  resize:vertical;
+}
+
+.output{
+  background:#10101a;
+  border:1px solid #39334e;
+  padding:15px;
+  border-radius:8px;
+  min-height:55px;
+  margin-top:10px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  color:#c4b5fd;
+}
+
+.task{
+  background:#242238;
+  padding:13px;
+  border-radius:8px;
+  margin:10px 0;
+}
+
+.quiz-question{
+  margin:18px 0;
+  padding:15px;
+  background:#222136;
+  border-radius:8px;
+}
+
+.quiz-question label{
+  display:block;
+  margin:7px 0;
+  cursor:pointer;
+  color:#ddd7ec;
+}
+
+#quizResult{
+  margin-top:15px;
+  font-weight:bold;
+  color:#c4b5fd;
+}
+
+.navigation{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:35px 0;
+}
+
+.navigation a{
+  text-decoration:none;
+  color:#c4b5fd;
+  background:#25213e;
+  padding:12px 18px;
+  border-radius:8px;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  background:#191927;
+  color:#aaa;
+  margin-top:40px;
+}
+
+@media(max-width:600px){
+  .container{width:92%}
+  .hero{padding:23px}
+  .hero h1{font-size:25px}
+  .lesson-card{padding:18px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="../index.html">SkillSaathi</a>
+  <a href="../javascript.html">JavaScript Course</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h1>Lesson 12: DOM Introduction and Selection</h1>
+  <p>Learn how JavaScript connects with HTML documents and how to select elements using DOM methods.</p>
+  <p><strong>Part 2 – Core JavaScript</strong></p>
+</section>
+
+<section class="lesson-card">
+  <h2>1. What is DOM?</h2>
+
+  <p>DOM stands for Document Object Model.</p>
+
+  <p>It is a programming interface that represents an HTML document as a tree of objects. JavaScript uses the DOM to access and work with HTML elements.</p>
+
+  <h3>Example HTML</h3>
+
+  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello Learner&lt;/h1&gt;
+  &lt;p&gt;Welcome to SkillSaathi&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+  <p>When a browser loads this HTML, it creates a DOM representation of the document.</p>
+
+  <div class="note">
+    <strong>Remember:</strong> HTML provides the structure, the DOM represents that structure as objects, and JavaScript can interact with those objects.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>2. Why DOM is Important</h2>
+
+  <p>The DOM allows JavaScript to access elements from an HTML page.</p>
+
+  <p>Using the DOM, JavaScript can:</p>
+
+  <ul>
+    <li>Select HTML elements.</li>
+    <li>Read text and attributes.</li>
+    <li>Change content and styles.</li>
+    <li>Add or remove HTML elements.</li>
+    <li>Respond to user interactions.</li>
+  </ul>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;h1 id="heading"&gt;Old Heading&lt;/h1&gt;
+
+&lt;script&gt;
+  const title = document.getElementById("heading");
+  console.log(title.textContent);
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Output in Console:</strong></p>
+  <pre><code>Old Heading</code></pre>
+
+  <p>Here JavaScript selects the heading using its ID and reads its text.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>3. DOM Tree Structure</h2>
+
+  <p>The DOM represents an HTML document in a tree-like structure. Each element becomes a node.</p>
+
+  <h3>Example HTML</h3>
+
+  <pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My Website&lt;/h1&gt;
+    &lt;p&gt;Welcome!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+  <h3>Simplified DOM Tree</h3>
+
+  <pre><code>Document
+   |
+  html
+   |
+  body
+   |
+   |------ h1
+   |        |
+   |      "My Website"
+   |
+   |------ p
+            |
+         "Welcome!"</code></pre>
+
+  <p>In this tree:</p>
+
+  <ul>
+    <li><strong>Document:</strong> Represents the entire document.</li>
+    <li><strong>Parent:</strong> An element that contains other nodes.</li>
+    <li><strong>Child:</strong> A node inside another node.</li>
+    <li><strong>Sibling:</strong> Nodes that share the same parent.</li>
+    <li><strong>Text node:</strong> Contains text inside an element.</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>4. Understanding Document Object</h2>
+
+  <p>The <code>document</code> object represents the currently loaded HTML document.</p>
+
+  <p>It provides methods and properties that JavaScript can use to access the page.</p>
+
+  <pre><code>console.log(document.title);
+console.log(document.URL);
+console.log(document.body);</code></pre>
+
+  <p>These statements display the page title, current document URL, and body element in the browser console.</p>
+
+  <h3>Important Point</h3>
+
+  <p>The <code>document</code> object is the main entry point for selecting elements from an HTML page.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>5. Selecting Elements with getElementById()</h2>
+
+  <p><code>getElementById()</code> selects an element using its unique ID.</p>
+
+  <h3>HTML</h3>
+
+  <pre><code>&lt;h1 id="mainTitle"&gt;Welcome Learner&lt;/h1&gt;</code></pre>
+
+  <h3>JavaScript</h3>
+
+  <pre><code>const heading = document.getElementById("mainTitle");
+
+console.log(heading);</code></pre>
+
+  <p><strong>Result:</strong> JavaScript returns the matching HTML element.</p>
+
+  <div class="note">
+    An ID should be unique within an HTML document. If no matching ID exists, getElementById() returns null.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>6. Selecting Elements with getElementsByClassName()</h2>
+
+  <p>This method selects all elements that have a specified class name.</p>
+
+  <h3>HTML</h3>
+
+  <pre><code>&lt;p class="message"&gt;First Message&lt;/p&gt;
+&lt;p class="message"&gt;Second Message&lt;/p&gt;
+&lt;p class="message"&gt;Third Message&lt;/p&gt;</code></pre>
+
+  <h3>JavaScript</h3>
+
+  <pre><code>const messages =
+  document.getElementsByClassName("message");
+
+console.log(messages);
+console.log(messages[0]);</code></pre>
+
+  <p><strong>Important:</strong></p>
+
+  <ul>
+    <li>It returns an HTMLCollection.</li>
+    <li>It can contain multiple matching elements.</li>
+    <li>Elements can be accessed using indexes.</li>
+    <li>The collection is live and updates when matching elements change.</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>7. Selecting Elements with getElementsByTagName()</h2>
+
+  <p>This method selects elements using their HTML tag name.</p>
+
+  <h3>HTML</h3>
+
+  <pre><code>&lt;h2&gt;First Heading&lt;/h2&gt;
+&lt;h2&gt;Second Heading&lt;/h2&gt;
+&lt;p&gt;A paragraph&lt;/p&gt;</code></pre>
+
+  <h3>JavaScript</h3>
+
+  <pre><code>const headings =
+  document.getElementsByTagName("h2");
+
+console.log(headings);
+console.log(headings[0]);</code></pre>
+
+  <p>This selects all matching h2 elements from the document.</p>
+
+  <div class="note">
+    Like getElementsByClassName(), this method returns a live HTMLCollection.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>8. Selecting Elements with querySelector()</h2>
+
+  <p><code>querySelector()</code> selects the first element that matches a CSS selector.</p>
+
+  <h3>Select by ID</h3>
+
+  <pre><code>const heading = document.querySelector("#mainTitle");</code></pre>
+
+  <h3>Select by Class</h3>
+
+  <pre><code>const message = document.querySelector(".message");</code></pre>
+
+  <h3>Select by Tag</h3>
+
+  <pre><code>const paragraph = document.querySelector("p");</code></pre>
+
+  <p>It uses CSS selector syntax, so:</p>
+
+  <ul>
+    <li><code>#name</code> selects an ID.</li>
+    <li><code>.name</code> selects a class.</li>
+    <li><code>p</code> selects a paragraph element.</li>
+  </ul>
+
+  <div class="note">
+    querySelector() returns only the first matching element. If no match is found, it returns null.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>9. Selecting Elements with querySelectorAll()</h2>
+
+  <p><code>querySelectorAll()</code> selects all elements that match a CSS selector.</p>
+
+  <h3>HTML</h3>
+
+  <pre><code>&lt;p class="info"&gt;First Paragraph&lt;/p&gt;
+&lt;p class="info"&gt;Second Paragraph&lt;/p&gt;
+&lt;p class="info"&gt;Third Paragraph&lt;/p&gt;</code></pre>
+
+  <h3>JavaScript</h3>
+
+  <pre><code>const paragraphs =
+  document.querySelectorAll(".info");
+
+console.log(paragraphs);
+console.log(paragraphs[0]);</code></pre>
+
+  <p><strong>Important:</strong></p>
+
+  <ul>
+    <li>It returns a NodeList.</li>
+    <li>It can contain multiple matching elements.</li>
+    <li>Elements can be accessed using indexes.</li>
+    <li>The returned NodeList is static and does not automatically update when matching elements are added later.</li>
+  </ul>
+</section>
+
+<section class="lesson-card">
+  <h2>10. Difference Between DOM Selectors</h2>
+
+  <p>Let's compare the five important DOM selection methods.</p>
+
+  <pre><code>getElementById("title")
+
+getElementsByClassName("message")
+
+getElementsByTagName("p")
+
+querySelector(".message")
+
+querySelectorAll(".message")</code></pre>
+
+  <ul>
+    <li><strong>getElementById():</strong> Selects one element by ID.</li>
+    <li><strong>getElementsByClassName():</strong> Selects matching elements by class and returns a live HTMLCollection.</li>
+    <li><strong>getElementsByTagName():</strong> Selects matching elements by tag and returns a live HTMLCollection.</li>
+    <li><strong>querySelector():</strong> Returns the first match for a CSS selector.</li>
+    <li><strong>querySelectorAll():</strong> Returns all matches in a static NodeList.</li>
+  </ul>
+
+  <div class="note">
+    <strong>Tip:</strong> querySelector() and querySelectorAll() are flexible because they support CSS selector syntax.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>11. Practical Examples</h2>
+
+  <h3>Example 1: Select an Element by ID</h3>
+
+  <pre><code>&lt;h1 id="welcome"&gt;Hello Student&lt;/h1&gt;
+
+&lt;script&gt;
+  const heading =
+    document.getElementById("welcome");
+
+  console.log(heading.textContent);
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Output:</strong></p>
+  <pre><code>Hello Student</code></pre>
+
+  <h3>Example 2: Select Elements by Class</h3>
+
+  <pre><code>&lt;p class="subject"&gt;HTML&lt;/p&gt;
+&lt;p class="subject"&gt;CSS&lt;/p&gt;
+&lt;p class="subject"&gt;JavaScript&lt;/p&gt;
+
+&lt;script&gt;
+  const subjects =
+    document.querySelectorAll(".subject");
+
+  console.log(subjects.length);
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Output:</strong></p>
+  <pre><code>3</code></pre>
+
+  <h3>Example 3: Select the First Paragraph</h3>
+
+  <pre><code>&lt;p&gt;First Paragraph&lt;/p&gt;
+&lt;p&gt;Second Paragraph&lt;/p&gt;
+
+&lt;script&gt;
+  const first =
+    document.querySelector("p");
+
+  console.log(first.textContent);
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Output:</strong></p>
+  <pre><code>First Paragraph</code></pre>
+</section>
+
+<section class="lesson-card playground">
+  <h2>12. Code Playground</h2>
+
+  <p>Practice selecting HTML elements. Write your JavaScript code below and click Run Code.</p>
+
+  <div class="example-box">
+    <h3>Sample HTML Elements</h3>
+    <h3 id="demoTitle">Welcome to SkillSaathi</h3>
+    <p class="demoMessage">Learn HTML</p>
+    <p class="demoMessage">Learn CSS</p>
+    <p class="demoMessage">Learn JavaScript</p>
+  </div>
+
+  <textarea id="codeInput">const heading = document.getElementById("demoTitle");
+console.log(heading.textContent);
+
+const messages = document.querySelectorAll(".demoMessage");
+console.log("Total messages: " + messages.length);
+
+console.log(messages[0].textContent);</textarea>
+
+  <br>
+  <button onclick="runCode()">Run Code</button>
+  <button onclick="resetCode()">Reset Code</button>
+
+  <h3>Output</h3>
+  <div class="output" id="output">Your output will appear here...</div>
+</section>
+
+<section class="lesson-card">
+  <h2>13. Practice Tasks</h2>
+
+  <div class="task">
+    <strong>Task 1:</strong> Create an h1 element with an ID and select it using getElementById().
+  </div>
+
+  <div class="task">
+    <strong>Task 2:</strong> Create three paragraphs with the same class and select them using getElementsByClassName().
+  </div>
+
+  <div class="task">
+    <strong>Task 3:</strong> Select all h2 elements using getElementsByTagName().
+  </div>
+
+  <div class="task">
+    <strong>Task 4:</strong> Use querySelector() to select the first paragraph on your page.
+  </div>
+
+  <div class="task">
+    <strong>Task 5:</strong> Use querySelectorAll() to select all elements with the same class.
+  </div>
+
+  <div class="task">
+    <strong>Task 6:</strong> Print the text of the first selected element in the browser console.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>14. Quick Knowledge Check</h2>
+
+  <form id="quizForm">
+
+    <div class="quiz-question">
+      <p><strong>1. What does DOM stand for?</strong></p>
+      <label><input type="radio" name="q1" value="a"> Data Object Method</label>
+      <label><input type="radio" name="q1" value="b"> Document Object Model</label>
+      <label><input type="radio" name="q1" value="c"> Digital Output Model</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>2. Which method selects an element by its ID?</strong></p>
+      <label><input type="radio" name="q2" value="a"> getElementById()</label>
+      <label><input type="radio" name="q2" value="b"> querySelectorAll()</label>
+      <label><input type="radio" name="q2" value="c"> getElementsByTagName()</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>3. What does querySelector() return?</strong></p>
+      <label><input type="radio" name="q3" value="a"> All matching elements</label>
+      <label><input type="radio" name="q3" value="b"> The first matching element</label>
+      <label><input type="radio" name="q3" value="c"> Only text nodes</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>4. Which method returns a NodeList?</strong></p>
+      <label><input type="radio" name="q4" value="a"> getElementById()</label>
+      <label><input type="radio" name="q4" value="b"> getElementsByClassName()</label>
+      <label><input type="radio" name="q4" value="c"> querySelectorAll()</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>5. Which selector is used for a CSS class?</strong></p>
+      <label><input type="radio" name="q5" value="a"> #message</label>
+      <label><input type="radio" name="q5" value="b"> .message</label>
+      <label><input type="radio" name="q5" value="c"> message()</label>
+    </div>
+
+    <button type="button" onclick="checkQuiz()">Submit Answers</button>
+    <button type="reset" onclick="document.getElementById('quizResult').textContent=''">Reset Quiz</button>
+
+    <div id="quizResult"></div>
+  </form>
+</section>
+
+<div class="navigation">
+  <a href="js-lesson11.html">← Previous Lesson</a>
+  <a href="../javascript.html">Course Home</a>
+  <a href="js-lesson13.html">Next Lesson →</a>
+</div>
+
+</main>
+
+<footer>
+  <p>© 2026 SkillSaathi | Learn. Practice. Grow.</p>
+</footer>
+
+<script>
+const defaultCode = `const heading = document.getElementById("demoTitle");
+console.log(heading.textContent);
+
+const messages = document.querySelectorAll(".demoMessage");
+console.log("Total messages: " + messages.length);
+
+console.log(messages[0].textContent);`;
+
+function runCode(){
+  const code = document.getElementById("codeInput").value;
+  const output = document.getElementById("output");
+
+  const demoArea = document.querySelector(".example-box");
+  const sandbox = document.createElement("iframe");
+
+  sandbox.style.display = "none";
+  document.body.appendChild(sandbox);
+
+  const doc = sandbox.contentDocument;
+
+  doc.open();
+  doc.write(`
+    <!DOCTYPE html>
+    <html>
+    <body>
+      <div id="demoTitle">Welcome to SkillSaathi</div>
+      <p class="demoMessage">Learn HTML</p>
+      <p class="demoMessage">Learn CSS</p>
+      <p class="demoMessage">Learn JavaScript</p>
+    </body>
+    </html>
+  `);
+  doc.close();
+
+  let logs = [];
+
+  const customConsole = {
+    log: (...values) => {
+      logs.push(values.map(value => {
+        if (value === null) return "null";
+        if (value === undefined) return "undefined";
+        if (value instanceof sandbox.contentWindow.Element) {
+          return value.outerHTML;
+        }
+        if (typeof value === "object") {
+          return JSON.stringify(value);
+        }
+        return String(value);
+      }).join(" "));
+    }
+  };
+
+  try {
+    const execute = new Function(
+      "document",
+      "console",
+      code
+    );
+
+    execute(doc, customConsole);
+
+    output.textContent = logs.length
+      ? logs.join("\n")
+      : "Code executed successfully. No console output.";
+
+  } catch(error) {
+    output.textContent = error.name + ": " + error.message;
+  } finally {
+    sandbox.remove();
+  }
+}
+
+function resetCode(){
+  document.getElementById("codeInput").value = defaultCode;
+  document.getElementById("output").textContent =
+    "Your output will appear here...";
+}
+
+function checkQuiz(){
+  const answers = {
+    q1:"b",
+    q2:"a",
+    q3:"b",
+    q4:"c",
+    q5:"b"
+  };
+
+  let score = 0;
+  const total = Object.keys(answers).length;
+
+  for(let question in answers){
+    const selected = document.querySelector(
+      `input[name="${question}"]:checked`
+    );
+
+    if(selected && selected.value === answers[question]){
+      score++;
+    }
+  }
+
+  const result = document.getElementById("quizResult");
+
+  result.textContent =
+    "You scored " + score + " out of " + total + "." +
+    (score === total
+      ? " Excellent work!"
+      : " Review the lesson and try again.");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Lesson 17 - Transitions and Transforms | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eeeafc;line-height:1.7}
+header{background:#171b33;padding:25px 7%;border-bottom:1px solid #343052}
+header a,.nav a{color:#c4b5fd;text-decoration:none}
+main{max-width:1000px;margin:auto;padding:25px 18px}
+h1,h2,h3{color:#c4b5fd;margin-bottom:12px}
+.card{background:#171b33;border:1px solid #343052;border-radius:14px;padding:22px;margin:20px 0}
+p,li{color:#ddd8ee;margin-bottom:10px}
+pre{background:#0c0d16;padding:15px;border-radius:9px;overflow-x:auto;color:#e9ddff;margin:12px 0}
+code{color:#f0abfc}
+textarea{width:100%;min-height:220px;background:#0c0d16;color:#eeeafc;border:1px solid #62558d;border-radius:9px;padding:14px;font-family:monospace;font-size:14px}
+button{background:#a78bfa;color:#171327;border:0;padding:11px 18px;border-radius:8px;cursor:pointer;font-weight:bold;margin:7px 5px 7px 0}
+iframe{display:none;width:100%;height:300px;background:white;border:0;border-radius:9px;margin-top:12px}
+.option{display:block;background:#22243d;padding:10px;border-radius:8px;margin:8px 0}
+.feedback{color:#c4b5fd;font-weight:bold;margin-top:12px}
+.nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px;margin:25px 0}
+
+.nav a{
+    background:#a78bfa;
+    color:#171327;
+    text-decoration:none;
+    font-weight:bold;
+    padding:10px 18px;
+    border-radius:8px;
+    display:inline-block;
+    transition:0.3s;
+}
+
+.nav a:hover{
+    background:#c4b5fd;
+    transform:translateY(-2px);
+}
+
+.nav a:first-child{
+    background:#343052;
+    color:#f4f1ff;
+}</style>
+</head>
+<body>
+
+<header>
+<a href="../css.html">← Back to CSS Course</a>
+<h1>Lesson 17: CSS Transitions and Transforms</h1>
+<p>Learn how to create smooth effects and change the appearance of elements.</p>
+</header>
+
+<main>
+<div class="card">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand CSS transitions.</li>
+<li>Learn transition duration and timing functions.</li>
+<li>Use rotate, scale, translate and skew.</li>
+<li>Create interactive hover effects.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>1. What are CSS Transitions?</h2>
+<p>CSS transitions allow property changes to happen smoothly over a specified period instead of changing instantly.</p>
+<pre>
+.button {
+    background: purple;
+    transition: background 0.5s ease;
+}
+
+.button:hover {
+    background: blue;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>2. Transition Properties</h2>
+<ul>
+<li><b>transition-property:</b> Specifies which CSS property changes.</li>
+<li><b>transition-duration:</b> Specifies how long the transition takes.</li>
+<li><b>transition-timing-function:</b> Controls the speed pattern.</li>
+<li><b>transition-delay:</b> Adds a delay before the transition starts.</li>
+</ul>
+<pre>
+.box {
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>3. Transition Timing Functions</h2>
+<pre>
+transition: all 0.5s ease;
+transition: all 0.5s linear;
+transition: all 0.5s ease-in;
+transition: all 0.5s ease-out;
+transition: all 0.5s ease-in-out;
+</pre>
+<p>These functions control how an animation accelerates or slows down.</p>
+</div>
+
+<div class="card">
+<h2>4. CSS Transform</h2>
+<p>The transform property changes an element's position, size, angle or shape without changing the normal document flow.</p>
+<h3>Translate</h3>
+<pre>
+.box:hover {
+    transform: translate(20px, 10px);
+}
+</pre>
+<h3>Scale</h3>
+<pre>
+.box:hover {
+    transform: scale(1.2);
+}
+</pre>
+<h3>Rotate</h3>
+<pre>
+.box:hover {
+    transform: rotate(10deg);
+}
+</pre>
+<h3>Skew</h3>
+<pre>
+.box:hover {
+    transform: skew(10deg, 5deg);
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>5. Combining Transitions and Transforms</h2>
+<pre>
+.card {
+    transition: all 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 10px 25px #777;
+}
+</pre>
+<p>This technique is commonly used for interactive cards and buttons.</p>
+</div>
+
+<div class="card">
+<h2>Try It Yourself</h2>
+<p>Run the code and hover over the card in the preview.</p>
+<textarea id="code"><div class="card">
+    <h2>SkillSaathi</h2>
+    <p>Move your mouse over this card!</p>
+    <button>Explore Course</button>
+</div>
+
+<style>
+.card {
+    width: 280px;
+    margin: 30px auto;
+    padding: 25px;
+    text-align: center;
+    background: #eee7ff;
+    color: #241b3d;
+    border-radius: 15px;
+    transition: all 0.4s ease;
+}
+.card:hover {
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 12px 25px #999;
+}
+button {
+    padding: 10px 18px;
+    background: #7652b5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+button:hover {
+    background: #35245f;
+    transform: scale(1.08);
+}
+</style></textarea>
+<button onclick="runCode()">Run Code</button>
+<button onclick="clearOutput()">Clear Output</button>
+<button onclick="showHint()">Hint</button>
+<p id="hint" class="feedback"></p>
+<iframe id="preview" title="Code Preview"></iframe>
+</div>
+
+<div class="card">
+<h2>Practice Activity</h2>
+<ul>
+<li>Create a button that changes color smoothly.</li>
+<li>Make a card move upward on hover.</li>
+<li>Rotate an image by 10 degrees.</li>
+<li>Use scale to enlarge a box.</li>
+</ul>
+<h3>Homework</h3>
+<p>Design three interactive course cards using transitions and transforms.</p>
+</div>
+
+<h2>Knowledge Check</h2>
+<div class="card">
+<p><b>Q1. Which property creates smooth changes?</b></p>
+<label class="option"><input type="radio" name="q1" value="0"> display</label>
+<label class="option"><input type="radio" name="q1" value="1"> transition</label>
+<label class="option"><input type="radio" name="q1" value="2"> position</label>
+<label class="option"><input type="radio" name="q1" value="3"> overflow</label>
+</div>
+<div class="card">
+<p><b>Q2. Which transform function rotates an element?</b></p>
+<label class="option"><input type="radio" name="q2" value="0"> scale()</label>
+<label class="option"><input type="radio" name="q2" value="1"> translate()</label>
+<label class="option"><input type="radio" name="q2" value="2"> rotate()</label>
+<label class="option"><input type="radio" name="q2" value="3"> skew()</label>
+</div>
+<div class="card">
+<p><b>Q3. Which property controls transition time?</b></p>
+<label class="option"><input type="radio" name="q3" value="0"> transition-duration</label>
+<label class="option"><input type="radio" name="q3" value="1"> transition-color</label>
+<label class="option"><input type="radio" name="q3" value="2"> animation-name</label>
+<label class="option"><input type="radio" name="q3" value="3"> transform-time</label>
+</div>
+<div class="card">
+<p><b>Q4. What does scale(1.5) do?</b></p>
+<label class="option"><input type="radio" name="q4" value="0"> Rotates 1.5 degrees</label>
+<label class="option"><input type="radio" name="q4" value="1"> Enlarges the element to 1.5 times</label>
+<label class="option"><input type="radio" name="q4" value="2"> Moves it 1.5 pixels</label>
+<label class="option"><input type="radio" name="q4" value="3"> Hides the element</label>
+</div>
+<div class="card">
+<p><b>Q5. Which function moves an element?</b></p>
+<label class="option"><input type="radio" name="q5" value="0"> rotate()</label>
+<label class="option"><input type="radio" name="q5" value="1"> translate()</label>
+<label class="option"><input type="radio" name="q5" value="2"> opacity()</label>
+<label class="option"><input type="radio" name="q5" value="3"> color()</label>
+</div>
+<div class="card">
+<button onclick="checkQuiz()">Submit Quiz</button>
+<p id="result" class="feedback"></p>
+</div>
+
+<div class="nav">
+<a href="css-lesson16.html">← Previous Lesson</a>
+<a href="../css.html">Course Home</a>
+<a href="css-lesson18.html">Next Lesson →</a>
+</div>
+</main>
+
+<script>
+function runCode(){
+const p=document.getElementById("preview");
+p.srcdoc=document.getElementById("code").value;
+p.style.display="block";
+}
+function clearOutput(){
+const p=document.getElementById("preview");
+p.srcdoc="";
+p.style.display="none";
+}
+function showHint(){
+document.getElementById("hint").textContent="Try changing translateY(-10px) to rotate(10deg) or scale(1.2).";
+}
+function checkQuiz(){
+const answers=[1,2,0,1,1];
+let score=0;
+answers.forEach((a,i)=>{
+const s=document.querySelector('input[name="q'+(i+1)+'"]:checked');
+if(s && Number(s.value)===a) score++;
+});
+document.getElementById("result").textContent="Your Score: "+score+" / 5";
+}
+</script>
+</body>
+</html>

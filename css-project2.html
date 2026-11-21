@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Landing Page | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;line-height:1.6}
+header{background:#191827;padding:18px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;border-bottom:1px solid #343052}
+.logo{font-size:25px;font-weight:bold;color:#c4b5fd}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{color:#eee;text-decoration:none}
+nav a:hover{color:#c4b5fd}
+.hero{min-height:75vh;padding:80px 10%;display:flex;align-items:center;justify-content:space-between;gap:35px;flex-wrap:wrap;background:radial-gradient(circle at 80% 30%,#343052 0%,#11111b 48%)}
+.hero-content{flex:1;min-width:260px}
+.tag{color:#a78bfa;font-weight:bold;letter-spacing:2px}
+h1{font-size:clamp(38px,6vw,64px);line-height:1.15;margin:18px 0}
+h1 span{color:#c4b5fd}
+.hero p{color:#bbb;max-width:550px;margin-bottom:28px}
+.btn{display:inline-block;padding:13px 25px;background:#a78bfa;color:#171327;text-decoration:none;border-radius:8px;font-weight:bold;transition:.3s}
+.btn:hover{background:#c4b5fd;transform:translateY(-3px)}
+.hero-art{width:300px;height:270px;border-radius:25px;background:linear-gradient(135deg,#343052,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:90px;box-shadow:0 15px 40px #0005;margin:auto}
+section{padding:70px 10%}
+.section-title{text-align:center;color:#c4b5fd;font-size:32px;margin-bottom:35px}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px}
+.feature{background:#191827;border:1px solid #343052;border-radius:14px;padding:28px;transition:.3s}
+.feature:hover{transform:translateY(-6px);border-color:#a78bfa}
+.feature .icon{font-size:35px}
+.feature h3{color:#c4b5fd;margin:12px 0}
+.feature p{color:#bbb}
+.cta{background:#191827;border:1px solid #343052;border-radius:18px;text-align:center;padding:45px 25px}
+.cta p{color:#bbb;margin:12px 0 25px}
+footer{text-align:center;padding:25px;color:#aaa;border-top:1px solid #343052}
+@media(max-width:650px){
+ header{justify-content:center}
+ nav{justify-content:center;gap:14px}
+ .hero{text-align:center;padding:60px 7%}
+ .hero p{margin:0 auto 25px}
+ section{padding:55px 7%}
+ .hero-art{width:230px;height:210px}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">LaunchUp.</div>
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#features">Features</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="hero-content">
+  <div class="tag">BUILD YOUR FUTURE</div>
+  <h1>Turn Your Ideas Into <span>Reality.</span></h1>
+  <p>Create, learn and grow with a platform designed to help you take your next big step. Start building something amazing today.</p>
+  <a href="#features" class="btn">Explore Features</a>
+ </div>
+ <div class="hero-art">🚀</div>
+</section>
+
+<section id="features">
+ <h2 class="section-title">What We Offer</h2>
+ <div class="features">
+  <div class="feature">
+   <div class="icon">💡</div>
+   <h3>Creative Ideas</h3>
+   <p>Discover fresh ideas and turn them into meaningful projects.</p>
+  </div>
+  <div class="feature">
+   <div class="icon">⚡</div>
+   <h3>Easy Experience</h3>
+   <p>Enjoy a simple, clean and user-friendly experience.</p>
+  </div>
+  <div class="feature">
+   <div class="icon">📱</div>
+   <h3>Responsive Design</h3>
+   <p>Access the website comfortably on mobile, tablet and desktop.</p>
+  </div>
+ </div>
+</section>
+
+<section id="about">
+ <h2 class="section-title">About Our Platform</h2>
+ <div class="cta">
+  <h2>Designed for Your Growth</h2>
+  <p>We believe every great journey begins with one small step. Take yours today.</p>
+  <a href="#contact" class="btn">Get Started</a>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="cta">
+  <h2 class="section-title">Ready to Begin?</h2>
+  <p>Have a question or an idea? We would love to hear from you.</p>
+  <a href="mailto:hello@example.com" class="btn">Contact Us</a>
+ </div>
+</section>
+</main>
+
+<footer>
+ <p>© 2026 LaunchUp. Landing Page Practice Project.</p>
+ <p><a href="css.html" style="color:#c4b5fd">Back to SkillSaathi CSS Course</a></p>
+</footer>
+</body>
+</html>

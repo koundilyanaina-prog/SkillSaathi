@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Course - Beginner to Advanced | SkillSaathi</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #11111b;
+  color: #eee;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  padding: 65px 20px;
+  background: linear-gradient(145deg, #171b33, #111427);
+  border-bottom: 1px solid #39335d;
+}
+
+header h1 {
+  color: #c4b5fd;
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+header p {
+  color: #c0c5dc;
+  max-width: 700px;
+  margin: auto;
+}
+
+.badge {
+  display: inline-block;
+  background: #292044;
+  color: #c4b5fd;
+  padding: 6px 15px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+
+.container {
+  max-width: 1150px;
+  margin: auto;
+  padding: 35px 20px;
+}
+
+.intro {
+  background: linear-gradient(145deg, #171b33, #111427);
+  border: 1px solid #39335d;
+  padding: 28px;
+  border-radius: 15px;
+  margin-bottom: 35px;
+}
+
+.intro h2, .section-title {
+  color: #c4b5fd;
+  margin-bottom: 14px;
+}
+
+.intro p {
+  color: #d2d3e8;
+  margin-bottom: 10px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 22px;
+}
+
+.stat {
+  background: #211c40;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #39335d;
+}
+
+.stat h3 {
+  color: #c4b5fd;
+  font-size: 27px;
+}
+
+.stat p {
+  color: #c0c5dc;
+  font-size: 13px;
+  margin: 0;
+}
+
+.course-section {
+  margin: 40px 0;
+}
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 17px;
+}
+
+.lesson-card {
+  background: linear-gradient(145deg, #171b33, #111427);
+  border: 1px solid #39335d;
+  border-radius: 12px;
+  padding: 20px;
+  transition: .25s;
+}
+
+.lesson-card:hover {
+  transform: translateY(-5px);
+  border-color: #a78bfa;
+  box-shadow: 0 8px 25px #0004;
+}
+
+.lesson-number {
+  color: #a78bfa;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.lesson-card h3 {
+  color: #e0def5;
+  font-size: 17px;
+  margin: 8px 0;
+}
+
+.lesson-card p {
+  color: #b9bdd3;
+  font-size: 13px;
+}
+
+.lesson-card a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 9px 15px;
+  background: #a78bfa;
+  color: #100c24;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.lesson-card a:hover {
+  background: #c4b5fd;
+}
+
+.project-card {
+  border-color: #514477;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  color: #a9a8c0;
+  border-top: 1px solid #39335d;
+  margin-top: 30px;
+}
+
+@media(max-width: 600px) {
+  header h1 { font-size: 29px; }
+  .stats { grid-template-columns: 1fr; }
+  .container { padding: 25px 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <span class="badge">FREE SKILLSAATHI COURSE</span>
+  <h1>CSS – Beginner to Advanced</h1>.60
+  
+  <p>Learn to style beautiful, responsive and professional websites with CSS through detailed lessons and practical projects.</p>
+</header>
+
+<main class="container">
+
+<section class="intro">
+  <h2>Welcome to the CSS Course!</h2>
+  <p>CSS stands for Cascading Style Sheets. It is used to control the appearance and layout of web pages.</p>
+  <p>In this course, you will learn CSS from the fundamentals to advanced techniques and build real-world website designs.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <h3>25</h3>
+      <p>Detailed Lessons</p>
+    </div>
+    <div class="stat">
+      <h3>4</h3>
+      <p>Practical Projects</p>
+    </div>
+    <div class="stat">
+      <h3>100%</h3>
+      <p>Free Learning</p>
+    </div>
+  </div>
+</section>
+
+<section class="course-section">
+<h2 class="section-title">Part 1 – CSS Fundamentals</h2>
+<div class="lesson-grid">
+
+<div class="lesson-card"><span class="lesson-number">LESSON 01</span><h3>Introduction to CSS</h3><p>Understand CSS and how styling works.</p><a href="css-lessons/css-lesson1.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 02</span><h3>CSS Syntax and Selectors</h3><p>Learn rules, selectors and comments.</p><a href="css-lessons/css-lesson2.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 03</span><h3>Adding CSS to HTML</h3><p>Inline, internal and external CSS.</p><a href="css-lessons/css-lesson3.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 04</span><h3>Colors and Backgrounds</h3><p>Colors, gradients and background properties.</p><a href="css-lessons/css-lesson4.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 05</span><h3>Typography</h3><p>Fonts, text styling and readability.</p><a href="css-lessons/css-lesson5.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 06</span><h3>CSS Units</h3><p>px, %, em, rem, vh and vw.</p><a href="css-lessons/css-lesson6.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 07</span><h3>CSS Box Model</h3><p>Understand content, padding, border and margin.</p><a href="css-lessons/css-lesson7.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 08</span><h3>Margins, Padding and Borders</h3><p>Control spacing and element boundaries.</p><a href="css-lessons/css-lesson8.html">Start Lesson →</a></div>
+
+</div>
+</section>
+
+<section class="course-section">
+<h2 class="section-title">Part 2 – Styling and Layout</h2>
+<div class="lesson-grid">
+
+<div class="lesson-card"><span class="lesson-number">LESSON 09</span><h3>CSS Display Property</h3><p>Block, inline, inline-block and none.</p><a href="css-lessons/css-lesson9.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 10</span><h3>CSS Position</h3><p>Static, relative, absolute, fixed and sticky.</p><a href="css-lessons/css-lesson10.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 11</span><h3>Overflow and Visibility</h3><p>Manage overflowing and hidden content.</p><a href="css-lessons/css-lesson11.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 12</span><h3>CSS Flexbox</h3><p>Build flexible one-dimensional layouts.</p><a href="css-lessons/css-lesson12.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 13</span><h3>CSS Grid</h3><p>Create powerful two-dimensional layouts.</p><a href="css-lessons/css-lesson13.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 14</span><h3>Width and Height</h3><p>Control element dimensions.</p><a href="css-lessons/css-lesson14.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 15</span><h3>Pseudo Classes and Elements</h3><p>Style interactive states and special parts.</p><a href="css-lessons/css-lesson15.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 16</span><h3>Advanced Selectors</h3><p>Combinators and selector relationships.</p><a href="css-lessons/css-lesson16.html">Start Lesson →</a></div>
+
+</div>
+</section>
+
+<section class="course-section">
+<h2 class="section-title">Part 3 – Advanced CSS</h2>
+<div class="lesson-grid">
+
+<div class="lesson-card"><span class="lesson-number">LESSON 17</span><h3>Transitions and Transforms</h3><p>Add smooth effects and transformations.</p><a href="css-lessons/css-lesson17.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 18</span><h3>CSS Animations</h3><p>Create animations using keyframes.</p><a href="css-lessons/css-lesson18.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 19</span><h3>Responsive Web Design</h3><p>Design websites for different screens.</p><a href="css-lessons/css-lesson19.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 20</span><h3>Media Queries</h3><p>Apply mobile-first responsive styling.</p><a href="css-lessons/css-lesson20.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 21</span><h3>CSS Variables</h3><p>Use custom properties and reusable values.</p><a href="css-lessons/css-lesson21.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 22</span><h3>Shadows and Filters</h3><p>Explore visual effects and blend modes.</p><a href="css-lessons/css-lesson22.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 23</span><h3>Forms and Navigation Styling</h3><p>Design attractive forms, menus and buttons.</p><a href="css-lessons/css-lesson23.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 24</span><h3>CSS Architecture and Debugging</h3><p>Understand specificity and maintainable CSS.</p><a href="css-lessons/css-lesson24.html">Start Lesson →</a></div>
+
+<div class="lesson-card"><span class="lesson-number">LESSON 25</span><h3>Professional CSS</h3><p>Accessibility, optimization and final review.</p><a href="css-lessons/css-lesson25.html">Start Lesson →</a></div>
+
+</div>
+</section>
+
+<section class="course-section">
+<h2 class="section-title">Part 4 – Practical Projects</h2>
+<div class="lesson-grid">
+
+
+<div class="lesson-card project-card">
+  <span class="lesson-number">PROJECT 01</span>
+  <h3>Personal Portfolio Design</h3>
+  <p>Style a professional personal portfolio using CSS.</p>
+  <a href="css-project1.html">Open Project →</a>
+</div>
+
+<div class="lesson-card project-card">
+<span class="lesson-number">PROJECT 02</span>
+<h3>Responsive Landing Page</h3>
+<p>Build a responsive landing page using Flexbox and Grid.</p>
+<a href="css-project2.html">Open Project →</a>
+</div>
+
+<div class="lesson-card project-card">
+<span class="lesson-number">PROJECT 03</span>
+<h3>Modern Dashboard UI</h3>
+<p>Create a dashboard with cards and professional layouts.</p>
+<a href="css-project3.html">Open Project →</a>
+</div>
+
+<div class="lesson-card project-card">
+<span class="lesson-number">PROJECT 04</span>
+<h3>E-commerce Website Design</h3>
+<p>Design a responsive online shopping interface.</p>
+<a href="css-project4.html">Open Project →</a>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<p>© 2026 SkillSaathi | Learn Without Limits</p>
+<p>Keep Learning. Keep Growing.</p>
+</footer>
+
+</body>
+</html>

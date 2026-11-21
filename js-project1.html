@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Calculator | SkillSaathi</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#11111b;
+  color:#eee;
+  min-height:100vh;
+}
+
+header{
+  background:#191927;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  border-bottom:1px solid #343047;
+}
+
+header a{
+  color:#c4b5fd;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.container{
+  max-width:1000px;
+  width:90%;
+  margin:35px auto;
+}
+
+.hero{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.hero h1{
+  color:#d8ccff;
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#aaa;
+}
+
+.calculator-wrapper{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:10px;
+}
+
+.calculator{
+  width:100%;
+  max-width:370px;
+  background:#1b1b2b;
+  border:1px solid #514477;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.display{
+  background:#0b0b13;
+  border:1px solid #39334f;
+  border-radius:12px;
+  padding:18px;
+  min-height:110px;
+  margin-bottom:18px;
+  text-align:right;
+  overflow:hidden;
+}
+
+.previous{
+  min-height:25px;
+  color:#999;
+  font-size:15px;
+  overflow-wrap:anywhere;
+}
+
+.current{
+  color:#fff;
+  font-size:34px;
+  font-weight:bold;
+  margin-top:10px;
+  overflow-wrap:anywhere;
+}
+
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.btn{
+  min-height:62px;
+  border:none;
+  border-radius:12px;
+  background:#29263d;
+  color:#eee;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.btn:hover{
+  background:#40375e;
+  transform:translateY(-2px);
+}
+
+.btn:active{
+  transform:scale(.96);
+}
+
+.operator{
+  background:#393052;
+  color:#c4b5fd;
+}
+
+.special{
+  background:#514477;
+  color:#fff;
+}
+
+.equal{
+  background:#8b5cf6;
+  color:white;
+  grid-row:span 2;
+}
+
+.equal:hover{
+  background:#7041d8;
+}
+
+.zero{
+  grid-column:span 2;
+}
+
+.info{
+  background:#1b1b2b;
+  border:1px solid #343047;
+  padding:22px;
+  border-radius:14px;
+  margin-top:30px;
+}
+
+.info h2{
+  color:#c4b5fd;
+  margin-bottom:12px;
+}
+
+.info p{
+  color:#bbb;
+  margin:8px 0;
+  line-height:1.6;
+}
+
+.info ul{
+  padding-left:22px;
+  color:#bbb;
+}
+
+.info li{
+  margin:7px 0;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#999;
+  border-top:1px solid #343047;
+  margin-top:40px;
+}
+
+@media(max-width:420px){
+  .calculator{
+    padding:14px;
+  }
+
+  .btn{
+    min-height:57px;
+    font-size:18px;
+  }
+
+  .current{
+    font-size:29px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html">SkillSaathi</a>
+  <a href="javascript.html">JavaScript Course</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h1>Interactive Calculator</h1>
+  <p>JavaScript Practical Project 01</p>
+  <p>Perform basic mathematical calculations with ease.</p>
+</section>
+
+<section class="calculator-wrapper">
+
+<div class="calculator">
+
+  <div class="display">
+    <div class="previous" id="previous"></div>
+    <div class="current" id="current">0</div>
+  </div>
+
+  <div class="buttons">
+
+    <button class="btn special" data-action="clear">AC</button>
+    <button class="btn special" data-action="delete">DEL</button>
+    <button class="btn special" data-action="percent">%</button>
+    <button class="btn operator" data-operator="/">÷</button>
+
+    <button class="btn" data-number="7">7</button>
+    <button class="btn" data-number="8">8</button>
+    <button class="btn" data-number="9">9</button>
+    <button class="btn operator" data-operator="*">×</button>
+
+    <button class="btn" data-number="4">4</button>
+    <button class="btn" data-number="5">5</button>
+    <button class="btn" data-number="6">6</button>
+    <button class="btn operator" data-operator="-">−</button>
+
+    <button class="btn" data-number="1">1</button>
+    <button class="btn" data-number="2">2</button>
+    <button class="btn" data-number="3">3</button>
+    <button class="btn operator" data-operator="+">+</button>
+
+    <button class="btn zero" data-number="0">0</button>
+    <button class="btn" data-action="decimal">.</button>
+    <button class="btn equal" data-action="equals">=</button>
+
+  </div>
+</div>
+
+</section>
+
+<section class="info">
+  <h2>About This Project</h2>
+  <p>This interactive calculator is built using HTML, CSS and JavaScript.</p>
+
+  <h2>Features</h2>
+  <ul>
+    <li>Addition, subtraction, multiplication and division.</li>
+    <li>Percentage calculation.</li>
+    <li>Decimal number support.</li>
+    <li>Delete and clear functions.</li>
+    <li>Keyboard input support.</li>
+    <li>Responsive layout for mobile and desktop.</li>
+    <li>Prevents division by zero.</li>
+  </ul>
+
+  <h2>What You Learn</h2>
+  <p>DOM manipulation, event listeners, functions, operators, conditions and input handling.</p>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 SkillSaathi | Learn, Practice and Grow</p>
+</footer>
+
+<script>
+const currentDisplay = document.getElementById("current");
+const previousDisplay = document.getElementById("previous");
+
+let currentInput = "0";
+let previousInput = "";
+let selectedOperator = null;
+let shouldReset = false;
+
+function updateDisplay(){
+  currentDisplay.textContent = currentInput;
+
+  if(selectedOperator && previousInput !== ""){
+    previousDisplay.textContent =
+      previousInput + " " + getSymbol(selectedOperator);
+  }else{
+    previousDisplay.textContent = "";
+  }
+}
+
+function getSymbol(operator){
+  const symbols = {
+    "+":"+",
+    "-":"−",
+    "*":"×",
+    "/":"÷"
+  };
+
+  return symbols[operator] || operator;
+}
+
+function inputNumber(number){
+  if(shouldReset){
+    currentInput = number;
+    shouldReset = false;
+  }else if(currentInput === "0"){
+    currentInput = number;
+  }else if(currentInput.length < 15){
+    currentInput += number;
+  }
+
+  updateDisplay();
+}
+
+function inputDecimal(){
+  if(shouldReset){
+    currentInput = "0";
+    shouldReset = false;
+  }
+
+  if(!currentInput.includes(".")){
+    currentInput += ".";
+  }
+
+  updateDisplay();
+}
+
+function chooseOperator(operator){
+  if(selectedOperator && !shouldReset){
+    calculate();
+  }
+
+  previousInput = currentInput;
+  selectedOperator = operator;
+  shouldReset = true;
+
+  updateDisplay();
+}
+
+function calculate(){
+  if(!selectedOperator || previousInput === ""){
+    return;
+  }
+
+  const first = Number(previousInput);
+  const second = Number(currentInput);
+
+  let result;
+
+  switch(selectedOperator){
+    case "+":
+      result = first + second;
+      break;
+
+    case "-":
+      result = first - second;
+      break;
+
+    case "*":
+      result = first * second;
+      break;
+
+    case "/":
+      if(second === 0){
+        currentInput = "Cannot divide by zero";
+        previousInput = "";
+        selectedOperator = null;
+        shouldReset = true;
+        updateDisplay();
+        return;
+      }
+      result = first / second;
+      break;
+
+    default:
+      return;
+  }
+
+  if(!Number.isFinite(result)){
+    currentInput = "Error";
+  }else{
+    result = Number(result.toPrecision(12));
+    currentInput = String(result);
+  }
+
+  previousInput = "";
+  selectedOperator = null;
+  shouldReset = true;
+
+  updateDisplay();
+}
+
+function clearCalculator(){
+  currentInput = "0";
+  previousInput = "";
+  selectedOperator = null;
+  shouldReset = false;
+
+  updateDisplay();
+}
+
+function deleteNumber(){
+  if(shouldReset){
+    currentInput = "0";
+    shouldReset = false;
+  }else if(currentInput.length > 1){
+    currentInput = currentInput.slice(0,-1);
+  }else{
+    currentInput = "0";
+  }
+
+  updateDisplay();
+}
+
+function calculatePercent(){
+  if(currentInput === "Cannot divide by zero"){
+    return;
+  }
+
+  currentInput = String(Number(currentInput) / 100);
+  shouldReset = true;
+
+  updateDisplay();
+}
+
+document.querySelector(".buttons").addEventListener("click",function(event){
+  const button = event.target.closest("button");
+
+  if(!button) return;
+
+  if(button.dataset.number !== undefined){
+    inputNumber(button.dataset.number);
+  }
+
+  if(button.dataset.operator){
+    chooseOperator(button.dataset.operator);
+  }
+
+  const action = button.dataset.action;
+
+  if(action === "clear") clearCalculator();
+  if(action === "delete") deleteNumber();
+  if(action === "decimal") inputDecimal();
+  if(action === "equals") calculate();
+  if(action === "percent") calculatePercent();
+});
+
+document.addEventListener("keydown",function(event){
+  const key = event.key;
+
+  if(/^[0-9]$/.test(key)){
+    inputNumber(key);
+  }
+
+  if(["+","-","*","/"].includes(key)){
+    chooseOperator(key);
+  }
+
+  if(key === "."){
+    inputDecimal();
+  }
+
+  if(key === "Enter" || key === "="){
+    event.preventDefault();
+    calculate();
+  }
+
+  if(key === "Backspace"){
+    deleteNumber();
+  }
+
+  if(key === "Escape"){
+    clearCalculator();
+  }
+
+  if(key === "%"){
+    calculatePercent();
+  }
+});
+
+updateDisplay();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management System | SkillSaathi</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #11111b;
+    color: #eee;
+    padding: 35px 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #c4b5fd;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: #1c1c2b;
+    border: 1px solid #34344b;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 22px;
+}
+
+h2 {
+    color: #c4b5fd;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+label {
+    display: block;
+    color: #ccc;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    background: #11111b;
+    border: 1px solid #44445c;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+}
+
+input:focus {
+    border-color: #a78bfa;
+}
+
+button {
+    border: none;
+    border-radius: 7px;
+    padding: 11px 16px;
+    background: #a78bfa;
+    color: #171323;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #c4b5fd;
+}
+
+#saveBtn {
+    margin-top: 18px;
+}
+
+.search-box {
+    margin-bottom: 18px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 570px;
+}
+
+th, td {
+    padding: 13px;
+    text-align: left;
+    border-bottom: 1px solid #34344b;
+}
+
+th {
+    color: #c4b5fd;
+    background: #252538;
+}
+
+td {
+    color: #ddd;
+}
+
+.edit-btn {
+    background: #a78bfa;
+    margin-right: 5px;
+}
+
+.delete-btn {
+    background: #e87979;
+}
+
+.message {
+    color: #aaa;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.stat-box {
+    background: #252538;
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+}
+
+.stat-box h3 {
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.stat-box p {
+    font-size: 25px;
+    color: #c4b5fd;
+    font-weight: bold;
+}
+
+@media(max-width: 650px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Management System</h1>
+    <p class="subtitle">Manage student records easily with SkillSaathi</p>
+
+    <div class="stats">
+        <div class="stat-box">
+            <h3>Total Students</h3>
+            <p id="totalStudents">0</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Average Marks</h3>
+            <p id="averageMarks">0</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Top Marks</h3>
+            <p id="topMarks">0</p>
+        </div>
+    </div>
+
+    <div class="card">
+
+        <h2 id="formTitle">Add New Student</h2>
+
+        <form id="studentForm">
+
+            <div class="form-grid">
+
+                <div>
+                    <label for="studentName">Student Name</label>
+                    <input type="text" id="studentName"
+                        placeholder="Enter student name" required>
+                </div>
+
+                <div>
+                    <label for="rollNumber">Roll Number</label>
+                    <input type="text" id="rollNumber"
+                        placeholder="Enter roll number" required>
+                </div>
+
+                <div>
+                    <label for="studentMarks">Marks (0–100)</label>
+                    <input type="number" id="studentMarks"
+                        placeholder="Enter marks" min="0" max="100" required>
+                </div>
+
+            </div>
+
+            <button type="submit" id="saveBtn">Add Student</button>
+
+            <button type="button" id="cancelBtn" hidden>
+                Cancel Edit
+            </button>
+
+        </form>
+
+        <p class="message" id="formMessage"></p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Student Records</h2>
+
+        <div class="search-box">
+            <input type="text" id="searchInput"
+                placeholder="Search by name or roll number...">
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Roll Number</th>
+                        <th>Marks</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="studentTable"></tbody>
+            </table>
+
+        </div>
+
+        <p class="message" id="emptyMessage">
+            No student records found.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+const studentForm = document.getElementById("studentForm");
+const studentName = document.getElementById("studentName");
+const rollNumber = document.getElementById("rollNumber");
+const studentMarks = document.getElementById("studentMarks");
+const studentTable = document.getElementById("studentTable");
+const searchInput = document.getElementById("searchInput");
+const formMessage = document.getElementById("formMessage");
+const emptyMessage = document.getElementById("emptyMessage");
+const saveBtn = document.getElementById("saveBtn");
+const cancelBtn = document.getElementById("cancelBtn");
+
+let students = [];
+
+try {
+    const savedStudents = JSON.parse(
+        localStorage.getItem("skillSaathiStudents")
+    );
+
+    if (Array.isArray(savedStudents)) {
+        students = savedStudents.filter(student =>
+            student &&
+            typeof student.name === "string" &&
+            typeof student.roll === "string" &&
+            Number.isFinite(student.marks) &&
+            student.marks >= 0 &&
+            student.marks <= 100
+        );
+    }
+} catch (error) {
+    students = [];
+}
+
+let editId = null;
+
+function saveStudents() {
+    localStorage.setItem(
+        "skillSaathiStudents",
+        JSON.stringify(students)
+    );
+}
+
+function updateStats() {
+    const total = students.length;
+
+    const average = total
+        ? students.reduce((sum, student) => sum + student.marks, 0) / total
+        : 0;
+
+    const highest = total
+        ? Math.max(...students.map(student => student.marks))
+        : 0;
+
+    document.getElementById("totalStudents").textContent = total;
+    document.getElementById("averageMarks").textContent =
+        average.toFixed(1);
+    document.getElementById("topMarks").textContent = highest;
+}
+
+function renderStudents() {
+    studentTable.innerHTML = "";
+
+    const search = searchInput.value.trim().toLowerCase();
+
+    const filteredStudents = students.filter(student =>
+        student.name.toLowerCase().includes(search) ||
+        student.roll.toLowerCase().includes(search)
+    );
+
+    filteredStudents.forEach(student => {
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = student.name;
+
+        const rollCell = document.createElement("td");
+        rollCell.textContent = student.roll;
+
+        const marksCell = document.createElement("td");
+        marksCell.textContent = student.marks;
+
+        const actionCell = document.createElement("td");
+
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.className = "edit-btn";
+
+        editButton.addEventListener("click", () => {
+            startEdit(student.id);
+        });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.className = "delete-btn";
+
+        deleteButton.addEventListener("click", () => {
+            deleteStudent(student.id);
+        });
+
+        actionCell.append(editButton, deleteButton);
+        row.append(nameCell, rollCell, marksCell, actionCell);
+
+        studentTable.appendChild(row);
+    });
+
+    emptyMessage.style.display =
+        filteredStudents.length === 0 ? "block" : "none";
+
+    updateStats();
+}
+
+studentForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = studentName.value.trim();
+    const roll = rollNumber.value.trim();
+    const marks = Number(studentMarks.value);
+
+    if (!name || !roll || studentMarks.value === "" ||
+        !Number.isFinite(marks) || marks < 0 || marks > 100) {
+        formMessage.textContent = "Please enter valid student details.";
+        return;
+    }
+
+    const duplicate = students.some(student =>
+        student.roll.toLowerCase() === roll.toLowerCase() &&
+        student.id !== editId
+    );
+
+    if (duplicate) {
+        formMessage.textContent = "This roll number already exists!";
+        return;
+    }
+
+    if (editId !== null) {
+        const index = students.findIndex(student => student.id === editId);
+
+        if (index !== -1) {
+            students[index] = {
+                ...students[index],
+                name,
+                roll,
+                marks
+            };
+        }
+
+        formMessage.textContent = "Student updated successfully!";
+
+    } else {
+        students.push({
+            id: Date.now().toString() + Math.random().toString(36).slice(2),
+            name,
+            roll,
+            marks
+        });
+
+        formMessage.textContent = "Student added successfully!";
+    }
+
+    saveStudents();
+    resetForm();
+    renderStudents();
+});
+
+function startEdit(id) {
+    const student = students.find(item => item.id === id);
+
+    if (!student) return;
+
+    studentName.value = student.name;
+    rollNumber.value = student.roll;
+    studentMarks.value = student.marks;
+
+    editId = id;
+
+    document.getElementById("formTitle").textContent = "Edit Student";
+    saveBtn.textContent = "Update Student";
+    cancelBtn.hidden = false;
+
+    formMessage.textContent = "Update the details and save.";
+    studentName.focus();
+}
+
+function deleteStudent(id) {
+    if (!confirm("Are you sure you want to delete this student?")) {
+        return;
+    }
+
+    students = students.filter(student => student.id !== id);
+
+    if (editId === id) {
+        resetForm();
+    }
+
+    saveStudents();
+    renderStudents();
+
+    formMessage.textContent = "Student deleted successfully!";
+}
+
+function resetForm() {
+    studentForm.reset();
+    editId = null;
+
+    document.getElementById("formTitle").textContent = "Add New Student";
+    saveBtn.textContent = "Add Student";
+    cancelBtn.hidden = true;
+}
+
+cancelBtn.addEventListener("click", function() {
+    resetForm();
+    formMessage.textContent = "";
+});
+
+searchInput.addEventListener("input", renderStudents);
+
+renderStudents();
+</script>
+
+</body>
+</html>

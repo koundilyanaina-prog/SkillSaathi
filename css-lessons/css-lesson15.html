@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Lesson 15 - Pseudo Classes and Elements | SkillSaathi</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #11111b;
+    color: #eeeafc;
+    line-height: 1.7;
+}
+
+header {
+    background: #171b33;
+    padding: 25px 7%;
+    border-bottom: 1px solid #343052;
+}
+
+header a {
+    color: #c4b5fd;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    color: #c4b5fd;
+    margin-bottom: 12px;
+}
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 25px 18px;
+}
+
+.card {
+    background: #171b33;
+    border: 1px solid #343052;
+    border-radius: 14px;
+    padding: 22px;
+    margin: 20px 0;
+}
+
+p, li {
+    color: #ddd8ee;
+    margin-bottom: 10px;
+}
+
+pre {
+    background: #0c0d16;
+    padding: 15px;
+    border-radius: 9px;
+    overflow-x: auto;
+    color: #e9ddff;
+    margin: 12px 0;
+}
+
+code {
+    color: #f0abfc;
+}
+
+button {
+    background: #a78bfa;
+    color: #171327;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 7px 5px 7px 0;
+}
+
+textarea {
+    width: 100%;
+    min-height: 190px;
+    background: #0c0d16;
+    color: #eeeafc;
+    border: 1px solid #62558d;
+    border-radius: 9px;
+    padding: 14px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+iframe {
+    display: none;
+    width: 100%;
+    height: 280px;
+    background: white;
+    border: none;
+    border-radius: 9px;
+    margin-top: 12px;
+}
+
+.option {
+    display: block;
+    background: #22243d;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.feedback {
+    color: #c4b5fd;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.nav a {
+    background: #a78bfa;
+    color: #171327;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 18px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    background: #c4b5fd;
+    transform: translateY(-2px);
+}
+
+.nav a:first-child {
+    background: #343052;
+    color: #f4f1ff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="../css.html">← Back to CSS Course</a>
+<h1>Lesson 15: Pseudo-Classes and Pseudo-Elements</h1>
+<p>Learn how to style element states and specific parts of elements.</p>
+</header>
+
+<main>
+
+<div class="card">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand pseudo-classes.</li>
+<li>Use hover and focus states.</li>
+<li>Understand pseudo-elements.</li>
+<li>Create interactive visual effects.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>1. What are Pseudo-Classes?</h2>
+
+<p>A pseudo-class is used to style an element when it is in a particular state.</p>
+
+<p>For example, when a user moves the mouse over a button, we can change its background color.</p>
+
+<pre>
+button:hover {
+    background: purple;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>2. Common Pseudo-Classes</h2>
+
+<h3>:hover</h3>
+<p>Applies styles when the mouse pointer is over an element.</p>
+<pre>
+button:hover {
+    background: #6d28d9;
+}
+</pre>
+
+<h3>:focus</h3>
+<p>Applies styles when an input or other focusable element is selected.</p>
+<pre>
+input:focus {
+    outline: 2px solid violet;
+}
+</pre>
+
+<h3>:first-child</h3>
+<p>Selects the first child element of its parent.</p>
+<pre>
+li:first-child {
+    color: violet;
+}
+</pre>
+
+<h3>:nth-child()</h3>
+<p>Selects a child based on its position.</p>
+<pre>
+li:nth-child(2) {
+    color: pink;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>3. What are Pseudo-Elements?</h2>
+
+<p>Pseudo-elements allow us to style a specific part of an element or add generated decorative content.</p>
+
+<p>Modern CSS uses double colons (::) for pseudo-elements.</p>
+
+<h3>::before</h3>
+<pre>
+h2::before {
+    content: "★ ";
+}
+</pre>
+
+<h3>::after</h3>
+<pre>
+h2::after {
+    content: " ✦";
+}
+</pre>
+
+<h3>::first-letter</h3>
+<pre>
+p::first-letter {
+    font-size: 30px;
+    color: purple;
+}
+</pre>
+
+<h3>::selection</h3>
+<pre>
+::selection {
+    background: purple;
+    color: white;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>4. Difference Between Pseudo-Class and Pseudo-Element</h2>
+
+<p><b>Pseudo-Class:</b> Selects an element based on its state or position.</p>
+<p>Example: <code>:hover</code>, <code>:focus</code>, <code>:first-child</code></p>
+
+<p><b>Pseudo-Element:</b> Styles a specific part of an element or creates generated content.</p>
+<p>Example: <code>::before</code>, <code>::after</code>, <code>::first-letter</code></p>
+</div>
+
+<div class="card">
+<h2>5. Practical Example</h2>
+
+<pre>
+.demo-button:hover {
+    background: #35245f;
+    transform: translateY(-3px);
+}
+
+.note::before {
+    content: "★ ";
+    color: purple;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>Try It Yourself</h2>
+<p>Move your mouse over the button in the preview and observe the effect.</p>
+
+<textarea id="code">
+<button class="demo">Hover Over Me</button>
+
+<p class="note">I am learning CSS pseudo-elements!</p>
+
+<style>
+.demo {
+    padding: 12px 22px;
+    background: #6d5aa8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.demo:hover {
+    background: #35245f;
+    transform: translateY(-3px);
+}
+
+.note::before {
+    content: "★ ";
+    color: purple;
+}
+</style>
+</textarea>
+
+<button onclick="runCode()">Run Code</button>
+<button onclick="clearOutput()">Clear Output</button>
+<button onclick="showHint()">Hint</button>
+
+<p id="hint" class="feedback"></p>
+
+<iframe id="preview" title="Code Preview"></iframe>
+</div>
+
+<div class="card">
+<h2>Practice Activity</h2>
+
+<p>Create three buttons with different hover effects.</p>
+<ul>
+<li>Change the background color on hover.</li>
+<li>Change the text color on hover.</li>
+<li>Use a transition for smooth movement.</li>
+<li>Add a decorative symbol using ::after.</li>
+</ul>
+
+<h3>Homework</h3>
+<p>Create a navigation menu and use :hover to highlight menu items. Add a decorative symbol using ::before or ::after.</p>
+</div>
+
+<h2>Knowledge Check</h2>
+
+<div class="card">
+<p><b>Q1. Which pseudo-class styles an element on mouse hover?</b></p>
+<label class="option"><input type="radio" name="q1" value="0"> :focus</label>
+<label class="option"><input type="radio" name="q1" value="1"> :hover</label>
+<label class="option"><input type="radio" name="q1" value="2"> ::before</label>
+<label class="option"><input type="radio" name="q1" value="3"> ::after</label>
+</div>
+
+<div class="card">
+<p><b>Q2. Which selector targets a focused input?</b></p>
+<label class="option"><input type="radio" name="q2" value="0"> :input</label>
+<label class="option"><input type="radio" name="q2" value="1"> input::focus</label>
+<label class="option"><input type="radio" name="q2" value="2"> input:focus</label>
+<label class="option"><input type="radio" name="q2" value="3"> input:hover only</label>
+</div>
+
+<div class="card">
+<p><b>Q3. Which syntax is used for pseudo-elements?</b></p>
+<label class="option"><input type="radio" name="q3" value="0"> ::</label>
+<label class="option"><input type="radio" name="q3" value="1"> ##</label>
+<label class="option"><input type="radio" name="q3" value="2"> &&</label>
+<label class="option"><input type="radio" name="q3" value="3"> //</label>
+</div>
+
+<div class="card">
+<p><b>Q4. What does ::before commonly do?</b></p>
+<label class="option"><input type="radio" name="q4" value="0"> Deletes an element</label>
+<label class="option"><input type="radio" name="q4" value="1"> Adds generated content before an element's content</label>
+<label class="option"><input type="radio" name="q4" value="2"> Creates a new HTML page</label>
+<label class="option"><input type="radio" name="q4" value="3"> Reloads the browser</label>
+</div>
+
+<div class="card">
+<p><b>Q5. Which selector targets the third list item?</b></p>
+<label class="option"><input type="radio" name="q5" value="0"> :third-child</label>
+<label class="option"><input type="radio" name="q5" value="1"> li:nth-child(3)</label>
+<label class="option"><input type="radio" name="q5" value="2"> li:3</label>
+<label class="option"><input type="radio" name="q5" value="3"> li::third</label>
+</div>
+
+<div class="card">
+<button onclick="checkQuiz()">Submit Quiz</button>
+<p id="result" class="feedback"></p>
+</div>
+
+<div class="nav">
+<a href="css-lesson14.html">← Previous Lesson</a>
+<a href="../css.html">Course Home</a>
+<a href="css-lesson16.html">Next Lesson →</a>
+</div>
+
+</main>
+
+<script>
+function runCode() {
+    const preview = document.getElementById("preview");
+    preview.srcdoc = document.getElementById("code").value;
+    preview.style.display = "block";
+}
+
+function clearOutput() {
+    const preview = document.getElementById("preview");
+    preview.srcdoc = "";
+    preview.style.display = "none";
+}
+function showHint() {
+    document.getElementById("hint").textContent =
+    "Hint: Try changing the :hover background color or the ::before content.";
+}
+
+function checkQuiz() {
+    const answers = [1,2,0,1,1];
+    let score = 0;
+
+    answers.forEach((answer,index) => {
+        const selected = document.querySelector(
+            'input[name="q' + (index+1) + '"]:checked'
+        );
+
+        if(selected && Number(selected.value) === answer) {
+            score++;
+        }
+    });
+
+    document.getElementById("result").textContent =
+    "Your Score: " + score + " / 5";
+}
+</script>
+
+</body>
+</html>

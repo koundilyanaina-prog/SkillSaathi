@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Lesson 14 - Width and Height | SkillSaathi</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #11111b;
+    color: #eeeafc;
+    line-height: 1.7;
+}
+
+header {
+    background: #171b33;
+    padding: 25px 7%;
+    border-bottom: 1px solid #343052;
+}
+
+header a {
+    color: #c4b5fd;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    color: #c4b5fd;
+    margin-bottom: 12px;
+}
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 25px 18px;
+}
+
+.card {
+    background: #171b33;
+    border: 1px solid #343052;
+    border-radius: 14px;
+    padding: 22px;
+    margin: 20px 0;
+}
+
+p, li {
+    color: #ddd8ee;
+    margin-bottom: 10px;
+}
+
+code {
+    color: #f0abfc;
+}
+
+pre {
+    background: #0c0d16;
+    padding: 15px;
+    border-radius: 9px;
+    overflow-x: auto;
+    margin: 12px 0;
+    color: #e9ddff;
+}
+
+button {
+    background: #a78bfa;
+    color: #171327;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 7px 5px 7px 0;
+}
+
+textarea {
+    width: 100%;
+    min-height: 190px;
+    background: #0c0d16;
+    color: #eeeafc;
+    border: 1px solid #62558d;
+    border-radius: 9px;
+    padding: 14px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+iframe {
+    display: none;
+    width: 100%;
+    height: 280px;
+    background: white;
+    border: none;
+    border-radius: 9px;
+    margin-top: 12px;
+}
+
+.option {
+    display: block;
+    background: #22243d;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.feedback {
+    color: #c4b5fd;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.nav a {
+    background: #a78bfa;
+    color: #171327;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 18px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    background: #c4b5fd;
+    transform: translateY(-2px);
+}
+
+.nav a:first-child {
+    background: #343052;
+    color: #f4f1ff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="../css.html">← Back to CSS Course</a>
+<h1>Lesson 14: Width and Height</h1>
+<p>Learn how to control the size of HTML elements using CSS.</p>
+</header>
+
+<main>
+
+<div class="card">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand CSS width and height.</li>
+<li>Learn fixed and flexible dimensions.</li>
+<li>Understand min-width and max-width.</li>
+<li>Create responsive layouts.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>1. Introduction to Width and Height</h2>
+
+<p>CSS width and height properties control the dimensions of HTML elements.</p>
+
+<p><b>Width:</b> Controls how wide an element is.</p>
+<p><b>Height:</b> Controls how tall an element is.</p>
+
+<pre>
+.box {
+    width: 300px;
+    height: 200px;
+}
+</pre>
+</div>
+
+<div class="card">
+<h2>2. Fixed Dimensions</h2>
+
+<p>Fixed dimensions use units such as px.</p>
+
+<pre>
+.card {
+    width: 300px;
+    height: 200px;
+}
+</pre>
+
+<p>The element will have a width of 300 pixels and height of 200 pixels.</p>
+</div>
+
+<div class="card">
+<h2>3. Percentage Width</h2>
+
+<p>Percentage dimensions depend on the size of the parent element.</p>
+
+<pre>
+.container {
+    width: 80%;
+}
+</pre>
+
+<p>This means the container will take 80% of its parent's width.</p>
+</div>
+
+<div class="card">
+<h2>4. Min-Width and Max-Width</h2>
+
+<p><b>min-width:</b> Sets the minimum allowed width.</p>
+<p><b>max-width:</b> Sets the maximum allowed width.</p>
+
+<pre>
+.box {
+    width: 100%;
+    max-width: 500px;
+    min-height: 150px;
+}
+</pre>
+
+<p>These properties are useful for responsive website layouts.</p>
+</div>
+
+<div class="card">
+<h2>5. Viewport Units</h2>
+
+<p>Viewport units are based on the browser window size.</p>
+
+<pre>
+.container {
+    width: 100vw;
+    min-height: 100vh;
+}
+</pre>
+
+<ul>
+<li>vw = Viewport Width</li>
+<li>vh = Viewport Height</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>6. Practical Example</h2>
+
+<pre>
+.card {
+    width: 90%;
+    max-width: 450px;
+    min-height: 180px;
+    padding: 20px;
+    margin: auto;
+}
+</pre>
+
+<p>This creates a flexible card that does not become wider than 450px.</p>
+</div>
+
+<div class="card">
+<h2>Try It Yourself</h2>
+<p>Edit the code and click Run Code to see the result.</p>
+
+<textarea id="code">
+<div class="box">
+    <h2>My Responsive Card</h2>
+    <p>Learning CSS with SkillSaathi!</p>
+</div>
+
+<style>
+.box {
+    width: 80%;
+    max-width: 450px;
+    min-height: 180px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #e9ddff;
+    color: #241b3d;
+    border-radius: 15px;
+}
+</style>
+</textarea>
+
+<button onclick="runCode()">Run Code</button>
+<button onclick="clearOutput()">Clear Output</button>
+<button onclick="showHint()">Hint</button>
+
+<p id="hint" class="feedback"></p>
+
+<iframe id="preview" title="Code Preview"></iframe>
+</div>
+
+<div class="card">
+<h2>Practice Activity</h2>
+<p>Create a responsive profile card with:</p>
+<ul>
+<li>Width: 90%</li>
+<li>Maximum width: 450px</li>
+<li>Minimum height: 180px</li>
+<li>Padding: 20px</li>
+<li>Rounded corners</li>
+</ul>
+
+<h3>Homework</h3>
+<p>Create a responsive content box using width, max-width and min-height.</p>
+</div>
+
+<h2>Knowledge Check</h2>
+
+<div class="card">
+<p><b>Q1. Which CSS property controls element width?</b></p>
+<label class="option"><input type="radio" name="q1" value="0"> height</label>
+<label class="option"><input type="radio" name="q1" value="1"> width</label>
+<label class="option"><input type="radio" name="q1" value="2"> size</label>
+<label class="option"><input type="radio" name="q1" value="3"> length</label>
+</div>
+
+<div class="card">
+<p><b>Q2. What does width: 80% mean?</b></p>
+<label class="option"><input type="radio" name="q2" value="0"> 80 pixels</label>
+<label class="option"><input type="radio" name="q2" value="1"> 80% of parent width</label>
+<label class="option"><input type="radio" name="q2" value="2"> 80 viewport height</label>
+<label class="option"><input type="radio" name="q2" value="3"> 80 characters</label>
+</div>
+
+<div class="card">
+<p><b>Q3. Which property sets the maximum width?</b></p>
+<label class="option"><input type="radio" name="q3" value="0"> max-width</label>
+<label class="option"><input type="radio" name="q3" value="1"> max-height</label>
+<label class="option"><input type="radio" name="q3" value="2"> overflow</label>
+<label class="option"><input type="radio" name="q3" value="3"> display</label>
+</div>
+
+<div class="card">
+<p><b>Q4. What does 100vh represent?</b></p>
+<label class="option"><input type="radio" name="q4" value="0"> 100 pixels</label>
+<label class="option"><input type="radio" name="q4" value="1"> 100% viewport height</label>
+<label class="option"><input type="radio" name="q4" value="2"> 100% width</label>
+<label class="option"><input type="radio" name="q4" value="3"> 100 characters</label>
+</div>
+
+<div class="card">
+<p><b>Q5. Which combination is useful for responsive cards?</b></p>
+<label class="option"><input type="radio" name="q5" value="0"> width: 100%; max-width: 500px;</label>
+<label class="option"><input type="radio" name="q5" value="1"> width: 5000px;</label>
+<label class="option"><input type="radio" name="q5" value="2"> height: 2px;</label>
+<label class="option"><input type="radio" name="q5" value="3"> width: 1px;</label>
+</div>
+
+<div class="card">
+<button onclick="checkQuiz()">Submit Quiz</button>
+<p id="result" class="feedback"></p>
+</div>
+
+<div class="nav">
+<a href="css-lesson13.html">← Previous Lesson</a>
+<a href="../css.html">Course Home</a>
+<a href="css-lesson15.html">Next Lesson →</a>
+</div>
+
+</main>
+
+<script>
+function runCode() {
+    const preview = document.getElementById("preview");
+
+    preview.srcdoc = document.getElementById("code").value;
+    preview.style.display = "block";
+}
+
+function clearOutput() {
+    const preview = document.getElementById("preview");
+
+    preview.srcdoc = "";
+    preview.style.display = "none";
+}
+
+function showHint() {
+    document.getElementById("hint").textContent =
+    "Hint: Try changing width from 80% to 100% and observe the result.";
+}
+
+function checkQuiz() {
+    const answers = [1,1,0,1,0];
+    let score = 0;
+
+    answers.forEach((answer,index) => {
+        const selected = document.querySelector(
+            'input[name="q' + (index+1) + '"]:checked'
+        );
+
+        if(selected && Number(selected.value) === answer) {
+            score++;
+        }
+    });
+
+    document.getElementById("result").textContent =
+    "Your Score: " + score + " / 5";
+}
+</script>
+
+</body>
+</html>

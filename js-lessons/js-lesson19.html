@@ -1,0 +1,808 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Lesson 19 - Error Handling and Debugging | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;line-height:1.7}
+header{background:#191927;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #302d45;position:sticky;top:0;z-index:10}
+header a{color:#c4b5fd;text-decoration:none;font-weight:bold}
+header .brand{font-size:21px}
+.hero{padding:45px 7% 30px;background:linear-gradient(135deg,#211b38,#171725)}
+.hero p{color:#c4b5fd;margin-top:8px}
+.container{display:grid;grid-template-columns:250px 1fr;gap:25px;padding:30px 7%;align-items:start}
+.sidebar{background:#1b1b2b;border:1px solid #343047;border-radius:12px;padding:20px;position:sticky;top:85px;max-height:80vh;overflow:auto}
+.sidebar h3{color:#c4b5fd;margin-bottom:12px}
+.sidebar a{display:block;color:#ccc;text-decoration:none;padding:7px 8px;border-radius:6px;font-size:14px}
+.sidebar a:hover{background:#30294b;color:#fff}
+.content{min-width:0}
+section{background:#1b1b2b;border:1px solid #343047;border-radius:12px;padding:25px;margin-bottom:22px;scroll-margin-top:90px}
+h1,h2,h3{color:#c4b5fd}
+h1{font-size:30px}
+h2{font-size:23px;margin-bottom:14px}
+h3{font-size:18px;margin:18px 0 8px}
+p{margin:10px 0;color:#ddd}
+ul,ol{padding-left:24px;margin:10px 0}
+li{margin:6px 0;color:#ddd}
+pre{background:#101019;border:1px solid #39334f;padding:16px;border-radius:9px;overflow-x:auto;margin:14px 0;color:#d8ccff;white-space:pre}
+code{font-family:Consolas,monospace}
+.note{background:#28223d;border-left:4px solid #a78bfa;padding:12px 15px;border-radius:5px;margin:15px 0;color:#eee}
+.example{background:#242238;padding:14px;border-radius:8px;margin:12px 0}
+button{background:#8b5cf6;color:white;border:0;border-radius:7px;padding:11px 19px;cursor:pointer;font-weight:bold;margin:5px 5px 5px 0}
+button:hover{background:#7042d5}
+textarea{width:100%;min-height:210px;background:#101019;color:#e9ddff;border:1px solid #51466d;border-radius:8px;padding:14px;font-family:Consolas,monospace;font-size:14px;resize:vertical}
+.output{background:#101019;border:1px solid #39334f;border-radius:8px;padding:15px;min-height:55px;margin-top:12px;white-space:pre-wrap;color:#b9f6ca}
+.task{background:#242238;border-radius:8px;padding:13px;margin:10px 0}
+.quiz-question{padding:15px 0;border-bottom:1px solid #39334f}
+.quiz-question label{display:block;margin:7px 0;cursor:pointer;color:#ddd}
+.result{font-weight:bold;margin-top:12px}
+.nav-buttons{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:25px 0}
+footer{text-align:center;padding:25px;color:#aaa;border-top:1px solid #302d45}
+@media(max-width:800px){
+.container{grid-template-columns:1fr;padding:20px 5%}
+.sidebar{position:static;max-height:300px}
+header{padding:15px 5%}
+.hero{padding:35px 5%}
+section{padding:19px}
+h1{font-size:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a class="brand" href="../index.html">SkillSaathi</a>
+<a href="../javascript.html">JavaScript Course</a>
+</header>
+
+<div class="hero">
+<h1>Lesson 19: Error Handling and Debugging</h1>
+<p>Learn how to identify errors, debug JavaScript programs and handle unexpected situations safely.</p>
+</div>
+
+<div class="container">
+
+<aside class="sidebar">
+<h3>Lesson Contents</h3>
+<a href="#intro">1. Introduction to Errors</a>
+<a href="#types">2. Types of JavaScript Errors</a>
+<a href="#syntax">3. Syntax Errors</a>
+<a href="#runtime">4. Runtime Errors</a>
+<a href="#logical">5. Logical Errors</a>
+<a href="#messages">6. Understanding Error Messages</a>
+<a href="#debugging">7. Introduction to Debugging</a>
+<a href="#console">8. Using console.log()</a>
+<a href="#devtools">9. Browser Developer Tools</a>
+<a href="#breakpoints">10. Breakpoints and Step-by-Step Debugging</a>
+<a href="#trycatch">11. try...catch</a>
+<a href="#finally">12. The finally Block</a>
+<a href="#throw">13. Throwing Custom Errors</a>
+<a href="#error-object">14. Error Objects</a>
+<a href="#practical">15. Practical Error Handling Examples</a>
+<a href="#playground">16. Code Playground</a>
+<a href="#tasks">17. Practice Tasks</a>
+<a href="#quiz">18. Knowledge Check</a>
+</aside>
+
+<main class="content">
+
+<section id="intro">
+<h2>1. Introduction to Errors</h2>
+<p>An error is a problem in a program that prevents the code from working as expected.</p>
+
+<p>Errors can occur for many reasons:</p>
+<ul>
+<li>Incorrect JavaScript syntax.</li>
+<li>Using a variable that does not exist.</li>
+<li>Calling a method that is not available.</li>
+<li>Using an incorrect calculation or condition.</li>
+<li>Receiving unexpected data from an external source.</li>
+</ul>
+
+<h3>Example</h3>
+<pre><code>console.log("Program started");
+
+console.log(userName);
+
+console.log("Program finished");</code></pre>
+
+<p>If <code>userName</code> has not been declared, JavaScript throws a ReferenceError. The last statement will not execute in this example.</p>
+
+<div class="note">Understanding errors helps developers find problems and write reliable programs.</div>
+</section>
+
+<section id="types">
+<h2>2. Types of JavaScript Errors</h2>
+<p>JavaScript programs commonly encounter three broad categories of problems:</p>
+
+<h3>1. Syntax Errors</h3>
+<p>These occur when code does not follow JavaScript grammar rules.</p>
+
+<h3>2. Runtime Errors</h3>
+<p>These occur while the program is executing.</p>
+
+<h3>3. Logical Errors</h3>
+<p>The program runs, but produces an incorrect result because the logic is wrong.</p>
+
+<div class="note">Syntax and runtime errors can be reported by JavaScript. Logical errors often require testing and careful debugging to discover.</div>
+</section>
+
+<section id="syntax">
+<h2>3. Syntax Errors</h2>
+<p>A syntax error occurs when JavaScript cannot understand the structure of the code.</p>
+
+<h3>Missing Closing Bracket</h3>
+<pre><code>if (10 > 5 {
+  console.log("Greater");
+}</code></pre>
+
+<p>The closing parenthesis is missing. Correct code:</p>
+<pre><code>if (10 > 5) {
+  console.log("Greater");
+}</code></pre>
+
+<h3>Missing Quotes</h3>
+<pre><code>console.log("Hello World);</code></pre>
+
+<p>Correct code:</p>
+<pre><code>console.log("Hello World");</code></pre>
+
+<h3>Missing Comma in an Object</h3>
+<pre><code>const student = {
+  name: "Aman"
+  age: 21
+};</code></pre>
+
+<p>Correct code:</p>
+<pre><code>const student = {
+  name: "Aman",
+  age: 21
+};</code></pre>
+
+<div class="note">Always check brackets, parentheses, quotes and commas when a syntax error appears.</div>
+</section>
+
+<section id="runtime">
+<h2>4. Runtime Errors</h2>
+<p>A runtime error occurs while JavaScript is executing a program.</p>
+
+<h3>Example: Undefined Variable</h3>
+<pre><code>console.log(studentName);
+
+// ReferenceError:
+// studentName is not defined</code></pre>
+
+<h3>Example: Calling a Non-Function</h3>
+<pre><code>const number = 10;
+
+number();</code></pre>
+
+<p>This produces a TypeError because a number cannot be called like a function.</p>
+
+<h3>Example: Accessing null</h3>
+<pre><code>const user = null;
+
+console.log(user.name);</code></pre>
+
+<p>JavaScript cannot read the name property of null.</p>
+</section>
+
+<section id="logical">
+<h2>5. Logical Errors</h2>
+<p>A logical error occurs when code runs without crashing but gives the wrong result.</p>
+
+<h3>Example: Incorrect Calculation</h3>
+<pre><code>const price = 100;
+const quantity = 3;
+
+// Incorrect calculation
+const total = price + quantity;
+
+console.log(total); // 103</code></pre>
+
+<p>The correct calculation should multiply price by quantity.</p>
+
+<pre><code>const price = 100;
+const quantity = 3;
+
+const total = price * quantity;
+
+console.log(total); // 300</code></pre>
+
+<h3>Example: Incorrect Condition</h3>
+<pre><code>const marks = 75;
+
+if (marks > 90) {
+  console.log("Passed");
+} else {
+  console.log("Not Passed");
+}</code></pre>
+
+<p>If the passing mark is 40, the condition is incorrect. Correct version:</p>
+
+<pre><code>const marks = 75;
+
+if (marks >= 40) {
+  console.log("Passed");
+} else {
+  console.log("Not Passed");
+}</code></pre>
+
+<div class="note">Logical errors are often difficult to identify because the program may run normally.</div>
+</section>
+
+<section id="messages">
+<h2>6. Understanding Error Messages</h2>
+<p>JavaScript error messages usually provide useful information about what went wrong.</p>
+
+<h3>Example</h3>
+<pre><code>console.log(studentName);</code></pre>
+
+<p>Possible error:</p>
+<pre><code>ReferenceError: studentName is not defined</code></pre>
+
+<p>Understand the message:</p>
+<ul>
+<li><strong>ReferenceError:</strong> The type of error.</li>
+<li><strong>studentName:</strong> The variable involved.</li>
+<li><strong>is not defined:</strong> The problem detected by JavaScript.</li>
+</ul>
+
+<h3>Common Error Names</h3>
+<ul>
+<li><strong>SyntaxError:</strong> Invalid JavaScript syntax.</li>
+<li><strong>ReferenceError:</strong> Invalid or unavailable variable reference.</li>
+<li><strong>TypeError:</strong> An operation is performed on an unsuitable value or type.</li>
+<li><strong>RangeError:</strong> A value is outside an allowed range.</li>
+<li><strong>URIError:</strong> Incorrect use of certain URI handling functions.</li>
+</ul>
+</section>
+
+<section id="debugging">
+<h2>7. Introduction to Debugging</h2>
+<p>Debugging is the process of finding, understanding and fixing errors in a program.</p>
+
+<h3>Basic Debugging Steps</h3>
+<ol>
+<li>Run your program.</li>
+<li>Observe the output and error messages.</li>
+<li>Identify the line where the problem occurs.</li>
+<li>Check the variables and conditions.</li>
+<li>Fix the problem.</li>
+<li>Run the program again to verify the result.</li>
+</ol>
+
+<div class="note">Debugging is not just about fixing errors. It also helps you understand how your program works.</div>
+</section>
+
+<section id="console">
+<h2>8. Using console.log()</h2>
+<p><code>console.log()</code> is one of the simplest debugging tools in JavaScript. It helps us inspect variable values and program execution.</p>
+
+<h3>Checking Variable Values</h3>
+<pre><code>const price = 500;
+const quantity = 3;
+
+console.log("Price:", price);
+console.log("Quantity:", quantity);
+
+const total = price * quantity;
+
+console.log("Total:", total);</code></pre>
+
+<h3>Checking Conditions</h3>
+<pre><code>const age = 20;
+
+console.log("Age:", age);
+console.log("Is adult:", age >= 18);
+
+if (age >= 18) {
+  console.log("Eligible");
+}</code></pre>
+
+<h3>Other Console Methods</h3>
+<pre><code>console.warn("This is a warning");
+
+console.error("This is an error");
+
+console.info("Information message");
+
+console.table([
+  {name: "Aman", age: 21},
+  {name: "Riya", age: 22}
+]);</code></pre>
+</section>
+
+<section id="devtools">
+<h2>9. Browser Developer Tools</h2>
+<p>Browser Developer Tools help developers inspect web pages, debug JavaScript and examine errors.</p>
+
+<h3>How to Open Developer Tools</h3>
+<ul>
+<li>Press <strong>F12</strong> on your keyboard.</li>
+<li>Or press <strong>Ctrl + Shift + I</strong>.</li>
+<li>Or right-click the webpage and select Inspect.</li>
+</ul>
+
+<h3>Important Tabs</h3>
+<ul>
+<li><strong>Elements:</strong> Inspect and modify HTML and CSS.</li>
+<li><strong>Console:</strong> View JavaScript output and errors.</li>
+<li><strong>Sources:</strong> View source files and use breakpoints.</li>
+<li><strong>Network:</strong> Inspect network requests and responses.</li>
+</ul>
+
+<div class="note">For JavaScript debugging, the Console and Sources tabs are especially useful.</div>
+</section>
+
+<section id="breakpoints">
+<h2>10. Breakpoints and Step-by-Step Debugging</h2>
+<p>A breakpoint pauses JavaScript execution at a selected line so you can inspect what is happening.</p>
+
+<h3>How to Set a Breakpoint</h3>
+<ol>
+<li>Open Developer Tools using F12.</li>
+<li>Select the Sources tab.</li>
+<li>Open your JavaScript file.</li>
+<li>Click the line number where you want execution to pause.</li>
+<li>Reload or run the page.</li>
+</ol>
+
+<h3>Useful Debugging Controls</h3>
+<ul>
+<li><strong>Resume:</strong> Continue program execution.</li>
+<li><strong>Step Over:</strong> Execute the current line and move to the next line.</li>
+<li><strong>Step Into:</strong> Enter a function call.</li>
+<li><strong>Step Out:</strong> Finish the current function and return to its caller.</li>
+<li><strong>Watch:</strong> Track selected variable values.</li>
+</ul>
+
+<h3>Using debugger Statement</h3>
+<pre><code>const price = 100;
+const quantity = 5;
+
+debugger;
+
+const total = price * quantity;
+
+console.log(total);</code></pre>
+
+<p>When Developer Tools are open, the debugger statement can pause execution at that point.</p>
+</section>
+
+<section id="trycatch">
+<h2>11. try...catch</h2>
+<p>The <code>try...catch</code> statement allows us to handle certain runtime errors without immediately stopping the rest of the program.</p>
+
+<h3>Basic Syntax</h3>
+<pre><code>try {
+  // Code that may cause an error
+} catch (error) {
+  // Handle the error
+}</code></pre>
+
+<h3>Example</h3>
+<pre><code>try {
+  console.log(userName);
+} catch (error) {
+  console.log("Something went wrong");
+}
+
+console.log("Program continues");</code></pre>
+
+<p>The error is handled by the catch block, so the next statement can execute.</p>
+
+<h3>Accessing the Error Message</h3>
+<pre><code>try {
+  const result = unknownFunction();
+} catch (error) {
+  console.log(error.message);
+}</code></pre>
+
+<div class="note">try...catch handles runtime exceptions. It does not catch ordinary syntax errors in the same script before execution begins.</div>
+</section>
+
+<section id="finally">
+<h2>12. The finally Block</h2>
+<p>The <code>finally</code> block executes after the try and catch flow, whether an error occurred or not.</p>
+
+<h3>Syntax</h3>
+<pre><code>try {
+  // Try code
+} catch (error) {
+  // Error handling
+} finally {
+  // Cleanup code
+}</code></pre>
+
+<h3>Example with an Error</h3>
+<pre><code>try {
+  console.log("Starting operation");
+
+  throw new Error("Something went wrong");
+
+} catch (error) {
+  console.log("Error:", error.message);
+
+} finally {
+  console.log("Operation finished");
+}</code></pre>
+
+<h3>Example without an Error</h3>
+<pre><code>try {
+  console.log("Everything is working");
+} catch (error) {
+  console.log("Error occurred");
+} finally {
+  console.log("This block still runs");
+}</code></pre>
+
+<div class="note">The finally block is commonly used for cleanup tasks, such as closing resources or resetting a loading indicator.</div>
+</section>
+
+<section id="throw">
+<h2>13. Throwing Custom Errors</h2>
+<p>The <code>throw</code> statement allows developers to create their own errors when a condition is not valid.</p>
+
+<h3>Basic Example</h3>
+<pre><code>const age = 15;
+
+if (age < 18) {
+  throw new Error("You must be 18 or older");
+}</code></pre>
+
+<h3>Using throw with try...catch</h3>
+<pre><code>function checkAge(age) {
+  if (age < 18) {
+    throw new Error("Age must be 18 or above");
+  }
+
+  return "Access granted";
+}
+
+try {
+  console.log(checkAge(15));
+} catch (error) {
+  console.log(error.message);
+}</code></pre>
+
+<h3>Validate a Price</h3>
+<pre><code>function calculateDiscount(price) {
+  if (price < 0) {
+    throw new Error("Price cannot be negative");
+  }
+
+  return price * 0.10;
+}
+
+try {
+  console.log(calculateDiscount(-100));
+} catch (error) {
+  console.log("Validation Error:", error.message);
+}</code></pre>
+</section>
+
+<section id="error-object">
+<h2>14. Error Objects</h2>
+<p>JavaScript provides the built-in <code>Error</code> object to represent errors.</p>
+
+<h3>Creating an Error Object</h3>
+<pre><code>const error = new Error("Something went wrong");
+
+console.log(error.name);
+console.log(error.message);</code></pre>
+
+<h3>Important Properties</h3>
+<ul>
+<li><strong>name:</strong> The name or type of the error.</li>
+<li><strong>message:</strong> A description of the problem.</li>
+<li><strong>stack:</strong> A stack trace that helps identify where an error occurred. Its format can vary by browser.</li>
+</ul>
+
+<pre><code>try {
+  throw new Error("Invalid user data");
+} catch (error) {
+  console.log("Name:", error.name);
+  console.log("Message:", error.message);
+  console.log("Stack:", error.stack);
+}</code></pre>
+
+<h3>Built-in Error Types</h3>
+<pre><code>new Error("General error");
+new TypeError("Invalid type");
+new ReferenceError("Invalid reference");
+new RangeError("Value out of range");</code></pre>
+</section>
+
+<section id="practical">
+<h2>15. Practical Error Handling Examples</h2>
+
+<h3>Example 1: Safe Division</h3>
+<pre><code>function divide(a, b) {
+  if (b === 0) {
+    throw new Error("Cannot divide by zero");
+  }
+
+  return a / b;
+}
+
+try {
+  console.log(divide(20, 0));
+} catch (error) {
+  console.log("Error:", error.message);
+}</code></pre>
+
+<h3>Example 2: Student Marks Validation</h3>
+<pre><code>function checkMarks(marks) {
+  if (typeof marks !== "number") {
+    throw new TypeError("Marks must be a number");
+  }
+
+  if (marks < 0 || marks > 100) {
+    throw new RangeError("Marks must be between 0 and 100");
+  }
+
+  return "Valid marks: " + marks;
+}
+
+try {
+  console.log(checkMarks(85));
+} catch (error) {
+  console.log(error.name + ": " + error.message);
+}</code></pre>
+
+<h3>Example 3: Safe JSON Parsing</h3>
+<pre><code>const data = '{"name":"Aman","age":21}';
+
+try {
+  const student = JSON.parse(data);
+  console.log(student.name);
+} catch (error) {
+  console.log("Invalid JSON:", error.message);
+}</code></pre>
+
+<h3>Example 4: Handling Missing User Data</h3>
+<pre><code>function getUserName(user) {
+  try {
+    if (!user || !user.name) {
+      throw new Error("User name is missing");
+    }
+
+    return user.name;
+
+  } catch (error) {
+    return "Error: " + error.message;
+  }
+}
+
+console.log(getUserName({name: "Riya"}));
+console.log(getUserName({}));</code></pre>
+</section>
+
+<section id="playground">
+<h2>16. Code Playground</h2>
+<p>Write JavaScript code and click Run Code to see the output. Try changing the values and creating your own errors.</p>
+
+<textarea id="codeInput">// Example: try...catch
+
+function divide(a, b) {
+  if (b === 0) {
+    throw new Error("Cannot divide by zero");
+  }
+
+  return a / b;
+}
+
+try {
+  const result = divide(20, 0);
+  console.log("Result:", result);
+} catch (error) {
+  console.log("Error:", error.message);
+} finally {
+  console.log("Calculation finished");
+}</textarea>
+
+<br>
+<button onclick="runCode()">Run Code</button>
+<button onclick="resetCode()">Reset Code</button>
+
+<div class="output" id="output">Your output will appear here...</div>
+</section>
+
+<section id="tasks">
+<h2>17. Practice Tasks</h2>
+<p>Complete these tasks to strengthen your understanding.</p>
+
+<div class="task"><strong>Task 1:</strong> Write a program with a syntax error, identify it and correct it.</div>
+<div class="task"><strong>Task 2:</strong> Create a runtime error by accessing an undefined variable.</div>
+<div class="task"><strong>Task 3:</strong> Write a calculation that contains a logical error and fix it.</div>
+<div class="task"><strong>Task 4:</strong> Use console.log() to inspect the values of three variables.</div>
+<div class="task"><strong>Task 5:</strong> Write a try...catch block that handles an error.</div>
+<div class="task"><strong>Task 6:</strong> Add a finally block to your previous program.</div>
+<div class="task"><strong>Task 7:</strong> Create a function that throws an error if a number is negative.</div>
+<div class="task"><strong>Task 8:</strong> Use an Error object and display its name and message.</div>
+<div class="task"><strong>Task 9:</strong> Open Developer Tools and practice using console.log().</div>
+</section>
+
+<section id="quiz">
+<h2>18. Quick Knowledge Check</h2>
+<p>Choose the correct answer for each question.</p>
+
+<form id="quizForm">
+
+<div class="quiz-question">
+<p><strong>1. What is debugging?</strong></p>
+<label><input type="radio" name="q1" value="a"> Writing CSS styles</label>
+<label><input type="radio" name="q1" value="b"> Finding and fixing errors</label>
+<label><input type="radio" name="q1" value="c"> Creating HTML elements</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2. Which error occurs when JavaScript syntax is incorrect?</strong></p>
+<label><input type="radio" name="q2" value="a"> SyntaxError</label>
+<label><input type="radio" name="q2" value="b"> RangeError</label>
+<label><input type="radio" name="q2" value="c"> TypeError</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3. Which tool is commonly used to inspect JavaScript errors in a browser?</strong></p>
+<label><input type="radio" name="q3" value="a"> Paint</label>
+<label><input type="radio" name="q3" value="b"> Calculator</label>
+<label><input type="radio" name="q3" value="c"> Developer Tools Console</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4. Which statement is used to handle runtime exceptions?</strong></p>
+<label><input type="radio" name="q4" value="a"> if...else</label>
+<label><input type="radio" name="q4" value="b"> try...catch</label>
+<label><input type="radio" name="q4" value="c"> for...of</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5. Which block executes after try and catch?</strong></p>
+<label><input type="radio" name="q5" value="a"> finally</label>
+<label><input type="radio" name="q5" value="b"> switch</label>
+<label><input type="radio" name="q5" value="c"> return</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>6. Which keyword is used to create a custom error?</strong></p>
+<label><input type="radio" name="q6" value="a"> break</label>
+<label><input type="radio" name="q6" value="b"> continue</label>
+<label><input type="radio" name="q6" value="c"> throw</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>7. Which method can display a message in the browser console?</strong></p>
+<label><input type="radio" name="q7" value="a"> document.write()</label>
+<label><input type="radio" name="q7" value="b"> console.log()</label>
+<label><input type="radio" name="q7" value="c"> alert.style()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>8. Which property contains an error description?</strong></p>
+<label><input type="radio" name="q8" value="a"> error.message</label>
+<label><input type="radio" name="q8" value="b"> error.color</label>
+<label><input type="radio" name="q8" value="c"> error.value</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Answers</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+
+<div class="result" id="quizResult"></div>
+</form>
+</section>
+
+<div class="nav-buttons">
+<a href="js-lesson18.html"><button>← Previous Lesson</button></a>
+<a href="../javascript.html"><button>Course Home</button></a>
+<a href="js-lesson20.html"><button>Next Lesson →</button></a>
+</div>
+
+</main>
+</div>
+
+<footer>
+<p>© 2026 SkillSaathi | Learn. Practice. Grow.</p>
+</footer>
+
+<script>
+const starterCode = `// Example: try...catch
+
+function divide(a, b) {
+  if (b === 0) {
+    throw new Error("Cannot divide by zero");
+  }
+
+  return a / b;
+}
+
+try {
+  const result = divide(20, 0);
+  console.log("Result:", result);
+} catch (error) {
+  console.log("Error:", error.message);
+} finally {
+  console.log("Calculation finished");
+}`;
+
+function runCode(){
+ const code = document.getElementById("codeInput").value;
+ const output = document.getElementById("output");
+ let logs = [];
+
+ const customConsole = {
+  log: (...args) => {
+   logs.push(args.map(value => {
+    if(typeof value === "object" && value !== null){
+     try{return JSON.stringify(value, null, 2)}
+     catch(e){return String(value)}
+    }
+    return String(value);
+   }).join(" "));
+  },
+  error: (...args) => logs.push("Error: " + args.join(" ")),
+  warn: (...args) => logs.push("Warning: " + args.join(" ")),
+  info: (...args) => logs.push("Info: " + args.join(" "))
+ };
+
+ try{
+  new Function("console", code)(customConsole);
+  output.textContent = logs.length ? logs.join("\n") : "Code executed successfully. No output.";
+ }catch(error){
+  output.textContent = "Error: " + error.name + ": " + error.message;
+ }
+}
+
+function resetCode(){
+ document.getElementById("codeInput").value = starterCode;
+ document.getElementById("output").textContent = "Your output will appear here...";
+}
+
+function checkQuiz(){
+ const answers = {
+  q1:"b",
+  q2:"a",
+  q3:"c",
+  q4:"b",
+  q5:"a",
+  q6:"c",
+  q7:"b",
+  q8:"a"
+ };
+
+ let score = 0;
+ const total = Object.keys(answers).length;
+
+ for(let question in answers){
+  const selected = document.querySelector('input[name="'+question+'"]:checked');
+  if(selected && selected.value === answers[question]){
+   score++;
+  }
+ }
+
+ const result = document.getElementById("quizResult");
+ result.textContent = "Your Score: " + score + " / " + total;
+
+ if(score === total){
+  result.style.color = "#86efac";
+  result.textContent += " — Excellent! All answers are correct.";
+ }else{
+  result.style.color = "#fbbf24";
+  result.textContent += " — Review the lesson and try again.";
+ }
+}
+
+function resetQuiz(){
+ document.getElementById("quizForm").reset();
+ document.getElementById("quizResult").textContent = "";
+}
+</script>
+
+</body>
+</html>

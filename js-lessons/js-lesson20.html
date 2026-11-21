@@ -1,0 +1,937 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Lesson 20 - JSON and Local Storage | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#11111b;color:#eee;line-height:1.7}
+header{background:#191927;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #302d45;position:sticky;top:0;z-index:10}
+header a{color:#c4b5fd;text-decoration:none;font-weight:bold}
+header .brand{font-size:21px}
+.hero{padding:45px 7% 30px;background:linear-gradient(135deg,#211b38,#171725)}
+.hero p{color:#c4b5fd;margin-top:8px}
+.container{display:grid;grid-template-columns:250px 1fr;gap:25px;padding:30px 7%;align-items:start}
+.sidebar{background:#1b1b2b;border:1px solid #343047;border-radius:12px;padding:20px;position:sticky;top:85px;max-height:80vh;overflow:auto}
+.sidebar h3{color:#c4b5fd;margin-bottom:12px}
+.sidebar a{display:block;color:#ccc;text-decoration:none;padding:7px 8px;border-radius:6px;font-size:14px}
+.sidebar a:hover{background:#30294b;color:#fff}
+.content{min-width:0}
+section{background:#1b1b2b;border:1px solid #343047;border-radius:12px;padding:25px;margin-bottom:22px;scroll-margin-top:90px}
+h1,h2,h3{color:#c4b5fd}
+h1{font-size:30px}
+h2{font-size:23px;margin-bottom:14px}
+h3{font-size:18px;margin:18px 0 8px}
+p{margin:10px 0;color:#ddd}
+ul,ol{padding-left:24px;margin:10px 0}
+li{margin:6px 0;color:#ddd}
+pre{background:#101019;border:1px solid #39334f;padding:16px;border-radius:9px;overflow-x:auto;margin:14px 0;color:#d8ccff;white-space:pre}
+code{font-family:Consolas,monospace}
+.note{background:#28223d;border-left:4px solid #a78bfa;padding:12px 15px;border-radius:5px;margin:15px 0;color:#eee}
+.example{background:#242238;padding:14px;border-radius:8px;margin:12px 0}
+button{background:#8b5cf6;color:white;border:0;border-radius:7px;padding:11px 19px;cursor:pointer;font-weight:bold;margin:5px 5px 5px 0}
+button:hover{background:#7042d5}
+textarea,input{width:100%;background:#101019;color:#e9ddff;border:1px solid #51466d;border-radius:8px;padding:12px;font-family:Consolas,monospace;font-size:14px}
+textarea{min-height:190px;resize:vertical}
+.output{background:#101019;border:1px solid #39334f;border-radius:8px;padding:15px;min-height:55px;margin-top:12px;white-space:pre-wrap;color:#b9f6ca}
+.task{background:#242238;border-radius:8px;padding:13px;margin:10px 0}
+.quiz-question{padding:15px 0;border-bottom:1px solid #39334f}
+.quiz-question label{display:block;margin:7px 0;cursor:pointer;color:#ddd}
+.result{font-weight:bold;margin-top:12px}
+.demo-box{background:#242238;border:1px solid #51466d;padding:17px;border-radius:9px;margin-top:15px}
+.demo-box p{margin:8px 0}
+.nav-buttons{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:25px 0}
+footer{text-align:center;padding:25px;color:#aaa;border-top:1px solid #302d45}
+@media(max-width:800px){
+.container{grid-template-columns:1fr;padding:20px 5%}
+.sidebar{position:static;max-height:300px}
+header{padding:15px 5%}
+.hero{padding:35px 5%}
+section{padding:19px}
+h1{font-size:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a class="brand" href="../index.html">SkillSaathi</a>
+<a href="../javascript.html">JavaScript Course</a>
+</header>
+
+<div class="hero">
+<h1>Lesson 20: JSON and Local Storage</h1>
+<p>Learn how to exchange data using JSON and save information in the browser with Local Storage.</p>
+</div>
+
+<div class="container">
+
+<aside class="sidebar">
+<h3>Lesson Contents</h3>
+<a href="#intro">1. Introduction to JSON</a>
+<a href="#structure">2. JSON Structure and Syntax</a>
+<a href="#rules">3. JSON Data Types and Rules</a>
+<a href="#stringify">4. JSON.stringify()</a>
+<a href="#parse">5. JSON.parse()</a>
+<a href="#objects">6. Working with Objects and Arrays</a>
+<a href="#errors">7. Handling JSON Errors</a>
+<a href="#intro-storage">8. Introduction to Local Storage</a>
+<a href="#setitem">9. localStorage.setItem()</a>
+<a href="#getitem">10. localStorage.getItem()</a>
+<a href="#removeitem">11. removeItem() and clear()</a>
+<a href="#storage-json">12. Storing Objects with JSON</a>
+<a href="#session">13. Local Storage vs Session Storage</a>
+<a href="#practical">14. Practical Examples</a>
+<a href="#project">15. Mini Project: Notes Saver</a>
+<a href="#playground">16. Code Playground</a>
+<a href="#tasks">17. Practice Tasks</a>
+<a href="#quiz">18. Knowledge Check</a>
+</aside>
+
+<main class="content">
+
+<section id="intro">
+<h2>1. Introduction to JSON</h2>
+<p>JSON stands for <strong>JavaScript Object Notation</strong>. It is a lightweight text format used to store and exchange data.</p>
+
+<p>JSON is commonly used when:</p>
+<ul>
+<li>Sending data between a website and a server.</li>
+<li>Receiving information from APIs.</li>
+<li>Saving structured data.</li>
+<li>Sharing information between different programming languages.</li>
+</ul>
+
+<h3>Example JSON Data</h3>
+<pre><code>{
+  "name": "Aman",
+  "age": 21,
+  "course": "MCA"
+}</code></pre>
+
+<p>This example represents information about a student using JSON format.</p>
+
+<div class="note">JSON is a text-based data format. It looks similar to JavaScript objects, but its syntax has stricter rules.</div>
+</section>
+
+<section id="structure">
+<h2>2. JSON Structure and Syntax</h2>
+<p>JSON data is commonly organized using objects and arrays.</p>
+
+<h3>JSON Object</h3>
+<pre><code>{
+  "name": "Riya",
+  "age": 22,
+  "city": "Ranchi"
+}</code></pre>
+
+<h3>JSON Array</h3>
+<pre><code>[
+  "HTML",
+  "CSS",
+  "JavaScript"
+]</code></pre>
+
+<h3>Array of Objects</h3>
+<pre><code>[
+  {
+    "name": "Aman",
+    "age": 21
+  },
+  {
+    "name": "Neha",
+    "age": 22
+  }
+]</code></pre>
+
+<p>JSON objects use key-value pairs, while JSON arrays store ordered collections of values.</p>
+</section>
+
+<section id="rules">
+<h2>3. JSON Data Types and Rules</h2>
+<p>JSON supports the following data types:</p>
+
+<ul>
+<li><strong>String:</strong> Text enclosed in double quotes.</li>
+<li><strong>Number:</strong> Integer or decimal numbers.</li>
+<li><strong>Boolean:</strong> true or false.</li>
+<li><strong>Null:</strong> Represents an empty or absent value.</li>
+<li><strong>Object:</strong> A collection of key-value pairs.</li>
+<li><strong>Array:</strong> An ordered list of values.</li>
+</ul>
+
+<h3>Valid JSON</h3>
+<pre><code>{
+  "name": "Aman",
+  "age": 21,
+  "isStudent": true,
+  "address": null,
+  "subjects": ["HTML", "CSS"]
+}</code></pre>
+
+<h3>Important JSON Rules</h3>
+<ul>
+<li>Property names must use double quotes.</li>
+<li>String values must use double quotes.</li>
+<li>Single quotes are not valid JSON string delimiters.</li>
+<li>JSON does not allow comments.</li>
+<li>Trailing commas are not allowed.</li>
+<li>JSON does not support functions or undefined values.</li>
+</ul>
+
+<div class="note">JSON is stricter than JavaScript object syntax. Always check quotation marks and commas.</div>
+</section>
+
+<section id="stringify">
+<h2>4. JSON.stringify()</h2>
+<p>The <code>JSON.stringify()</code> method converts a JavaScript value into a JSON string.</p>
+
+<h3>Basic Example</h3>
+<pre><code>const student = {
+  name: "Aman",
+  age: 21
+};
+
+const jsonData = JSON.stringify(student);
+
+console.log(jsonData);
+
+// {"name":"Aman","age":21}</code></pre>
+
+<h3>Pretty-Printed JSON</h3>
+<p>You can use the third argument to add indentation and make JSON easier to read.</p>
+
+<pre><code>const student = {
+  name: "Riya",
+  age: 22,
+  course: "MCA"
+};
+
+const jsonData = JSON.stringify(student, null, 2);
+
+console.log(jsonData);</code></pre>
+
+<h3>Converting an Array</h3>
+<pre><code>const subjects = ["HTML", "CSS", "JavaScript"];
+
+const jsonData = JSON.stringify(subjects);
+
+console.log(jsonData);</code></pre>
+
+<div class="note">JSON.stringify() is useful when you need to send data to a server or save structured information as text.</div>
+</section>
+
+<section id="parse">
+<h2>5. JSON.parse()</h2>
+<p>The <code>JSON.parse()</code> method converts a valid JSON string into a JavaScript value.</p>
+
+<h3>Basic Example</h3>
+<pre><code>const jsonData = '{"name":"Aman","age":21}';
+
+const student = JSON.parse(jsonData);
+
+console.log(student.name);
+console.log(student.age);</code></pre>
+
+<h3>Converting JSON Array</h3>
+<pre><code>const jsonData = '["HTML","CSS","JavaScript"]';
+
+const subjects = JSON.parse(jsonData);
+
+console.log(subjects[0]);
+console.log(subjects.length);</code></pre>
+
+<h3>Difference Between stringify() and parse()</h3>
+<ul>
+<li><strong>stringify():</strong> JavaScript value → JSON string.</li>
+<li><strong>parse():</strong> JSON string → JavaScript value.</li>
+</ul>
+
+<div class="note">Use JSON.parse() only with valid JSON text. Invalid JSON causes a SyntaxError.</div>
+</section>
+
+<section id="objects">
+<h2>6. Working with Objects and Arrays</h2>
+<p>JSON can represent nested objects and arrays. We can convert them to strings and back into JavaScript values.</p>
+
+<h3>Nested Object Example</h3>
+<pre><code>const student = {
+  name: "Neha",
+  education: {
+    course: "MCA",
+    university: "Ranchi University"
+  },
+  skills: ["HTML", "CSS", "JavaScript"]
+};
+
+const jsonData = JSON.stringify(student);
+
+const newStudent = JSON.parse(jsonData);
+
+console.log(newStudent.education.course);
+console.log(newStudent.skills[1]);</code></pre>
+
+<h3>Accessing Array of Objects</h3>
+<pre><code>const jsonData = `[
+  {"name":"Aman","marks":80},
+  {"name":"Riya","marks":90}
+]`;
+
+const students = JSON.parse(jsonData);
+
+console.log(students[0].name);
+console.log(students[1].marks);</code></pre>
+
+<p>After parsing, you can use normal JavaScript property access and array indexing.</p>
+</section>
+
+<section id="errors">
+<h2>7. Handling JSON Errors</h2>
+<p>Invalid JSON data can cause errors during parsing. Use try...catch to handle these errors safely.</p>
+
+<h3>Invalid JSON Example</h3>
+<pre><code>const data = '{"name":"Aman", age:21}';
+
+try {
+  const student = JSON.parse(data);
+  console.log(student);
+} catch (error) {
+  console.log("Invalid JSON:", error.message);
+}</code></pre>
+
+<h3>Safe JSON Parsing Function</h3>
+<pre><code>function safeParse(data) {
+  try {
+    return JSON.parse(data);
+  } catch (error) {
+    console.log("Could not read JSON:", error.message);
+    return null;
+  }
+}
+
+const result = safeParse('{"name":"Riya"}');
+
+console.log(result);</code></pre>
+
+<div class="note">Never assume that data received from an external source is always valid. Validate and handle errors when parsing it.</div>
+</section>
+
+<section id="intro-storage">
+<h2>8. Introduction to Local Storage</h2>
+<p>Local Storage is a browser feature that allows websites to store small amounts of data as key-value pairs.</p>
+
+<p>Important features:</p>
+<ul>
+<li>Data remains available after refreshing the page.</li>
+<li>Data usually remains after closing and reopening the browser.</li>
+<li>Data is stored as strings.</li>
+<li>Each website has its own storage area.</li>
+<li>Users can inspect or clear it through browser Developer Tools.</li>
+</ul>
+
+<h3>Where is Local Storage?</h3>
+<ol>
+<li>Open your website in the browser.</li>
+<li>Press F12 to open Developer Tools.</li>
+<li>Select the Application tab in Chrome.</li>
+<li>Find Local Storage in the left sidebar.</li>
+<li>Select your website's origin.</li>
+</ol>
+
+<div class="note">Do not store passwords, payment information or sensitive personal data in Local Storage. It is accessible to JavaScript running on the same origin.</div>
+</section>
+
+<section id="setitem">
+<h2>9. localStorage.setItem()</h2>
+<p>The <code>setItem()</code> method stores a key-value pair in Local Storage.</p>
+
+<h3>Syntax</h3>
+<pre><code>localStorage.setItem("key", "value");</code></pre>
+
+<h3>Example</h3>
+<pre><code>localStorage.setItem("username", "Aman");
+localStorage.setItem("course", "JavaScript");
+
+console.log("Data saved");</code></pre>
+
+<p>Open the browser's Application tab to see the saved values.</p>
+
+<h3>Saving Numbers</h3>
+<pre><code>localStorage.setItem("score", 95);
+
+console.log(localStorage.getItem("score")); 
+// "95" (string)</code></pre>
+
+<div class="note">Local Storage stores values as strings. Numbers and booleans are converted to strings when saved.</div>
+</section>
+
+<section id="getitem">
+<h2>10. localStorage.getItem()</h2>
+<p>The <code>getItem()</code> method retrieves a value using its key.</p>
+
+<h3>Example</h3>
+<pre><code>localStorage.setItem("username", "Riya");
+
+const user = localStorage.getItem("username");
+
+console.log(user);</code></pre>
+
+<h3>When a Key Does Not Exist</h3>
+<pre><code>const data = localStorage.getItem("unknownKey");
+
+console.log(data);
+
+// null</code></pre>
+
+<h3>Converting a Stored Number</h3>
+<pre><code>localStorage.setItem("marks", "85");
+
+const marks = Number(localStorage.getItem("marks"));
+
+console.log(marks + 5);
+
+// 90</code></pre>
+
+<div class="note">getItem() returns null when the requested key is not present.</div>
+</section>
+
+<section id="removeitem">
+<h2>11. removeItem() and clear()</h2>
+<p>Local Storage provides methods to remove saved information.</p>
+
+<h3>removeItem()</h3>
+<p>Removes one specific key and its value.</p>
+
+<pre><code>localStorage.setItem("username", "Aman");
+
+localStorage.removeItem("username");
+
+console.log(localStorage.getItem("username"));
+// null</code></pre>
+
+<h3>clear()</h3>
+<p>Removes all keys and values from the current website's Local Storage.</p>
+
+<pre><code>localStorage.setItem("name", "Riya");
+localStorage.setItem("course", "JavaScript");
+
+localStorage.clear();
+
+console.log(localStorage.length);
+
+// 0</code></pre>
+
+<div class="note">Be careful with clear(). It removes all Local Storage entries for the current origin, not just one selected key.</div>
+</section>
+
+<section id="storage-json">
+<h2>12. Storing Objects with JSON</h2>
+<p>Local Storage stores strings, so we use JSON.stringify() to save objects and JSON.parse() to retrieve them.</p>
+
+<h3>Save an Object</h3>
+<pre><code>const student = {
+  name: "Aman",
+  age: 21,
+  course: "MCA"
+};
+
+localStorage.setItem(
+  "student",
+  JSON.stringify(student)
+);</code></pre>
+
+<h3>Retrieve an Object</h3>
+<pre><code>const savedData = localStorage.getItem("student");
+
+if (savedData !== null) {
+  const student = JSON.parse(savedData);
+  console.log(student.name);
+  console.log(student.course);
+}</code></pre>
+
+<h3>Complete Example</h3>
+<pre><code>const student = {
+  name: "Neha",
+  marks: [80, 90, 85]
+};
+
+// Save
+localStorage.setItem("studentData", JSON.stringify(student));
+
+// Retrieve
+const saved = localStorage.getItem("studentData");
+
+if (saved) {
+  const data = JSON.parse(saved);
+  console.log(data.name);
+  console.log(data.marks);
+}</code></pre>
+
+<div class="note">Remember the two-step process: stringify before saving and parse after retrieving.</div>
+</section>
+
+<section id="session">
+<h2>13. Local Storage vs Session Storage</h2>
+<p>Both Local Storage and Session Storage store key-value data in the browser, but their lifetimes are different.</p>
+
+<div style="overflow-x:auto">
+<table style="width:100%;border-collapse:collapse;margin:15px 0;min-width:430px">
+<tr style="background:#30294b">
+<th style="padding:10px;border:1px solid #51466d">Feature</th>
+<th style="padding:10px;border:1px solid #51466d">Local Storage</th>
+<th style="padding:10px;border:1px solid #51466d">Session Storage</th>
+</tr>
+<tr>
+<td style="padding:10px;border:1px solid #51466d">Lifetime</td>
+<td style="padding:10px;border:1px solid #51466d">Persists until cleared</td>
+<td style="padding:10px;border:1px solid #51466d">Usually until the tab session ends</td>
+</tr>
+<tr>
+<td style="padding:10px;border:1px solid #51466d">Refresh</td>
+<td style="padding:10px;border:1px solid #51466d">Data remains</td>
+<td style="padding:10px;border:1px solid #51466d">Data remains</td>
+</tr>
+<tr>
+<td style="padding:10px;border:1px solid #51466d">Storage API</td>
+<td style="padding:10px;border:1px solid #51466d">localStorage</td>
+<td style="padding:10px;border:1px solid #51466d">sessionStorage</td>
+</tr>
+<tr>
+<td style="padding:10px;border:1px solid #51466d">Scope</td>
+<td style="padding:10px;border:1px solid #51466d">Same origin</td>
+<td style="padding:10px;border:1px solid #51466d">Same origin and tab session</td>
+</tr>
+</table>
+</div>
+
+<h3>Session Storage Example</h3>
+<pre><code>sessionStorage.setItem("currentPage", "dashboard");
+
+const page = sessionStorage.getItem("currentPage");
+
+console.log(page);</code></pre>
+
+<p>Session Storage is useful for temporary information that should not normally remain after the tab session ends.</p>
+</section>
+
+<section id="practical">
+<h2>14. Practical Examples</h2>
+
+<h3>Example 1: Save Theme Preference</h3>
+<pre><code>localStorage.setItem("theme", "dark");
+
+const savedTheme = localStorage.getItem("theme");
+
+console.log("Selected theme:", savedTheme);</code></pre>
+
+<h3>Example 2: Save a List of Subjects</h3>
+<pre><code>const subjects = ["HTML", "CSS", "JavaScript"];
+
+localStorage.setItem("subjects", JSON.stringify(subjects));
+
+const savedSubjects = JSON.parse(
+  localStorage.getItem("subjects")
+);
+
+console.log(savedSubjects);</code></pre>
+
+<h3>Example 3: Save and Update User Profile</h3>
+<pre><code>const user = {
+  name: "Aman",
+  city: "Ranchi"
+};
+
+localStorage.setItem("profile", JSON.stringify(user));
+
+const savedUser = JSON.parse(
+  localStorage.getItem("profile")
+);
+
+savedUser.city = "Patna";
+
+localStorage.setItem("profile", JSON.stringify(savedUser));
+
+console.log(savedUser);</code></pre>
+
+<h3>Example 4: Safe Storage Access</h3>
+<pre><code>try {
+  const data = {
+    name: "Riya",
+    course: "MCA"
+  };
+
+  localStorage.setItem("profile", JSON.stringify(data));
+
+  const saved = localStorage.getItem("profile");
+
+  console.log(JSON.parse(saved));
+
+} catch (error) {
+  console.log("Storage error:", error.message);
+}</code></pre>
+</section>
+
+<section id="project">
+<h2>15. Mini Project: Notes Saver</h2>
+<p>Create a simple Notes Saver that stores notes in Local Storage. Your notes will remain available after refreshing the page.</p>
+
+<div class="demo-box">
+<h3>My Notes</h3>
+<p>Write a note below:</p>
+<textarea id="noteInput" placeholder="Write your note here..." style="min-height:100px"></textarea>
+<button onclick="saveNote()">Save Note</button>
+<button onclick="clearNotes()">Clear All Notes</button>
+<p id="noteStatus" style="color:#c4b5fd"></p>
+<div id="notesList"></div>
+</div>
+
+<h3>How This Project Works</h3>
+<ul>
+<li>Write a note in the text area.</li>
+<li>Click Save Note to store it.</li>
+<li>The note is saved in Local Storage.</li>
+<li>Refresh the page and your notes will still appear.</li>
+<li>Click Clear All Notes to remove saved notes.</li>
+</ul>
+
+<div class="note">This is a small browser-based learning project. Notes are stored only in this browser and website origin.</div>
+</section>
+
+<section id="playground">
+<h2>16. Code Playground</h2>
+<p>Try JSON and Local Storage methods using the editor below.</p>
+
+<textarea id="codeInput">// Create a JavaScript object
+const student = {
+  name: "Aman",
+  age: 21,
+  course: "MCA"
+};
+
+// Convert object into JSON string
+const jsonData = JSON.stringify(student);
+
+console.log("JSON Data:", jsonData);
+
+// Convert JSON string back into object
+const newStudent = JSON.parse(jsonData);
+
+console.log("Student Name:", newStudent.name);
+
+// Save a value in Local Storage
+localStorage.setItem("demoCourse", "JavaScript");
+
+// Retrieve the saved value
+console.log("Saved Course:", localStorage.getItem("demoCourse"));</textarea>
+
+<br>
+<button onclick="runCode()">Run Code</button>
+<button onclick="resetCode()">Reset Code</button>
+<div class="output" id="output">Your output will appear here...</div>
+</section>
+
+<section id="tasks">
+<h2>17. Practice Tasks</h2>
+<p>Complete these tasks to strengthen your understanding.</p>
+
+<div class="task"><strong>Task 1:</strong> Create a JavaScript object containing your name, age and city. Convert it into a JSON string.</div>
+<div class="task"><strong>Task 2:</strong> Convert a JSON string into a JavaScript object using JSON.parse().</div>
+<div class="task"><strong>Task 3:</strong> Create an array of subjects and convert it into JSON.</div>
+<div class="task"><strong>Task 4:</strong> Save your name in Local Storage using setItem().</div>
+<div class="task"><strong>Task 5:</strong> Retrieve the saved name using getItem().</div>
+<div class="task"><strong>Task 6:</strong> Remove one stored item using removeItem().</div>
+<div class="task"><strong>Task 7:</strong> Save a complete student object in Local Storage using JSON.stringify().</div>
+<div class="task"><strong>Task 8:</strong> Retrieve the student object and display its properties.</div>
+<div class="task"><strong>Task 9:</strong> Create a small theme preference saver using Local Storage.</div>
+</section>
+
+<section id="quiz">
+<h2>18. Quick Knowledge Check</h2>
+<p>Choose the correct answer for each question.</p>
+
+<form id="quizForm">
+
+<div class="quiz-question">
+<p><strong>1. What does JSON stand for?</strong></p>
+<label><input type="radio" name="q1" value="a"> JavaScript Object Notation</label>
+<label><input type="radio" name="q1" value="b"> Java Source Object Network</label>
+<label><input type="radio" name="q1" value="c"> JavaScript Online Network</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2. Which method converts a JavaScript object into a JSON string?</strong></p>
+<label><input type="radio" name="q2" value="a"> JSON.parse()</label>
+<label><input type="radio" name="q2" value="b"> JSON.stringify()</label>
+<label><input type="radio" name="q2" value="c"> JSON.convert()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3. Which method converts JSON text into a JavaScript value?</strong></p>
+<label><input type="radio" name="q3" value="a"> JSON.parse()</label>
+<label><input type="radio" name="q3" value="b"> JSON.stringify()</label>
+<label><input type="radio" name="q3" value="c"> JSON.write()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4. Which quotation marks are required for JSON strings?</strong></p>
+<label><input type="radio" name="q4" value="a"> Single quotes</label>
+<label><input type="radio" name="q4" value="b"> Backticks</label>
+<label><input type="radio" name="q4" value="c"> Double quotes</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5. Which method saves a value in Local Storage?</strong></p>
+<label><input type="radio" name="q5" value="a"> setItem()</label>
+<label><input type="radio" name="q5" value="b"> getItem()</label>
+<label><input type="radio" name="q5" value="c"> removeItem()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>6. What does getItem() return when a key does not exist?</strong></p>
+<label><input type="radio" name="q6" value="a"> undefined</label>
+<label><input type="radio" name="q6" value="b"> null</label>
+<label><input type="radio" name="q6" value="c"> false</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>7. Which method removes one specific key from Local Storage?</strong></p>
+<label><input type="radio" name="q7" value="a"> clear()</label>
+<label><input type="radio" name="q7" value="b"> setItem()</label>
+<label><input type="radio" name="q7" value="c"> removeItem()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>8. Which method removes all Local Storage entries for the current origin?</strong></p>
+<label><input type="radio" name="q8" value="a"> clear()</label>
+<label><input type="radio" name="q8" value="b"> removeItem()</label>
+<label><input type="radio" name="q8" value="c"> getItem()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>9. What is required to store a JavaScript object in Local Storage?</strong></p>
+<label><input type="radio" name="q9" value="a"> JSON.parse() only</label>
+<label><input type="radio" name="q9" value="b"> JSON.stringify()</label>
+<label><input type="radio" name="q9" value="c"> map()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>10. Which storage usually lasts only for a tab session?</strong></p>
+<label><input type="radio" name="q10" value="a"> Local Storage</label>
+<label><input type="radio" name="q10" value="b"> Database Storage</label>
+<label><input type="radio" name="q10" value="c"> Session Storage</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Answers</button>
+<button type="button" onclick="resetQuiz()">Try Again</button>
+<div class="result" id="quizResult"></div>
+
+</form>
+</section>
+
+<div class="nav-buttons">
+<a href="js-lesson19.html"><button>← Previous Lesson</button></a>
+<a href="../javascript.html"><button>Course Home</button></a>
+<a href="js-lesson21.html"><button>Next Lesson →</button></a>
+</div>
+
+</main>
+</div>
+
+<footer>
+<p>© 2026 SkillSaathi | Learn. Practice. Grow.</p>
+</footer>
+
+<script>
+const starterCode = `// Create a JavaScript object
+const student = {
+  name: "Aman",
+  age: 21,
+  course: "MCA"
+};
+
+// Convert object into JSON string
+const jsonData = JSON.stringify(student);
+
+console.log("JSON Data:", jsonData);
+
+// Convert JSON string back into object
+const newStudent = JSON.parse(jsonData);
+
+console.log("Student Name:", newStudent.name);
+
+// Save a value in Local Storage
+localStorage.setItem("demoCourse", "JavaScript");
+
+// Retrieve the saved value
+console.log("Saved Course:", localStorage.getItem("demoCourse"));`;
+
+function runCode(){
+ const code = document.getElementById("codeInput").value;
+ const output = document.getElementById("output");
+ let logs = [];
+
+ const customConsole = {
+  log: (...args) => {
+   logs.push(args.map(value => {
+    if(typeof value === "object" && value !== null){
+     try{return JSON.stringify(value, null, 2)}
+     catch(e){return String(value)}
+    }
+    return String(value);
+   }).join(" "));
+  },
+  error: (...args) => logs.push("Error: " + args.join(" ")),
+  warn: (...args) => logs.push("Warning: " + args.join(" "))
+ };
+
+ const storage = {
+  setItem: (key, value) => localStorage.setItem("playground_" + key, String(value)),
+  getItem: (key) => localStorage.getItem("playground_" + key),
+  removeItem: (key) => localStorage.removeItem("playground_" + key),
+  clear: () => {
+   Object.keys(localStorage).forEach(key => {
+    if(key.startsWith("playground_")) localStorage.removeItem(key);
+   });
+  }
+ };
+
+ try{
+  new Function("console", "localStorage", code)(customConsole, storage);
+  output.textContent = logs.length ? logs.join("\n") : "Code executed successfully. No output.";
+ }catch(error){
+  output.textContent = "Error: " + error.name + ": " + error.message;
+ }
+}
+
+function resetCode(){
+ document.getElementById("codeInput").value = starterCode;
+ document.getElementById("output").textContent = "Your output will appear here...";
+}
+
+function getNotes(){
+ try{
+  const saved = localStorage.getItem("skillSaathiNotes");
+  const notes = saved ? JSON.parse(saved) : [];
+  return Array.isArray(notes) ? notes : [];
+ }catch(error){
+  return [];
+ }
+}
+
+function displayNotes(){
+ const notes = getNotes();
+ const list = document.getElementById("notesList");
+ list.innerHTML = "";
+
+ if(notes.length === 0){
+  list.innerHTML = "<p>No notes saved yet.</p>";
+  return;
+ }
+
+ notes.forEach((note, index) => {
+  const item = document.createElement("div");
+  item.style.cssText = "background:#191927;border:1px solid #51466d;padding:12px;margin-top:10px;border-radius:7px;display:flex;justify-content:space-between;gap:10px;align-items:center";
+
+  const text = document.createElement("span");
+  text.textContent = note;
+
+  const remove = document.createElement("button");
+  remove.textContent = "Delete";
+  remove.style.background = "#6d3b76";
+  remove.onclick = () => deleteNote(index);
+
+  item.appendChild(text);
+  item.appendChild(remove);
+  list.appendChild(item);
+ });
+}
+
+function saveNote(){
+ const input = document.getElementById("noteInput");
+ const value = input.value.trim();
+ const status = document.getElementById("noteStatus");
+
+ if(!value){
+  status.textContent = "Please write a note first.";
+  return;
+ }
+
+ const notes = getNotes();
+ notes.push(value);
+
+ try{
+  localStorage.setItem("skillSaathiNotes", JSON.stringify(notes));
+  input.value = "";
+  status.textContent = "Note saved successfully!";
+  displayNotes();
+ }catch(error){
+  status.textContent = "Could not save note: " + error.message;
+ }
+}
+
+function deleteNote(index){
+ const notes = getNotes();
+ notes.splice(index, 1);
+ localStorage.setItem("skillSaathiNotes", JSON.stringify(notes));
+ displayNotes();
+ document.getElementById("noteStatus").textContent = "Note deleted.";
+}
+
+function clearNotes(){
+ if(!confirm("Are you sure you want to delete all notes?")) return;
+
+ localStorage.removeItem("skillSaathiNotes");
+ displayNotes();
+ document.getElementById("noteStatus").textContent = "All notes cleared.";
+}
+
+function checkQuiz(){
+ const answers = {
+  q1:"a",
+  q2:"b",
+  q3:"a",
+  q4:"c",
+  q5:"a",
+  q6:"b",
+  q7:"c",
+  q8:"a",
+  q9:"b",
+  q10:"c"
+ };
+
+ let score = 0;
+ const total = Object.keys(answers).length;
+
+ for(let question in answers){
+  const selected = document.querySelector('input[name="'+question+'"]:checked');
+  if(selected && selected.value === answers[question]){
+   score++;
+  }
+ }
+
+ const result = document.getElementById("quizResult");
+ result.textContent = "Your Score: " + score + " / " + total;
+
+ if(score === total){
+  result.style.color = "#86efac";
+  result.textContent += " — Excellent! All answers are correct.";
+ }else{
+  result.style.color = "#fbbf24";
+  result.textContent += " — Review the lesson and try again.";
+ }
+}
+
+function resetQuiz(){
+ document.getElementById("quizForm").reset();
+ document.getElementById("quizResult").textContent = "";
+}
+
+displayNotes();
+</script>
+
+</body>
+</html>

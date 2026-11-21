@@ -1,0 +1,798 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Lesson 13 - DOM Manipulation | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#11111b;
+  color:#eee;
+  line-height:1.7;
+}
+
+header{
+  background:#191927;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  border-bottom:1px solid #33334b;
+}
+
+header a{
+  color:#c4b5fd;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.container{
+  width:86%;
+  max-width:1000px;
+  margin:35px auto;
+}
+
+.hero{
+  background:linear-gradient(135deg,#25213e,#17172b);
+  padding:35px;
+  border-radius:15px;
+  margin-bottom:30px;
+  border:1px solid #393454;
+}
+
+.hero h1{
+  color:#c4b5fd;
+  margin-bottom:12px;
+  font-size:30px;
+}
+
+.hero p{color:#c9c5d8}
+
+.lesson-card{
+  background:#1b1b2b;
+  padding:25px;
+  border-radius:13px;
+  margin-bottom:22px;
+  border:1px solid #303047;
+}
+
+.lesson-card h2{
+  color:#c4b5fd;
+  margin-bottom:15px;
+  font-size:22px;
+}
+
+.lesson-card h3{
+  color:#d8ccff;
+  margin:18px 0 8px;
+}
+
+.lesson-card p,.lesson-card li{color:#d1cede}
+
+.lesson-card ul,.lesson-card ol{
+  padding-left:24px;
+  margin:10px 0;
+}
+
+pre{
+  background:#10101a;
+  color:#d8c9ff;
+  padding:17px;
+  border-radius:9px;
+  overflow-x:auto;
+  margin:14px 0;
+  border:1px solid #39334e;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.note{
+  background:#292342;
+  border-left:4px solid #a78bfa;
+  padding:13px;
+  margin:15px 0;
+  border-radius:5px;
+  color:#e4dcff;
+}
+
+.warning{
+  background:#38252d;
+  border-left:4px solid #f0a0ad;
+  padding:13px;
+  margin:15px 0;
+  border-radius:5px;
+  color:#f5dce2;
+}
+
+button{
+  background:#8b5cf6;
+  color:white;
+  border:none;
+  padding:11px 20px;
+  border-radius:7px;
+  cursor:pointer;
+  margin:10px 8px 10px 0;
+  font-weight:bold;
+}
+
+button:hover{background:#a78bfa}
+
+.playground textarea{
+  width:100%;
+  min-height:180px;
+  background:#10101a;
+  color:#e9d5ff;
+  border:1px solid #494064;
+  border-radius:8px;
+  padding:15px;
+  font-family:Consolas,monospace;
+  font-size:14px;
+  resize:vertical;
+}
+
+.output{
+  background:#10101a;
+  border:1px solid #39334e;
+  padding:15px;
+  border-radius:8px;
+  min-height:55px;
+  margin-top:10px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  color:#c4b5fd;
+}
+
+.task{
+  background:#242238;
+  padding:13px;
+  border-radius:8px;
+  margin:10px 0;
+}
+
+.quiz-question{
+  margin:18px 0;
+  padding:15px;
+  background:#222136;
+  border-radius:8px;
+}
+
+.quiz-question label{
+  display:block;
+  margin:7px 0;
+  cursor:pointer;
+  color:#ddd7ec;
+}
+
+#quizResult{
+  margin-top:15px;
+  font-weight:bold;
+  color:#c4b5fd;
+}
+
+.navigation{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:35px 0;
+}
+
+.navigation a{
+  text-decoration:none;
+  color:#c4b5fd;
+  background:#25213e;
+  padding:12px 18px;
+  border-radius:8px;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  background:#191927;
+  color:#aaa;
+  margin-top:40px;
+}
+
+@media(max-width:600px){
+  .container{width:92%}
+  .hero{padding:23px}
+  .hero h1{font-size:25px}
+  .lesson-card{padding:18px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="../index.html">SkillSaathi</a>
+  <a href="../javascript.html">JavaScript Course</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <h1>Lesson 13: DOM Manipulation</h1>
+  <p>Learn how to change HTML content, update styles, work with attributes, and create or remove elements using JavaScript.</p>
+  <p><strong>Part 2 – Core JavaScript</strong></p>
+</section>
+
+<section class="lesson-card">
+  <h2>1. What is DOM Manipulation?</h2>
+
+  <p>DOM Manipulation means changing the content, structure, or appearance of an HTML document using JavaScript.</p>
+
+  <p>After selecting an element from the DOM, we can modify it according to our requirements.</p>
+
+  <h3>What Can We Change?</h3>
+
+  <ul>
+    <li>Text inside HTML elements.</li>
+    <li>HTML content inside elements.</li>
+    <li>CSS styles and classes.</li>
+    <li>HTML attributes.</li>
+    <li>The structure of a page by adding or removing elements.</li>
+  </ul>
+
+  <pre><code>&lt;h1 id="title"&gt;Old Heading&lt;/h1&gt;
+
+&lt;script&gt;
+  const heading = document.getElementById("title");
+  heading.textContent = "New Heading";
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Result:</strong> The heading changes from Old Heading to New Heading.</p>
+
+  <div class="note">
+    <strong>Remember:</strong> Lesson 12 taught us how to select elements. In this lesson, we will learn how to modify those selected elements.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>2. Changing Text with textContent</h2>
+
+  <p>The <code>textContent</code> property gets or changes the text inside an HTML element.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;h2 id="message"&gt;Welcome Student&lt;/h2&gt;
+
+&lt;script&gt;
+  const text = document.getElementById("message");
+
+  text.textContent = "Welcome to SkillSaathi";
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Result:</strong></p>
+  <pre><code>Welcome to SkillSaathi</code></pre>
+
+  <p>You can also read the existing text:</p>
+
+  <pre><code>console.log(text.textContent);</code></pre>
+
+  <div class="note">
+    textContent treats assigned content as plain text. HTML tags written inside it will not be interpreted as HTML.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>3. Changing HTML with innerHTML</h2>
+
+  <p>The <code>innerHTML</code> property gets or changes the HTML content inside an element.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;div id="content"&gt;
+  Original Content
+&lt;/div&gt;
+
+&lt;script&gt;
+  const box = document.getElementById("content");
+
+  box.innerHTML = "&lt;h2&gt;New Heading&lt;/h2&gt;&lt;p&gt;New Paragraph&lt;/p&gt;";
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Result:</strong> The div now contains a heading and a paragraph.</p>
+
+  <div class="warning">
+    Be careful when using innerHTML with user-provided content. Inserting untrusted HTML can create security risks such as cross-site scripting (XSS). Use textContent for plain text.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>4. Changing Styles with JavaScript</h2>
+
+  <p>JavaScript can change the CSS styles of an HTML element using the <code>style</code> property.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;h1 id="heading"&gt;SkillSaathi&lt;/h1&gt;
+
+&lt;script&gt;
+  const heading = document.getElementById("heading");
+
+  heading.style.color = "purple";
+  heading.style.backgroundColor = "lightyellow";
+  heading.style.fontSize = "35px";
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Common style properties:</strong></p>
+
+  <ul>
+    <li><code>style.color</code></li>
+    <li><code>style.backgroundColor</code></li>
+    <li><code>style.fontSize</code></li>
+    <li><code>style.border</code></li>
+    <li><code>style.padding</code></li>
+    <li><code>style.margin</code></li>
+  </ul>
+
+  <div class="note">
+    CSS property names with hyphens are written in camelCase in JavaScript. For example, background-color becomes backgroundColor.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>5. Changing CSS Classes with classList</h2>
+
+  <p>The <code>classList</code> property lets JavaScript work with the CSS classes of an element.</p>
+
+  <h3>Important Methods</h3>
+
+  <ul>
+    <li><code>add()</code> – Adds a class.</li>
+    <li><code>remove()</code> – Removes a class.</li>
+    <li><code>toggle()</code> – Adds a class if absent or removes it if present.</li>
+    <li><code>contains()</code> – Checks whether a class exists.</li>
+  </ul>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;div id="box" class="card"&gt;Hello Student&lt;/div&gt;
+
+&lt;script&gt;
+  const box = document.getElementById("box");
+
+  box.classList.add("active");
+  box.classList.remove("card");
+
+  console.log(box.classList.contains("active"));
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Output:</strong></p>
+  <pre><code>true</code></pre>
+
+  <p>We can also toggle a class:</p>
+
+  <pre><code>box.classList.toggle("highlight");</code></pre>
+</section>
+
+<section class="lesson-card">
+  <h2>6. Adding HTML Attributes</h2>
+
+  <p>Attributes provide additional information about HTML elements.</p>
+
+  <p>JavaScript can add or update attributes using <code>setAttribute()</code>.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;img id="photo"&gt;
+
+&lt;script&gt;
+  const image = document.getElementById("photo");
+
+  image.setAttribute("src", "student.jpg");
+  image.setAttribute("alt", "Student Image");
+  image.setAttribute("width", "200");
+&lt;/script&gt;</code></pre>
+
+  <p>Here, JavaScript sets the image source, alternative text, and width.</p>
+
+  <div class="note">
+    setAttribute() can add a new attribute or update an existing attribute.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>7. Removing HTML Attributes</h2>
+
+  <p>The <code>removeAttribute()</code> method removes an attribute from an HTML element.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;button id="submitBtn" disabled&gt;
+  Submit
+&lt;/button&gt;
+
+&lt;script&gt;
+  const button = document.getElementById("submitBtn");
+
+  button.removeAttribute("disabled");
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Result:</strong> The disabled attribute is removed and the button becomes enabled.</p>
+
+  <h3>Another Example</h3>
+
+  <pre><code>const link = document.getElementById("myLink");
+
+link.removeAttribute("target");</code></pre>
+
+  <p>This removes the target attribute from the selected link.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>8. Creating Elements with createElement()</h2>
+
+  <p>The <code>createElement()</code> method creates a new HTML element using JavaScript.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>const newParagraph = document.createElement("p");
+
+newParagraph.textContent = "I am a new paragraph";
+
+console.log(newParagraph);</code></pre>
+
+  <p>This creates a paragraph element in memory. It will not appear on the page until it is added to the document.</p>
+
+  <h3>Creating a Heading</h3>
+
+  <pre><code>const heading = document.createElement("h2");
+
+heading.textContent = "Welcome Learners";</code></pre>
+
+  <div class="note">
+    createElement() creates the element, but does not automatically insert it into the page.
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>9. Adding Elements with appendChild()</h2>
+
+  <p>The <code>appendChild()</code> method adds a node as the last child of a parent element.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;div id="container"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  const container = document.getElementById("container");
+
+  const paragraph = document.createElement("p");
+
+  paragraph.textContent = "Hello from JavaScript!";
+
+  container.appendChild(paragraph);
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Result:</strong> A new paragraph appears inside the container.</p>
+
+  <h3>Adding a List Item</h3>
+
+  <pre><code>const list = document.createElement("ul");
+
+const item = document.createElement("li");
+
+item.textContent = "Learn JavaScript";
+
+list.appendChild(item);</code></pre>
+
+  <p>The new list item is added inside the list element.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>10. Removing Elements with remove()</h2>
+
+  <p>The <code>remove()</code> method removes an element from the DOM.</p>
+
+  <h3>Example</h3>
+
+  <pre><code>&lt;p id="oldText"&gt;This paragraph will be removed.&lt;/p&gt;
+
+&lt;script&gt;
+  const paragraph = document.getElementById("oldText");
+
+  paragraph.remove();
+&lt;/script&gt;</code></pre>
+
+  <p><strong>Result:</strong> The paragraph is removed from the document.</p>
+
+  <h3>Removing a Child with removeChild()</h3>
+
+  <pre><code>const parent = document.getElementById("container");
+
+const child = document.getElementById("item");
+
+parent.removeChild(child);</code></pre>
+
+  <p><code>removeChild()</code> removes a specific child node from its parent.</p>
+</section>
+
+<section class="lesson-card">
+  <h2>11. Practical Examples</h2>
+
+  <h3>Example 1: Update Text and Style</h3>
+
+  <pre><code>&lt;h2 id="title"&gt;Old Title&lt;/h2&gt;
+
+&lt;script&gt;
+  const title = document.getElementById("title");
+
+  title.textContent = "Learning JavaScript";
+  title.style.color = "purple";
+  title.style.fontSize = "30px";
+&lt;/script&gt;</code></pre>
+
+  <h3>Example 2: Add a New Paragraph</h3>
+
+  <pre><code>&lt;div id="content"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  const content = document.getElementById("content");
+
+  const paragraph = document.createElement("p");
+
+  paragraph.textContent = "Practice makes progress.";
+
+  content.appendChild(paragraph);
+&lt;/script&gt;</code></pre>
+
+  <h3>Example 3: Remove an Element</h3>
+
+  <pre><code>&lt;h3 id="notice"&gt;Old Notice&lt;/h3&gt;
+
+&lt;script&gt;
+  const notice = document.getElementById("notice");
+
+  notice.remove();
+&lt;/script&gt;</code></pre>
+</section>
+
+<section class="lesson-card playground">
+  <h2>12. Code Playground</h2>
+
+  <p>Try changing text, styles, classes, attributes, and creating new elements.</p>
+
+  <div id="demoArea" style="background:#292342;padding:18px;border-radius:8px;margin:15px 0">
+    <h3 id="demoHeading">Original Heading</h3>
+    <p id="demoParagraph">This is the original paragraph.</p>
+    <div id="demoContainer"></div>
+    <button id="demoButton" type="button">Sample Button</button>
+  </div>
+
+  <textarea id="codeInput">const heading = document.getElementById("demoHeading");
+
+heading.textContent = "Welcome to SkillSaathi";
+heading.style.color = "#c4b5fd";
+
+const paragraph = document.getElementById("demoParagraph");
+
+paragraph.textContent = "DOM Manipulation is interesting!";
+
+const newItem = document.createElement("p");
+
+newItem.textContent = "This paragraph was created with JavaScript.";
+
+document.getElementById("demoContainer").appendChild(newItem);
+
+console.log("DOM updated successfully!");</textarea>
+
+  <br>
+  <button onclick="runCode()">Run Code</button>
+  <button onclick="resetCode()">Reset Code</button>
+
+  <h3>Output</h3>
+  <div class="output" id="output">Your output will appear here...</div>
+</section>
+
+<section class="lesson-card">
+  <h2>13. Practice Tasks</h2>
+
+  <div class="task">
+    <strong>Task 1:</strong> Create an HTML heading and change its text using textContent.
+  </div>
+
+  <div class="task">
+    <strong>Task 2:</strong> Change the color and font size of a paragraph using JavaScript.
+  </div>
+
+  <div class="task">
+    <strong>Task 3:</strong> Add a CSS class to an element using classList.add().
+  </div>
+
+  <div class="task">
+    <strong>Task 4:</strong> Create a new paragraph using createElement() and add it to a div using appendChild().
+  </div>
+
+  <div class="task">
+    <strong>Task 5:</strong> Add an alt attribute to an image using setAttribute().
+  </div>
+
+  <div class="task">
+    <strong>Task 6:</strong> Remove an HTML element using remove().
+  </div>
+</section>
+
+<section class="lesson-card">
+  <h2>14. Quick Knowledge Check</h2>
+
+  <form id="quizForm">
+
+    <div class="quiz-question">
+      <p><strong>1. Which property changes only the text inside an element?</strong></p>
+      <label><input type="radio" name="q1" value="a"> innerHTML</label>
+      <label><input type="radio" name="q1" value="b"> textContent</label>
+      <label><input type="radio" name="q1" value="c"> classList</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>2. Which property can insert HTML content inside an element?</strong></p>
+      <label><input type="radio" name="q2" value="a"> innerHTML</label>
+      <label><input type="radio" name="q2" value="b"> textContent</label>
+      <label><input type="radio" name="q2" value="c"> remove()</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>3. Which method adds a CSS class to an element?</strong></p>
+      <label><input type="radio" name="q3" value="a"> classList.add()</label>
+      <label><input type="radio" name="q3" value="b"> removeAttribute()</label>
+      <label><input type="radio" name="q3" value="c"> createElement()</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>4. Which method creates a new HTML element?</strong></p>
+      <label><input type="radio" name="q4" value="a"> appendChild()</label>
+      <label><input type="radio" name="q4" value="b"> createElement()</label>
+      <label><input type="radio" name="q4" value="c"> querySelector()</label>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>5. Which method removes an element from the DOM?</strong></p>
+      <label><input type="radio" name="q5" value="a"> setAttribute()</label>
+      <label><input type="radio" name="q5" value="b"> textContent</label>
+      <label><input type="radio" name="q5" value="c"> remove()</label>
+    </div>
+
+    <button type="button" onclick="checkQuiz()">Submit Answers</button>
+    <button type="reset" onclick="document.getElementById('quizResult').textContent=''">Reset Quiz</button>
+
+    <div id="quizResult"></div>
+  </form>
+</section>
+
+<div class="navigation">
+  <a href="js-lesson12.html">← Previous Lesson</a>
+  <a href="../javascript.html">Course Home</a>
+  <a href="js-lesson14.html">Next Lesson →</a>
+</div>
+
+</main>
+
+<footer>
+  <p>© 2026 SkillSaathi | Learn. Practice. Grow.</p>
+</footer>
+
+<script>
+const defaultCode = `const heading = document.getElementById("demoHeading");
+
+heading.textContent = "Welcome to SkillSaathi";
+heading.style.color = "#c4b5fd";
+
+const paragraph = document.getElementById("demoParagraph");
+
+paragraph.textContent = "DOM Manipulation is interesting!";
+
+const newItem = document.createElement("p");
+
+newItem.textContent = "This paragraph was created with JavaScript.";
+
+document.getElementById("demoContainer").appendChild(newItem);
+
+console.log("DOM updated successfully!");`;
+
+function runCode(){
+  const code = document.getElementById("codeInput").value;
+  const output = document.getElementById("output");
+
+  const demoArea = document.getElementById("demoArea");
+
+  const sandbox = document.createElement("iframe");
+  sandbox.style.display = "none";
+  document.body.appendChild(sandbox);
+
+  const doc = sandbox.contentDocument;
+
+  doc.open();
+  doc.write(`
+    <!DOCTYPE html>
+    <html>
+    <body>
+      <div id="demoArea">
+        <h3 id="demoHeading">Original Heading</h3>
+        <p id="demoParagraph">This is the original paragraph.</p>
+        <div id="demoContainer"></div>
+        <button id="demoButton">Sample Button</button>
+      </div>
+    </body>
+    </html>
+  `);
+  doc.close();
+
+  let logs = [];
+
+  const customConsole = {
+    log: (...values) => {
+      logs.push(values.map(value => {
+        if(value === null) return "null";
+        if(value === undefined) return "undefined";
+        if(typeof value === "object"){
+          return value.outerHTML || JSON.stringify(value);
+        }
+        return String(value);
+      }).join(" "));
+    }
+  };
+
+  try{
+    const execute = new Function("document","console",code);
+
+    execute(doc,customConsole);
+
+    output.textContent = logs.length
+      ? logs.join("\n")
+      : "Code executed successfully. No console output.";
+
+  }catch(error){
+    output.textContent = error.name + ": " + error.message;
+  }finally{
+    sandbox.remove();
+  }
+}
+
+function resetCode(){
+  document.getElementById("codeInput").value = defaultCode;
+  document.getElementById("output").textContent =
+    "Your output will appear here...";
+}
+
+function checkQuiz(){
+  const answers = {
+    q1:"b",
+    q2:"a",
+    q3:"a",
+    q4:"b",
+    q5:"c"
+  };
+
+  let score = 0;
+  const total = Object.keys(answers).length;
+
+  for(let question in answers){
+    const selected = document.querySelector(
+      `input[name="${question}"]:checked`
+    );
+
+    if(selected && selected.value === answers[question]){
+      score++;
+    }
+  }
+
+  const result = document.getElementById("quizResult");
+
+  result.textContent =
+    "You scored " + score + " out of " + total + "." +
+    (score === total
+      ? " Excellent work!"
+      : " Review the lesson and try again.");
+}
+</script>
+
+</body>
+</html>

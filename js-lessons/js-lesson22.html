@@ -1,0 +1,1004 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 22 - Promises and Async/Await | SkillSaathi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ font-family:Arial,sans-serif;
+ background:#11111b;
+ color:#e5e5e5;
+ line-height:1.7;
+}
+header{
+ background:#191927;
+ padding:18px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:1px solid #302d46;
+ position:sticky;
+ top:0;
+ z-index:10;
+}
+header a{
+ color:#c4b5fd;
+ text-decoration:none;
+ font-weight:bold;
+}
+header .course-link{color:#aaa}
+.container{
+ width:90%;
+ max-width:1100px;
+ margin:35px auto;
+}
+.hero{
+ background:linear-gradient(135deg,#211b3b,#17172a);
+ padding:35px;
+ border-radius:16px;
+ border:1px solid #40365f;
+ margin-bottom:30px;
+}
+.lesson-tag{
+ color:#a78bfa;
+ font-size:13px;
+ font-weight:bold;
+ letter-spacing:2px;
+}
+h1{
+ color:#ddd6fe;
+ font-size:32px;
+ margin:10px 0;
+}
+.hero p{color:#c5c1d5}
+.progress{
+ height:7px;
+ background:#302d46;
+ border-radius:20px;
+ margin-top:20px;
+ overflow:hidden;
+}
+.progress span{
+ display:block;
+ width:88%;
+ height:100%;
+ background:#a78bfa;
+}
+section{
+ background:#191927;
+ border:1px solid #302d46;
+ padding:25px;
+ border-radius:13px;
+ margin-bottom:22px;
+}
+h2{
+ color:#c4b5fd;
+ margin-bottom:14px;
+ font-size:23px;
+}
+h3{
+ color:#ddd6fe;
+ margin:18px 0 8px;
+ font-size:18px;
+}
+p{margin:9px 0;color:#d0ceda}
+ul,ol{padding-left:25px;margin:10px 0}
+li{margin:7px 0;color:#d0ceda}
+strong{color:#ddd6fe}
+.note{
+ background:#25213a;
+ border-left:4px solid #a78bfa;
+ padding:13px 16px;
+ border-radius:6px;
+ margin:15px 0;
+}
+.warning{
+ background:#30251f;
+ border-left:4px solid #e6a65c;
+ padding:13px 16px;
+ border-radius:6px;
+ margin:15px 0;
+}
+pre{
+ background:#101018;
+ border:1px solid #38334f;
+ padding:17px;
+ border-radius:9px;
+ overflow-x:auto;
+ margin:12px 0;
+ color:#c4b5fd;
+ font-size:14px;
+ line-height:1.6;
+}
+code{font-family:Consolas,monospace}
+table{
+ width:100%;
+ border-collapse:collapse;
+ margin:15px 0;
+}
+th,td{
+ border:1px solid #39344e;
+ padding:11px;
+ text-align:left;
+}
+th{background:#29233e;color:#ddd6fe}
+td{color:#d0ceda}
+button{
+ background:#8b5cf6;
+ color:white;
+ border:none;
+ padding:10px 17px;
+ border-radius:7px;
+ cursor:pointer;
+ font-weight:bold;
+ margin:5px 5px 5px 0;
+}
+button:hover{background:#7c3aed}
+.secondary{background:#39334e}
+.secondary:hover{background:#4a4264}
+.demo-box{
+ background:#131320;
+ border:1px solid #39344e;
+ padding:17px;
+ border-radius:9px;
+ margin:12px 0;
+}
+.demo-output{
+ color:#a7f3d0;
+ margin-top:10px;
+ min-height:25px;
+ white-space:pre-wrap;
+}
+textarea{
+ width:100%;
+ background:#101018;
+ color:#eee;
+ border:1px solid #49415f;
+ border-radius:7px;
+ padding:12px;
+ margin:8px 0;
+ font-family:Consolas,monospace;
+ min-height:210px;
+ resize:vertical;
+}
+.play-output{
+ background:#101018;
+ color:#a7f3d0;
+ border:1px solid #39344e;
+ border-radius:8px;
+ padding:15px;
+ min-height:90px;
+ margin-top:12px;
+ white-space:pre-wrap;
+ overflow-wrap:anywhere;
+}
+.quiz-question{
+ padding:15px;
+ border-bottom:1px solid #39344e;
+}
+.quiz-question label{
+ display:block;
+ margin:8px 0;
+ color:#d0ceda;
+ cursor:pointer;
+}
+.quiz-question input{margin-right:8px}
+.result{
+ margin-top:15px;
+ color:#c4b5fd;
+ font-weight:bold;
+}
+.navigation{
+ display:flex;
+ justify-content:space-between;
+ gap:12px;
+ flex-wrap:wrap;
+ margin:30px 0;
+}
+footer{
+ text-align:center;
+ padding:25px;
+ color:#85819a;
+ border-top:1px solid #302d46;
+}
+@media(max-width:650px){
+ header{padding:15px 5%}
+ h1{font-size:25px}
+ .container{width:94%}
+ section,.hero{padding:19px}
+ table{font-size:13px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <a href="../index.html">SkillSaathi</a>
+ <a class="course-link" href="../javascript.html">JavaScript Course</a>
+</header>
+
+<main class="container">
+
+<div class="hero">
+ <div class="lesson-tag">JAVASCRIPT • PART 3 • LESSON 22</div>
+ <h1>Promises and Async/Await</h1>
+ <p>Learn how JavaScript handles asynchronous operations using Promises and async/await.</p>
+ <div class="progress"><span></span></div>
+ <p style="font-size:13px;margin-top:8px">Lesson 22 of 25</p>
+</div>
+
+<section>
+<h2>1. Introduction to Promises</h2>
+<p>A Promise is a JavaScript object that represents the eventual completion or failure of an asynchronous operation.</p>
+<p>It helps us handle operations that may finish in the future.</p>
+
+<h3>Why do we need Promises?</h3>
+<ul>
+<li>To handle asynchronous operations.</li>
+<li>To manage successful and failed results.</li>
+<li>To organize code that depends on future results.</li>
+<li>To avoid deeply nested callback structures.</li>
+</ul>
+
+<pre><code>let myPromise = new Promise(function(resolve, reject){
+    resolve("Task completed!");
+});
+
+console.log(myPromise);</code></pre>
+
+<div class="note">
+<strong>Remember:</strong> A Promise does not automatically make an operation asynchronous. It provides a structured way to represent and handle its eventual result.
+</div>
+</section>
+
+<section>
+<h2>2. Promise States</h2>
+<p>Every Promise has one of three states.</p>
+
+<table>
+<tr><th>State</th><th>Meaning</th></tr>
+<tr><td>Pending</td><td>The operation is still in progress.</td></tr>
+<tr><td>Fulfilled</td><td>The operation completed successfully.</td></tr>
+<tr><td>Rejected</td><td>The operation failed.</td></tr>
+</table>
+
+<h3>Promise state flow</h3>
+<pre><code>          PENDING
+          /     \
+         /       \
+   FULFILLED   REJECTED
+    Success      Failure</code></pre>
+
+<p>A Promise starts as pending. Later, it may become fulfilled or rejected. Once settled, its state cannot change again.</p>
+</section>
+
+<section>
+<h2>3. Creating a Promise</h2>
+<p>We create a Promise using the <code>new Promise()</code> constructor.</p>
+
+<pre><code>const promise = new Promise(function(resolve, reject){
+
+    let taskCompleted = true;
+
+    if(taskCompleted){
+        resolve("Task successful!");
+    }else{
+        reject("Task failed!");
+    }
+
+});</code></pre>
+
+<p>The Promise constructor receives an executor function with two parameters:</p>
+<ul>
+<li><strong>resolve:</strong> Used when the operation succeeds.</li>
+<li><strong>reject:</strong> Used when the operation fails.</li>
+</ul>
+
+<div class="note">
+The executor function runs immediately when the Promise is created.
+</div>
+</section>
+
+<section>
+<h2>4. resolve() and reject()</h2>
+
+<h3>resolve()</h3>
+<p>It fulfills a Promise with a successful result.</p>
+<pre><code>const promise = new Promise(function(resolve, reject){
+    resolve("Welcome to SkillSaathi!");
+});</code></pre>
+
+<h3>reject()</h3>
+<p>It rejects a Promise with a reason for failure.</p>
+<pre><code>const promise = new Promise(function(resolve, reject){
+    reject("Something went wrong!");
+});</code></pre>
+
+<div class="demo-box">
+<strong>Try a Promise</strong>
+<p>Choose whether the operation should succeed or fail.</p>
+<button onclick="runPromiseDemo(true)">Resolve Promise</button>
+<button class="secondary" onclick="runPromiseDemo(false)">Reject Promise</button>
+<div class="demo-output" id="promiseOutput">Result will appear here.</div>
+</div>
+</section>
+
+<section>
+<h2>5. then() Method</h2>
+<p>The <code>then()</code> method handles the successful result of a Promise.</p>
+
+<h3>Syntax</h3>
+<pre><code>promise.then(function(result){
+    // Handle successful result
+});</code></pre>
+
+<h3>Example</h3>
+<pre><code>const promise = new Promise(function(resolve){
+    resolve("Payment successful!");
+});
+
+promise.then(function(result){
+    console.log(result);
+});</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>Payment successful!</code></pre>
+
+<p>The value passed to <code>resolve()</code> becomes available inside the then() callback.</p>
+</section>
+
+<section>
+<h2>6. catch() Method</h2>
+<p>The <code>catch()</code> method handles a rejected Promise.</p>
+
+<pre><code>const promise = new Promise(function(resolve, reject){
+    reject("Unable to complete the task.");
+});
+
+promise.catch(function(error){
+    console.log(error);
+});</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>Unable to complete the task.</code></pre>
+
+<div class="note">
+Use <code>catch()</code> to handle errors instead of allowing rejected Promises to go unhandled.
+</div>
+</section>
+
+<section>
+<h2>7. finally() Method</h2>
+<p>The <code>finally()</code> method runs after a Promise settles, whether it is fulfilled or rejected.</p>
+
+<pre><code>const promise = new Promise(function(resolve){
+    resolve("Data loaded!");
+});
+
+promise
+    .then(function(result){
+        console.log(result);
+    })
+    .catch(function(error){
+        console.log(error);
+    })
+    .finally(function(){
+        console.log("Operation finished.");
+    });</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>Data loaded!
+Operation finished.</code></pre>
+
+<p>It is useful for cleanup tasks, such as hiding a loading indicator.</p>
+</section>
+
+<section>
+<h2>8. Promise Chaining</h2>
+<p>Promise chaining means connecting multiple <code>then()</code> methods to perform operations in sequence.</p>
+
+<pre><code>Promise.resolve(5)
+    .then(function(number){
+        console.log(number);
+        return number * 2;
+    })
+    .then(function(result){
+        console.log(result);
+        return result + 10;
+    })
+    .then(function(finalResult){
+        console.log(finalResult);
+    });</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>5
+10
+20</code></pre>
+
+<p>Each then() can return a value that becomes the input of the next then().</p>
+
+<div class="warning">
+Returning a value from a then() callback is important when the next step depends on its result.
+</div>
+</section>
+
+<section>
+<h2>9. Handling Multiple Promises</h2>
+<p>JavaScript provides methods to work with multiple Promises together.</p>
+<p>These methods are commonly called Promise combinators.</p>
+
+<h3>Promise.all()</h3>
+<p><code>Promise.all()</code> fulfills when all input Promises fulfill. It rejects if any input Promise rejects.</p>
+
+<pre><code>const promise1 = Promise.resolve("HTML");
+const promise2 = Promise.resolve("CSS");
+const promise3 = Promise.resolve("JavaScript");
+
+Promise.all([promise1, promise2, promise3])
+    .then(function(results){
+        console.log(results);
+    })
+    .catch(function(error){
+        console.log(error);
+    });</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>["HTML", "CSS", "JavaScript"]</code></pre>
+
+<h3>Promise.allSettled()</h3>
+<p><code>Promise.allSettled()</code> waits until every input Promise has settled, whether fulfilled or rejected.</p>
+
+<pre><code>const p1 = Promise.resolve("Success");
+const p2 = Promise.reject("Failed");
+
+Promise.allSettled([p1, p2])
+    .then(function(results){
+        console.log(results);
+    });</code></pre>
+
+<p>It returns an array containing the status and result or rejection reason of each Promise.</p>
+
+<h3>Promise.race()</h3>
+<p><code>Promise.race()</code> settles with the result of the first input Promise that settles.</p>
+
+<pre><code>const p1 = new Promise(function(resolve){
+    setTimeout(function(){
+        resolve("First task");
+    }, 1000);
+});
+
+const p2 = new Promise(function(resolve){
+    setTimeout(function(){
+        resolve("Second task");
+    }, 2000);
+});
+
+Promise.race([p1, p2])
+    .then(function(result){
+        console.log(result);
+    });</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>First task</code></pre>
+</section>
+
+<section>
+<h2>10. Introduction to async and await</h2>
+<p><code>async</code> and <code>await</code> provide a cleaner way to work with Promises.</p>
+
+<h3>async keyword</h3>
+<p>Adding <code>async</code> before a function makes it return a Promise.</p>
+
+<pre><code>async function greet(){
+    return "Hello Student!";
+}
+
+greet().then(function(message){
+    console.log(message);
+});</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>Hello Student!</code></pre>
+
+<h3>await keyword</h3>
+<p><code>await</code> pauses the execution of the surrounding async function until the Promise settles. It does not block the entire JavaScript program.</p>
+
+<pre><code>function getMessage(){
+    return new Promise(function(resolve){
+        setTimeout(function(){
+            resolve("Welcome to SkillSaathi!");
+        }, 2000);
+    });
+}
+
+async function showMessage(){
+    console.log("Please wait...");
+
+    const result = await getMessage();
+
+    console.log(result);
+}
+
+showMessage();</code></pre>
+
+<p>The function waits for the Promise result before continuing to the next statement inside that async function.</p>
+</section>
+
+<section>
+<h2>11. async Functions in Detail</h2>
+<p>An async function always returns a Promise.</p>
+
+<h3>Example 1: Returning a value</h3>
+<pre><code>async function getNumber(){
+    return 100;
+}
+
+getNumber().then(function(number){
+    console.log(number);
+});</code></pre>
+
+<h3>Example 2: Returning a Promise</h3>
+<pre><code>async function getResult(){
+    return Promise.resolve("Success!");
+}
+
+getResult().then(function(result){
+    console.log(result);
+});</code></pre>
+
+<h3>Example 3: Using await</h3>
+<pre><code>function task(){
+    return new Promise(function(resolve){
+        setTimeout(function(){
+            resolve("Task completed!");
+        }, 1000);
+    });
+}
+
+async function runTask(){
+    const result = await task();
+    console.log(result);
+}
+
+runTask();</code></pre>
+</section>
+
+<section>
+<h2>12. Error Handling with try...catch</h2>
+<p>When using await, we can handle rejected Promises using <code>try...catch</code>.</p>
+
+<pre><code>function checkResult(){
+    return new Promise(function(resolve, reject){
+        reject("Something went wrong!");
+    });
+}
+
+async function showResult(){
+    try{
+        const result = await checkResult();
+        console.log(result);
+    }
+    catch(error){
+        console.log("Error:", error);
+    }
+}
+
+showResult();</code></pre>
+
+<p><strong>Output:</strong></p>
+<pre><code>Error: Something went wrong!</code></pre>
+
+<h3>Using finally with async/await</h3>
+<pre><code>async function loadData(){
+    try{
+        console.log("Loading...");
+        const result = await Promise.resolve("Data ready!");
+        console.log(result);
+    }
+    catch(error){
+        console.log(error);
+    }
+    finally{
+        console.log("Loading process finished.");
+    }
+}
+
+loadData();</code></pre>
+</section>
+
+<section>
+<h2>13. Sequential and Parallel Execution</h2>
+
+<h3>Sequential execution</h3>
+<p>When one task depends on the result of another, we may need to await them one after another.</p>
+
+<pre><code>async function runSequentially(){
+    const first = await Promise.resolve("First");
+    console.log(first);
+
+    const second = await Promise.resolve("Second");
+    console.log(second);
+}
+
+runSequentially();</code></pre>
+
+<h3>Parallel execution</h3>
+<p>When tasks are independent, we can start them together and wait for all results using Promise.all().</p>
+
+<pre><code>async function runTogether(){
+    const results = await Promise.all([
+        Promise.resolve("HTML"),
+        Promise.resolve("CSS"),
+        Promise.resolve("JavaScript")
+    ]);
+
+    console.log(results);
+}
+
+runTogether();</code></pre>
+
+<div class="note">
+Use sequential execution when tasks depend on each other. Use Promise.all() when independent tasks can run together.
+</div>
+</section>
+
+<section>
+<h2>14. Practical Examples</h2>
+
+<h3>Example 1: Simulated login</h3>
+<pre><code>function loginUser(username){
+    return new Promise(function(resolve, reject){
+        if(username === "student"){
+            resolve("Login successful!");
+        }else{
+            reject("Invalid username!");
+        }
+    });
+}
+
+async function login(){
+    try{
+        const message = await loginUser("student");
+        console.log(message);
+    }catch(error){
+        console.log(error);
+    }
+}
+
+login();</code></pre>
+
+<h3>Example 2: Simulated data processing</h3>
+<pre><code>function processData(){
+    return new Promise(function(resolve){
+        setTimeout(function(){
+            resolve("Data processed successfully!");
+        }, 1500);
+    });
+}
+
+async function displayData(){
+    console.log("Processing...");
+
+    const result = await processData();
+
+    console.log(result);
+}
+
+displayData();</code></pre>
+
+<h3>Example 3: Multiple tasks</h3>
+<pre><code>async function getCourses(){
+    const courses = await Promise.all([
+        Promise.resolve("HTML"),
+        Promise.resolve("CSS"),
+        Promise.resolve("JavaScript")
+    ]);
+
+    console.log("Available Courses:");
+    console.log(courses);
+}
+
+getCourses();</code></pre>
+</section>
+
+<section>
+<h2>15. Code Playground</h2>
+<p>Write your Promise or async/await code below and click Run Code.</p>
+
+<textarea id="codeEditor" spellcheck="false">function getMessage(){
+    return new Promise(function(resolve){
+        setTimeout(function(){
+            resolve("Hello from a Promise!");
+        }, 1500);
+    });
+}
+
+async function showMessage(){
+    console.log("Please wait...");
+
+    const result = await getMessage();
+
+    console.log(result);
+}
+
+showMessage();</textarea>
+
+<button onclick="runPlayground()">Run Code</button>
+<button class="secondary" onclick="resetPlayground()">Reset Code</button>
+<div class="play-output" id="playOutput">Your output will appear here...</div>
+</section>
+
+<section>
+<h2>16. Practice Tasks</h2>
+<ol>
+<li>Create a Promise that resolves with a welcome message.</li>
+<li>Create a Promise that rejects with an error message.</li>
+<li>Use then() to display a successful result.</li>
+<li>Use catch() to handle a rejected Promise.</li>
+<li>Use finally() to display a completion message.</li>
+<li>Create a Promise chain with at least three then() methods.</li>
+<li>Use Promise.all() to handle three successful Promises.</li>
+<li>Use Promise.allSettled() with one fulfilled and one rejected Promise.</li>
+<li>Write an async function that returns a number.</li>
+<li>Use await to wait for a Promise result.</li>
+<li>Handle an error using try...catch inside an async function.</li>
+</ol>
+
+<div class="note">
+<strong>Challenge:</strong> Create a simulated student registration process. Return a Promise that resolves when the student name is valid and rejects when the name is empty. Handle the result using async/await and try...catch.
+</div>
+</section>
+
+<section>
+<h2>17. Lesson Quiz</h2>
+<p>Choose the correct answer for each question.</p>
+
+<form id="quizForm">
+
+<div class="quiz-question">
+<p><strong>1. What is a Promise?</strong></p>
+<label><input type="radio" name="q1" value="a"> A CSS property</label>
+<label><input type="radio" name="q1" value="b"> An object representing a future result</label>
+<label><input type="radio" name="q1" value="c"> A type of loop</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2. How many states does a Promise have?</strong></p>
+<label><input type="radio" name="q2" value="a"> Two</label>
+<label><input type="radio" name="q2" value="b"> Four</label>
+<label><input type="radio" name="q2" value="c"> Three</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3. Which function fulfills a Promise?</strong></p>
+<label><input type="radio" name="q3" value="a"> resolve()</label>
+<label><input type="radio" name="q3" value="b"> reject()</label>
+<label><input type="radio" name="q3" value="c"> catch()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4. Which method handles a rejected Promise?</strong></p>
+<label><input type="radio" name="q4" value="a"> then()</label>
+<label><input type="radio" name="q4" value="b"> catch()</label>
+<label><input type="radio" name="q4" value="c"> finally()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5. Which method runs after a Promise settles?</strong></p>
+<label><input type="radio" name="q5" value="a"> finally()</label>
+<label><input type="radio" name="q5" value="b"> map()</label>
+<label><input type="radio" name="q5" value="c"> filter()</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>6. What does Promise.all() do?</strong></p>
+<label><input type="radio" name="q6" value="a"> Stops all Promises</label>
+<label><input type="radio" name="q6" value="b"> Waits for all to fulfill, or rejects if one rejects</label>
+<label><input type="radio" name="q6" value="c"> Runs only the first Promise</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>7. What does Promise.allSettled() return?</strong></p>
+<label><input type="radio" name="q7" value="a"> Only successful results</label>
+<label><input type="radio" name="q7" value="b"> Only rejected results</label>
+<label><input type="radio" name="q7" value="c"> The settled status of every input Promise</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>8. What does async make a function return?</strong></p>
+<label><input type="radio" name="q8" value="a"> A Promise</label>
+<label><input type="radio" name="q8" value="b"> An array</label>
+<label><input type="radio" name="q8" value="c"> A CSS object</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>9. Where is await normally used?</strong></p>
+<label><input type="radio" name="q9" value="a"> Inside a CSS file</label>
+<label><input type="radio" name="q9" value="b"> Inside an async function</label>
+<label><input type="radio" name="q9" value="c"> Inside an HTML comment</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>10. Which structure handles errors with async/await?</strong></p>
+<label><input type="radio" name="q10" value="a"> if...else only</label>
+<label><input type="radio" name="q10" value="b"> for...of</label>
+<label><input type="radio" name="q10" value="c"> try...catch</label>
+</div>
+
+<button type="button" onclick="checkQuiz()">Submit Quiz</button>
+<button type="reset" class="secondary" onclick="resetQuiz()">Reset Quiz</button>
+
+<div class="result" id="quizResult"></div>
+</form>
+</section>
+
+<div class="navigation">
+ <a href="js-lesson21.html"><button class="secondary">← Previous Lesson</button></a>
+ <a href="../javascript.html"><button class="secondary">Course Home</button></a>
+ <a href="js-lesson23.html"><button>Next Lesson →</button></a>
+</div>
+
+</main>
+
+<footer>
+<p>SkillSaathi © 2026 | Learn. Practice. Grow.</p>
+</footer>
+
+<script>
+/* Promise Demo */
+function runPromiseDemo(success){
+ const output=document.getElementById("promiseOutput");
+
+ const demoPromise=new Promise(function(resolve,reject){
+  setTimeout(function(){
+   if(success){
+    resolve("Promise fulfilled: Operation successful!");
+   }else{
+    reject("Promise rejected: Operation failed!");
+   }
+  },800);
+ });
+
+ output.textContent="Promise is pending...";
+
+ demoPromise
+  .then(function(result){
+   output.textContent=result;
+  })
+  .catch(function(error){
+   output.textContent=error;
+  });
+}
+
+/* Playground */
+const defaultCode=`function getMessage(){
+    return new Promise(function(resolve){
+        setTimeout(function(){
+            resolve("Hello from a Promise!");
+        }, 1500);
+    });
+}
+
+async function showMessage(){
+    console.log("Please wait...");
+
+    const result = await getMessage();
+
+    console.log(result);
+}
+
+showMessage();`;
+
+async function runPlayground(){
+ const code=document.getElementById("codeEditor").value;
+ const output=document.getElementById("playOutput");
+
+ let logs=[];
+ let stopped=false;
+
+ output.textContent="Running...";
+
+ const customConsole={
+  log:function(...args){
+   if(!stopped){
+    const message=args.map(function(value){
+     if(typeof value==="object" && value!==null){
+      try{return JSON.stringify(value)}catch(e){return String(value)}
+     }
+     return String(value);
+    }).join(" ");
+
+    logs.push(message);
+    output.textContent=logs.join("\n");
+   }
+  },
+  error:function(...args){
+   this.log("Error:",...args);
+  },
+  warn:function(...args){
+   this.log("Warning:",...args);
+  }
+ };
+
+ try{
+  const AsyncFunction=Object.getPrototypeOf(
+   async function(){}
+  ).constructor;
+
+  const execute=new AsyncFunction("console",code);
+
+  const result=execute(customConsole);
+
+  await Promise.race([
+   result,
+   new Promise(function(resolve){
+    setTimeout(resolve,10000);
+   })
+  ]);
+
+  if(logs.length===0){
+   output.textContent="Code executed. No console output.";
+  }
+
+ }catch(error){
+  output.textContent="Error: "+error.message;
+ }
+
+ stopped=true;
+}
+
+function resetPlayground(){
+ document.getElementById("codeEditor").value=defaultCode;
+ document.getElementById("playOutput").textContent=
+  "Your output will appear here...";
+}
+
+/* Quiz */
+function checkQuiz(){
+ const answers={
+  q1:"b",
+  q2:"c",
+  q3:"a",
+  q4:"b",
+  q5:"a",
+  q6:"b",
+  q7:"c",
+  q8:"a",
+  q9:"b",
+  q10:"c"
+ };
+
+ let score=0;
+ const total=Object.keys(answers).length;
+
+ for(let question in answers){
+  const selected=document.querySelector(
+   'input[name="'+question+'"]:checked'
+  );
+
+  if(selected && selected.value===answers[question]){
+   score++;
+  }
+ }
+
+ const result=document.getElementById("quizResult");
+
+ result.textContent="Your Score: "+score+" / "+total+
+  (score>=7
+   ? " — Great job! Keep learning!"
+   : " — Keep practicing. You can try again!");
+}
+
+function resetQuiz(){
+ document.getElementById("quizResult").textContent="";
+}
+</script>
+
+</body>
+</html>
