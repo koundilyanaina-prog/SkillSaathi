@@ -20,18 +20,4 @@ languageBtn.addEventListener("click", () => {
 });
 
 
-document.querySelectorAll("button.course-btn").forEach((button) => {
-  button.addEventListener("click", () => {
-    const courseName = button.dataset.course;
 
-    if (courseName === "Excel & Office") {
-      window.location.href = "excel.html";
-    } else {
-      alert(
-        currentLanguage === "en"
-          ? `${courseName} lessons are coming soon!`
-          : `${courseName} के lessons जल्द आ रहे हैं!`
-      );
-    }
-  });
-});

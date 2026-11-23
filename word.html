@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MS Word Course | SkillSaathi</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6f8;
+    color: #263246;
+}
+
+header {
+    background: #ffffff;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #234b78;
+}
+
+.logo span {
+    color: #d49b43;
+}
+
+nav a {
+    text-decoration: none;
+    color: #455468;
+    margin-left: 22px;
+    font-size: 14px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #173b65, #2c608f);
+    color: white;
+    padding: 75px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.14);
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    color: #e0eaf4;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.hero-icon {
+    font-size: 115px;
+    background: rgba(255,255,255,0.1);
+    width: 190px;
+    height: 190px;
+    border-radius: 30px;
+    display: grid;
+    place-items: center;
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 25px;
+    background: #e3b45e;
+    color: #24364a;
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 60px 25px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 30px;
+    color: #234b78;
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    color: #758194;
+    line-height: 1.6;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.overview-card {
+    background: white;
+    border: 1px solid #e4e8ee;
+    border-radius: 13px;
+    padding: 25px;
+    text-align: center;
+}
+
+.overview-card .icon {
+    font-size: 32px;
+    margin-bottom: 14px;
+}
+
+.overview-card h3 {
+    color: #234b78;
+    margin-bottom: 9px;
+}
+
+.overview-card p {
+    color: #758194;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.parts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.part-card {
+    background: white;
+    padding: 25px;
+    border-radius: 13px;
+    border: 1px solid #e4e8ee;
+}
+
+.part-number {
+    color: #c38b36;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.part-card h3 {
+    color: #234b78;
+    margin: 12px 0;
+}
+
+.part-card p {
+    color: #758194;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.coming-soon {
+    text-align: center;
+    padding: 30px;
+    border-radius: 12px;
+    background: #edf1f6;
+    color: #596a7f;
+    margin-top: 35px;
+}
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.lesson-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #ffffff;
+    border: 1px solid #e4e8ee;
+    border-radius: 10px;
+    padding: 17px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.lesson-card:hover {
+    border-color: #d49b43;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(23, 59, 101, 0.08);
+}
+
+.lesson-number {
+    min-width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: #edf1f6;
+    color: #173b65;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.lesson-info h3 {
+    color: #234b78;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.lesson-info p {
+    color: #758194;
+    font-size: 12px;
+}
+
+.project-section {
+    margin-top: 55px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.project-card {
+    background: white;
+    border: 1px solid #e4e8ee;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.project-card h3 {
+    color: #234b78;
+    margin-bottom: 9px;
+}
+
+.project-card p {
+    color: #758194;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.project-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #173b65;
+    font-weight: bold;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-card:hover .project-link {
+    color: #d49b43;
+}
+
+@media(max-width: 750px) {
+    .lesson-grid,
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+footer {
+    background: #173b65;
+    color: #e0eaf4;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+}
+
+@media(max-width: 750px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0 8px;
+    }
+
+    .hero {
+        padding: 55px 7%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-icon {
+        width: 140px;
+        height: 140px;
+        font-size: 80px;
+    }
+
+    .overview-grid,
+    .parts {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Skill<span>Saathi</span></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#curriculum">Curriculum</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+        <span class="tag">MICROSOFT OFFICE · BEGINNER TO ADVANCED</span>
+
+        <h1>Master Microsoft Word</h1>
+
+        <p>
+            Learn to create professional documents, format text,
+            design reports, work with tables and build real-world
+            document skills — step by step.
+        </p>
+
+        <a href="#curriculum" class="hero-btn">Explore Course →</a>
+    </div>
+
+    <div class="hero-icon">📘</div>
+
+</section>
+
+<section class="section" id="overview">
+
+    <div class="section-heading">
+        <h2>What You Will Learn</h2>
+        <p>Build practical document creation skills from the ground up.</p>
+    </div>
+
+    <div class="overview-grid">
+
+        <div class="overview-card">
+            <div class="icon">📝</div>
+            <h3>Document Creation</h3>
+            <p>Create, save and manage professional Word documents.</p>
+        </div>
+
+        <div class="overview-card">
+            <div class="icon">🎨</div>
+            <h3>Formatting & Design</h3>
+            <p>Format text, paragraphs, pages and document layouts.</p>
+        </div>
+
+        <div class="overview-card">
+            <div class="icon">📊</div>
+            <h3>Practical Projects</h3>
+            <p>Create reports, resumes, letters and professional documents.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section" id="curriculum">
+
+    <div class="section-heading">
+        <h2>Course Curriculum</h2>
+        <p>A structured learning journey from beginner to advanced.</p>
+    </div>
+
+    <div class="parts">
+
+        <div class="part-card">
+            <span class="part-number">PART 01</span>
+            <h3>Word Fundamentals</h3>
+            <p>Introduction, interface, document creation, saving and basic text editing.</p>
+        </div>
+
+        <div class="part-card">
+            <span class="part-number">PART 02</span>
+            <h3>Formatting & Layout</h3>
+            <p>Fonts, paragraphs, lists, tables, images, page setup and document design.</p>
+        </div>
+
+        <div class="part-card">
+            <span class="part-number">PART 03</span>
+            <h3>Advanced Word Skills</h3>
+            <p>References, mail merge, review tools, templates and professional projects.</p>
+        </div>
+
+    </div>
+
+   
+<h2 style="color:#234b78; margin-top:45px; text-align:center;">
+    All 25 Lessons
+</h2>
+
+<p style="text-align:center; color:#758194; margin-top:10px;">
+    Follow each lesson in order and practise as you learn.
+</p>
+
+<div class="lesson-grid">
+
+    <a href="word-lessons/word-lesson1.html" class="lesson-card">
+        <span class="lesson-number">01</span>
+        <div class="lesson-info"><h3>Introduction to Microsoft Word</h3><p>Getting started with Word</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson2.html" class="lesson-card">
+        <span class="lesson-number">02</span>
+        <div class="lesson-info"><h3>Understanding the Word Interface</h3><p>Explore the Word workspace</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson3.html" class="lesson-card">
+        <span class="lesson-number">03</span>
+        <div class="lesson-info"><h3>Creating, Opening and Saving Documents</h3><p>Manage Word documents</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson4.html" class="lesson-card">
+        <span class="lesson-number">04</span>
+        <div class="lesson-info"><h3>Typing, Selecting and Editing Text</h3><p>Work with document text</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson5.html" class="lesson-card">
+        <span class="lesson-number">05</span>
+        <div class="lesson-info"><h3>Cut, Copy, Paste and Undo/Redo</h3><p>Edit content efficiently</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson6.html" class="lesson-card">
+        <span class="lesson-number">06</span>
+        <div class="lesson-info"><h3>Font Formatting and Text Effects</h3><p>Style your text</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson7.html" class="lesson-card">
+        <span class="lesson-number">07</span>
+        <div class="lesson-info"><h3>Paragraph Formatting</h3><p>Alignment and paragraph tools</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson8.html" class="lesson-card">
+        <span class="lesson-number">08</span>
+        <div class="lesson-info"><h3>Bullets and Numbering</h3><p>Create organised lists</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson9.html" class="lesson-card">
+        <span class="lesson-number">09</span>
+        <div class="lesson-info"><h3>Line Spacing and Indentation</h3><p>Improve document readability</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson10.html" class="lesson-card">
+        <span class="lesson-number">10</span>
+        <div class="lesson-info"><h3>Page Setup and Margins</h3><p>Configure page layout</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson11.html" class="lesson-card">
+        <span class="lesson-number">11</span>
+        <div class="lesson-info"><h3>Page Borders and Page Background</h3><p>Design document pages</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson12.html" class="lesson-card">
+        <span class="lesson-number">12</span>
+        <div class="lesson-info"><h3>Headers, Footers and Page Numbers</h3><p>Add page details</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson13.html" class="lesson-card">
+        <span class="lesson-number">13</span>
+        <div class="lesson-info"><h3>Working with Tables</h3><p>Organise information in tables</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson14.html" class="lesson-card">
+        <span class="lesson-number">14</span>
+        <div class="lesson-info"><h3>Inserting Pictures and Shapes</h3><p>Add visual elements</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson15.html" class="lesson-card">
+        <span class="lesson-number">15</span>
+        <div class="lesson-info"><h3>Text Boxes, WordArt and SmartArt</h3><p>Create visual content</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson16.html" class="lesson-card">
+        <span class="lesson-number">16</span>
+        <div class="lesson-info"><h3>Columns, Page Breaks and Section Breaks</h3><p>Control document structure</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson17.html" class="lesson-card">
+        <span class="lesson-number">17</span>
+        <div class="lesson-info"><h3>Styles and Themes</h3><p>Apply consistent formatting</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson18.html" class="lesson-card">
+        <span class="lesson-number">18</span>
+        <div class="lesson-info"><h3>Find, Replace and Navigation</h3><p>Find content quickly</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson19.html" class="lesson-card">
+        <span class="lesson-number">19</span>
+        <div class="lesson-info"><h3>Hyperlinks and Bookmarks</h3><p>Connect and navigate content</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson20.html" class="lesson-card">
+        <span class="lesson-number">20</span>
+        <div class="lesson-info"><h3>References and Table of Contents</h3><p>Build structured documents</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson21.html" class="lesson-card">
+        <span class="lesson-number">21</span>
+        <div class="lesson-info"><h3>Spelling, Grammar and Review Tools</h3><p>Review and improve documents</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson22.html" class="lesson-card">
+        <span class="lesson-number">22</span>
+        <div class="lesson-info"><h3>Mail Merge</h3><p>Create personalised documents</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson23.html" class="lesson-card">
+        <span class="lesson-number">23</span>
+        <div class="lesson-info"><h3>Templates and Professional Documents</h3><p>Use professional layouts</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson24.html" class="lesson-card">
+        <span class="lesson-number">24</span>
+        <div class="lesson-info"><h3>Printing, Exporting and PDF</h3><p>Prepare final documents</p></div>
+    </a>
+
+    <a href="word-lessons/word-lesson25.html" class="lesson-card">
+        <span class="lesson-number">25</span>
+        <div class="lesson-info"><h3>Final Review and Practical Assessment</h3><p>Test your Word skills</p></div>
+    </a>
+
+</div>
+
+
+<div class="project-section">
+    <div class="section-heading">
+        <h2>Practical Projects</h2>
+        <p>Apply your learning through real-world document projects.</p>
+    </div>
+
+    <div class="project-grid">
+
+        <a href="word-project1.html" class="project-card">
+            <h3>📄 Professional Resume</h3>
+            <p>Design a clean and professional resume using Microsoft Word.</p>
+            <span class="project-link">Open Project →</span>
+        </a>
+
+        <a href="word-project2.html" class="project-card">
+            <h3>📚 School Assignment / Report</h3>
+            <p>Create a properly formatted academic assignment or report.</p>
+            <span class="project-link">Open Project →</span>
+        </a>
+
+        <a href="word-project3.html" class="project-card">
+            <h3>✉️ Business Letter and Invoice</h3>
+            <p>Prepare a professional business letter and invoice.</p>
+            <span class="project-link">Open Project →</span>
+        </a>
+
+        <a href="word-project4.html" class="project-card">
+            <h3>📰 Professional Newsletter</h3>
+            <p>Design a newsletter using columns, images and text formatting.</p>
+            <span class="project-link">Open Project →</span>
+        </a>
+
+    </div>
+</div>
+
+
+</section>
+
+<footer>
+    SkillSaathi © 2026 · Learn Skills. Build Your Future.
+</footer>
+
+</body>
+</html>

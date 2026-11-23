@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 22 - Mail Merge | SkillSaathi</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f5f6f8;color:#263445;line-height:1.7}
+header{background:#173b65;color:white;padding:22px 8%}header h2{font-size:24px}header p{color:#dce7f3;font-size:14px}
+.container{max-width:950px;margin:35px auto;padding:0 20px}
+.hero{background:linear-gradient(135deg,#173b65,#285b8e);color:white;padding:40px;border-radius:16px;margin-bottom:28px}
+.hero span{color:#f1c46b;font-weight:bold}.hero h1{font-size:32px;margin:12px 0}
+.card{background:white;padding:27px;border-radius:13px;margin-bottom:22px;border:1px solid #e3e7ec}
+h2{color:#173b65;margin-bottom:14px}h3{color:#244f79;margin:15px 0 7px}
+ul,ol{padding-left:23px}li{margin-bottom:8px}
+.highlight{background:#fff8e9;border-left:4px solid #d49b43;padding:16px;margin-top:15px;border-radius:7px}
+.example{background:#eef3f8;padding:18px;border-radius:9px;margin-top:12px}
+.question{margin:20px 0;padding:17px;background:#f5f6f8;border-radius:9px}
+.question label{display:block;margin:9px 0;cursor:pointer}
+button{background:#173b65;color:white;border:0;padding:12px 23px;border-radius:7px;cursor:pointer;font-size:15px;margin-top:12px}button:hover{background:#285b8e}
+#result{margin-top:15px;font-weight:bold}
+.navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:25px 0}
+.navigation a{text-decoration:none;color:#173b65;font-weight:bold}
+footer{text-align:center;padding:25px;color:#68788a}
+@media(max-width:600px){.hero{padding:25px}.hero h1{font-size:25px}.card{padding:20px}}
+</style>
+</head>
+<body>
+<header><h2>SkillSaathi</h2><p>Microsoft Word Course | Beginner to Advanced</p></header>
+<main class="container">
+<section class="hero"><span>LESSON 22 · ADVANCED WORD SKILLS</span><h1>Mail Merge</h1><p>Learn how to create personalized letters, labels and documents for multiple recipients using Mail Merge.</p></section>
+
+<section class="card">
+<h2>1. What is Mail Merge?</h2>
+<p>Mail Merge is a Microsoft Word feature that combines a main document with a data source to create multiple personalized documents.</p>
+<p>Instead of writing the same letter separately for every person, you prepare one document and connect it to a list of recipients.</p>
+<div class="highlight"><strong>Example:</strong> A school can create personalized invitation letters for 100 parents using one letter template and a recipient list.</div>
+</section>
+
+<section class="card">
+<h2>2. Main Components of Mail Merge</h2>
+<h3>Main Document</h3><p>The document containing the common message, such as a letter or invitation.</p>
+<h3>Data Source</h3><p>The list containing recipient information, such as names, addresses and email details. It may be an Excel spreadsheet or another supported data source.</p>
+<h3>Merge Fields</h3><p>Placeholders inserted into the main document. Word replaces them with information from each recipient's record.</p>
+<div class="example"><strong>Example data fields:</strong><br>FirstName | LastName | City | Email</div>
+</section>
+
+<section class="card">
+<h2>3. Steps to Perform Mail Merge</h2>
+<ol>
+<li>Open Microsoft Word and create your main document.</li>
+<li>Go to the Mailings tab.</li>
+<li>Click Start Mail Merge and choose the document type, such as Letters.</li>
+<li>Click Select Recipients.</li>
+<li>Choose an existing list or create a new recipient list.</li>
+<li>Place the cursor where personalized information should appear.</li>
+<li>Click Insert Merge Field and select the required field.</li>
+<li>Use Preview Results to check each recipient's document.</li>
+<li>Click Finish & Merge to create the final documents.</li>
+</ol>
+<div class="highlight"><strong>Tip:</strong> Check the recipient list carefully before completing the merge. Incorrect data can create incorrect letters.</div>
+</section>
+
+<section class="card">
+<h2>4. Example of a Mail Merge Letter</h2>
+<div class="example">
+<strong>Dear «FirstName» «LastName»,</strong><br><br>
+We are pleased to invite you to our annual school event in «City».<br><br>
+Thank you for your support.<br><br>
+Regards,<br>School Administration
+</div>
+<p>The merge fields are replaced with actual recipient information for each generated letter.</p>
+</section>
+
+<section class="card">
+<h2>5. Types of Mail Merge</h2>
+<ul>
+<li><strong>Letters:</strong> Personalized letters for many recipients.</li>
+<li><strong>Email Messages:</strong> Personalized email messages through a supported email setup.</li>
+<li><strong>Envelopes:</strong> Envelopes with recipient addresses.</li>
+<li><strong>Labels:</strong> Address labels or product labels.</li>
+<li><strong>Directory:</strong> A combined list or catalogue using data records.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>6. Practical Activity</h2>
+<p>Create a simple recipient list in Excel with these columns:</p>
+<div class="example">FirstName | LastName | City<br>Riya | Sharma | Ranchi<br>Aman | Kumar | Patna<br>Neha | Singh | Delhi</div>
+<p>Then perform these tasks:</p>
+<ol>
+<li>Create a new Word document with an invitation letter.</li>
+<li>Start Mail Merge and select Letters.</li>
+<li>Connect your Excel recipient list.</li>
+<li>Insert FirstName, LastName and City merge fields.</li>
+<li>Preview the results for all three recipients.</li>
+<li>Finish the merge and review the generated letters.</li>
+</ol>
+<div class="highlight"><strong>Learning Goal:</strong> Create multiple personalized letters from one document and a recipient list.</div>
+</section>
+
+<section class="card">
+<h2>7. Quick Knowledge Check</h2>
+<div class="question"><p><strong>Q1. What is the main purpose of Mail Merge?</strong></p>
+<label><input type="radio" name="q1" value="a"> Create personalized documents for multiple recipients</label>
+<label><input type="radio" name="q1" value="b"> Edit photographs</label>
+<label><input type="radio" name="q1" value="c"> Change page colour</label></div>
+<div class="question"><p><strong>Q2. Which tab contains Mail Merge tools?</strong></p>
+<label><input type="radio" name="q2" value="a"> View</label>
+<label><input type="radio" name="q2" value="b"> Mailings</label>
+<label><input type="radio" name="q2" value="c"> Design</label></div>
+<div class="question"><p><strong>Q3. What is a data source?</strong></p>
+<label><input type="radio" name="q3" value="a"> A page background</label>
+<label><input type="radio" name="q3" value="b"> A font collection</label>
+<label><input type="radio" name="q3" value="c"> A list of recipient information</label></div>
+<div class="question"><p><strong>Q4. What do merge fields represent?</strong></p>
+<label><input type="radio" name="q4" value="a"> Placeholders for recipient data</label>
+<label><input type="radio" name="q4" value="b"> Page margins</label>
+<label><input type="radio" name="q4" value="c"> Document borders</label></div>
+<button onclick="checkQuiz()">Check Answers</button><p id="result"></p>
+</section>
+
+<div class="navigation">
+<a href="word-lesson21.html">← Previous Lesson</a>
+<a href="../word.html">Back to Word Course</a>
+<a href="word-lesson23.html">Next Lesson →</a>
+</div>
+</main>
+<footer>© 2026 SkillSaathi | Learn Today, Grow Tomorrow</footer>
+<script>
+function checkQuiz(){
+const answers={q1:"a",q2:"b",q3:"c",q4:"a"};let score=0;
+for(let q in answers){const s=document.querySelector('input[name="'+q+'"]:checked');if(s&&s.value===answers[q])score++}
+const r=document.getElementById("result");r.textContent="You scored "+score+" out of 4."+(score===4?" Excellent work!":" Review the lesson and try again.");
+}
+</script>
+</body>
+</html>

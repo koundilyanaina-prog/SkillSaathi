@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Office Courses | SkillSaathi</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6f8;
+    color: #243247;
+}
+
+header {
+    background: #173b65;
+    color: white;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h2 {
+    font-size: 25px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 65px 20px 45px;
+}
+
+.hero h1 {
+    color: #173b65;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #657184;
+    line-height: 1.7;
+}
+
+.course-container {
+    max-width: 1150px;
+    margin: 15px auto 70px;
+    padding: 0 22px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.course-card {
+    background: white;
+    border: 1px solid #e2e6ec;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 7px 22px rgba(23, 59, 101, 0.06);
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(23, 59, 101, 0.12);
+}
+
+.course-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 14px;
+    background: #edf2f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.course-card h2 {
+    color: #173b65;
+    margin-bottom: 12px;
+    font-size: 23px;
+}
+
+.course-card p {
+    color: #687589;
+    line-height: 1.7;
+    min-height: 55px;
+    margin-bottom: 22px;
+}
+
+.course-btn {
+    display: inline-block;
+    background: #173b65;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.course-btn:hover {
+    background: #d49b43;
+    color: #17263a;
+}
+
+.coming-btn {
+    display: inline-block;
+    background: #e9edf2;
+    color: #64748b;
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #758196;
+    border-top: 1px solid #e2e6ec;
+}
+
+@media(max-width: 700px) {
+    .course-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    header {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>SkillSaathi</h2>
+    <a href="index.html">← Back to Home</a>
+</header>
+
+<section class="hero">
+    <h1>Microsoft Office Courses</h1>
+    <p>
+        Learn essential office skills step by step.
+        Explore practical lessons, build confidence and
+        improve your productivity with Microsoft Office.
+    </p>
+</section>
+
+<main class="course-container">
+
+    <div class="course-card">
+        <div class="course-icon">📘</div>
+        <h2>Microsoft Word</h2>
+        <p>
+            Learn document creation, formatting, tables,
+            professional reports, resumes and much more.
+        </p>
+        <a href="word.html" class="course-btn">Explore Course →</a>
+    </div>
+
+    <div class="course-card">
+        <div class="course-icon">📊</div>
+        <h2>Microsoft Excel</h2>
+        <p>
+            Learn spreadsheets, formulas, functions,
+            data management, charts and practical projects.
+        </p>
+        <a href="excel.html" class="course-btn">Explore Course →</a>
+    </div>
+
+    <div class="course-card">
+        <div class="course-icon">📽️</div>
+        <h2>Microsoft PowerPoint</h2>
+        <p>
+            Learn presentation design, slides, animations,
+            transitions and professional presentations.
+        </p>
+        <a href="powerpoint.html" class="course-btn">Explore Course →</a>
+    </div>
+
+    <div class="course-card">
+        <div class="course-icon">✉️</div>
+        <h2>Outlook & Email</h2>
+        <p>
+            Learn professional email writing, inbox management,
+            scheduling and workplace communication.
+        </p>
+        <a href="outlook.html" class="course-btn">Explore Course →</a>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 SkillSaathi | Learn • Practice • Grow
+</footer>
+
+</body>
+</html>
